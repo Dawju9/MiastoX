@@ -1,0 +1,180 @@
+// Plan działania dla go.work i .mod oraz mechaniki cargo/cityx
+
+// 1. Struktura go.work
+go 1.21
+
+use (
+    ./cityx-backend    // Logika backendu i komunikacji
+    ./cityx-client     // Interfejs użytkownika i logika klienta
+    ./cityx-core       // Współdzielone komponenty i typy
+    ./cityx-server     // Serwer gry i synchronizacja
+    ./cityx-renderer   // Silnik renderowania i grafika
+    ./game            // Główne assety i konfiguracja gry
+)
+
+// 2. Struktura .mod dla każdego modułu
+module cityx
+
+go 1.21
+
+require (
+    github.com/roblox/lune v0.8.0
+    github.com/roblox/rbx-dom v1.2.0
+    github.com/roblox/rojo v7.0.0
+    github.com/BurntSushi/toml v1.2.0
+    github.com/serde-rs/serde v1.0.0
+)
+
+// 3. Cargo.toml dla głównego pakietu
+[package]
+name = "cityx"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [
+    "cityx-backend",
+    "cityx-client",
+    "cityx-core", 
+    "cityx-server",
+    "cityx-renderer",
+    "cityx-assets"
+]
+
+[dependencies]
+lune = "0.8.0"
+rbx_dom = "1.2.0"
+rojo = "7.0.0"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.7"
+rbx_xml = "0.1.0"
+rbx_binary = "0.1.0"
+
+// 4. Mechanika serializacji w main.rs
+use serde::{Deserialize, Serialize};
+use std::fs;
+use toml;
+
+#[derive(Serialize, Deserialize)]
+struct GameConfig {
+    name: String,
+    version: String,
+    max_players: u32,
+    graphics: GraphicsConfig,
+    network: NetworkConfig,
+    assets: AssetsConfig
+}
+
+#[derive(Serialize, Deserialize)] 
+struct GraphicsConfig {
+    resolution: String,
+    fullscreen: bool,
+    quality: String,
+    render_distance: u32
+}
+
+#[derive(Serialize, Deserialize)]
+struct NetworkConfig {
+    server_tickrate: u32,
+    region: String,
+    port: u16,
+    max_connections: u32
+}
+
+#[derive(Serialize, Deserialize)]
+struct AssetsConfig {
+    maps: Vec<MapAsset>,
+    models: Vec<ModelAsset>,
+    scripts: ScriptsConfig
+}
+
+#[derive(Serialize, Deserialize)]
+struct MapAsset {
+    name: String,
+    path: String,
+    format: String
+}
+
+#[derive(Serialize, Deserialize)]
+struct ModelAsset {
+    name: String,
+    path: String,
+    animations: Vec<String>
+}
+
+#[derive(Serialize, Deserialize)]
+struct ScriptsConfig {
+    server: Vec<String>,
+    client: Vec<String>,
+    shared: Vec<String>
+}
+
+fn main() {
+    // Wczytaj główną konfigurację
+    let config_str = fs::read_to_string("cmd/game/cityx/rokit.toml")
+        .expect("Failed to read config");
+    let config: GameConfig = toml::from_str(&config_str)
+        .expect("Failed to parse config");
+
+    // Serializuj assety gry
+    let serialized = toml::to_string(&config)
+        .expect("Failed to serialize");
+    
+    // Zapisz metadane
+    fs::write("game/serialized.toml", &serialized)
+        .expect("Failed to save metadata");
+        
+    // Uruchom generator Lune
+    generate_roblox_assets(&config);
+}
+
+// 5. Skrypt Lune do generowania plików Roblox
+local lune = require("lune")
+local fs = require("fs")
+
+local function generateRobloxFiles()
+    -- Wczytaj zserializowane dane
+    local config = lune.readFile("game/serialized.toml")
+    local data = lune.fromToml(config)
+    
+    -- Utwórz strukturę katalogów
+    fs.mkdir("game/generated")
+    fs.mkdir("game/generated/maps")
+    fs.mkdir("game/generated/models")
+    fs.mkdir("game/generated/scripts")
+    
+    -- Generuj mapy
+    for _, map in ipairs(data.assets.maps) do
+        lune.writeModelFile(
+            string.format("game/generated/maps/%s.rbxm", map.name),
+            lune.readModelFile(map.path)
+        )
+    end
+    
+    -- Generuj modele
+    for _, model in ipairs(data.assets.models) do
+        lune.writeModelFile(
+            string.format("game/generated/models/%s.rbxm", model.name),
+            lune.readModelFile(model.path)
+        )
+    end
+    
+    -- Generuj skrypty
+    for _, script in ipairs(data.assets.scripts.server) do
+        lune.writeScriptFile(
+            string.format("game/generated/scripts/Server/%s.lua", script),
+            lune.readFile(string.format("src/server/%s.lua", script))
+        )
+    end
+    
+    for _, script in ipairs(data.assets.scripts.client) do
+        lune.writeScriptFile(
+            string.format("game/generated/scripts/Client/%s.lua", script),
+            lune.readFile(string.format("src/client/%s.lua", script))
+        )
+    end
+end
+
+return {
+    generateRobloxFiles = generateRobloxFiles
+}
