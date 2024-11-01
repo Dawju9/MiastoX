@@ -103,6 +103,7 @@ CityX to innowacyjny framework łączący backend napisany w **Rust** z front-en
 2. **Skonfiguruj Rust**: [Rust Installation](https://www.rust-lang.org/tools/install)
 3. **Uruchom i eksploruj**: Wejdź do CityX i odkryj nieznane!
 
+<div align="center">
 ---
 
 ## 👤 **Kontakt**
@@ -112,14 +113,17 @@ CityX to innowacyjny framework łączący backend napisany w **Rust** z front-en
 - **GitHub**: [Dawju9](https://github.com/Dawju9)
 
 ---
+</div>
+
+---
 
 ## **Gotowy na Przygody?**
 
 Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
-
 ---
 
-Jeśli chcesz wprowadzić jakiekolwiek zmiany lub dodać coś do tego opisu, daj mi znać! 
+
+---
 
 **TODOList**
 1. Przejrzyj strukturę plików w głównym katalogu gry.
@@ -127,9 +131,7 @@ Jeśli chcesz wprowadzić jakiekolwiek zmiany lub dodać coś do tego opisu, daj
 3. Stwórz i przetestuj skrypty do publikacji gry w Roblox.
 4. Wykonaj analizę i automatyzację przy pomocy GitHub Actions.
 
-
-
-
+---
 
 
 
