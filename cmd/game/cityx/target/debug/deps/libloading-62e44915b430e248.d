@@ -1,0 +1,12 @@
+/home/kali/DevelopmentFiles/EndGames/MiastoX/cmd/game/cityx/target/debug/deps/liblibloading-62e44915b430e248.rmeta: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs
+
+/home/kali/DevelopmentFiles/EndGames/MiastoX/cmd/game/cityx/target/debug/deps/libloading-62e44915b430e248.d: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs
+
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/lib.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/changelog.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/mod.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/mod.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/os/unix/consts.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/util.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/error.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/libloading-0.8.5/src/safe.rs:

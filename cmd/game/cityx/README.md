@@ -1,333 +1,211 @@
-### Analiza i Koncepcja Opisu Projektu
+    <div align="center">
 
-Stworzenie opisu projektu **CityX Framework** powinno uwzględniać techniczny charakter oraz istotne aspekty, które wyróżniają projekt. Chcemy osiągnąć estetykę mroczną, ale również informatyczną, zapewniającą wizualną spójność oraz jasność komunikacji. Przygotuję propozycję dla twojego opisu w formacie Markdown, z dodatkowymi elementami wizualnymi i strukturą podkreślającą zaawansowanie technologiczne oraz futurystyczną atmosferę projektu.
+    # 🏙️ CityX Framework 🖤🖥️
 
-<div align="center">
+    > A next-generation game development framework combining Rust and Roblox Lua — modularyzacja na wyższym poziomie
 
----
+    [![Build Status](https://github.com/Dawju9/cityx/workflows/CI/badge.svg)](https://github.com/Dawju9/cityx/actions)
+    [![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://dawju9.github.io/cityx)
+    [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-# 🏙️ **CityX Framework** 🖤🖥️
+    ---
 
----
+    </div>
 
-</div>
+    ## 📜 Overview
 
-**### Projekt CityX Framework**
+    CityX is an innovative game development framework that bridges high-performance Rust backend systems with Roblox Lua frontend capabilities. Built for creating scalable, procedural worlds in Roblox while maintaining optimal performance and resource management in a dark, cybernetic environment.
 
-> **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.**
+    ## 🎮 Game Configuration
 
----
+    ### Core Settings
+    - **Name**: MiastoX
+    - **Version**: 0.0.1
+    - **Genre**: Simulation
+    - **Players**: 1-100 players
+    - **Language**: English (default)
+    - **Difficulty**: Custom
+    - **Test Place**: CityX Test Place (Private)
 
-## 📜 **Opis Projektu**
+    ### 🖥️ Graphics Settings
+    - Resolution: 1920x1080
+    - Fullscreen: Enabled
+    - VSync: Enabled
+    - Quality: High
+    - Anti-aliasing: Enabled
+    - Custom Banner Color: #FF0000
 
-CityX to innowacyjny framework łączący backend napisany w **Rust** z front-endem opartym na **Roblox Lua**. Celem projektu jest ułatwienie budowy złożonych, proceduralnych światów w grach Roblox, umożliwiając skalowalność oraz efektywne zarządzanie zasobami.
+    ### 🔊 Audio Configuration
+    - Master Volume: 80%
+    - Music Volume: 70%
+    - Effects Volume: 75%
+    - Voice Chat: Enabled
 
----
+    ### 🌐 Network Settings
+    - Server Tickrate: 30 FPS
+    - Region: EU
+    - Latency Threshold: 150ms
+    - Server Address: 127.0.0.1
+    - Port: 8080
 
-## 🏗️ **Struktura Projektu**
+    ### 🎨 Customization
+    - Default Character Skin: "default"
+    - Unlocked Skins: 
+      - Default
+      - Warrior
+      - Cyberpunk
 
-- `/cityx-backend`: **Rust** – Obsługa krytycznych operacji serwerowych.
-- `/cityx-client`: **Roblox Lua** – Interakcje z użytkownikami i interfejsy.
-- `/cityx-core`: **Roblox Lua** – Główna logika gry, oparta na ECS.
-- `/cityx-server`: **Roblox Lua** – Logika serwera, synchronizacja.
-- `/cityx-renderer`: **Rust** – Wydajne renderowanie graficzne.
-- `/game`: Zasoby gry, skrypty oraz dane konfiguracyjne.
+    <div>
 
----
+    ## 🌟 Key Features
 
-## 🔍 **Kluczowe Funkcje**
+    > **Hybrid Architecture**: Seamless integration between Rust backend and Roblox Lua frontend
+    > **ECS-Based Design**: Efficient entity-component-system architecture
+    > **Procedural Generation**: Advanced world generation capabilities
+    > **High Performance**: Optimized rendering and server operations
+    > **Modular Structure**: Easy-to-extend component system
+    > **Efektywne Zarządzanie Danymi**: Nowoczesna architektura zapewnia wydajność
 
-1. **Modularność i Skalowalność**: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
-2. **Integracja Rust & Roblox Lua**: Wydajna komunikacja między backendem a frontendem.
-3. **Zaawansowana Logika Gry**: Wykorzystanie wzorca ECS (Entity-Component-System).
-4. **Efektywne Zarządzanie Danymi**: Nowoczesna architektura zapewnia wydajność.
+    </div>
 
----
+    <div>
 
-## 🛠️ **Instalacja i Konfiguracja**
+    ## 🚀 Quick Start
 
-1. **Zainstaluj Roblox Studio**: [Roblox Studio](https://www.roblox.com/create)
-2. **Skonfiguruj Środowisko Rust**: Pobierz i zainstaluj Rust z [rust-lang.org](https://www.rust-lang.org)
-3. **Zarządzanie zależnościami**: Wykorzystaj **Wally** do instalacji bibliotek w Lua.
-4. **Uruchomienie**:
-   - Skorzystaj ze skryptu `roblox` lub `scripts/install_packages.sh`, aby skonfigurować środowisko.
+    1. **Prerequisites**
+   
+     > Install Roblox Studio
+     > https://www.roblox.com/create
 
----
+     > Install Rust
+     > curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-## 🖥️ **Główne Komponenty**
+     > Install Wally (Roblox Package Manager)
+     > cargo install wally
+   
 
-### Backend (Rust)
-- Obsługuje operacje serwerowe.
-- Zarządza żądaniami sieciowymi i synchronizacją danych.
+    2. **Clone and Setup**
+   
+     > git clone https://github.com/Dawju9/cityx.git
+     > cd cityx
+     > ./scripts/install_packages.sh
 
-### Frontend (Roblox Lua)
-- Tworzy interakcje użytkownika oraz interfejs gry.
+    </div>
 
-### Core (Lua)
-- Odpowiada za główną logikę rozgrywki.
+    <div>
 
-### Renderer (Rust)
-- Wydajne renderowanie graficzne, zoptymalizowane pod kątem wydajności.
+    ## 📁 Project Structure
 
----
+    ---
+    cityx/
+    ---
+    > ├── cityx-backend/    # Rust server implementation
+    > ├── cityx-client/     # Roblox Lua client code
+    > ├── cityx-core/       # Core game logic and ECS
+    > ├── cityx-server/     # Roblox server-side code
+    > ├── cityx-renderer/   # Custom rendering engine
+    > └── game/             # Game assets and configs
 
-## 💡 **Wpływ na Informatyzację**
+    </div>
 
-- **Efektywność**: Nowoczesne podejście do tworzenia gier multiplayer.
-- **Innowacja**: Połączenie różnych technologii w jednym projekcie.
-- **Skalowalność**: Prosta rozbudowa o nowe funkcje i elementy.
+    <div>
 
----
+    ## 💻 Development
 
-## 🌐 **Potencjalne Zastosowania**
+    > Build the project
+    > cargo build
 
-1. **Gry Multiplayer**: Tworzenie złożonych i rozbudowanych światów.
-2. **Aplikacje Webowe**: Integracja zaawansowanej logiki serwerowej.
-3. **Narzędzia Edukacyjne**: Symulacje i aplikacje edukacyjne.
+    > Run tests
+    > cargo test
 
----
+    > Start development server
+    > cargo run --bin cityx-server
 
-## 📝 **Uwagi**
+    ### ⌨️ Default Controls
+    - Move Forward: W
+    - Move Backward: S
+    - Move Left: A
+    - Move Right: D
+    - Jump: Space
+    - Crouch: Ctrl
+    - Interact: E
 
-- Projekt wymaga doświadczenia w środowisku Roblox i Rust.
-- Dokumentacja obejmuje kluczowe aspekty, ale nie zawiera instrukcji tworzenia pełnych gier.
-- Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
+    </div>
 
----
+    <div>
 
-## 🎮 **Rozpoczęcie Przygody w CityX**
+    ## 📚 Documentation
 
-> **🌌 Zanurz się w cybernetycznym świecie pełnym tajemnic!**
+    > [API Reference](https://dawju9.github.io/cityx/api)
+    > [Architecture Guide](https://dawju9.github.io/cityx/architecture)
+    > [Contributing Guidelines](CONTRIBUTING.md)
 
-1. **Zainstaluj Roblox Studio**: [Roblox Studio](https://www.roblox.com/create)
-2. **Skonfiguruj Rust**: [Rust Installation](https://www.rust-lang.org/tools/install)
-3. **Uruchom i eksploruj**: Wejdź do CityX i odkryj nieznane!
+    </div>
 
-<div align="center">
----
+    <div>
 
-## 👤 **Kontakt**
+    ## 🛠️ Technologies
 
-- **Autor**: Whitekali
-- **E-mail**: whitekali@example.com
-- **GitHub**: [Dawju9](https://github.com/Dawju9)
+    > **Backend**: Rust
+    > **Frontend**: Roblox Lua
+    > **Build System**: Rojo
+    > **Package Management**: Wally
+    > **Testing**: Rust Test Framework
+    > **CI/CD**: GitHub Actions
 
----
-</div>
+    </div>
 
----
+    <div>
 
-## **Gotowy na Przygody?**
+    ## 🤝 Contributing
 
-Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
----
+    We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
+    </div>
 
----
+    <div>
 
-**TODOList**
-1. Przejrzyj strukturę plików w głównym katalogu gry.
-2. Dodaj skrypty generujące plik `rblx` dla proceduralnego świata.
-3. Stwórz i przetestuj skrypty do publikacji gry w Roblox.
-4. Wykonaj analizę i automatyzację przy pomocy GitHub Actions.
+    ## 📄 License
 
----
+    This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+    </div>
 
+    <div>
 
+    ## 👥 Team
 
+    > **Lead Developer**: Whitekali
+    > **Contact**: whitekali@example.com
+    > **GitHub**: [@Dawju9](https://github.com/Dawju9)
 
+    </div>
 
+    <div>
 
+    ## 🌐 Links
 
+    > [Documentation](https://dawju9.github.io/cityx)
+    > [GitHub Repository](https://github.com/Dawju9/cityx)
+    > [Issue Tracker](https://github.com/Dawju9/cityx/issues)
 
+    </div>
 
+    ## 💡 Potential Applications
 
+    1. **Multiplayer Games**: Create complex and expansive worlds
+    2. **Web Applications**: Integration of advanced server logic
+    3. **Educational Tools**: Simulations and educational applications
 
+    ## 📝 Notes
 
+    - Project requires experience with Roblox and Rust environments
+    - Documentation covers key aspects but doesn't include full game creation instructions
+    - Key algorithms and structures are protected against leaks
 
+    ---
 
-
-
-
-
-
-
-
-# Plik z informacjami o frameworku CityX  cityx.yml       
-
-
-Aya Saad homepage!
-View on GitHub
---- # 🏙️ **CityX Framework** 🖤🖥️ --- **A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.** [![Build status](https://github.com/grilme99/roblox-project-template/workflows/CI/badge.svg)](https://github.com/grilme99/roblox-project-template/actions)
-### Projekt CityX Framework
-
-Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.
-
-📜 Opis Projektu
-CityX to innowacyjny framework łączący backend napisany w Rust z front-endem opartym na Roblox Lua. Celem projektu jest ułatwienie budowy złożonych, proceduralnych światów w grach Roblox, umożliwiając skalowalność oraz efektywne zarządzanie zasobami.
-
-🏗️ Struktura Projektu
-/cityx-backend: Rust – Obsługa krytycznych operacji serwerowych.
-/cityx-client: Roblox Lua – Interakcje z użytkownikami i interfejsy.
-/cityx-core: Roblox Lua – Główna logika gry, oparta na ECS.
-/cityx-server: Roblox Lua – Logika serwera, synchronizacja.
-/cityx-renderer: Rust – Wydajne renderowanie graficzne.
-/game: Zasoby gry, skrypty oraz dane konfiguracyjne.
-🔍 Kluczowe Funkcje
-Modularność i Skalowalność: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
-Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem.
-Zaawansowana Logika Gry: Wykorzystanie wzorca ECS (Entity-Component-System).
-Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.
-🛠️ Instalacja i Konfiguracja
-Zainstaluj Roblox Studio: Roblox Studio
-Skonfiguruj Środowisko Rust: Pobierz i zainstaluj Rust z rust-lang.org
-Zarządzanie zależnościami: Wykorzystaj Wally do instalacji bibliotek w Lua.
-Uruchomienie:
-Skorzystaj ze skryptu roblox lub scripts/install_packages.sh, aby skonfigurować środowisko.
-🖥️ Główne Komponenty
-Backend (Rust)
-Obsługuje operacje serwerowe.
-Zarządza żądaniami sieciowymi i synchronizacją danych.
-Frontend (Roblox Lua)
-Tworzy interakcje użytkownika oraz interfejs gry.
-Core (Lua)
-Odpowiada za główną logikę rozgrywki.
-Renderer (Rust)
-Wydajne renderowanie graficzne, zoptymalizowane pod kątem wydajności.
-💡 Wpływ na Informatyzację
-Efektywność: Nowoczesne podejście do tworzenia gier multiplayer.
-Innowacja: Połączenie różnych technologii w jednym projekcie.
-Skalowalność: Prosta rozbudowa o nowe funkcje i elementy.
-🌐 Potencjalne Zastosowania
-Gry Multiplayer: Tworzenie złożonych i rozbudowanych światów.
-Aplikacje Webowe: Integracja zaawansowanej logiki serwerowej.
-Narzędzia Edukacyjne: Symulacje i aplikacje edukacyjne.
-📝 Uwagi
-Projekt wymaga doświadczenia w środowisku Roblox i Rust.
-Dokumentacja obejmuje kluczowe aspekty, ale nie zawiera instrukcji tworzenia pełnych gier.
-Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
-🎮 Rozpoczęcie Przygody w CityX
-🌌 Zanurz się w cybernetycznym świecie pełnym tajemnic!
-
-Zainstaluj Roblox Studio: Roblox Studio
-Skonfiguruj Rust: Rust Installation
-Uruchom i eksploruj: Wejdź do CityX i odkryj nieznane!
-👤 Kontakt
-Autor: Whitekali
-E-mail: whitekali@example.com
-GitHub: Dawju9
-Gotowy na Przygody?
-Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Allow this file to not have a first line heading -->
-<!-- markdownlint-disable-file MD041 no-emphasis-as-heading -->
-
-<!-- inline html -->
-<!-- markdownlint-disable-file MD033 -->
-
-<div align="center">
-
-<!--- FIXME: Pick an emoji and name your project! --->
-# `📦 Roblox Project Template`
-
-<!--- FIXME: Write short catchy description/tagline of project --->
-**A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
-
-<!--- FIXME: Update crate, repo and CI workflow names here! Remove any that are not relevant --->
-[![Build status](https://github.com/grilme99/roblox-project-template/workflows/CI/badge.svg)](https://github.com/grilme99/roblox-project-template/actions)
-
-</div>
-
-A guide for this template isn't written yet!
-# Konfiguracja podstawowych danych gry
-#Wczytaj konfigurację z citix.toml w kodzie Rust: 
-#Użyj biblioteki takiej jak toml_edit lub serde_toml,
-# aby wczytać konfigurację z citix.toml w swoim kodzie
-#  Rust (np. w pliku main.rs backendu).
-[game]
-# Konfiguracja specyficzna dla gry
-#Przykładowe opcje, które można dodać:
-name = "Miastox"
-max_players = 100
-genre = "Simulation"
-# Konfiguracja ustawień gry.
-
-# Ustawienia grafiki
-[graphics]
-resolution = "1920x1080" # Rozdzielczość ekranu
-fullscreen = true        # Tryb pełnoekranowy
-
-[game.settings]
-name = "MiastoX"  # Nazwa gry
-version = "0.0.1"  # Wersja gry
-genre = "Simulation"  # Gatunek gry
-max_players = 100  # Maksymalna liczba graczy w jednej sesji
-min_players = 1  # Minimalna liczba graczy potrzebna do rozpoczęcia rozgrywki
-difficulty = "custom"  # Domyślny poziom trudności ("easy", "normal", "hard", "custom")
-language = "en"  # Domyślny język gry
-
-
-# Konfiguracja serwera
-[server]
-address = "127.0.0.1"  # Adres IP serwera
-port = 8080            # Port serwera
-
-# ... inne sekcje konfiguracyjne
-
-[game.test_place]
-name = "CityX Test Place"
-place_id = 0  # Na początek, ID będzie 0, ale będzie aktualizowane przez skrypt Lua
-description = "This is the test place for CityX."
-max_players = 10  # Ustaw maksymalną liczbę graczy dla testowego miejsca
-is_public = false  # Ustawienie prywatności testowego miejsca
-
-[game.settings.graphics]
-resolution = "1920x1080"  # Rozdzielczość ekranu
-fullscreen = true  # Tryb pełnoekranowy
-vsync = true  # Synchronizacja pionowa
-quality = "high"  # Jakość grafiki ("low", "medium", "high", "ultra")
-anti_aliasing = true  # Włączone wygładzanie krawędzi
-
-[game.settings.audio]
-master_volume = 80  # Głośność ogólna (w skali 0-100)
-music_volume = 70  # Głośność muzyki (w skali 0-100)
-effects_volume = 75  # Głośność efektów dźwiękowych (w skali 0-100)
-voice_chat_enabled = true  # Włączenie komunikacji głosowej
-
-[game.settings.network]
-server_tickrate = 30  # Częstotliwość aktualizacji serwera (w FPS)
-region = "EU"  # Domyślny region serwera
-latency_threshold = 150  # Maksymalna akceptowalna latencja (ms)
-
-[game.settings.controls]
-mouse_sensitivity = 1.0  # Czułość myszy
-invert_y_axis = false  # Odwrócenie osi Y
-keybindings = {  # Przykładowe klawiszowe skróty
-    move_forward = "W",
-    move_backward = "S",
-    move_left = "A",
-    move_right = "D",
-    jump = "Space",
-    crouch = "Ctrl",
-    interact = "E"
-}
-
-[game.settings.customization]
-character_skin = "default"  # Domyślny skin postaci
-unlocked_skins = ["default", "warrior", "cyberpunk"]  # Odkryte skiny
-custom_banner_color = "#FF0000"  # Kolor banera gracza
+    <div align="center">
+    🌌 Made with ❤️ by the CityX Team 🌌
+    </div>
 

@@ -1,0 +1,1 @@
+-- Główne ustawienia i konfiguracje dla CityX  CityX.config.lua

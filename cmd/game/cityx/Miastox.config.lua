@@ -1,0 +1,1 @@
+--# Główne ustawienia i konfiguracje dla Miastox  Miastox.config.lua

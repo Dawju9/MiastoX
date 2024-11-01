@@ -1,0 +1,41 @@
+Oczywiście! Opiszę podkatalogi i przedstawię zasady, 
+
+które należy wdrożyć w podkatalogowanych repozytoriach, 
+wraz z ogólnymi zasadami dla poziomów opisanych w pliku
+ katalogizacja projektów.data.
+
+Podkatalogi i reguły:
+
+Zasoby:
+
+Zasada: Używaj spójnych konwencji nazewnictwa (np. snake_case lub camelCase)
+Zasada: Organizuj zasoby według typu (tekstury, dźwięki, modele)
+Zasada: Implementuj kontrolę wersji dla zasobów
+Konfiguracje:
+
+Zasada: Używaj JSON lub YAML dla plików konfiguracyjnych
+Zasada: Oddzielaj konfiguracje specyficzne dla środowiska (dev, staging, production)
+Zasada: Implementuj system walidacji dla plików konfiguracyjnych
+Skrypty:
+
+Zasada: Stosuj spójny styl kodowania (używaj linterów i formaterów)
+Zasada: Organizuj skrypty według funkcjonalności lub modułu
+Zasada: Implementuj testy jednostkowe dla każdego skryptu
+Ogólne zasady dla poziomów:
+
+Poziom 1 (podstawowe elementy):
+
+Zasada: Przechowuj niezmienne lub podstawowe zasoby
+Zasada: Optymalizacja w celu szybkiego dostępu i organizacji
+Zasada: Utrzymuj spójne nazewnictwo i strukturę
+Poziom 2 (złożony Funkcje):
+
+Zasada: Wdrażaj modułową konstrukcję, aby ułatwić konserwację
+Zasada: Używaj przejrzystej dokumentacji dla każdego modułu
+Zasada: Wdrażaj obsługę błędów i rejestrowanie
+Poziom 3 (Wyjście i debugowanie):
+
+Zasada: Organizuj pliki wyjściowe według typu lub daty
+Zasada: Wdrażaj solidny system rejestrowania
+Zasada: Twórz narzędzia do łatwej analizy informacji debugowania
+Przestrzegając tych zasad i reguł, utworzysz dobrze zorganizowaną, łatwą w utrzymaniu i wydajną strukturę projektu we wszystkich swoich repozytoriach.
