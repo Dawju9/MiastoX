@@ -1,3 +1,48 @@
+├── src/
+│   ├── kod_logiki_gry/
+│   ├── moduły/
+│   ├── framework_cityx/  # Cityx jako submoduł
+│   └── .rbxl/
+├── scripts/
+│   └── automatyzacja_testów/
+├── config/
+│   └── miasto_config.lua
+├── Lune/
+│   └── skrypty_serializacji/
+├── .github/workflows/
+│   └── testy.yml
+└── README.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ├── CityX-Frame
 │   ├── aftman.toml                   # Konfiguracja wspólna dla projektu
 │   ├── default.project.json           # Domyślne ustawienia projektu
