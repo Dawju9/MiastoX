@@ -1,0 +1,11 @@
+F:\EndGames\MiastoX\cmd\game\cityx\target\debug\deps\libnom_supreme-5ee40d9b8786a8ca.rmeta: C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\lib.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\context.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\error.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\final_parser.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\multi.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\parser_ext.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\tag.rs
+
+F:\EndGames\MiastoX\cmd\game\cityx\target\debug\deps\nom_supreme-5ee40d9b8786a8ca.d: C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\lib.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\context.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\error.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\final_parser.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\multi.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\parser_ext.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\tag.rs
+
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\lib.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\context.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\error.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\final_parser.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\multi.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\parser_ext.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\nom-supreme-0.8.0\src\tag.rs:
