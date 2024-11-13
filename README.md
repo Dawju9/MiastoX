@@ -50,7 +50,7 @@ Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetyczneg
 /cityx-renderer: Rust – Wydajne renderowanie graficzne.
 /game: Zasoby gry, skrypty oraz dane konfiguracyjne.
 
-</div>
+</div> 
 
 </div>
 <!--- FIXME: Write short catchy description/tagline of project --->
