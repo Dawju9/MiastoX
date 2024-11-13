@@ -22,9 +22,13 @@
 ```rs
 **🔍 Kluczowe Funkcje**
 Modularność i Skalowalność: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
+<br>
 Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem.
+<br>
 Zaawansowana Logika Gry: Wykorzystanie wzorca ECS (Entity-Component-System).
-Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.```
+<br>
+Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.
+<br>```
 ---
 
 ---
