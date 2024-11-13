@@ -1,37 +1,24 @@
 {
-  "name": "MiastoX",
+  "name": "miastox",
   "version": "0.1.0",
-  "edition": "2021",
   "description": "Projekt gry MiastoX oparty na frameworku Cityx i Rust, obsługujący integrację z .rbxl",
-  "authors": ["Whitekali"],
-  "license": "MIT",
-  "repository": "https://github.com/Dawju9/MiastoX",
+  "main": "index.js",
+  "scripts": {
+    "build": "cargo build && lune ayachapter.rbxl && rojo --output=build/rojo_output",
+    "start": "node index.js"
+  },
   "dependencies": {
-    "link": "0.1.1",
-    "lune": "0.8.9",
-    "promise": "0.0.4",
-    "rojo": "7.4.4",
-    "rokit": "0.2.5",
-    "selene": "0.27.1",
-    "stylua": "0.20.0",
-    "wally": "0.3.2"
+    "rojo": "^7.4.4",
+    "stylua": "^0.20.0",
+    "wally": "^0.3.2"
   },
-  "dev-dependencies": {
-    "wally": "0.3.2"
+  "devDependencies": {
+    "rokit": "^0.2.5"
   },
-  "build": {
-    "target": ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dawju9/MiastoX"
   },
-  "game": {
-    "citix_config_path": "citix.toml"
-  },
-  "lib": {
-    "name": "MiastoX",
-    "path": "src/lib.rs",
-    "test": true
-  },
-  "bin": {
-    "name": "MiastoX",
-    "path": "src/main.rs"
-  }
+  "author": "Whitekali",
+  "license": "MIT"
 }
