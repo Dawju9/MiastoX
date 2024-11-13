@@ -1,8 +1,4 @@
 
-
-
-
-
 <!-- Allow this file to not have a first line heading -->
 <!-- markdownlint-disable-file MD041 no-emphasis-as-heading -->
 
@@ -11,28 +7,38 @@
 
 <!--- FIXME: Pick an emoji and name your project! --->
 <!---# `📦 Roblox Project Template`-->
+
+
+<div align="center">
+
 ---
 
 # 🏙️ **CityX Framework** 🖤🖥️
 
+[Live status](https://dawju9.github.io/MiastoX/)
+
 ---
-[![Build Miasto Live status](https://dawju9.github.io/MiastoX/)
 
-<div align="center">
+---
 
-<!--- FIXME: Write short catchy description/tagline of project --->
-**A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
+## 👤 **Kontakt**
 
-<!--- FIXME: Update crate, repo and CI workflow names here! Remove any that are not relevant --->
-[![Build status](https://github.com/grilme99/roblox-project-template/workflows/CI/badge.svg)](https://github.com/grilme99/roblox-project-template/actions)
+- **Autor**: Whitekali
+- **E-mail**: whitekali@example.com
+- **GitHub**: [Dawju9](https://github.com/Dawju9)
 
-</div>
+---
+
+## **Gotowy na Przygody?**
+
+Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
+
+---
 **### Projekt CityX Framework**
 
 > **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.**
 
 ---
-
 ## 📜 **Opis Projektu**
 
 CityX to innowacyjny framework łączący backend napisany w **Rust** z front-endem opartym na **Roblox Lua**. Celem projektu jest ułatwienie budowy złożonych, proceduralnych światów w grach Roblox, umożliwiając skalowalność oraz efektywne zarządzanie zasobami.
@@ -118,18 +124,10 @@ CityX to innowacyjny framework łączący backend napisany w **Rust** z front-en
 2. **Skonfiguruj Rust**: [Rust Installation](https://www.rust-lang.org/tools/install)
 3. **Uruchom i eksploruj**: Wejdź do CityX i odkryj nieznane!
 
----
+</div>
 
-## 👤 **Kontakt**
 
-- **Autor**: Whitekali
-- **E-mail**: whitekali@example.com
-- **GitHub**: [Dawju9](https://github.com/Dawju9)
+<!--- FIXME: Write short catchy description/tagline of project --->
+**A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
 
----
-
-## **Gotowy na Przygody?**
-
-Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
-
----
+<!--- FIXME: Update crate, repo and CI workflow names here! Remove any that are not relevant --->
