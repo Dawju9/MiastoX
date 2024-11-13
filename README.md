@@ -16,9 +16,12 @@
 # 🏙️ **CityX Framework** 🖤🖥️
 ---
 </div>
-
+---
 [Live status](https://dawju9.github.io/MiastoX/)
 🔍 Kluczowe Funkcje
+---
+
+---
 ---
 Modularność i Skalowalność: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
 Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem.
