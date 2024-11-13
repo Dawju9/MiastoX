@@ -31,6 +31,6 @@ name = "MiastoX"
 path = "src/lib.rs"
 test = true
 
-[bin]
+[[bin]]
 name = "MiastoX"
 path = "src/main.rs"
