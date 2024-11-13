@@ -1,15 +1,4 @@
-
-<!-- Allow this file to not have a first line heading -->
-<!-- markdownlint-disable-file MD041 no-emphasis-as-heading -->
-
-<!-- inline html -->
-<!-- markdownlint-disable-file MD033 -->
-
-<!--- FIXME: Pick an emoji and name your project! --->
-<!---# `📦 Roblox Project Template`-->
-
 <div align="center">
-
 ---
 <div align="center"># 🏙️ **CityX Framework** 🖤🖥️</div>
 ---
@@ -29,9 +18,8 @@ Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem
 Zaawansowana Logika Gry: Wykorzystanie wzorca ECS (Entity-Component-System).
 <br>
 Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.
-<br></div>```
----
-
+<br></div>
+```
 ---
 ---
 💡 Wpływ na Informatyzację
@@ -57,7 +45,6 @@ Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
 </div>
 
 ---
-
 <div align="left">
 ## 👤 **Kontakt**
 
@@ -67,7 +54,6 @@ Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
 
 </div>
 ---
-
 ## **Gotowy na Przygody?**
 
 <div align="left">
@@ -108,8 +94,3 @@ Wydajne renderowanie graficzne, zoptymalizowane pod kątem wydajności.
 **A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
 
 <!--- FIXME: Update crate, repo and CI workflow names here! Remove any that are not relevant --->
-
-
-
-
-
