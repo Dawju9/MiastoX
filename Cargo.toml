@@ -27,3 +27,11 @@ target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
 [game]
 # Konfiguracja podstawowych danych gry
 citix_config_path = "citix.toml" # Ścieżka do pliku konfiguracyjnego gry
+[lib]
+name = "MiastoX"
+path = "src/lib.rs"
+test = true
+
+[[bin]]
+name = "MiastoX"
+path = "src/main.rs"
