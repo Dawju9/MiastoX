@@ -16,7 +16,7 @@
 # 🏙️ **CityX Framework** 🖤🖥️
 
 ---
-[![Build Miasto Live status]([https://dawju9.github.io/MiastoX/])
+[![Build Miasto Live status](https://dawju9.github.io/MiastoX/)
 
 <div align="center">
 
