@@ -1,5 +1,7 @@
 use std::env;
 use std::process;
+use MiastoX::game;
+use decode::decoded::{deserialize_rbxl_to_model, serialize_model_to_rbxl};
 
 mod citix;
 mod game;
@@ -7,7 +9,8 @@ mod lib;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-
+    let model = deserialize_rbxl_to_model("AyaChapter.rbxl").unwrap();
+    println!("{:?}", model);
     if args.len() > 1 {
         match args[1].as_str() {
             "run" => {
@@ -31,7 +34,6 @@ fn main() {
         println!("Hello, world!");
     }
 }
-
 fn print_help() {
     println!("Usage:");
     println!("  run         Run the game");
