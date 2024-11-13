@@ -16,6 +16,8 @@ rokit = "0.2.5" # Narzędzia do budowania i pracy nad projektami Lua w Rust
 selene = "0.27.1" # Narzędzie do analizy kodu Lua
 stylua = "0.20.0" # Formatter Lua
 wally = "0.3.2" # Zarządzanie zależnościami w ekosystemie Roblox (produkcja)
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 
 [dev-dependencies]
 wally = "0.3.2" # Wersja używana do testów i automatyzacji procesu
