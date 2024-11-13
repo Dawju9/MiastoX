@@ -20,7 +20,6 @@
 
 [Live status](https://dawju9.github.io/MiastoX/)
 </div>
----
 
 ---
 
@@ -40,7 +39,6 @@
 Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetycznego imperium! 🏙️✨
 
 </div>
----
 </div>
 
 
