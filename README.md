@@ -14,8 +14,8 @@
 ---
 
 # 🏙️ **CityX Framework** 🖤🖥️
-
-
+---
+</div>
 
 [Live status](https://dawju9.github.io/MiastoX/)
 🔍 Kluczowe Funkcje
