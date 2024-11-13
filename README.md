@@ -16,7 +16,7 @@
 # 🏙️ **CityX Framework** 🖤🖥️
 
 ---
-[![Build Miasto Live status]([https://github.com/grilme99/roblox-project-template/workflows/CI/badge.svg)](https://github.com/grilme99/roblox-project-template/actions](https://dawju9.github.io/MiastoX/))
+[![Build Miasto Live status]([https://dawju9.github.io/MiastoX/])]
 
 <div align="center">
 
