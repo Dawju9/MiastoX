@@ -75,7 +75,7 @@ jobs:
           git push origin v${{ github.run_number }}  # Pushowanie tagu wersji do repozytorium
 
   hugo-serve:
-    runs-on: ubuntu-latest  # Wybór systemu operacyjnego dla serwera Hugo
+    runs-on: windows-latest  # Wybór systemu operacyjnego dla serwera Hugo
 
     steps:
       - name: Checkout repository
