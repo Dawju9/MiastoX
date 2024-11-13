@@ -9,21 +9,21 @@
 <!---# `📦 Roblox Project Template`-->
 
 
-<div align="center">
-
+---
+<div align="center"># 🏙️ **CityX Framework** 🖤🖥️</div>
 ---
 
-# 🏙️ **CityX Framework** 🖤🖥️
+
 ---
-</div>
+<div align="left">
+[Live status# 🏙️ **CityX](https://dawju9.github.io/MiastoX/)** 🖤🖥️</div>
 ---
-[Live status](https://dawju9.github.io/MiastoX/)
-🔍 Kluczowe Funkcje
----
+```rs
+**🔍 Kluczowe Funkcje**
 Modularność i Skalowalność: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
 Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem.
 Zaawansowana Logika Gry: Wykorzystanie wzorca ECS (Entity-Component-System).
-Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.
+Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.```
 ---
 
 ---
