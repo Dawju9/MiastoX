@@ -7,14 +7,19 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable # Specify a particular version if required
 
     - name: Install Go
       run: |
