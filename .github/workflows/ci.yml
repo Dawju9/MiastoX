@@ -98,4 +98,4 @@ jobs:
         run: |
           # Jeśli chcesz, możesz dodać kod do wdrożenia swojego repozytorium Hugo, np. za pomocą GitHub Pages
           # Na przykład, możesz skopiować wygenerowane pliki do odpowiedniego katalogu
-          #cp -r public/* /path/to/deployment/directory
+          cp -r public/* deployment/directory
