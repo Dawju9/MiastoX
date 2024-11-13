@@ -40,9 +40,25 @@ Odkryj sekrety CityX, zmierz się z wyzwaniami i zostań mistrzem cybernetyczneg
 
 </div>
 </div>
+<div align="center">
+🏗️ Struktura Projektu
+<div align="left">
+/cityx-backend: Rust – Obsługa krytycznych operacji serwerowych.
+/cityx-client: Roblox Lua – Interakcje z użytkownikami i interfejsy.
+/cityx-core: Roblox Lua – Główna logika gry, oparta na ECS.
+/cityx-server: Roblox Lua – Logika serwera, synchronizacja.
+/cityx-renderer: Rust – Wydajne renderowanie graficzne.
+/game: Zasoby gry, skrypty oraz dane konfiguracyjne.
 
+</div>
 
+</div>
 <!--- FIXME: Write short catchy description/tagline of project --->
 **A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
 
 <!--- FIXME: Update crate, repo and CI workflow names here! Remove any that are not relevant --->
+
+
+
+
+
