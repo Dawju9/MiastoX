@@ -16,12 +16,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-   
-    - name: Install Lua dependencies with Wally
+    - name: Install Go
       run: |
-        curl -L https://github.com/wally-rs/wally/releases/download/v0.2.0/wally-v0.2.0-x86_64-linux.tar.gz | tar xz
-        ./wally install
-    
+        choco install golang
+
+    - name: Install Lune and Rojo
+      run: |
+        choco install lua
+        choco install rojo
 
     - name: Install dependencies
       run: |
@@ -44,4 +46,3 @@ jobs:
       with:
         name: build
         path: target/release/*
-    

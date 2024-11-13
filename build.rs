@@ -1,3 +1,4 @@
+use std::env;
 use std::process::Command;
 
 fn main() {
@@ -7,18 +8,18 @@ fn main() {
         std::process::exit(1);
     }
     
-fn main() {
+    // Kompilacja pliku Go (jeśli jest)
     gobuild::Build::new()
         .file("hello.go")
         .compile("hello");
 
-    // Write build-time information using the `built` crate
+    // Zapisz informacje o czasie kompilacji
     if let Err(e) = built::write_built_file() {
         eprintln!("Failed to acquire build-time information: {}", e);
         std::process::exit(1);
     }
 
-    // Run lune to compile the .rbxl file
+    // Uruchomienie Lune do kompilacji pliku .rbxl
     let lune_status = Command::new("lune")
         .arg("ayachapter.rbxl")
         .status();
@@ -28,7 +29,7 @@ fn main() {
         std::process::exit(1);
     }
 
-    // Run rojo to process the Roblox game assets
+    // Uruchomienie Rojo do przetwarzania zasobów Roblox
     let rojo_status = Command::new("rojo")
         .arg("--output")
         .arg("build/rojo_output")
@@ -39,8 +40,9 @@ fn main() {
         std::process::exit(1);
     }
 
-    // Optional: You can also trigger other tasks like stylua or others here if needed
-}
+    // Opcjonalnie, można uruchomić inne narzędzia jak stylua
+    // Command::new("stylua").arg("src/**/*.lua").status();
+    
     // Informacje dla kompilatora o ścieżkach do plików
     println!("cargo:rerun-if-changed=src/lib.rs");
     println!("cargo:rerun-if-changed=src/main.rs");
