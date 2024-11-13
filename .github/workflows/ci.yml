@@ -8,8 +8,8 @@ on:
     branches:
       - main
 jobs:
-  build-windows:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
