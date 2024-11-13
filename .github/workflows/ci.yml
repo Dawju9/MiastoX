@@ -1,1 +1,47 @@
+name: CI
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+   
+    - name: Install Lua dependencies with Wally
+      run: |
+        curl -L https://github.com/wally-rs/wally/releases/download/v0.2.0/wally-v0.2.0-x86_64-linux.tar.gz | tar xz
+        ./wally install
+    
+
+    - name: Install dependencies
+      run: |
+        cargo install --path .
+
+    - name: Run tests
+      run: |
+        cargo test
+
+    - name: Build the project
+      run: |
+        cargo build --release
+
+    - name: Build with gobuild (if needed)
+      run: |
+        cargo run --bin MiastoX
+
+    - name: Upload build artifacts (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: target/release/*
+    

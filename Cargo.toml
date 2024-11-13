@@ -9,18 +9,22 @@ repository = "https://github.com/Dawju9/MiastoX"
 build = "build.rs"
 
 [dependencies]
+go = "0.0.1"
+gobuild = "0.1.0-alpha.2"
 link = "0.1.1"
 lune = "0.8.9"
 promise = "0.0.4"
 rojo = "7.4.4"
 rokit = "0.2.5"
+serde = { version = "1.0", features = ["derive"] }
 selene = "0.27.1"
 stylua = "0.20.0"
 wally = "0.3.2"
 
 [dev-dependencies]
+# Zależności tylko dla testów i automatyzacji
 wally = "0.3.2"
-
+tokio = { version = "1", features = ["full"] }
 [build-dependencies]
 built = "0.7"
 

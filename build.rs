@@ -1,6 +1,18 @@
+use std::env;
 use std::process::Command;
 
 fn main() {
+    // Automatyczne wykonanie polecenia "go build" za pomocą `gobuild`
+    if let Err(e) = gobuild::Build::new().run() {
+        eprintln!("Failed to run gobuild: {}", e);
+        std::process::exit(1);
+    }
+    
+fn main() {
+    gobuild::Build::new()
+        .file("hello.go")
+        .compile("hello");
+
     // Write build-time information using the `built` crate
     if let Err(e) = built::write_built_file() {
         eprintln!("Failed to acquire build-time information: {}", e);
@@ -29,4 +41,8 @@ fn main() {
     }
 
     // Optional: You can also trigger other tasks like stylua or others here if needed
+}
+    // Informacje dla kompilatora o ścieżkach do plików
+    println!("cargo:rerun-if-changed=src/lib.rs");
+    println!("cargo:rerun-if-changed=src/main.rs");
 }
