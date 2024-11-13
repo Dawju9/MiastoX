@@ -39,8 +39,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "you@example.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "dawju9@gmail.com"
+          git config --local user.name "dawju9"
           git add encoded/
           git commit -m "Auto-update serialized .rbxl files"
           git push
