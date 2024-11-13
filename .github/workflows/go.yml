@@ -36,6 +36,9 @@ jobs:
       with:
         toolchain: stable
 
+    - name: add target Build 
+      run:  rustup target add x86_64-pc-windows-gnu
+      
     - name: Set Rust flags for Windows build
       run: |
         echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
