@@ -1,1 +1,10 @@
 /target
+/build
+/dependencies
+/decoded
+/encoded
+*.rbxlx
+*.rbxl
+*.log
+.DS_Store
+.env
