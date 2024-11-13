@@ -1,13 +1,3 @@
-Uwagi do pliku:
-Sekcja [package] definiuje metadane projektu, takie jak nazwa, wersja, autorzy i repozytorium.
-Zaległości [dependencies] to pakiety, które są potrzebne do działania gry, w tym rojo (do synchronizacji .rbxl), lune (do minifikacji), czy promise (do zarządzania zadaniami asynchronicznymi).
-Sekcja [dev-dependencies] wskazuje narzędzia wykorzystywane podczas prac deweloperskich i testów.
-Sekcja [build] określa docelowe platformy kompilacji.
-Sekcja [game] zawiera konfigurację, która może być dostosowana poprzez wczytanie zewnętrznych plików takich jak citix.toml.
-Jeśli masz dodatkowe wymagania lub chcesz uwzględnić inne zależności, można je odpowiednio zaktualizować.
-
-
-
 
 
 
@@ -19,8 +9,6 @@ Jeśli masz dodatkowe wymagania lub chcesz uwzględnić inne zależności, możn
 <!-- inline html -->
 <!-- markdownlint-disable-file MD033 -->
 
-<div align="center">
-
 <!--- FIXME: Pick an emoji and name your project! --->
 <!---# `📦 Roblox Project Template`-->
 ---
@@ -28,6 +16,9 @@ Jeśli masz dodatkowe wymagania lub chcesz uwzględnić inne zależności, możn
 # 🏙️ **CityX Framework** 🖤🖥️
 
 ---
+[![Build Miasto Live status]([https://github.com/grilme99/roblox-project-template/workflows/CI/badge.svg)](https://github.com/grilme99/roblox-project-template/actions](https://dawju9.github.io/MiastoX/))
+
+<div align="center">
 
 <!--- FIXME: Write short catchy description/tagline of project --->
 **A comprehensive starting point for Roblox projects. Implements Rojo, Darklua, Wally, and more.**
