@@ -7,13 +7,17 @@ name = "MiastoX"
 version = "0.1.0"
 dependencies = [
  "built",
+ "go",
+ "gobuild",
  "link",
  "lune",
  "promise",
  "rojo",
  "rokit",
  "selene",
+ "serde",
  "stylua",
+ "tokio",
  "wally",
 ]
 
@@ -1796,6 +1800,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "go"
+version = "0.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4b35033c25c06927429d78be63f2a3cc8639674ed49760fa0429177a23d71619"
+
+[[package]]
 name = "goblin"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1804,6 +1814,15 @@ dependencies = [
  "log",
  "plain",
  "scroll",
+]
+
+[[package]]
+name = "gobuild"
+version = "0.1.0-alpha.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "71e156a4ddbf3deb5e8116946c111413bd9a5679bdc1536c78a60618a7a9ac9e"
+dependencies = [
+ "cc",
 ]
 
 [[package]]
