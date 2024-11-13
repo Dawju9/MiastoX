@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,16 +20,7 @@ jobs:
       uses: actions-rs/toolchain@v1
       with:
         profile: minimal
-        toolchain: stable # Specify a particular version if required
-
-    - name: Install Go
-      run: |
-        choco install golang
-
-    - name: Install Lune and Rojo
-      run: |
-        choco install lua
-        choco install rojo
+        toolchain: stable
 
     - name: Install dependencies
       run: |
@@ -42,7 +34,7 @@ jobs:
       run: |
         cargo build --release
 
-    - name: Build with gobuild (if needed)
+    - name: Build the MiastoX binary
       run: |
         cargo run --bin MiastoX
 
