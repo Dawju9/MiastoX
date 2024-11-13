@@ -20,14 +20,16 @@ env:
   CARGO_TERM_COLOR: always  # Ustawienie koloru dla terminala
 
 jobs:
-  build:
-    runs-on: windows-latest  # Wybór systemu operacyjnego
-
-    strategy:
-      matrix:
-        rust-version: [stable, 1.66.0]  # Testowanie na różnych wersjach Rust
-
-    steps:
+  build:  
+  - name: Set Rust flags for Windows build
+    run: |
+      echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
+      echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
+  runs-on: windows-latest  # Wybór systemu operacyjnego
+  strategy:
+        matrix:
+        rust-version: [stable, 1.66.0]  # Testowanie na różnych wersjach Rust 
+steps:
       - name: Checkout repository
         uses: actions/checkout@v3  # Pobranie repozytorium
 
