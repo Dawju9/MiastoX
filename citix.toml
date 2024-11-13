@@ -1,29 +1,47 @@
-[package]
+[project]
 name = "MiastoX"
+description = "Modularna gra oparta na frameworku Cityx, zawierająca procedury rozbudowy i testowania"
 version = "0.1.0"
-edition = "2021"
-description = "Projekt gry MiastoX oparty na frameworku Cityx i Rust, obsługujący integrację z .rbxl"
-authors = ["Whitekali"]
+author = "Whitekali"
 license = "MIT"
-repository = "https://github.com/Dawju9/MiastoX"
 
-[dependencies]
-link = "0.1.1" # Biblioteka do łączenia elementów/połączeń
-lune = "0.8.9" # Lune - minifikacja, zarządzanie Lua i Lua-Lune skryptami
-promise = "0.0.4" # Zarządzanie asynchronicznymi zadaniami
-rojo = "7.4.4" # Przekształcanie struktury i synchronizacja
-rokit = "0.2.5" # Narzędzia do budowania i pracy nad projektami Lua w Rust
-selene = "0.27.1" # Narzędzie do analizy kodu Lua
-stylua = "0.20.0" # Formatter Lua
-wally = "0.3.2" # Zarządzanie zależnościami w ekosystemie Roblox (produkcja)
+[settings]
+default_language = "Lua"
+base_directory = "src"
+entry_point = "main.lua"
+assets_directory = "assets"
+output_directory = "build"
+serialization_format = "rbxl"
 
-[dev-dependencies]
-wally = "0.3.2" # Wersja używana do testów i automatyzacji procesu
+[framework]
+engine = "Cityx"
+engine_version = "1.0.0"
+modules_path = "modules"
+dependencies_path = "dependencies"
+git_repo_url = "https://github.com/Dawju9/MiastoX"
+
+[serialization]
+format = "rbxl"
+decoded_directory = "decoded"
+encoded_directory = "encoded"
 
 [build]
-# Określ docelowe platformy (np. 64-bitowe oraz 32-bitowe na systemie Linux)
-target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
+optimization_level = "release"
+minify_lua = true
+include_assets = true
 
-[game]
-# Konfiguracja podstawowych danych gry
-citix_config_path = "citix.toml" # Ścieżka do pliku konfiguracyjnego gry
+[testing]
+enable_automated_tests = true
+test_framework = "Lune"
+test_directory = "tests"
+
+[dependencies]
+link = "0.1.1"
+lune = "0.8.9"
+rojo = "7.4.4"
+stylua = "0.20.0"
+promise = "0.0.4"
+
+[dev-dependencies]
+wally = "0.3.2"
+selene = "0.27.1"
