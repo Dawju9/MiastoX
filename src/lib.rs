@@ -1,3 +1,9 @@
+// src/lib.rs
+
+pub fn greet(name: &str) {
+    println!("Hello, {}! Welcome to MiastoX.", name);
+}
+pub class Game;
 /// A module for game-related utilities.
 pub mod game_utils {
     /// A struct for representing a game object.
