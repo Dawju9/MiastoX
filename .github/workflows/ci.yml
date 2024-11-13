@@ -73,3 +73,29 @@ jobs:
         run: |
           git tag -a v${{ github.run_number }} -m "Release version ${{ github.run_number }}"
           git push origin v${{ github.run_number }}  # Pushowanie tagu wersji do repozytorium
+
+  hugo-serve:
+    runs-on: ubuntu-latest  # Wybór systemu operacyjnego dla serwera Hugo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Pobranie repozytorium
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2  # Instalacja Hugo
+        with:
+          hugo-version: '0.115.0'  # Wersja Hugo
+
+      - name: Build Hugo site
+        run: hugo --minify  # Budowanie strony Hugo
+
+      - name: Serve Hugo site (for testing purposes)
+        run: |
+          nohup hugo server --bind 0.0.0.0 --port 1313 &  # Uruchomienie serwera Hugo
+          sleep 10  # Czekanie na uruchomienie serwera
+
+      - name: Deploy Hugo site (optional)
+        run: |
+          # Jeśli chcesz, możesz dodać kod do wdrożenia swojego repozytorium Hugo, np. za pomocą GitHub Pages
+          # Na przykład, możesz skopiować wygenerowane pliki do odpowiedniego katalogu
+          cp -r public/* /path/to/deployment/directory
