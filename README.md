@@ -6,7 +6,7 @@
 
 ---
 <div align="left">
-[Live status# 🏙️ **CityX](https://dawju9.github.io/MiastoX/)** 🖤🖥️</div>
+[Live status# 🏙️ CityX](https://dawju9.github.io/MiastoX/) 🖤🖥️</div>
 ---
 ```rs
 **🔍 Kluczowe Funkcje**
