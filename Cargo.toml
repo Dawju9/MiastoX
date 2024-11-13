@@ -6,6 +6,7 @@ description = "Projekt gry MiastoX oparty na frameworku Cityx i Rust, obsÅ‚ugujÄ
 authors = ["Whitekali"]
 license = "MIT"
 repository = "https://github.com/Dawju9/MiastoX"
+build = "build.rs"
 
 [dependencies]
 link = "0.1.1"
@@ -20,8 +21,8 @@ wally = "0.3.2"
 [dev-dependencies]
 wally = "0.3.2"
 
-[build]
-target = ["x86_64-unknown-linux-gnu"]
+[build-dependencies]
+built = "0.7"
 
 [game]
 citix_config_path = "citix.toml"
