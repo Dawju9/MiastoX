@@ -1,1 +1,0 @@
---# Główne ustawienia i konfiguracje dla gry Twitche Twitche.config.lua
