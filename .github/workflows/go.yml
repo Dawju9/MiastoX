@@ -1,1 +1,45 @@
+name: CI Workflow with Rebase and Rust Build
 
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Ensures full repository history for rebase
+
+    - name: Rebase branch on top of master
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git checkout master
+        git pull
+        git checkout -
+        git rebase master
+        git push --force-with-lease
+
+  rust-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+
+    - name: Set Rust flags for Windows build
+      run: |
+        echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
+        echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
+
+    - name: Build Rust project
+      run: cargo build --release
