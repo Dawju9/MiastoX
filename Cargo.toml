@@ -21,7 +21,7 @@ wally = "0.3.2"
 wally = "0.3.2"
 
 [build]
-target = ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
+target = ["x86_64-unknown-linux-gnu"]
 
 [game]
 citix_config_path = "citix.toml"
