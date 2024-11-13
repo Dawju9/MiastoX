@@ -12,8 +12,6 @@ dependencies = [
  "rojo",
  "rokit",
  "selene",
- "serde",
- "serde_json",
  "stylua",
  "wally",
 ]
