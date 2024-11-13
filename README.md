@@ -16,7 +16,6 @@
 # 🏙️ **CityX Framework** 🖤🖥️
 
 
-<div align="left">
 
 [Live status](https://dawju9.github.io/MiastoX/)
 🔍 Kluczowe Funkcje
@@ -47,8 +46,6 @@ Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
 🎮 Rozpoczęcie Przygody w CityX
 🌌 Zanurz się w cybernetycznym świecie pełnym tajemnic!
 
-
-</div>
 
 ---
 
