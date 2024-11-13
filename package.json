@@ -1,23 +1,37 @@
 {
-    "name": "cityx",
-    "version": "1.0.0",
-    "description": "CityX is a game framework combining Rust and Lua technologies in a Roblox environment.",
-    "main": "cityx-backend/src/main.rs",
-    "scripts": {
-      "start:backend": "cargo run --manifest-path=cityx-backend/Cargo.toml",
-      "build:renderer": "cargo build --manifest-path=cityx-renderer/Cargo.toml",
-      "lint:lua": "selene cityx-client cityx-core cityx-server",
-      "test:backend": "cargo test --manifest-path=cityx-backend/Cargo.toml",
-      "build:roblox": "rojo build game.project.json --output game.rbxlx"
-    },
-    "keywords": ["roblox", "rust", "lua", "game", "framework"],
-    "author": "CityX Development Team",
-    "license": "MIT",
-    "dependencies": {
-      "rojo-rbx": "^6.2.0"
-    },
-    "devDependencies": {
-      "selene": "^0.17.0"
-    }
+  "name": "MiastoX",
+  "version": "0.1.0",
+  "edition": "2021",
+  "description": "Projekt gry MiastoX oparty na frameworku Cityx i Rust, obsługujący integrację z .rbxl",
+  "authors": ["Whitekali"],
+  "license": "MIT",
+  "repository": "https://github.com/Dawju9/MiastoX",
+  "dependencies": {
+    "link": "0.1.1",
+    "lune": "0.8.9",
+    "promise": "0.0.4",
+    "rojo": "7.4.4",
+    "rokit": "0.2.5",
+    "selene": "0.27.1",
+    "stylua": "0.20.0",
+    "wally": "0.3.2"
+  },
+  "dev-dependencies": {
+    "wally": "0.3.2"
+  },
+  "build": {
+    "target": ["x86_64-unknown-linux-gnu", "i686-unknown-linux-gnu"]
+  },
+  "game": {
+    "citix_config_path": "citix.toml"
+  },
+  "lib": {
+    "name": "MiastoX",
+    "path": "src/lib.rs",
+    "test": true
+  },
+  "bin": {
+    "name": "MiastoX",
+    "path": "src/main.rs"
   }
-  
+}
