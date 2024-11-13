@@ -20,22 +20,30 @@
 
 [Live status](https://dawju9.github.io/MiastoX/)
 🔍 Kluczowe Funkcje
+---
 Modularność i Skalowalność: Framework umożliwia łatwe rozwijanie oraz integrację nowych modułów.
 Integracja Rust & Roblox Lua: Wydajna komunikacja między backendem a frontendem.
 Zaawansowana Logika Gry: Wykorzystanie wzorca ECS (Entity-Component-System).
 Efektywne Zarządzanie Danymi: Nowoczesna architektura zapewnia wydajność.
+---
 💡 Wpływ na Informatyzację
+---
 Efektywność: Nowoczesne podejście do tworzenia gier multiplayer.
 Innowacja: Połączenie różnych technologii w jednym projekcie.
 Skalowalność: Prosta rozbudowa o nowe funkcje i elementy.
+---
 🌐 Potencjalne Zastosowania
+---
 Gry Multiplayer: Tworzenie złożonych i rozbudowanych światów.
 Aplikacje Webowe: Integracja zaawansowanej logiki serwerowej.
 Narzędzia Edukacyjne: Symulacje i aplikacje edukacyjne.
+---
 📝 Uwagi
+---
 Projekt wymaga doświadczenia w środowisku Roblox i Rust.
 Dokumentacja obejmuje kluczowe aspekty, ale nie zawiera instrukcji tworzenia pełnych gier.
 Kluczowe algorytmy oraz struktury są chronione przed wyciekiem.
+---
 🎮 Rozpoczęcie Przygody w CityX
 🌌 Zanurz się w cybernetycznym świecie pełnym tajemnic!
 
