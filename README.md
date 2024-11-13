@@ -68,7 +68,7 @@ Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
 /cityx-renderer: Rust
 /game: Zasoby gry
 
-</div> 
+</div> https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650
 
 🛠️ Instalacja i Konfiguracja
 Zainstaluj Roblox Studio
