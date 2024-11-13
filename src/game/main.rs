@@ -1,4 +1,3 @@
-```rust
 // City Game Site Mechanics and Logic To-Do List
 
 // 1. City Generation
@@ -41,4 +40,3 @@
 // 10. Testing and Debugging
 // - Implement testing and debugging tools for city game
 // - Test and debug city game mechanics and logic
-```
