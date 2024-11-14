@@ -6,7 +6,7 @@ use decode::decoded::{deserialize_rbxl_to_model, serialize_model_to_rbxl};
 mod citix;
 mod game;
 mod lib;
-mod bin;
+mod bin; // try my binary
 fn main() {
     let args: Vec<String> = env::args().collect();
     let model = deserialize_rbxl_to_model("AyaChapter.rbxl").unwrap();
