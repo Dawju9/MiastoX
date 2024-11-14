@@ -37,11 +37,11 @@ jobs:
         toolchain: stable
 
     - name: Add target for build 
-      run: rustup target add x86_64-pc-windows-gnu
+      run: rustup target add wasm32-unknown-unknown
       
     - name: Set Rust flags for Windows build
       run: |
-        echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
+        echo "CARGO_BUILD_TARGET=wasm32-unknown-unknown" >> $GITHUB_ENV
         echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
 
     - name: Build Rust project
