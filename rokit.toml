@@ -5,3 +5,4 @@
 
 [tools]
 lune = "lune-org/lune@0.8.9"
+selene = "0.27.1"
