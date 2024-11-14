@@ -1,0 +1,29 @@
+name: Publish Game to Roblox
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  publish:
+    runs-on: windows-latest  # Use a Windows environment, as Roblox Studio works on Windows
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby (for rbxcloud CLI)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7  # Ensure the correct Ruby version for rbxcloud
+
+      - name: Install rbxcloud CLI
+        run: |
+          gem install rbxcloud  # Install rbxcloud CLI tool
+
+      - name: Publish Game to Roblox
+        run: |
+          rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ***
+        env:
+          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # If you are using an API key for authentication
