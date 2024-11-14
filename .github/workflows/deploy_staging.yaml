@@ -14,8 +14,64 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: List files in the repository
+      run: |
+          echo "Listing files to confirm game.rbxl exists:"
+          dir F:\EndGames\MiastoX\assets  # Adjust this if necessary to match the workflow's working directory
+    - name: Check if game.rbxl exists
+      run: |
+            echo "Current directory: $(pwd)"
+            echo "Listing all files in the assets directory:"
+            dir F:\EndGames\MiastoX\assets  # Adjust this if the location is different
     - uses: ok-nick/setup-aftman@v0.3.0
       name: Install aftman
       with:
           token: ${{ SECRETS.GITHUB_TOKEN }}
     - run: rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
+
+
+
+
+
+
+
+
+
+
+
+name: Publish Game to Roblox
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  publish:
+    runs-on: windows-latest  # Use a Windows environment, as Roblox Studio works on Windows
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby (for rbxcloud CLI)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7  # Ensure the correct Ruby version for rbxcloud
+
+      - name: Install rbxcloud CLI
+        run: |
+          gem install rbxcloud  # Install rbxcloud CLI tool
+
+      - name: List files in the repository
+        run: |
+          echo "Listing files to confirm game.rbxl exists:"
+          dir F:\EndGames\MiastoX\assets  # Adjust this if necessary to match the workflow's working directory
+
+      - name: Publish Game to Roblox
+        run: |
+          echo "Attempting to publish the game file..."
+          rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ***
+        env:
+          ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}  # If you are using an API key for authentication
+
