@@ -11,11 +11,15 @@ dependencies = [
  "link",
  "lune",
  "promise",
+ "reqwest 0.11.27",
+ "reqwest-middleware 0.3.3",
  "rojo",
  "rokit",
  "serde",
  "stylua",
  "tokio",
+ "tracing",
+ "tracing-subscriber",
  "wally",
 ]
 

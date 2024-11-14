@@ -20,6 +20,10 @@ stylua = "0.20.0"
 wally = "0.3.2"
 tokio = "1"
 built = "0.7"
+reqwest = "0.11"  # lub najnowsza stabilna wersja
+reqwest-middleware = "0.3"  # lub najnowsza wersja
+tracing = "0.1"  # lub najnowsza wersja
+tracing-subscriber = "0.3"  # lub najnowsza wersja
 
 [dev-dependencies]
 # Zależności tylko dla testów i automatyzacji
