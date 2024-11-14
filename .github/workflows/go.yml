@@ -23,7 +23,8 @@ jobs:
         git pull
         git checkout -
         git rebase master
-        git push --force-with-lease
+        # Zaktualizowany `git push` z użyciem PAT_TOKEN
+        git push --force-with-lease https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/Dawju9/MiastoX.git HEAD:master
 
   rust-build:
     runs-on: ubuntu-latest
@@ -36,8 +37,8 @@ jobs:
       with:
         toolchain: stable
 
-    - name: add target Build 
-      run:  rustup target add x86_64-pc-windows-gnu
+    - name: Add target for build 
+      run: rustup target add x86_64-pc-windows-gnu
       
     - name: Set Rust flags for Windows build
       run: |
