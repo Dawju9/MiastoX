@@ -11,6 +11,7 @@
 ```rs
 **🔍 Kluczowe Funkcje**
 <div align="left">
+  Bycie dobrym
 Modularność i Skalowalność
 Integracja Rust & Roblox Lua
 Zaawansowana Logika Gry
