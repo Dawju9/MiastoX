@@ -14,7 +14,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Ensures full repository history for rebase
-
     - name: Rebase branch on top of master
       run: |
         git config user.name "GitHub Actions"
@@ -23,7 +22,7 @@ jobs:
         git pull
         git checkout -
         git rebase master
-        # Zaktualizowany `git push` z użyciem PAT_TOKEN
+        # Użycie PAT_TOKEN do push
         git push --force-with-lease https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/Dawju9/MiastoX.git HEAD:master
 
   rust-build:
