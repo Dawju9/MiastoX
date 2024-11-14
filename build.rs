@@ -2,17 +2,6 @@ use std::env;
 use std::process::Command;
 
 fn main() {
-    // Automatyczne wykonanie polecenia "go build" za pomocą `gobuild`
-    if let Err(e) = gobuild::Build::new().run() {
-        eprintln!("Failed to run gobuild: {}", e);
-        std::process::exit(1);
-    }
-    
-    // Kompilacja pliku Go (jeśli jest)
-    gobuild::Build::new()
-        .file("hello.go")
-        .compile("hello");
-
     // Zapisz informacje o czasie kompilacji
     if let Err(e) = built::write_built_file() {
         eprintln!("Failed to acquire build-time information: {}", e);
