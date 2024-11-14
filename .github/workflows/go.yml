@@ -31,6 +31,8 @@ jobs:
 
     - name: Add Windows target for Rust
       run: rustup target add x86_64-pc-windows-gnu
-
-    - name: Build MiastoX for Windows target
-      run: cargo build --release"
+    - name: Build MiastoX
+      run: cargo build
+  
+  #    - name: Build MiastoX for Windows target
+      #run: cargo build --release"
