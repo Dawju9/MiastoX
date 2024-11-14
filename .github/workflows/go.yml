@@ -1,4 +1,4 @@
-name: CI Workflow with Rebase and Rust Build
+name: Completed Automatic Workflow for MiastoX Rebase and Rust project Windows Build for development
 
 on:
   push:
@@ -8,9 +8,10 @@ on:
 
 jobs:
   rebase:
+    # Rename: start -> rebase checkout request
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
+    - name: Automatic Rebase Checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Ensures full repository history for rebase
@@ -22,19 +23,23 @@ jobs:
         git pull
         git checkout -
         git rebase master
-        # Użycie PAT_TOKEN do push
         git push --force-with-lease https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/Dawju9/MiastoX.git HEAD:master
 
   rust-build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
+    - name: Automatic rust build Checkout
       uses: actions/checkout@v4
 
-    - name: Set up Rust
+    - name: Miastox dependencies install and build
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-
-    - name: Build Rust project
-      run: cargo build --release
+    - name: Miastox environment setup variables
+      run: |
+        echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
+        echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
+    - name: Miastox added to build on windows target
+      run: rustup target add stable-x86_64-pc-windows-msvc    
+    - name: Build Rust project of Miastox city
+      run: cargo build --release --target ${{ env.CARGO_BUILD_TARGET }} --features="cityx-core,cityx-backend"
