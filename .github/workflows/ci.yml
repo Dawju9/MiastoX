@@ -3,42 +3,34 @@ name: CI
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    - master
 
 jobs:
-  build:
+
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
+    - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Set up Rust
-      uses: actions-rs/toolchain@v1
+    - uses: ok-nick/setup-aftman@v0.3.0
+      name: Install aftman
       with:
-        profile: minimal
-        toolchain: stable
+          token: ${{ SECRETS.GITHUB_TOKEN }}
 
-    - name: Install dependencies
+    - name: Lint
       run: |
-        cargo install --path .
+        selene ./src
 
-    - name: Run tests
-      run: |
-        cargo test
-
-    - name: Build the project
-      run: |
-        cargo build --release
-
-    - name: Build the MiastoX binary
-      run: |
-        cargo run --bin MiastoX
-
-    - name: Upload build artifacts (optional)
-      uses: actions/upload-artifact@v3
+  style:
+    name: Styling
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: StyLua
+      uses: JohnnyMorganz/stylua-action@v3
       with:
-        name: build
-        path: target/release/*
+        token: ${{ secrets.GITHUB_TOKEN }}
+        version: latest
+        args: --check ./src
