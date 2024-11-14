@@ -1,47 +1,36 @@
-name: Completed Automatic Workflow for MiastoX Rebase and Rust project Windows Build for development
+name: CI Workflow for MiastoX
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
-  rebase:
-    # Rename: start -> rebase checkout request
-    runs-on: ubuntu-latest
-    steps:
-    - name: Automatic Rebase Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Ensures full repository history for rebase
-    - name: Rebase branch on top of master
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git checkout master
-        git pull
-        git checkout -
-        git rebase master
-        git push --force-with-lease https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/Dawju9/MiastoX.git HEAD:master
-
   rust-build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Install mingw (cross-compiling for Windows)
-      run: sudo apt-get install mingw-w64
-    - name: Automatic rust build Checkout
+      run: sudo apt-get install -y mingw-w64
+
+    - name: Checkout MiastoX repository
       uses: actions/checkout@v4
 
-    - name: Miastox dependencies install and build
+    - name: Set up Rust toolchain
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-    - name: Miastox environment setup variables
+
+    - name: Set MiastoX environment variables
       run: |
         echo "CARGO_BUILD_TARGET=x86_64-pc-windows-gnu" >> $GITHUB_ENV
         echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
-    - name: Miastox added to build on windows target
-      run: rustup target add x86_64-pc-windows-gnu    
-    - name: Build Rust project of Miastox city
+
+    - name: Add Windows target for Rust
+      run: rustup target add x86_64-pc-windows-gnu
+
+    - name: Build MiastoX for Windows target
       run: cargo build --release --target=x86_64-pc-windows-gnu --features="cityx-core,cityx-backend"
