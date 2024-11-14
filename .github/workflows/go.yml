@@ -36,13 +36,5 @@ jobs:
       with:
         toolchain: stable
 
-    - name: Add target for build 
-      run: rustup target add stable-x86_64-pc-windows-msvc
-      
-    - name: Set Rust flags for Windows build
-      run: |
-        echo "CARGO_BUILD_TARGET=stable-x86_64-pc-windows-msvc" >> $GITHUB_ENV
-        echo "RUSTFLAGS=-C link-arg=-lstdc++ -C link-arg=-lgcc" >> $GITHUB_ENV
-
     - name: Build Rust project
       run: cargo build --release
