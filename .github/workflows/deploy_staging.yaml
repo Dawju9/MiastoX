@@ -13,7 +13,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+    - name: Check file permissions
+      run: |
+        ls -l ./assets/game.rbxl
     - name: List files in the repository
       run: |
           echo "Listing files to confirm game.rbxl exists:"
@@ -27,7 +29,7 @@ jobs:
       name: Install aftman
       with:
           token: ${{ SECRETS.GITHUB_TOKEN }}
-    - run: rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
+    - run: rbxcloud experience publish -f ./assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
 
 
 
