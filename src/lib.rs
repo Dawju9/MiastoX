@@ -1,37 +1,75 @@
-// src/lib.rs
 
-pub fn greet(name: &str) {
-    println!("Hello, {}! Welcome to MiastoX.", name);
+pub  fn add(left: usize, right: usize) -> usize {
+    left + right
 }
-pub class Game;
-/// A module for game-related utilities.
-pub mod game_utils {
-    /// A struct for representing a game object.
-    pub struct GameObject {
-        /// A unique identifier for the game object.
-        pub id: u32,
-        /// The name of the game object.
-        pub name: String,
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_game_object() {
+        let game_object = game_utils::GameObject::new(1, "Test Object".to_string());
+        assert_eq!(game_object.get_id(), 1);
+        assert_eq!(game_object.get_name(), "Test Object");
     }
 
-    impl GameObject {
-        /// Creates a new instance of `GameObject`.
-        pub fn new(id: u32, name: String) -> Self {
-            GameObject { id, name }
-        }
+    #[test]
+    fn test_game_level() {
+        let mut game_level = game_data::GameLevel::new(1, "Test Level".to_string());
+        let game_object = game_utils::GameObject::new(1, "Test Object".to_string());
+        game_level.add_object(game_object);
+        assert_eq!(game_level.get_id(), 1);
+        assert_eq!(game_level.get_name(), "Test Level");
+        assert_eq!(game_level.get_objects().len(), 1);
+    }
 
-        /// Returns the ID of the game object.
-        pub fn get_id(&self) -> u32 {
-            self.id
-        }
+    #[test]
+    fn test_game_event() {
+        let game_object = game_utils::GameObject::new(1, "Test Object".to_string());
+        let game_event = game_events::GameEvent::new("Test Event".to_string(), game_object);
+        assert_eq!(game_event.get_event_type(), "Test Event");
+        assert_eq!(game_event.get_object().get_id(), 1);
+    }
 
-        /// Returns the name of the game object.
-        pub fn get_name(&self) -> &str {
-            &self.name
-        }
+    #[test]
+    fn test_game_logic() {
+        let mut game_level = game_data::GameLevel::new(1, "Test Level".to_string());
+        let game_object = game_utils::GameObject::new(1, "Test Object".to_string());
+        game_level.add_object(game_object);
+        let mut game_logic = game_logic::GameLogic::new(game_level);
+        let game_event = game_events::GameEvent::new("Test Event".to_string(), game_object);
+        game_logic.add_event(game_event);
+        assert_eq!(game_logic.get_level().get_id(), 1);
+        assert_eq!(game_logic.get_events().len(), 1);
+    }
+
+    #[test]
+    fn test_game_events() {
+        let game_object = game_utils::GameObject::new(1, "Test Object".to_string());
+        let game_event = game_events::GameEvent::new("Test Event".to_string(), game_object);
+        assert_eq!(game_event.get_event_type(), "Test Event");
+        assert_eq!(game_event.get_object().get_id(), 1);
+        assert_eq!(game_event.get_object().get_name(), "Test Object");
     }
 }
 
+/// A class for representing a game.
+pub struct Game {
+    /// The game logic associated with the game.
+    pub logic: game_logic::GameLogic,
+}
+
+impl Game {
+    /// Creates a new instance of `Game`.
+    pub fn new(logic: game_logic::GameLogic) -> Self {
+        Game { logic }
+    }
+
+    /// Returns the game logic associated with the game.
+    pub fn get_logic(&self) -> &game_logic::GameLogic {
+        &self.logic
+    }
+}
 /// A module for game-related data structures.
 pub mod game_data {
     use super::game_utils;

@@ -10,8 +10,7 @@ build = "build.rs"
 
 [dependencies]
 go = "0.0.1"
-link = "0.1.1"
-lune = "0.8.9"
+link = "^0.1"
 promise = "0.0.4"
 rojo = "7.4.4"
 rokit = "0.2.5" 
@@ -20,18 +19,18 @@ stylua = "0.20.0"
 wally = "0.3.2"
 tokio = "1"
 built = "0.7"
-reqwest = "0.11"  # lub najnowsza stabilna wersja
+reqwest = "0.11" 
 reqwest-middleware = "0.3" 
-tracing = "0.1"  # lub najnowsza wersja
+tracing = "0.1"  
 tracing-subscriber = "0.3"
-
 [dev-dependencies]
-# Zależności tylko dla testów i automatyzacji
 mio = "0.8.11" 
 git2 = "0.16.1"
 time = "0.2.23"
 wally = "0.3.2"
 tokio = { version = "1", features = ["full"] }
+
+lune = "^0.8.9"
 [build-dependencies]
 built = "0.7"
 
