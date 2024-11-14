@@ -1,6 +1,5 @@
 use std::env;
 use std::process::Command;
-
 /// Kompiluje plik .rbxl za pomoc  Lune i
 /// przetwarza zasoby Roblox za pomoc  Rojo.
 /// Jeżli kompilacja sie nie upowiedzie,
