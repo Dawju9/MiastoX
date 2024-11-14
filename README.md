@@ -5,16 +5,14 @@
 <br>
 
 ---
-<div align="left">
+<div align="left"> 
 [Live status# 🏙️ CityX](https://dawju9.github.io/MiastoX/) 🖤🖥️</div>
 ---
 ```rs
 **🔍 Kluczowe Funkcje**
 <div align="left">
-Modularność i Skalowalność
-Integracja Rust & Roblox Lua
-Zaawansowana Logika Gry
-Efektywne Zarządzanie Danymi
+Modularność i dostępność do ustawień całości gry jak i miasta
+Efektywne Zarządzanie Danymi modelami wielkościami a nawet i logiką samej fizyki
 </div>
 ```
 ---
