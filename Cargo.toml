@@ -10,7 +10,6 @@ build = "build.rs"
 
 [dependencies]
 go = "0.0.1"
-gobuild = "0.1.0-alpha.2"
 link = "0.1.1"
 lune = "0.8.9"
 promise = "0.0.4"
