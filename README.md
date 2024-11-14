@@ -1,6 +1,6 @@
 <div align="center">
 ---
-<div align="center"># 🏙️ **CityX Framework** 🖤🖥️</div>
+<div align="center"># 🏙️ **CityX Framework by Whitekali** 🖤🖥️</div>
 ---
 <br>
 
