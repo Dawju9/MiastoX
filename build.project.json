@@ -1,52 +1,109 @@
-{
-    "name": "MiastoX",
-    "className": "DataModel",
-    "filePaths": ["default.project.json"],
-    "children": [
-        {
-            "name": "ServerScriptService",
-            "className": "ServerScriptService",
-            "children": [
-                {
-                    "name": "Server",
-                    "className": "Folder",
-                    "children": [
-                        {
-                            "name": "module",
-                            "className": "Folder",
-                            "children": [
-                                {
-                                    "name": "serverModule",
-                                    "className": "ModuleScript",
-                                    "filePaths": ["src/server/module/serverModule.lua"]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "build": {
-        "output": "dist",
-        "tree": {
-            "$className": "DataModel",
-            "ReplicatedStorage": {
-                "Packages": {
-                    "$path": "Packages"
-                },
-                "Client": {
-                    "$path": "dist/Client"
-                },
-                "Common": {
-                    "$path": "dist/Common"
-                }
+
+    {
+        "name": "MiastoX",
+        "className": "DataModel",
+        "filePaths": ["default.project.json"],
+        "children": [
+            {
+                "name": "ServerScriptService",
+                "className": "ServerScriptService",
+                "children": [
+                    {
+                        "name": "Server",
+                        "className": "Folder",
+                        "children": [
+                            {
+                                "name": "module",
+                                "className": "Folder",
+                                "children": [
+                                    {
+                                        "name": "serverModule",
+                                        "className": "ModuleScript",
+                                        "filePaths": ["src/server/module/serverModule.lua"]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "citix-server",
+                                "className": "Folder",
+                                "children": [
+                                    {
+                                        "name": "main",
+                                        "className": "Script",
+                                        "filePaths": ["src/cityx-server/main.rs"]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
-            "ServerScriptService": {
-                "Server": {
-                    "$path": "dist/Server"
+            {
+                "name": "ReplicatedStorage",
+                "className": "ReplicatedStorage",
+                "children": [
+                    {
+                        "name": "Packages",
+                        "className": "Folder",
+                        "filePaths": ["src/ReplicatedStorage/Packages"]
+                    },
+                    {
+                        "name": "Client",
+                        "className": "Folder",
+                        "filePaths": ["dist/Client"]
+                    },
+                    {
+                        "name": "Common",
+                        "className": "Folder",
+                        "filePaths": ["dist/Common"]
+                    }
+                ]
+            },
+            {
+                "name": "game",
+                "className": "DataModel",
+                "children": [
+                    {
+                        "name": "ReplicatedFirst",
+                        "className": "Folder",
+                        "filePaths": ["src/game/ReplicatedFirst"]
+                    },
+                    {
+                        "name": "ReplicatedStorage",
+                        "className": "Folder",
+                        "filePaths": ["src/game/ReplicatedStorage"]
+                    }
+                ]
+            },
+            {
+                "name": "shared",
+                "className": "Folder",
+                "filePaths": ["src/shared"]
+            }
+        ],
+        "build": {
+            "output": "dist",
+            "tree": {
+                "$className": "DataModel",
+                "ReplicatedStorage": {
+                    "Packages": {
+                        "$path": "Packages"
+                    },
+                    "Client": {
+                        "$path": "dist/Client"
+                    },
+                    "Common": {
+                        "$path": "dist/Common"
+                    }
+                },
+                "ServerScriptService": {
+                    "Server": {
+                        "$path": "dist/Server"
+                    }
+                },
+                "shared": {
+                    "$path": "dist/Shared"
                 }
             }
         }
     }
-}
