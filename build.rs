@@ -13,9 +13,7 @@ fn main() {
     }
 
     // Uruchomienie Lune do kompilacji pliku .rbxl
-    let lune_status = Command::new("lune")
-        .arg("ayachapter.rbxl")
-        .status();
+    let lune_status = Command::new("lune").arg("ayachapter.rbxl").status();
 
     if let Err(e) = lune_status {
         eprintln!("Failed to run lune: {}", e);
@@ -35,7 +33,7 @@ fn main() {
 
     // Opcjonalnie, można uruchomić inne narzędzia jak stylua
     // Command::new("stylua").arg("src/**/*.lua").status();
-    
+
     // Informacje dla kompilatora o ścieżkach do plików
     println!("cargo:rerun-if-changed=src/lib.rs");
     println!("cargo:rerun-if-changed=src/main.rs");
