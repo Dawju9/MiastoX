@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "Deploying build to Roblox..."
           curl --verbose --location --request POST \
-          'https://apis.roblox.com/universes/v1/${{ secrets.PROD_UNIVERSE_ID }}/places/${{ secrets.PROD_PLACE_ID }}/versions?versionType=Published' \
-          --header "x-api-key:${{ secrets.PROD_API_KEY }}" \
+          'https://apis.roblox.com/universes/v1/${{ secrets.TEST_UNIVERSE_ID }}/places/${{ secrets.TEST_PLACE_ID }}/versions?versionType=Published' \
+          --header "x-api-key:${{ secrets.API_KEY }}" \
           --header "Content-Type: application/octet-stream" \
           --data-binary @Temp/CurrentBuild.rbxl
