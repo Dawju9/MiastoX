@@ -6,19 +6,27 @@ jobs:
   game-deploy:
     name: Deploy game to proper environment
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@2
+        uses: actions/checkout@v2
 
       - name: Create temp directory
         run: mkdir Temp
 
+      - name: Debug variables
+        run: |
+          echo "Ref Name: ${{ github.ref_name }}"
+          echo "Owner: ${{ github.repository_owner }}"
+          echo "Repo: ${{ github.event.repository.name }}"
+
       - name: Download game build
+        uses: i3h/download-release-asset@v1
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           tag: ${{ github.ref_name }}
-          file: /Build_*.*.*.rbxl/
+          file: Build_*.*.*.rbxl
           path: Temp/
           token: ${{ secrets.GITHUB_TOKEN }}
 
