@@ -27,6 +27,6 @@ jobs:
 
     - name: Upload .rbxl file
       run: |
-          python manage_rbxl.py --api_key "${{ env.ROBLOX_API_KEY }}" \
+          python manage_rbxl.py --api_key "${{ env.API_KEY }}" \
                                 --universe_id "${{ env.ROBLOX_UNIVERSE_ID }}" \
                                 --file_path "./game.rbxl"
