@@ -31,14 +31,19 @@ jobs:
         run: |
           foreman install
 
-      # Step 4: Build the game into .rbxl using Rojo
+      # Step 4: Verify Rojo installation
+      - name: Verify Rojo Installation
+        run: |
+          rojo --version
+
+      # Step 5: Build the game into .rbxl using Rojo
       - name: Build the game
         run: |
           mkdir -p Temp
           echo "Building ${GITHUB_REF}..."
           rojo build default.project.json --output Temp/CurrentBuild.rbxl
 
-      # Step 5: Create a release on GitHub and upload the build (optional backup)
+      # Step 6: Create a release on GitHub and upload the build (optional backup)
       - name: Create release and upload build
         uses: actions/create-release@v1
         with:
@@ -55,7 +60,7 @@ jobs:
           asset_name: Build_${{ github.ref }}.rbxl
           asset_content_type: application/octet-stream
 
-      # Step 6: Deploy to Roblox
+      # Step 7: Deploy to Roblox
       - name: Deploy to Roblox (Production)
         run: |
           echo "Deploying build to Roblox..."
