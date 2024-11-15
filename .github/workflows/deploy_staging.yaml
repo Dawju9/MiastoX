@@ -17,25 +17,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Install Node.js and npm
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Specify Node.js version
-
-      # Step 3: Install Rojo CLI via npm
-      - name: Install Rojo CLI via npm
+      # Step 2: Install Foreman and Rojo using Foreman
+      - name: Install Foreman
         run: |
-          npm install -g rojo
+          curl -sSL https://github.com/roblox/foreman/releases/download/v0.6.0/foreman-linux-x64.tar.gz | tar xz
+          sudo mv foreman /usr/local/bin/foreman
 
-      # Step 4: Build the game into .rbxl using Rojo
+      - name: Setup Foreman (Rojo)
+        run: |
+          foreman install
+
+      # Step 3: Build the game into .rbxl using Rojo (installed via Foreman)
       - name: Build the game
         run: |
           mkdir -p Temp
           echo "Building ${GITHUB_REF}..."
           rojo build default.project.json --output Temp/CurrentBuild.rbxl
 
-      # Step 5: Upload the build to a draft release on GitHub (optional, for backup)
+      # Step 4: Upload the build to a draft release on GitHub (optional, for backup)
       - name: Create release and upload build
         uses: actions/create-release@v1
         with:
@@ -52,7 +51,7 @@ jobs:
           asset_name: Build_${{ github.ref }}.rbxl
           asset_content_type: application/octet-stream
 
-      # Step 6: Deploy to Roblox (using API)
+      # Step 5: Deploy to Roblox (using API)
       - name: Deploy to Roblox (Production)
         run: |
           echo "Deploying build to Roblox..."
