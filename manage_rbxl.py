@@ -1,6 +1,7 @@
 # manage_rbxl.py
 import argparse
 import os
+import rblx_open_cloud
 from rblx_open_cloud import RobloxOpenCloud
 
 def upload_rbxl(api_key, universe_id, file_path):
