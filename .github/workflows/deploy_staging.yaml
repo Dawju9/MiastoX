@@ -1,37 +1,43 @@
-name: Serialize and Process .rbxl Files
-
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
-  serialize:
+  game-deploy:
+    name: Deploy game to proper environment
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js (for Lune)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+      - name: Create temp directory
+        run: mkdir Temp
 
-      - name: Install Lune
-        run: cargo install lune --locked
-
-      - name: Run serialization
-        run: lune run serialize.lua
-
-      - name: Commit serialized .rbxl files
+      - name: Debug variables
         run: |
-          git config --global user.name 'CI Bot'
-          git config --global user.email 'ci-bot@example.com'
-          git add game.rbxl
-          git commit -m 'Automated serialization of .rbxl files'
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "Ref Name: ${{ github.ref_name }}"
+          echo "Owner: ${{ github.repository_owner }}"
+          echo "Repo: ${{ github.event.repository.name }}"
+
+      - name: Download game build
+        uses: i3h/download-release-asset@v1
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          tag: ${{ github.ref_name }}
+          file: Build_*.*.*.rbxl
+          path: Temp/
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rename game build to known name
+        run: mv Temp/Build_v*.*.*.rbxl Temp/GameBuild.rbxl
+
+      - name: Deploy game to test environment
+        if: contains(github.ref_name,'-qa.')
+        run: | 
+          curl --verbose --location --request \
+          POST 'https://apis.roblox.com/universes/v1/${{ secrets.TEST_UNIVERSE_ID }}/places/${{ secrets.TEST_PLACE_ID }}/versions?versionType=Published' \
+          --header "x-api-key:${{ secrets.API_KEY }}" \
+          --header "Content-Type: application/octet-stream" \
+          --data-binary @Temp/GameBuild.rbxl
