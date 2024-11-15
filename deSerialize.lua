@@ -1,9 +1,9 @@
-local fs = ('@lune/fs')
-local roblox = ('@lune/roblox')
-
--- Reading a place file
+local fs = require("@lune/fs")
+local roblox = require("@lune/roblox")
+ 
 local placeFile = fs.readFile("ayachapter.rbxl")
 local game = roblox.deserializePlace(placeFile)
+-- Reading a place file
 
 -- Manipulating and reading instances - just like in Roblox!
 local workspace = game:GetService("Workspace")
@@ -14,3 +14,4 @@ end
 -- Writing a place filerokit add lune
 local newPlaceFile = roblox.serializePlace(game)
 fs.writeFile("ayachapter.rbxl", newPlaceFile)
+print("builded child ")
