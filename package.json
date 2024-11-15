@@ -2,23 +2,19 @@
   "name": "miastox",
   "version": "0.1.0",
   "description": "Projekt gry MiastoX oparty na frameworku Cityx i Rust, obsługujący integrację z .rbxl",
-  "main": "index.js",
+  "main": "build.rs",
   "scripts": {
     "build": "cargo build && lune ayachapter.rbxl && rojo --output=build/rojo_output",
-    "start": "node index.js"
+    "deploy": "rojo lune build --output ayachapter.rbxl"
   },
   "dependencies": {
-    "rojo": "^7.4.4",
-    "stylua": "^0.20.0",
-    "wally": "^0.3.2"
   },
   "devDependencies": {
-    "rokit": "^0.2.5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Dawju9/MiastoX"
   },
   "author": "Whitekali",
-  "license": "MIT"
+  "license": "ISC"
 }
