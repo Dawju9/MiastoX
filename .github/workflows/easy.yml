@@ -1,0 +1,44 @@
+name: Build and Publish Game
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to publish (Testing or Production)'
+        required: true
+        default: 'Testing'
+        type: choice
+        options:
+          - Testing
+          - Production
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    env:
+      TESTING_UNIVERSE: '4125094708'
+      TESTING_PLACE: '11633610328'
+      FILE_PATH: './build/rojo_output/game.rbxl'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build project
+        run: rojo build default.project.json -o ${{ env.FILE_PATH }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: GameBuild
+          path: ${{ env.FILE_PATH }}
+
+      - name: Publish to Roblox
+        run: |
+          universeId=$TESTING_UNIVERSE
+          placeId=$TESTING_PLACE
+          echo "Publishing to universeId: $universeId, placeId: $placeId"
+          curl --verbose --fail-with-body --location --request POST "https://apis.roblox.com/universes/v1/$universeId/places/$placeId/versions?versionType=Published" \
+          --header "x-api-key: ${{ secrets.API_KEY }}" \
+          --header 'Content-Type: application/octet-stream' \
+          --data-binary @${{ env.FILE_PATH }}
