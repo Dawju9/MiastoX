@@ -1,14 +1,36 @@
 # manage_rbxl.py
 import argparse
 import os
-import rblx_open_cloud
-from rblx_open_cloud import RobloxOpenCloud
 
+from rblx_open_cloud as RobloxOpenCloud
 def upload_rbxl(api_key, universe_id, file_path):
+    """
+    Uploads a .rbxl file to Roblox using the Roblox Open Cloud API.
+
+    Args: 
+    game id = 4125094708
+data-place-id="11633610328"
+  data-universe-id  4125094708
+        api_key (str): Your Roblox Open Cloud API Key
+        universe_id (str): The Universe ID to upload the .rbxl file to
+        file_path (str): Path to the .rbxl file
+
+    Returns:
+        None
+    """
+    if api_key is None:
+        raise ValueError("api_key cannot be None")
+    if universe_id is None:
+        raise ValueError("universe_id cannot be None")
+    if file_path is None:
+        raise ValueError("file_path cannot be None")
+
     client = RobloxOpenCloud(api_key=api_key)
     try:
         print(f"Uploading {file_path} to Universe {universe_id}...")
         result = client.upload_place(universe_id=universe_id, file_path=file_path)
+        if result is None:
+            raise ValueError("upload_place returned None")
         if result['success']:
             print(f"Upload successful! Place ID: {result['placeId']}")
         else:
