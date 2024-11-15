@@ -17,6 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       # Step 2: Install Foreman and Rojo
       - name: Download and Install Foreman v1.6.3
         run: |
@@ -25,6 +27,12 @@ jobs:
           sudo mv foreman /usr/local/bin/foreman
           sudo chmod +x /usr/local/bin/foreman
           rm foreman-linux.zip
+
+      # Step 2: Install Foreman and Rojo
+            # Step 3: Setup Foreman and Install Rojo
+      - name: Setup Foreman and Rojo
+        run: |
+            foreman add rojo
 
       # Step 3: Setup Foreman and Install Rojo
       - name: Setup Foreman and Rojo
