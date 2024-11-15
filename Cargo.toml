@@ -16,7 +16,7 @@ rojo = "7.4.4"
 rokit = "0.2.5" 
 serde = { version = "1.0", features = ["derive"] }
 stylua = "0.20.0"
-wally = "0.3.2"
+wally = "=0.3.2"
 tokio = "1"
 built = "0.7"
 reqwest = "0.11" 

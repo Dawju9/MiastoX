@@ -7,14 +7,13 @@
     "build": "cargo build && lune ayachapter.rbxl && rojo --output=build/rojo_output",
     "deploy": "rojo lune build --output ayachapter.rbxl"
   },
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Dawju9/MiastoX"
   },
   "author": "Whitekali",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cargo": "^0.8.0"
+  }
 }
