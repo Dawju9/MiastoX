@@ -13,6 +13,7 @@ dependencies = [
  "lune",
  "mio 0.8.11",
  "promise",
+ "rbxcloud",
  "reqwest 0.11.27",
  "reqwest-middleware 0.3.3",
  "rojo",
@@ -2944,6 +2945,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
 
 [[package]]
+name = "mime_guess"
+version = "2.0.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7c44f8e672c00fe5308fa235f821cb4198414e1c77935c1ab6948d3fd78550e"
+dependencies = [
+ "mime",
+ "unicase",
+]
+
+[[package]]
 name = "miniz_oxide"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3962,6 +3973,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "rbxcloud"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba9fd33ff50306b15e1b0712990536d0d332d6641b9adb69e56d11c1bd28a4c8"
+dependencies = [
+ "anyhow",
+ "base64 0.22.1",
+ "clap 4.5.21",
+ "md-5",
+ "reqwest 0.12.9",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
 name = "redox_syscall"
 version = "0.1.57"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4104,6 +4131,7 @@ dependencies = [
  "async-compression",
  "base64 0.22.1",
  "bytes",
+ "encoding_rs",
  "futures-core",
  "futures-util",
  "h2 0.4.6",
@@ -4117,6 +4145,7 @@ dependencies = [
  "js-sys",
  "log",
  "mime",
+ "mime_guess",
  "once_cell",
  "percent-encoding",
  "pin-project-lite",
