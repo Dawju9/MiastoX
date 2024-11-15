@@ -1,9 +1,15 @@
 [package]
-name = "brooke/roblox-project-template"
+name = "Cityx/MiastoX-project-template"
 version = "0.1.0"
-registry = "https://github.com/UpliftGames/wally-index"
+registry = "https://github.com/dawju9/MiastoX"
 realm = "shared"
-
 [dependencies]
-React = "jsdotlua/react@17.1.0"
-ReactRoblox = "jsdotlua/react-roblox@17.1.0"
+React = "jsdotlua/react@^17.1.0"
+ReactRoblox = "jsdotlua/react-roblox@^17.1.0"
+ReactSpring = "chriscerie/react-spring@^2.0.0"
+Promise = "evaera/promise@^4.0.0"
+Chickynoid = "easy-games/chickynoid@^0.1.5"
+
+[server-dependencies]
+Cmdr = "evaera/cmdr@^1.9.0"
+SuphisDataStoreModule = "nametakenbonk/suphisdatastoremodule@^1.2.0"
