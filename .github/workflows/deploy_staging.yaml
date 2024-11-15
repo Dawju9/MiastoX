@@ -17,17 +17,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Set up Foreman (Rojo)
-      - name: Setup Foreman (Rojo)
-        uses: rojo-rbx/setup-foreman@v1
+      # Step 2: Install Node.js and npm
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: '16'  # Specify Node.js version
 
-      # Step 3: Install Rojo CLI
-      - name: Install Rojo CLI
+      # Step 3: Install Rojo CLI via npm
+      - name: Install Rojo CLI via npm
         run: |
-          curl -sSL https://github.com/rojo-rbx/rojo/releases/download/v7.0.0/rojo-v7.0.0-linux-x64.tar.gz | tar xz
-          sudo mv rojo /usr/local/bin/rojo
+          npm install -g rojo-cli
 
       # Step 4: Build the game into .rbxl using Rojo
       - name: Build the game
