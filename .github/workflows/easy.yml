@@ -27,13 +27,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Rojo
+      - name: Download Rojo for Windows
         run: |
-          # Download Rojo executable
-          curl -LO https://github.com/rojo-rbx/rojo/releases/latest/download/rojo.exe
-          # Move Rojo to a directory
-          Move-Item -Path rojo.exe -Destination C:\rojo.exe
-
+            curl -LO https://github.com/rojo-rbx/rojo/releases/download/v7.1.0/rojo-win-x64.exe
+            Move-Item -Path rojo-win-x64.exe -Destination C:\rojo.exe
+        
       - name: Add Rojo to PATH
         run: |
           $env:Path += ";C:\"
@@ -46,7 +44,6 @@ jobs:
         with:
           name: GameBuild
           path: ${{ env.FILE_PATH }}
-
       - name: Publish to Roblox
         run: |
           universeId=$TESTING_UNIVERSE
