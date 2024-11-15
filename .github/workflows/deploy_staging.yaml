@@ -26,7 +26,7 @@ jobs:
       # Step 3: Install Rojo CLI via npm
       - name: Install Rojo CLI via npm
         run: |
-          npm install -g rojo-cli
+          npm install -g rojo
 
       # Step 4: Build the game into .rbxl using Rojo
       - name: Build the game
