@@ -40,3 +40,14 @@
 // 10. Testing and Debugging
 // - Implement testing and debugging tools for city game
 // - Test and debug city game mechanics and logic
+
+mod city_generation;
+mod building_mechanics;
+mod city_economy;
+mod city_services;
+mod game_logic;
+mod user_interface;
+mod save_load_system;
+mod ai_pathfinding;
+mod graphics_sound;
+mod testing_debugging;

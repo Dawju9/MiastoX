@@ -1,0 +1,67 @@
+OUT_DIR = Some(F:\EndGames\MiastoX\target\debug\build\lz4-sys-8098c66232f10776\out)
+TARGET = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=VCINSTALLDIR
+VCINSTALLDIR = None
+cargo:rerun-if-env-changed=VSTEL_MSBuildProjectFullPath
+VSTEL_MSBuildProjectFullPath = None
+cargo:rerun-if-env-changed=VSCMD_ARG_VCVARS_SPECTRE
+VSCMD_ARG_VCVARS_SPECTRE = None
+cargo:rerun-if-env-changed=WindowsSdkDir
+WindowsSdkDir = None
+cargo:rerun-if-env-changed=WindowsSDKVersion
+WindowsSDKVersion = None
+cargo:rerun-if-env-changed=LIB
+LIB = None
+PATH = Some(F:\EndGames\MiastoX\target\debug\deps;F:\EndGames\MiastoX\target\debug;C:\Users\dawju\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\lib;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;F:\Dart\Flutter\flutter\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\dawju\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;E:\kali\cityx\bin;C:\Program Files\CMake\bin;E:\Programy i ich pliki\Pliki\QTSystem\;F:\epic\cmd;C:\Users\dawju\AppData\Local\pnpm;C:\Users\dawju\.cargo\bin;E:\Programy i ich pliki\Pliki\python312\Scripts\;E:\Programy i ich pliki\Pliki\python312\;C:\Users\dawju\AppData\Local\Microsoft\WindowsApps;F:\Dart\Flutter\flutter\bin;F:\epic\Git\cmd;C:\Windows\System32;E:\Programy i ich pliki\Pliki\python310;C:\Users\dawju\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dawju\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\dawju\AppData\Roaming\npm;C:\Users\dawju\AppData\Local\Pub\Cache\bin;C:\Users\dawju\.aftman\bin;C:\Users\dawju\.rokit\bin;C:\Users\dawju\go\bin;C:\Users\dawju\AppData\Local\GitHubDesktop\bin;C:\msys64\mingw64\bin;C:\msys64\mingw32\bin;C:\Users\dawju\.rokit;C:\Users\dawju\AppData\Local\Programs\Microsoft VS Code\bin;F:\epic\Git\bin;E:\codevs\bin;F:\Vstudiocore\VC\Tools\MSVC\14.42.34433\bin\Hostx64\x64;)
+cargo:rerun-if-env-changed=INCLUDE
+INCLUDE = None
+HOST = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=CC_x86_64-pc-windows-msvc
+CC_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=CC_x86_64_pc_windows_msvc
+CC_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some(cmpxchg16b,fxsr,sse,sse2,sse3)
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=CFLAGS_x86_64-pc-windows-msvc
+CFLAGS_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_pc_windows_msvc
+CFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+lz4.c
+lz4frame.c
+lz4hc.c
+xxhash.c
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+cargo:rerun-if-env-changed=AR_x86_64-pc-windows-msvc
+AR_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=AR_x86_64_pc_windows_msvc
+AR_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64-pc-windows-msvc
+ARFLAGS_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64_pc_windows_msvc
+ARFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rustc-link-lib=static=lz4
+cargo:rustc-link-search=native=F:\EndGames\MiastoX\target\debug\build\lz4-sys-8098c66232f10776\out
+cargo:root=F:\EndGames\MiastoX\target\debug\build\lz4-sys-8098c66232f10776\out
+cargo:include=F:\EndGames\MiastoX\target\debug\build\lz4-sys-8098c66232f10776\out\include

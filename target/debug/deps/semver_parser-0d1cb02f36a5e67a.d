@@ -1,0 +1,11 @@
+F:\EndGames\MiastoX\target\debug\deps\libsemver_parser-0d1cb02f36a5e67a.rmeta: C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lib.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range_set.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lexer.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\parser.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\version.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\generated.rs
+
+F:\EndGames\MiastoX\target\debug\deps\semver_parser-0d1cb02f36a5e67a.d: C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lib.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range_set.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lexer.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\parser.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\version.rs C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\generated.rs
+
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lib.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range_set.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\range.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\lexer.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\parser.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\version.rs:
+C:\Users\dawju\.cargo\registry\src\index.crates.io-6f17d22bba15001f\semver-parser-0.10.2\src\generated.rs:

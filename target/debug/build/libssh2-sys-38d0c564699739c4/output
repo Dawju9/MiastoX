@@ -1,0 +1,241 @@
+cargo:rerun-if-env-changed=LIBSSH2_SYS_USE_PKG_CONFIG
+cargo:include=F:\EndGames\MiastoX\target\debug\build\libssh2-sys-38d0c564699739c4\out\include
+cargo:root=F:\EndGames\MiastoX\target\debug\build\libssh2-sys-38d0c564699739c4\out
+cargo:rerun-if-env-changed=DEP_Z_INCLUDE
+cargo:rerun-if-env-changed=DEP_OPENSSL_INCLUDE
+OPT_LEVEL = Some(0)
+TARGET = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=VCINSTALLDIR
+VCINSTALLDIR = None
+cargo:rerun-if-env-changed=VSTEL_MSBuildProjectFullPath
+VSTEL_MSBuildProjectFullPath = None
+cargo:rerun-if-env-changed=VSCMD_ARG_VCVARS_SPECTRE
+VSCMD_ARG_VCVARS_SPECTRE = None
+cargo:rerun-if-env-changed=WindowsSdkDir
+WindowsSdkDir = None
+cargo:rerun-if-env-changed=WindowsSDKVersion
+WindowsSDKVersion = None
+cargo:rerun-if-env-changed=LIB
+LIB = None
+PATH = Some(F:\EndGames\MiastoX\target\debug\deps;F:\EndGames\MiastoX\target\debug;C:\Users\dawju\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\lib;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;F:\Dart\Flutter\flutter\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\dawju\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;E:\kali\cityx\bin;C:\Program Files\CMake\bin;E:\Programy i ich pliki\Pliki\QTSystem\;F:\epic\cmd;C:\Users\dawju\AppData\Local\pnpm;C:\Users\dawju\.cargo\bin;E:\Programy i ich pliki\Pliki\python312\Scripts\;E:\Programy i ich pliki\Pliki\python312\;C:\Users\dawju\AppData\Local\Microsoft\WindowsApps;F:\Dart\Flutter\flutter\bin;F:\epic\Git\cmd;C:\Windows\System32;E:\Programy i ich pliki\Pliki\python310;C:\Users\dawju\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dawju\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\dawju\AppData\Roaming\npm;C:\Users\dawju\AppData\Local\Pub\Cache\bin;C:\Users\dawju\.aftman\bin;C:\Users\dawju\.rokit\bin;C:\Users\dawju\go\bin;C:\Users\dawju\AppData\Local\GitHubDesktop\bin;C:\msys64\mingw64\bin;C:\msys64\mingw32\bin;C:\Users\dawju\.rokit;C:\Users\dawju\AppData\Local\Programs\Microsoft VS Code\bin;F:\epic\Git\bin;E:\codevs\bin;F:\Vstudiocore\VC\Tools\MSVC\14.42.34433\bin\Hostx64\x64;)
+cargo:rerun-if-env-changed=INCLUDE
+INCLUDE = None
+HOST = Some(x86_64-pc-windows-msvc)
+cargo:rerun-if-env-changed=CC_x86_64-pc-windows-msvc
+CC_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=CC_x86_64_pc_windows_msvc
+CC_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+CARGO_CFG_TARGET_FEATURE = Some(cmpxchg16b,fxsr,sse,sse2,sse3)
+DEBUG = Some(true)
+cargo:rerun-if-env-changed=CFLAGS_x86_64-pc-windows-msvc
+CFLAGS_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_pc_windows_msvc
+CFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+agent.c
+bcrypt_pbkdf.c
+blowfish.c
+channel.c
+comp.c
+crypt.c
+global.c
+hostkey.c
+keepalive.c
+kex.c
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+knownhost.c
+mac.c
+misc.c
+packet.c
+pem.c
+publickey.c
+scp.c
+session.c
+libssh2/src/session.c(519): warning C4068: nieznana pragma "GCC"
+libssh2/src/session.c(520): warning C4068: nieznana pragma "GCC"
+libssh2/src/session.c(568): warning C4068: nieznana pragma "GCC"
+sftp.c
+transport.c
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+userauth.c
+agent_win.c
+wincng.c
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(66): warning C4005: "STATUS_WAIT_0": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2496): note: zobacz poprzedni¥ definicj© "STATUS_WAIT_0"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(221): warning C4005: "STATUS_ABANDONED_WAIT_0": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2497): note: zobacz poprzedni¥ definicj© "STATUS_ABANDONED_WAIT_0"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(244): warning C4005: "STATUS_USER_APC": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2498): note: zobacz poprzedni¥ definicj© "STATUS_USER_APC"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(280): warning C4005: "STATUS_TIMEOUT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2499): note: zobacz poprzedni¥ definicj© "STATUS_TIMEOUT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(289): warning C4005: "STATUS_PENDING": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2500): note: zobacz poprzedni¥ definicj© "STATUS_PENDING"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(736): warning C4005: "DBG_EXCEPTION_HANDLED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2501): note: zobacz poprzedni¥ definicj© "DBG_EXCEPTION_HANDLED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(745): warning C4005: "DBG_CONTINUE": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2502): note: zobacz poprzedni¥ definicj© "DBG_CONTINUE"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(820): warning C4005: "STATUS_SEGMENT_NOTIFICATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2503): note: zobacz poprzedni¥ definicj© "STATUS_SEGMENT_NOTIFICATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(983): warning C4005: "STATUS_FATAL_APP_EXIT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2504): note: zobacz poprzedni¥ definicj© "STATUS_FATAL_APP_EXIT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1303): warning C4005: "DBG_REPLY_LATER": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2505): note: zobacz poprzedni¥ definicj© "DBG_REPLY_LATER"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1321): warning C4005: "DBG_TERMINATE_THREAD": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2506): note: zobacz poprzedni¥ definicj© "DBG_TERMINATE_THREAD"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1330): warning C4005: "DBG_TERMINATE_PROCESS": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2507): note: zobacz poprzedni¥ definicj© "DBG_TERMINATE_PROCESS"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1339): warning C4005: "DBG_CONTROL_C": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2508): note: zobacz poprzedni¥ definicj© "DBG_CONTROL_C"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1348): warning C4005: "DBG_PRINTEXCEPTION_C": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2509): note: zobacz poprzedni¥ definicj© "DBG_PRINTEXCEPTION_C"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1357): warning C4005: "DBG_RIPEXCEPTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2510): note: zobacz poprzedni¥ definicj© "DBG_RIPEXCEPTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1366): warning C4005: "DBG_CONTROL_BREAK": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2511): note: zobacz poprzedni¥ definicj© "DBG_CONTROL_BREAK"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1375): warning C4005: "DBG_COMMAND_EXCEPTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2512): note: zobacz poprzedni¥ definicj© "DBG_COMMAND_EXCEPTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1384): warning C4005: "DBG_PRINTEXCEPTION_WIDE_C": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2513): note: zobacz poprzedni¥ definicj© "DBG_PRINTEXCEPTION_WIDE_C"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1416): warning C4005: "STATUS_GUARD_PAGE_VIOLATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2514): note: zobacz poprzedni¥ definicj© "STATUS_GUARD_PAGE_VIOLATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1427): warning C4005: "STATUS_DATATYPE_MISALIGNMENT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2515): note: zobacz poprzedni¥ definicj© "STATUS_DATATYPE_MISALIGNMENT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1438): warning C4005: "STATUS_BREAKPOINT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2516): note: zobacz poprzedni¥ definicj© "STATUS_BREAKPOINT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1449): warning C4005: "STATUS_SINGLE_STEP": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2517): note: zobacz poprzedni¥ definicj© "STATUS_SINGLE_STEP"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1752): warning C4005: "STATUS_LONGJUMP": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2518): note: zobacz poprzedni¥ definicj© "STATUS_LONGJUMP"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1779): warning C4005: "STATUS_UNWIND_CONSOLIDATE": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2519): note: zobacz poprzedni¥ definicj© "STATUS_UNWIND_CONSOLIDATE"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(1874): warning C4005: "DBG_EXCEPTION_NOT_HANDLED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2520): note: zobacz poprzedni¥ definicj© "DBG_EXCEPTION_NOT_HANDLED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2020): warning C4005: "STATUS_ACCESS_VIOLATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2521): note: zobacz poprzedni¥ definicj© "STATUS_ACCESS_VIOLATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2029): warning C4005: "STATUS_IN_PAGE_ERROR": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2522): note: zobacz poprzedni¥ definicj© "STATUS_IN_PAGE_ERROR"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2047): warning C4005: "STATUS_INVALID_HANDLE": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2523): note: zobacz poprzedni¥ definicj© "STATUS_INVALID_HANDLE"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2092): warning C4005: "STATUS_INVALID_PARAMETER": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2524): note: zobacz poprzedni¥ definicj© "STATUS_INVALID_PARAMETER"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2192): warning C4005: "STATUS_NO_MEMORY": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2525): note: zobacz poprzedni¥ definicj© "STATUS_NO_MEMORY"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2249): warning C4005: "STATUS_ILLEGAL_INSTRUCTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2526): note: zobacz poprzedni¥ definicj© "STATUS_ILLEGAL_INSTRUCTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2330): warning C4005: "STATUS_NONCONTINUABLE_EXCEPTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2527): note: zobacz poprzedni¥ definicj© "STATUS_NONCONTINUABLE_EXCEPTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(2339): warning C4005: "STATUS_INVALID_DISPOSITION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2528): note: zobacz poprzedni¥ definicj© "STATUS_INVALID_DISPOSITION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3272): warning C4005: "STATUS_ARRAY_BOUNDS_EXCEEDED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2529): note: zobacz poprzedni¥ definicj© "STATUS_ARRAY_BOUNDS_EXCEEDED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3282): warning C4005: "STATUS_FLOAT_DENORMAL_OPERAND": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2530): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_DENORMAL_OPERAND"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3292): warning C4005: "STATUS_FLOAT_DIVIDE_BY_ZERO": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2531): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_DIVIDE_BY_ZERO"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3302): warning C4005: "STATUS_FLOAT_INEXACT_RESULT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2532): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_INEXACT_RESULT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3312): warning C4005: "STATUS_FLOAT_INVALID_OPERATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2533): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_INVALID_OPERATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3322): warning C4005: "STATUS_FLOAT_OVERFLOW": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2534): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_OVERFLOW"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3332): warning C4005: "STATUS_FLOAT_STACK_CHECK": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2535): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_STACK_CHECK"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3342): warning C4005: "STATUS_FLOAT_UNDERFLOW": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2536): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_UNDERFLOW"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3352): warning C4005: "STATUS_INTEGER_DIVIDE_BY_ZERO": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2537): note: zobacz poprzedni¥ definicj© "STATUS_INTEGER_DIVIDE_BY_ZERO"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3362): warning C4005: "STATUS_INTEGER_OVERFLOW": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2538): note: zobacz poprzedni¥ definicj© "STATUS_INTEGER_OVERFLOW"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(3372): warning C4005: "STATUS_PRIVILEGED_INSTRUCTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2539): note: zobacz poprzedni¥ definicj© "STATUS_PRIVILEGED_INSTRUCTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4318): warning C4005: "STATUS_STACK_OVERFLOW": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2540): note: zobacz poprzedni¥ definicj© "STATUS_STACK_OVERFLOW"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4835): warning C4005: "STATUS_DLL_NOT_FOUND": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2541): note: zobacz poprzedni¥ definicj© "STATUS_DLL_NOT_FOUND"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4864): warning C4005: "STATUS_ORDINAL_NOT_FOUND": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2542): note: zobacz poprzedni¥ definicj© "STATUS_ORDINAL_NOT_FOUND"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4874): warning C4005: "STATUS_ENTRYPOINT_NOT_FOUND": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2543): note: zobacz poprzedni¥ definicj© "STATUS_ENTRYPOINT_NOT_FOUND"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4884): warning C4005: "STATUS_CONTROL_C_EXIT": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2544): note: zobacz poprzedni¥ definicj© "STATUS_CONTROL_C_EXIT"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(4962): warning C4005: "STATUS_DLL_INIT_FAILED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2545): note: zobacz poprzedni¥ definicj© "STATUS_DLL_INIT_FAILED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(7508): warning C4005: "STATUS_FLOAT_MULTIPLE_FAULTS": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2546): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_MULTIPLE_FAULTS"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(7518): warning C4005: "STATUS_FLOAT_MULTIPLE_TRAPS": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2547): note: zobacz poprzedni¥ definicj© "STATUS_FLOAT_MULTIPLE_TRAPS"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(7650): warning C4005: "STATUS_REG_NAT_CONSUMPTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2548): note: zobacz poprzedni¥ definicj© "STATUS_REG_NAT_CONSUMPTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(8633): warning C4005: "STATUS_HEAP_CORRUPTION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2549): note: zobacz poprzedni¥ definicj© "STATUS_HEAP_CORRUPTION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(8861): warning C4005: "STATUS_STACK_BUFFER_OVERRUN": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2550): note: zobacz poprzedni¥ definicj© "STATUS_STACK_BUFFER_OVERRUN"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(8988): warning C4005: "STATUS_INVALID_CRUNTIME_PARAMETER": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2551): note: zobacz poprzedni¥ definicj© "STATUS_INVALID_CRUNTIME_PARAMETER"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(9051): warning C4005: "STATUS_ASSERTION_FAILURE": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2552): note: zobacz poprzedni¥ definicj© "STATUS_ASSERTION_FAILURE"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(9969): warning C4005: "STATUS_ENCLAVE_VIOLATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2553): note: zobacz poprzedni¥ definicj© "STATUS_ENCLAVE_VIOLATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(10369): warning C4005: "STATUS_INTERRUPTED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2554): note: zobacz poprzedni¥ definicj© "STATUS_INTERRUPTED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(10378): warning C4005: "STATUS_THREAD_NOT_RUNNING": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2555): note: zobacz poprzedni¥ definicj© "STATUS_THREAD_NOT_RUNNING"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(10672): warning C4005: "STATUS_ALREADY_REGISTERED": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2556): note: zobacz poprzedni¥ definicj© "STATUS_ALREADY_REGISTERED"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(14205): warning C4005: "STATUS_SXS_EARLY_DEACTIVATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2558): note: zobacz poprzedni¥ definicj© "STATUS_SXS_EARLY_DEACTIVATION"
+E:\Windows Kits\10\include\10.0.18362.0\shared\ntstatus.h(14214): warning C4005: "STATUS_SXS_INVALID_DEACTIVATION": ponowna definicja makra
+E:\Windows Kits\10\include\10.0.18362.0\um\winnt.h(2559): note: zobacz poprzedni¥ definicj© "STATUS_SXS_INVALID_DEACTIVATION"
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+cargo:rerun-if-env-changed=AR_x86_64-pc-windows-msvc
+AR_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=AR_x86_64_pc_windows_msvc
+AR_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64-pc-windows-msvc
+ARFLAGS_x86_64-pc-windows-msvc = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64_pc_windows_msvc
+ARFLAGS_x86_64_pc_windows_msvc = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rustc-link-lib=static=ssh2
+cargo:rustc-link-search=native=F:\EndGames\MiastoX\target\debug\build\libssh2-sys-38d0c564699739c4\out\build
+cargo:rustc-link-lib=bcrypt
+cargo:rustc-link-lib=crypt32
+cargo:rustc-link-lib=user32
+cargo:rustc-link-lib=ntdll

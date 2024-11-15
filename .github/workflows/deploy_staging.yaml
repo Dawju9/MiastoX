@@ -1,22 +1,37 @@
-name: Deploy to Staging
+name: Serialize and Process .rbxl Files
 
 on:
   push:
     branches:
-    - main
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-
-  deploy:
-    name: Deploy
+  serialize:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - uses: ok-nick/setup-aftman@v0.3.0
-      name: Install aftman
-      with:
-          token: ${{ SECRETS.GITHUB_TOKEN }}
+      - name: Set up Node.js (for Lune)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - run: rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t ublished -a ${{ secrets.API_KEY }}
+      - name: Install Lune
+        run: cargo install lune --locked
+
+      - name: Run serialization
+        run: lune run serialize.lua
+
+      - name: Commit serialized .rbxl files
+        run: |
+          git config --global user.name 'CI Bot'
+          git config --global user.email 'ci-bot@example.com'
+          git add game.rbxl
+          git commit -m 'Automated serialization of .rbxl files'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

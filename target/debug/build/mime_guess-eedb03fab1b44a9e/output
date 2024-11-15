@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=F:\EndGames\MiastoX\target\debug\build\mime_guess-eedb03fab1b44a9e\out\mime_types_generated.rs
