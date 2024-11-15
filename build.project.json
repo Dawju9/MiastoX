@@ -1,23 +1,51 @@
-
 {
     "name": "MiastoX",
-    "emitLegacyScripts": false,
-    "tree": {
-        "$className": "DataModel",
-        "ReplicatedStorage": {
-            "Packages": {
-                "$path": "Packages"
+    "className": "DataModel",
+    "filePaths": ["default.project.json"],
+    "children": [
+        {
+            "name": "ServerScriptService",
+            "className": "ServerScriptService",
+            "children": [
+                {
+                    "name": "Server",
+                    "className": "Folder",
+                    "children": [
+                        {
+                            "name": "module",
+                            "className": "Folder",
+                            "children": [
+                                {
+                                    "name": "serverModule",
+                                    "className": "ModuleScript",
+                                    "filePaths": ["src/server/module/serverModule.lua"]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "build": {
+        "output": "dist",
+        "tree": {
+            "$className": "DataModel",
+            "ReplicatedStorage": {
+                "Packages": {
+                    "$path": "Packages"
+                },
+                "Client": {
+                    "$path": "dist/Client"
+                },
+                "Common": {
+                    "$path": "dist/Common"
+                }
             },
-            "Client": {
-                "$path": "dist/Client"
-            },
-            "Common": {
-                "$path": "dist/Common"
-            }
-        },
-        "ServerScriptService": {
-            "Server": {
-                "$path": "dist/Server"
+            "ServerScriptService": {
+                "Server": {
+                    "$path": "dist/Server"
+                }
             }
         }
     }

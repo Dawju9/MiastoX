@@ -1,9 +1,9 @@
 use std::process::Command;
-/// Kompiluje plik .rbxl za pomoc  Lune i
-/// przetwarza zasoby Roblox za pomoc  Rojo.
-/// Jeżli kompilacja sie nie upowiedzie,
-/// to zapisuje informacje o czasie kompilacji
-/// za pomoc  biblioteki `built` i
+/// Kompiluje plik .rbxl za pomocą Lune i
+/// przetwarza zasoby Roblox za pomocą Rojo.
+/// Jeżeli kompilacja się nie powiedzie,
+/// zapisuje informacje o czasie kompilacji
+/// za pomocą biblioteki `built` i
 /// informuje kompilator o zmianach w plikach .rs.
 fn main() {
     // Zapisz informacje o czasie kompilacji
@@ -13,7 +13,9 @@ fn main() {
     }
 
     // Uruchomienie Lune do kompilacji pliku .rbxl
-    let lune_status = Command::new("lune").arg("ayachapter.rbxl").status();
+    let lune_status = Command::new("lune")
+        .arg("ayachapter.rbxl")
+        .status();
 
     if let Err(e) = lune_status {
         eprintln!("Failed to run lune: {}", e);
