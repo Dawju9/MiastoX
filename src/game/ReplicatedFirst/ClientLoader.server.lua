@@ -6,11 +6,11 @@ local require = require(ReplicatedStorage:WaitForChild("SharedModules"):WaitForC
 
 require:InitModules {
 	-- (Optional) Module Paths
-	DisplayInfo = shared("Shared/DisplayInfo"),
+	DisplayInfo = shared("Shared/DisplayInfo"), 
     FistCheck = shared("Client/Scripts/FistCheck")
 }
 -- FistCheck Script
-local FistCheck = require("FistCheck")
+local FistCheck = require("FistCheck") -- FistCheck Script
 
 local function onFistCheck()
     -- Code to check for fist

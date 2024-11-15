@@ -38,6 +38,7 @@
                     }
                 ]
             },
+
             {
                 "name": "ReplicatedStorage",
                 "className": "ReplicatedStorage",
@@ -45,7 +46,7 @@
                     {
                         "name": "Packages",
                         "className": "Folder",
-                        "filePaths": ["src/ReplicatedStorage/Packages"]
+                        "filePaths": ["src/game/ReplicatedStorage/SharedModules"]
                     },
                     {
                         "name": "Client",
@@ -58,7 +59,7 @@
                         "filePaths": ["dist/Common"]
                     }
                 ]
-            },
+            },      
             {
                 "name": "game",
                 "className": "DataModel",
