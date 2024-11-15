@@ -22,7 +22,7 @@ jobs:
         run: |
           gem install rbxcloud  # Install rbxcloud CLI tool
 
-      - name: Publish Game to Roblox
+      - name: Publish Game to Roblox #  //'D:\a\MiastoX\MiastoX'
         run: |
           rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ***
         env:
