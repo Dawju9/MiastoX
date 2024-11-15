@@ -12,12 +12,6 @@ local game = remodel.readPlaceFile(placeFilePath)
 -- Create directory for models if it doesn't exist
 remodel.createDirAll("models")
 
--- ----------------- Deserialize and Manipulate the Game -----------------
-
--- Read the game file using deserialize.lua (assuming it has deserialization logic)
-local placeFile = fs.readFile("game.rbxl")
-local game = roblox.deserializePlace(placeFile)
-
 -- Manipulating game data
 local workspace = game:GetService("Workspace")
 for _, child in workspace:GetChildren() do

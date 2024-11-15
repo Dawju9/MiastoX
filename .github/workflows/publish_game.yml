@@ -21,9 +21,18 @@ jobs:
       - name: Install rbxcloud CLI
         run: |
           gem install rbxcloud  # Install rbxcloud CLI tool
+        continue-on-error: false  # Ensure the installation fails the workflow if there's an issue
+
+      - name: Set up authentication
+        run: |
+          echo "auth_token=${{ secrets.ROBLOX_API_KEY }}" > $GITHUB_ENV  # Use secret API key for authentication
 
       - name: Publish Game to Roblox
         run: |
-          rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ***
+          rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.ROBLOX_API_KEY }}
         env:
-          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # If you are using an API key for authentication
+          ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}  # Use the secret key from GitHub Secrets for authentication
+
+      - name: Clean up
+        run: |
+          echo "Cleaning up..."
