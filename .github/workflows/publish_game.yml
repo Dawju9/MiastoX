@@ -1,38 +1,35 @@
-name: Deploy to Production
+name: Build and Deploy RBXL Project
 
 on:
   push:
-    tags:
-    - 'v*'  # Trigger when a version tag is pushed
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'build.project.json'
 
 jobs:
-  deploy:
-    name: Deploy to Roblox
-    runs-on: ubuntu-latest  # Use Ubuntu for the runner
+  build:
+    name: Build RBXL Project
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3  # Checkout the repository to the GitHub Actions runner
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      # Install rbxcloud CLI directly with npm (assuming it is available on npm)
-      - name: Install rbxcloud CLI
+      - name: Install Dependencies
         run: |
-          npm install -g rbxcloud  # Install rbxcloud CLI tool globally using npm
-      - name: List files in repository
-        run: |
-            ls -R
-      # Set up authentication via the secret API key
-      - name: Set up authentication
-        run: |
-          echo "auth_token=${{ secrets.API_KEY }}" > $GITHUB_ENV  # Store API key as environment variable
-      # Publish the game to Roblox
-      - name: Publish Game to Roblox
-        run: |
-          rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
-        env:
-          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # Pass the secret API key to the rbxcloud command
+          if [ ! -d "Packages" ]; then
+            sh scripts/install-packages.sh
+          fi
 
-      # Clean up any temporary files or output
-      - name: Clean up
+      - name: Run Rojo Server and Sourcemap Generation
         run: |
-          echo "Cleaning up..."
+          rojo serve build.project.json &
+          rojo sourcemap default.project.json -o sourcemap.json --watch &
+          ROBLOX_DEV=true darklua process --config .darklua.json --watch src/ dist/
+
+      - name: Deploy to Roblox
+        run: |
+          # Dodaj tutaj swoje kroki do deployowania na Roblox
+          echo "Deploying to Roblox..."
