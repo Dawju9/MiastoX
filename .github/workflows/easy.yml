@@ -3,7 +3,7 @@ name: Build and Publish Game
 on:
   push:
     branches:
-      - main  # Workflow will trigger on push to the main branch
+      - main
   workflow_dispatch:
     inputs:
       environment:
@@ -31,15 +31,15 @@ jobs:
         run: |
           # Download Rojo executable
           curl -LO https://github.com/rojo-rbx/rojo/releases/latest/download/rojo.exe
-          # Move Rojo to a directory in the PATH
+          # Move Rojo to a directory
           Move-Item -Path rojo.exe -Destination C:\rojo.exe
 
       - name: Add Rojo to PATH
         run: |
-          echo "C:\rojo.exe" >> $env:Path
+          $env:Path += ";C:\"
 
       - name: Build project with Rojo
-        run: rojo build default.project.json -o ${{ env.FILE_PATH }}
+        run: C:\rojo.exe build default.project.json -o ${{ env.FILE_PATH }}
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
