@@ -32,7 +32,6 @@ jobs:
           rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.ROBLOX_API_KEY }}
         env:
           ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}  # Use the secret key from GitHub Secrets for authentication
-
       - name: Clean up
         run: |
           echo "Cleaning up..."
