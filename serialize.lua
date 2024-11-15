@@ -1,6 +1,6 @@
 -- serialize.lua
-local lune = ("lune")
-local io = ("io")
+local lune = require("lune")
+local io = require("io")
 local game = workspace -- lub inne obiekty, które chcesz serializować
 local serialized = lune.serialize(game)
 local file = io.open("game.rbxl", "wb")
