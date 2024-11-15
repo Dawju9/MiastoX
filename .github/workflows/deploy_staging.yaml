@@ -14,24 +14,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Node.js (for Lune)
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-
       - name: Install Lune
         run: cargo install lune --locked
-
       - name: Run serialization
         run: lune run serialize.lua
-
       - name: Commit serialized .rbxl files
         run: |
           git config --global user.name 'CI Bot'
           git config --global user.email 'ci-bot@example.com'
           git add game.rbxl
           git commit -m 'Automated serialization of .rbxl files'
-          git push
+          git push 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
