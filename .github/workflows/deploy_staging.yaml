@@ -8,13 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@2
 
       - name: Create temp directory
         run: mkdir Temp
 
       - name: Download game build
-        uses: i3h/download-release-asset@6a9870c8f1c561f9e67550d6177c31c2b1c49fef
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
