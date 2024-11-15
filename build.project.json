@@ -1,9 +1,24 @@
+
 {
-  "$schema": "https://json.schemastore.org/build.json",
-  "name": "MiastoX",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "build": ""
-  }
+    "name": "MiastoX",
+    "emitLegacyScripts": false,
+    "tree": {
+        "$className": "DataModel",
+        "ReplicatedStorage": {
+            "Packages": {
+                "$path": "Packages"
+            },
+            "Client": {
+                "$path": "dist/Client"
+            },
+            "Common": {
+                "$path": "dist/Common"
+            }
+        },
+        "ServerScriptService": {
+            "Server": {
+                "$path": "dist/Server"
+            }
+        }
+    }
 }
