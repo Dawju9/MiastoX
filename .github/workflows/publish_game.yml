@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Deploy to Roblox
-    runs-on: ubuntu-latest  # Use Ubuntu for the runner
+    runs-on: windows-latest  # Use Ubuntu for the runner
 
     steps:
       - name: Checkout code
