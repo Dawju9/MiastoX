@@ -1,55 +1,86 @@
-# Orb 'circleci/node@3.0.0' resolved to 'circleci/node@3.0.0'
-version: 2
-jobs:
-  node/test:
-    docker:
-    - image: cimg/node:13.11.0
-    steps:
-    - checkout
-    - run:
-        command: |
-          if [ ! -f "package.json" ]; then
-            echo
-            echo "---"
-            echo "Unable to find your package.json file. Did you forget to set the app-dir parameter?"
-            echo "---"
-            echo
-            echo "Current directory: $(pwd)"
-            echo
-            echo
-            echo "List directory: "
-            echo
-            ls
-            exit 1
-          fi
-        name: Checking for package.json.
-        working_directory: ~/project
-    - restore_cache:
-        keys:
-        - node-deps-v1-{{ .Branch }}-{{ checksum "~/project/package-lock.json" }}
-    - run:
-        command: "if [[ ! -z \"\" ]]; then\n  echo \"Running override package installation command:\"\n  \nelse\n  npm ci\nfi\n"
-        name: Installing NPM packages
-        working_directory: ~/project
-    - save_cache:
-        key: node-deps-v1-{{ .Branch }}-{{ checksum "~/project/package-lock.json" }}
-        paths:
-        - ~/.npm
-    - run:
-        command: npm run test
-        name: Run NPM Tests
-        working_directory: ~/project
+version: 2.1
+
+# Użycie Orb do Node.js
+orbs:
+  node: circleci/node@3.0.0
+
+# Workflow do automatyzacji testów i deployu
 workflows:
+  version: 2.1
   node-tests:
     jobs:
-    - node/test
-  version: 2
+      - node/test
+  deploy-prod:
+    jobs:
+      - node/deploy_prod:
+          requires:
+            - node/test
+      - node/deploy_staging:
+          requires:
+            - node/test
+# Definicja jobów
+jobs:
+  # Job do testowania aplikacji Node.js
+  node/test:
+    docker:
+      - image: cimg/node:16.0.0  # Wersja LTS Node.js was 13.11.0
+    steps:
+      - checkout  # Klonowanie repozytorium
+      - run:
+          name: Checking for package.json
+          command: |
+            if [ ! -f "package.json" ]; then
+              echo "---"
+              echo "Unable to find package.json"
+              echo "---"
+              echo "Unable to find your package.json file. Did you forget to set the app-dir parameter?"
+              echo "---"
+              echo
+              echo "Current directory: $(pwd)"
+              echo
+              echo
+              echo "List directory: "
+              echo
+              ls
+              exit 1
+            fi
+          name: Checking for package.json.
+          working_directory: ~/
+      - restore_cache:
+          keys:
+            - node-deps-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install dependencies
+          command: npm ci  # Użycie czystej instalacji zależności
+      - save_cache:
+          key: node-deps-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+      - run:
+          name: Run tests
+          command: npm run test
 
-# Original config.yml file:
-# version: 2.1
-# orbs:
-#   node: circleci/node@3.0.0
-# workflows:
-#   node-tests:
-#     jobs:
-#       - node/test
+  # Job do publikacji na stagingu
+  node/deploy_staging:
+    docker:
+      - image: cimg/node:16.0.0
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Staging
+          command: |
+            echo "Deploying to Staging environment"
+            # Tutaj możesz dodać komendę do publikacji na środowisku stagingowym
+
+  # Job do publikacji na produkcji
+  node/deploy_prod:
+    docker:
+      - image: cimg/node:16.0.0
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Production
+          command: |
+            echo "Deploying to Production environment"
+            # Tutaj komenda do publikacji na produkcji
+# Monitoring dla każdego kroku - dodaj logi i powiadomienia
