@@ -49,6 +49,11 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          tag: ${{ github.ref_name }}
+          file: Build_*.*.*.rbxl
+          token: ${{ secrets.GITHUB_TOKEN }}
           name: GameBuild
           path: ${{ env.FILE_PATH }}
 
