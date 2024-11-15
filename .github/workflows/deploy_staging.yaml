@@ -29,7 +29,7 @@ jobs:
       # Step 3: Setup Foreman and Install Rojo
       - name: Setup Foreman and Rojo
         run: |
-          foreman install
+          foreman install rojo
 
       # Step 4: Verify Rojo installation
       - name: Verify Rojo Installation
