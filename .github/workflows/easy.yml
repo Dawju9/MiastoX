@@ -26,21 +26,32 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-            path: F:\EndGames\MiastoX
-      - name: Download Rojo for Windows
-        run: |
-          curl -LO https://github.com/rojo-rbx/rojo/releases/download/v7.1.0/rojo-win-x64.exe
-          Rename-Item -Path rojo-win-x64.exe -NewName rojo.exe
-          Move-Item -Path rojo.exe -Destination C:\rojo.exe
       
+      - name: Install Aftman
+        run: |
+          curl -LO https://github.com/Roblox/roblox-aftman/releases/latest/download/aftman-win-x64.exe
+          Rename-Item -Path aftman-win-x64.exe -NewName aftman.exe
+          Move-Item -Path aftman.exe -Destination C:\aftman.exe
+
+      - name: Set up Aftman
+        run: |
+          C:\aftman.exe init
+          echo 'tools:' >> aftman.toml
+          echo '  rojo = { version = "latest" }' >> aftman.toml
+        shell: bash
+      
+      - name: Install tools with Aftman
+        run: C:\aftman.exe install
+
       - name: Build project with Rojo
-        run: C:\rojo.exe build default.project.json -o ./build/rojo_output/game.rbxl
+        run: rojo build default.project.json -o ./build/rojo_output/game.rbxl
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
           name: GameBuild
           path: ${{ env.FILE_PATH }}
+
       - name: Publish to Roblox
         run: |
           universeId=$TESTING_UNIVERSE
