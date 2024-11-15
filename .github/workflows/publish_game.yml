@@ -3,35 +3,28 @@ name: Publish Game to Roblox
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
+      - main
 
 jobs:
   publish:
-    runs-on: windows-latest  # Use a Windows environment, as Roblox Studio works on Windows
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Ruby (for rbxcloud CLI)
-        uses: ruby/setup-ruby@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          ruby-version: 2.7  # Ensure the correct Ruby version for rbxcloud
+          node-version: '14'
 
       - name: Install rbxcloud CLI
-        run: |
-          gem install rbxcloud  # Install rbxcloud CLI tool
-        continue-on-error: false  # Ensure the installation fails the workflow if there's an issue
+        run: npm install -g rbxcloud
 
       - name: Set up authentication
-        run: |
-          echo "auth_token=${{ secrets.API_KEY }}" > $GITHUB_ENV  # Use secret API key for authentication
+        run: echo "auth_token=${{ secrets.API_KEY }}" > $GITHUB_ENV
 
-      - name: Publish Game to Roblox #  //'D:\a\MiastoX\MiastoX'
-        run: |
-          rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
+      - name: Publish Game to Roblox
+        run: rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
         env:
-          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # Use the secret key from GitHub Secrets for authentication
-      - name: Clean up
-        run: |
-          echo "Cleaning up..."
+          ROBLOX_API_KEY: ${{ secrets.API_KEY }}
