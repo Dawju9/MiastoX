@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
 
       - name: Install Lune
-        run: npm install -g lune
+        run: cargo install lune --locked
 
       - name: Run serialization
         run: lune run serialize.lua
