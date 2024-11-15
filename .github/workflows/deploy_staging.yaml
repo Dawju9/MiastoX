@@ -16,7 +16,7 @@ jobs:
         run: mkdir Temp
 
       - name: Download game build
-        uses: i3h/download-release-asset@6a9870c8f1c561f9e67550d6177c31c2b1c49fef
+        uses: i3h/download-release-asset@v1
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
