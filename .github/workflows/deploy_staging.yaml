@@ -30,6 +30,6 @@ jobs:
           cd ..
     - name: Upload .rbxl file
       run: |
-          python ../manage_rbxl.py --api_key "${{ secrets.API_KEY }}" \
+          python manage_rbxl.py --api_key "${{ secrets.API_KEY }}" \
                                 --universe_id "${{ secrets.ROBLOX_UNIVERSE_ID }}" \
                                 --file_path "game.rbxl"
