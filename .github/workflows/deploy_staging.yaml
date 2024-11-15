@@ -17,16 +17,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Download and Install Foreman v1.6.3
+      # Step 2: Install Foreman and Rojo
       - name: Download and Install Foreman v1.6.3
         run: |
           curl -sSL https://github.com/Roblox/foreman/releases/download/v1.6.3/foreman-linux.zip -o foreman-linux.zip
           unzip foreman-linux.zip
           sudo mv foreman /usr/local/bin/foreman
-          sudo chmod +x /usr/local/bin/foreman  # Grant execute permissions
+          sudo chmod +x /usr/local/bin/foreman
           rm foreman-linux.zip
 
-      # Step 3: Setup Foreman and Rojo
+      # Step 3: Setup Foreman and Install Rojo
       - name: Setup Foreman and Rojo
         run: |
           foreman install
