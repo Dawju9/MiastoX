@@ -27,12 +27,16 @@ jobs:
         run: |
           echo "auth_token=${{ secrets.ROBLOX_API_KEY }}" > $GITHUB_ENV  # Use secret API key for authentication
 
-      - name: Publish Game to Roblox
+      - name: Publish Game to Roblox #  //'D:\a\MiastoX\MiastoX'
         run: |
           rbxcloud experience publish -f assets/game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.ROBLOX_API_KEY }}
         env:
+<<<<<<< HEAD
           ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}  # Use the secret key from GitHub Secrets for authentication
 
       - name: Clean up
         run: |
           echo "Cleaning up..."
+=======
+          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # If you are using an API key for authentication
+>>>>>>> 8b411256279d18476d34b9e502e98ef1f302e48e
