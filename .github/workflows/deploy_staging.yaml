@@ -25,8 +25,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install rblx-open-cloud
 
+    - name: Install dependencies
+      run: | 
+          cd ..
     - name: Upload .rbxl file
       run: |
           python manage_rbxl.py --api_key "${{ secrets.API_KEY }}" \
                                 --universe_id "${{ secrets.ROBLOX_UNIVERSE_ID }}" \
-                                --file_path "./game.rbxl"
+                                --file_path "game.rbxl"
