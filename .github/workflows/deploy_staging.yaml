@@ -17,11 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Step 2: Install Foreman and Rojo using Foreman
-      - name: Install Foreman CLI (Zip)
+            # Step 2: Install Foreman and Rojo using Foreman
+      - name: Install Foreman CLI
         run: |
-          curl -sSL https://github.com/roblox/foreman/releases/download/v0.6.0/foreman-linux-x64.zip -o foreman-linux-x64.zip
-          unzip foreman-linux-x64.zip
+          curl -sSL https://github.com/roblox/foreman/releases/download/v0.6.0/foreman-linux-x64.tar.gz | tar -xz
           sudo mv foreman /usr/local/bin/foreman
 
       - name: Setup Foreman (Rojo)
