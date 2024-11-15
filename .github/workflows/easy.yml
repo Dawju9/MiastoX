@@ -3,7 +3,7 @@ name: Build and Publish Game
 on:
   push:
     branches:
-        - main  # Workflow uruchomi się przy każdym pushu na gałąź main
+      - main  # Workflow will trigger on push to the main branch
   workflow_dispatch:
     inputs:
       environment:
@@ -27,7 +27,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build project
+      - name: Install Rojo
+        run: |
+          # Download and install Rojo
+          curl -LO https://github.com/rojo-rbx/rojo/releases/latest/download/rojo.exe
+          # Make Rojo executable
+          chmod +x rojo.exe
+          # Move Rojo to a directory in the PATH
+          mv rojo.exe /usr/local/bin/rojo
+
+      - name: Build project with Rojo
         run: rojo build default.project.json -o ${{ env.FILE_PATH }}
 
       - name: Upload build artifact
