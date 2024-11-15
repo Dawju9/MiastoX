@@ -13,18 +13,16 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Check file permissions
-      run: |
-        ls -l assets/game.rbxl
     - name: List files in the repository
       run: |
           echo "Listing files to confirm game.rbxl exists:"
           dir  # Adjust this if necessary to match the workflow's working directory
-    - name: Check if game.rbxl exists
+    - name: Check if game.rbxl exists  # 'D:\a\MiastoX\MiastoX'
       run: |
             echo "Current directory: $(pwd)"
-            echo "Listing all files in the assets directory:"
+            echo "Listing all files in the assets directory:"  
             dir F:\EndGames\MiastoX\assets  # Adjust this if the location is different
+            dir D:\a\MiastoX\MiastoX\assets  # Adjust this if the location is different
     - uses: ok-nick/setup-aftman@v0.3.0
       name: Install aftman
       with:
