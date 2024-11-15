@@ -29,12 +29,14 @@ jobs:
 
       - name: Install Rojo
         run: |
-          # Download and install Rojo
+          # Download Rojo executable
           curl -LO https://github.com/rojo-rbx/rojo/releases/latest/download/rojo.exe
-          # Make Rojo executable
-          chmod +x rojo.exe
           # Move Rojo to a directory in the PATH
-          mv rojo.exe /usr/local/bin/rojo
+          Move-Item -Path rojo.exe -Destination C:\rojo.exe
+
+      - name: Add Rojo to PATH
+        run: |
+          echo "C:\rojo.exe" >> $env:Path
 
       - name: Build project with Rojo
         run: rojo build default.project.json -o ${{ env.FILE_PATH }}
