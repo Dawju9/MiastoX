@@ -2,7 +2,6 @@ use std::env;
 use std::process;
 use MiastoX::game;
 use decode::decoded::{deserialize_rbxl_to_model, serialize_model_to_rbxl};
-
 mod citix;
 mod game;
 mod lib;

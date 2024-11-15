@@ -1,30 +1,37 @@
-name: Publish Game to Roblox
+name: Deploy to Production
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'main'  # Trigger when a version tag is pushed
 
 jobs:
-  publish:
-    runs-on: windows-latest
+  deploy:
+    name: Deploy to Roblox
+    runs-on: ubuntu-latest  # Use Ubuntu for the runner
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3  # Checkout the repository to the GitHub Actions runner
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
+      # Install rbxcloud CLI directly with npm (assuming it is available on npm)
       - name: Install rbxcloud CLI
-        run: npm install -g rbxcloud
+        run: |
+          npm install -g rbxcloud  # Install rbxcloud CLI tool globally using npm
 
+      # Set up authentication via the secret API key
       - name: Set up authentication
-        run: echo "auth_token=${{ secrets.API_KEY }}" > $GITHUB_ENV
+        run: |
+          echo "auth_token=${{ secrets.API_KEY }}" > $GITHUB_ENV  # Store API key as environment variable
 
+      # Publish the game to Roblox
       - name: Publish Game to Roblox
-        run: rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
+        run: |
+          rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
         env:
-          ROBLOX_API_KEY: ${{ secrets.API_KEY }}
+          ROBLOX_API_KEY: ${{ secrets.API_KEY }}  # Pass the secret API key to the rbxcloud command
+
+      # Clean up any temporary files or output
+      - name: Clean up
+        run: |
+          echo "Cleaning up..."
