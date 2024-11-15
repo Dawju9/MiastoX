@@ -29,15 +29,10 @@ jobs:
           rm foreman-linux.zip
 
       # Step 2: Install Foreman and Rojo
-            # Step 3: Setup Foreman and Install Rojo
       - name: Setup Foreman and Rojo
         run: |
             foreman add rojo
 
-      # Step 3: Setup Foreman and Install Rojo
-      - name: Setup Foreman and Rojo
-        run: |
-          foreman add rojo
 
       # Step 4: Verify Rojo installation
       - name: Verify Rojo Installation
