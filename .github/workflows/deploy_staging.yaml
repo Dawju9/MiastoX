@@ -17,24 +17,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-            # Step 2: Install Foreman and Rojo using Foreman
-      - name: Install Foreman CLI
+      # Step 2: Download and Install Foreman v1.6.3
+      - name: Download and Install Foreman v1.6.3
         run: |
-          curl -sSL https://github.com/roblox/foreman/releases/download/v0.6.0/foreman-linux-x64.tar.gz | tar -xz
+          curl -sSL https://github.com/Roblox/foreman/releases/download/v1.6.3/foreman-linux.zip -o foreman-linux.zip
+          unzip foreman-linux.zip
           sudo mv foreman /usr/local/bin/foreman
+          rm foreman-linux.zip
 
-      - name: Setup Foreman (Rojo)
+      # Step 3: Setup Foreman and Rojo
+      - name: Setup Foreman and Rojo
         run: |
           foreman install
 
-      # Step 3: Build the game into .rbxl using Rojo (installed via Foreman)
+      # Step 4: Build the game into .rbxl using Rojo
       - name: Build the game
         run: |
           mkdir -p Temp
           echo "Building ${GITHUB_REF}..."
           rojo build default.project.json --output Temp/CurrentBuild.rbxl
 
-      # Step 4: Upload the build to a draft release on GitHub (optional, for backup)
+      # Step 5: Create a release on GitHub and upload the build (optional backup)
       - name: Create release and upload build
         uses: actions/create-release@v1
         with:
@@ -42,7 +45,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
-        
+
       - name: Upload build to release
         uses: actions/upload-release-asset@v1
         with:
@@ -51,7 +54,7 @@ jobs:
           asset_name: Build_${{ github.ref }}.rbxl
           asset_content_type: application/octet-stream
 
-      # Step 5: Deploy to Roblox (using API)
+      # Step 6: Deploy to Roblox
       - name: Deploy to Roblox (Production)
         run: |
           echo "Deploying build to Roblox..."
@@ -60,3 +63,5 @@ jobs:
           --header "x-api-key:${{ secrets.API_KEY }}" \
           --header "Content-Type: application/octet-stream" \
           --data-binary @Temp/CurrentBuild.rbxl
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
