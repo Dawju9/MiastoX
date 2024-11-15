@@ -1,22 +1,45 @@
-name: Deploy to Staging
-
 on:
-  push:
-    branches:
-    - main
+  release:
+    types: [published]
 
 jobs:
-
-  deploy:
-    name: Deploy
+  game-deploy:
+    name: Deploy game to proper environment
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
 
-    - uses: ok-nick/setup-aftman@v0.3.0
-      name: Install aftman
-      with:
-          token: ${{ SECRETS.GITHUB_TOKEN }}
+      - name: Create temp directory
+        run: mkdir Temp
 
-    - run: rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t ublished -a ${{ secrets.API_KEY }}
+      - name: Download game build
+        uses: i3h/download-release-asset@6a9870c8f1c561f9e67550d6177c31c2b1c49fef
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          tag: ${{ github.ref_name }}
+          file: /Build_*.*.*.rbxl/
+          path: Temp/
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rename game build to known name
+        run: mv Temp/Build_v*.*.*.rbxl Temp/GameBuild.rbxl
+
+      - name: Deploy game to test environment
+        if: contains(github.ref_name,'-qa.')
+        run: | 
+          curl --verbose --location --request \
+          POST 'https://apis.roblox.com/universes/v1/${{ secrets.TEST_UNIVERSE_ID }}/places/${{ secrets.TEST_PLACE_ID }}/versions?versionType=Published' \
+          --header "x-api-key:${{ secrets.API_KEY }}" \
+          --header "Content-Type: application/octet-stream" \
+          --data-binary @Temp/GameBuild.rbxl
+      
+      - name: Deploy game to production environment
+        if: contains(github.ref_name,'-qa.') == false
+        run: |
+          curl --verbose --location --request \
+          POST 'https://apis.roblox.com/universes/v1/${{ secrets.PROD_UNIVERSE_ID }}/places/${{ secrets.PROD_PLACE_ID }}/versions?versionType=Published' \
+          --header "x-api-key:${{ secrets.PROD_DEPLOY_KEY }}" \
+          --header "Content-Type: application/octet-stream" \
+          --data-binary @Temp/GameBuild.rbxl
