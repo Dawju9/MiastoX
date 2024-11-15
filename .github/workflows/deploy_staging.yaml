@@ -12,8 +12,21 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
     - uses: ok-nick/setup-aftman@v0.3.0
       name: Install aftman
       with:
           token: ${{ secrets.GITHUB_TOKEN }}
-    - run: rbxcloud experience publish -f game.rbxl -p 11633610328 -u 4125094708 -t published -a ${{ secrets.API_KEY }}
+    - name: Install dependencies
+      run: |
+          python -m pip install --upgrade pip
+          pip install rblx-open-cloud
+
+    - name: Upload .rbxl file
+      run: |
+          python manage_rbxl.py --api_key "${{ env.API_KEY }}" \
+                                --universe_id "${{ env.ROBLOX_UNIVERSE_ID }}" \
+                                --file_path "./game.rbxl"
