@@ -1,6 +1,9 @@
 name: Build and Publish Game
 
 on:
+  push:
+    branches:
+        - main  # Workflow uruchomi się przy każdym pushu na gałąź main
   workflow_dispatch:
     inputs:
       environment:
