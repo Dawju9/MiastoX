@@ -124,58 +124,17 @@ Frontend (Roblox Lua)
 Core (Lua)
 Renderer (Rust)
 </div>--->
+# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
 
-# [README] - Miastox --- lista funkcji i implementajci
+**### # [README] - Miastox --- lista funkcji i implementajci
 
-## Preładowanie Gry
-**Nazwa skryptu**: `PreloadGameSetup.luau`
-
-### Funkcje do zaimplementowania:
-- Jakie zasoby muszą być preładowane przed rozpoczęciem gry? (modele, tekstury, inne)
-- Jak skonfigurować początkowe ustawienia gry? (zmienne globalne, stałe)
-- Jakie zdarzenia muszą być powiązane przed rozpoczęciem gry? (np. obsługa połączeń gracza)
-- Jak generować siatkę i trasy w przestrzeni roboczej?
-- Czy istnieje potrzeba zintegrowania zewnętrznych modułów do generowania środowiska?
-
----
-
-### Pytania szczegółowe:
-1. **Preładowanie zasobów**
-   - Jakie dokładnie modele, tekstury lub inne zasoby powinny być preładowane? 
-   - Czy istnieją określone priorytety ładowania zasobów?
-   - Jakie podejście do przechowywania i zarządzania zasobami będzie najbardziej efektywne?
-
-2. **Ustawienia początkowe gry**
-   - Jakie globalne zmienne i stałe muszą zostać zdefiniowane na początku?
-   - Czy istnieją ustawienia konfiguracyjne zależne od trybu gry?
-   - Jakie są wymagane wartości domyślne dla różnych parametrów rozgrywki?
-
-3. **Wiązanie zdarzeń**
-   - Które zdarzenia wymagają powiązania przed pełnym wczytaniem gry?
-   - Czy istnieje potrzeba obsługi dynamicznego wiązania zdarzeń, np. w zależności od liczby graczy?
-
-4. **Generacja siatki i tras**
-   - Jakie algorytmy będą używane do generowania siatki?
-   - Czy istnieje określona logika definiowania tras w grze?
-   - Czy siatka powinna być aktualizowana dynamicznie w trakcie gry?
-
----
-
-### Dodatkowe funkcje do przemyślenia:
-- Funkcja do preładowania zasobów (`preloadAssets()`)
-- Funkcja konfigurująca ustawienia gry (`setupGameSettings()`)
-- Funkcja do wiązania zdarzeń (`bindPreloadEvents()`)
-- Funkcja generująca układ miasta (`generateCityLayout()`)
-
----
-
----
 <section>
 <div align="left">
 ## **Gotowy na Przygody?**
 
 Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-https://dawju9.github.io/MiastoX/
+[Live MiastoX](https://dawju9.github.io/MiastoX/)
+[Live CityxN](https://dawju9.github.io/cityx/)
 </div>
 <div align="right">
 ## 👤 **Kontakt**
