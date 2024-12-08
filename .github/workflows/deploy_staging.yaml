@@ -16,37 +16,44 @@ jobs:
       # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v2
-
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      # Step 2: Install Foreman and Rojo
-      - name: Download and Install Foreman v1.6.3
+
+      # Step 2: Install Wally (for dependency management)
+      - name: Install Wally
         run: |
-          curl -sSL https://github.com/Roblox/foreman/releases/download/v1.6.3/foreman-linux.zip -o foreman-linux.zip
-          unzip foreman-linux.zip
-          sudo mv foreman /usr/local/bin/foreman
-          sudo chmod +x /usr/local/bin/foreman
-          rm foreman-linux.zip
+          curl -sSL https://github.com/roblox/wally/releases/download/v1.0.0-alpha.5/wally-linux-x64.tar.gz -o wally.tar.gz
+          tar -xvzf wally.tar.gz
+          sudo mv wally /usr/local/bin/
+          sudo chmod +x /usr/local/bin/wally
+          rm wally.tar.gz
 
-      # Step 2: Install Foreman and Rojo
-      - name: Setup Foreman and Rojo
+      # Step 3: Install Rojo
+      - name: Install Rojo
         run: |
-            foreman add rojo
+          curl -sSL https://github.com/rojo-rbx/rojo/releases/download/v7.0.0/rojo-linux-x64.tar.gz -o rojo.tar.gz
+          tar -xvzf rojo.tar.gz
+          sudo mv rojo /usr/local/bin/
+          sudo chmod +x /usr/local/bin/rojo
+          rm rojo.tar.gz
 
+      # Step 4: Install Roblox dependencies using Wally
+      - name: Install Roblox dependencies with Wally
+        run: wally install
 
-      # Step 4: Verify Rojo installation
+      # Step 5: Verify Rojo installation
       - name: Verify Rojo Installation
         run: |
           rojo --version
 
-      # Step 5: Build the game into .rbxl using Rojo
+      # Step 6: Build the game into .rbxl using Rojo
       - name: Build the game
         run: |
           mkdir -p Temp
           echo "Building ${GITHUB_REF}..."
           rojo build default.project.json --output Temp/CurrentBuild.rbxl
 
-      # Step 6: Create a release on GitHub and upload the build (optional backup)
+      # Step 7: Create a release on GitHub and upload the build (optional backup)
       - name: Create release and upload build
         uses: actions/create-release@v1
         with:
@@ -63,7 +70,7 @@ jobs:
           asset_name: Build_${{ github.ref }}.rbxl
           asset_content_type: application/octet-stream
 
-      # Step 7: Deploy to Roblox
+      # Step 8: Deploy to Roblox (Production)
       - name: Deploy to Roblox (Production)
         run: |
           echo "Deploying build to Roblox..."
