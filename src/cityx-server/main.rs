@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-
+   
 struct City {
     name: String,
     tasks: HashMap<String, bool>,
