@@ -1,3 +1,7 @@
+<!---
+
+
+
 <div align="center">
   
   <div align="center">
@@ -119,8 +123,9 @@ Backend (Rust)
 Frontend (Roblox Lua)
 Core (Lua)
 Renderer (Rust)
-</div>
-# [WORKSPACE] - Lista pytań do implementacji funkcji
+</div>--->
+
+# [README] - Miastox --- lista funkcji i implementajci
 
 ## Preładowanie Gry
 **Nazwa skryptu**: `PreloadGameSetup.luau`
@@ -162,6 +167,25 @@ Renderer (Rust)
 - Funkcja do wiązania zdarzeń (`bindPreloadEvents()`)
 - Funkcja generująca układ miasta (`generateCityLayout()`)
 
+---
+
+---
+<section>
+<div align="left">
+## **Gotowy na Przygody?**
+
+Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
+
+</div>
+<div align="right">
+## 👤 **Kontakt**
+
+- **Autor**: Whitekali
+- **E-mail**: whitekali@example.com
+- **GitHub**: [Dawju9](https://github.com/Dawju9)
+
+</div>
+</section>
 ---
 
 ### Uwagi do skryptu `PreloadGameSetup`:
