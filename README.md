@@ -23,6 +23,15 @@
           Modularność i dostępność do ustawień całości gry jak i miasta
           Efektywne Zarządzanie Danymi modelami wielkościami a nawet i logiką samej fizyki
           ```
+
+                          ```
+        Podstawowe Założenia
+        Wczesne ładowanie: Sprawdzanie zależności i obecności kluczowych elementów (modele, dane, tekstury).
+        Modularna struktura: Skrypty i elementy podzielone na funkcjonalne grupy.
+        Prosty interfejs użytkownika: Nakładające się menu (Start, Pauza, Wyjście).
+        Mechanika gry: Sterowanie graczem i podstawowe interakcje.
+        Proceduralność: Generowanie budynków w świecie gry na podstawie predefiniowanych danych.
+```
       ,Code White
       </div>
   </div>
