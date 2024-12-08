@@ -175,7 +175,7 @@ Renderer (Rust)
 ## **Gotowy na Przygody?**
 
 Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-
+https://dawju9.github.io/MiastoX/
 </div>
 <div align="right">
 ## 👤 **Kontakt**
