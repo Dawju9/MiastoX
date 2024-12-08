@@ -18,12 +18,14 @@
   </div>
     <div align="left">
       <div class="code">
-          ```rs
+         ```rs
           🔍 Kluczowe Funkcje
           Modularność i dostępność do ustawień całości gry jak i miasta
           Efektywne Zarządzanie Danymi modelami wielkościami a nawet i logiką samej fizyki
           ```
-
+      ,Code White
+      </div>
+      <div class="code">
                           ```
         Podstawowe Założenia
         Wczesne ładowanie: Sprawdzanie zależności i obecności kluczowych elementów (modele, dane, tekstury).
