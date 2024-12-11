@@ -1,4 +1,4 @@
-<div>
+<!---------<div>
 <head>
   <title>#MiastoX Home page</title>
   <link rel="stylesheet" href="style.css">
@@ -50,8 +50,8 @@
     nav a:hover {
       color: #ccc;
     }
-  </style></head></div>div><body> 
- 
+  </style></head></div>
+ --->
 <body>
   <div class="title">
     <div class="title-text">
