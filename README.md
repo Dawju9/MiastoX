@@ -1,10 +1,16 @@
-<div class="container">
-    <div class="header">
+<div class="container"> 
+	
+	```
+ Uwagi do pliku `README.md`: Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
+```
+<div class="header">
         <h1>Ninja Survival: Dimensions of the Infinite</h1>
     </div>
+
+
     <div class="content">
         <h2>Projekt Gry</h2>
-        <p>Postapokaliptyczny survival z elementami anomalii wymiarów, w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
+        <p>Postapokaliptyczny survival z elementami anomalii wymiarów, <br>w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
         <h2>Misja i Wizja Gry</h2>
         <p>Stworzenie immersyjnego i niekończącego się świata, w którym gracze mogą eksplorować, walczyć, budować i rozwijać swoje umiejętności ninja, zarówno samotnie, jak i we współpracy z innymi graczami.</p>
         <button class="button" onclick="showInfo()">Pokaż informacje</button>
