@@ -9,7 +9,7 @@
 __pycache__/
 /vendor/
 
-# Rojo Sourcemap
+# Rojo Sourcemap  .gitmodules
 /sourcemap.json
 
 # Roblox Model Files
