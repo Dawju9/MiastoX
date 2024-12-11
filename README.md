@@ -1,16 +1,77 @@
-<html>
-<body>
-	
-</div>
 
-  <script>
-    function clickOption() {
-      document.getElementById("result").innerHTML = "You clicked the button!";
-    }
-  </script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Survival: Dimensions of the Infinite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ninja Survival: Dimensions of the Infinite</h1>
+        </div>
+        <div class="content">
+            <h2>Projekt Gry</h2>
+            <p>Postapokaliptyczny survival z elementami anomalii wymiarów, w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
+            <h2>Misja i Wizja Gry</h2>
+            <p>Stworzenie immersyjnego i niekończącego się świata, w którym gracze mogą eksplorować, walczyć, budować i rozwijać swoje umiejętności ninja, zarówno samotnie, jak i we współpracy z innymi graczami.</p>
+            <button class="button" onclick="showInfo()">Pokaż informacje</button>
+            <div id="info"></div>
+        </div>
+    </div>
+    <script>
+        function showInfo() {
+            const infoDiv = document.getElementById("info");
+            if (infoDiv.style.display === "block") {
+                infoDiv.style.display = "none";
+            } else {
+                infoDiv.style.display = "block";
+                infoDiv.innerHTML = `
+                    <h3>Główne Założenia Projektu</h3>
+                    <p>Tematyka: Postapokaliptyczny survival z elementami anomalii wymiarów, w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
+                    <p>Cel Gry: Zdobycie legendarnej katany wykonanej z Iron Sand, symbolu potęgi i niezłomności.</p>
+                    <p>Świat Gry: Nieskończony, dynamicznie generowany świat składający się z różnych biomes, wiosek, osad, pól, rzek, jezior, gór, dolin, kanałów i tuneli.</p>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>
-
 
 
 
