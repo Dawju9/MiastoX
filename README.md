@@ -1,6 +1,28 @@
 <html>
 <body>
 	
+</div>
+
+  <script>
+    function clickOption() {
+      document.getElementById("result").innerHTML = "You clicked the button!";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
+
+<h2 id="Navigation">Navigation</h2>
+
+<h2 id="Project">Project</h3>
+
+<h3 id="About">About</h2>
+
+
 <h2 id="Scripts">Scripts</h2>
 <p>Aftman is required to be installed for all scripts.</p>
 
@@ -107,15 +129,13 @@
     </details>
 
 <li>Feature 3</li
-</div>
 
-  <script>
-    function clickOption() {
-      document.getElementById("result").innerHTML = "You clicked the button!";
-    }
-  </script>
-</body>
-</html>
+
+
+
+
+<!----
+
   <h1>Nałra of My Miastox Page</h1> 
  <p>This is a simple web page created using HTMLxDDDDDD.</p> 
 
@@ -165,9 +185,6 @@ This repository serves as a template designed specifically for Roblox developers
  
   </html>
 
-
-
-<!----
 <h2 id="Features">Features</h2>
 
 <p></p>
