@@ -1,2 +1,5 @@
-*.lua text eol=lf
-*.rbxl binary
+* text=auto eol=lf
+*.lua linguist-language=Lua
+*.luau linguist-language=Lua
+CustomPackages/* linguist-vendored
+Packages/* linguist-vendored

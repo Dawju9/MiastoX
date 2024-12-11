@@ -1,0 +1,18 @@
+return {
+   FallingDown = false,
+   Ragdoll = false,
+   GettingUp = false,
+   Jumping = true,
+   Swimming = false,
+   Freefall = true,
+   Flying = false,
+   Landed = true,
+   Running = true,
+   RunningNoPhysics = false,
+   StrafingNoPhysics = false,
+   Climbing = false,
+   Seated = false,
+   PlatformStanding = false,
+   Dead = false,
+   Physics = false,
+}
