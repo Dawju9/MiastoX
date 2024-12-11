@@ -15,7 +15,59 @@
 
 
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
+### Uwagi do pliku `README.md`:
+------------
+---/. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
 
+/game: Zasoby gry
+[miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
+# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
+
+**### # [README] - Miastox --- lista funkcji i implementajci
+
+## **Gotowy na Przygody?**
+
+Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
+[Live MiastoX](https://dawju9.github.io/MiastoX/)
+[Live CityxN](https://dawju9.github.io/cityx/)
+
+## 👤 **Kontakt**
+
+- **Autor**: Whitekali
+- **E-mail**: whitekali@example.com
+- **GitHub**: [Dawju9](https://github.com/Dawju9)
+
+---
+
+### Uwagi do skryptu `PreloadGameSetup`:
+- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
+
+
+
+
+
+
+
+
+
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1><!----
+
+<h2 id="Contributing">Contributing</h2>
+
+<p>
+There are several ways how you can potentially contribute to this project. One important way to contribute is to actually <i>report bugs/issues</i> you might identify. In addition you can also bring up <i>feature/enhancements</i> requests. Another way is to <i>help translating</i> the README to a wider range of different languages by committing to the <a href="translations">translations</a> folder.
+<br>
+Make sure you read the <a href=".github/CODE_OF_CONDUCT.md">Code of Conduct</a> and <a href=".github/CONTRIBUTING.md">Contributing Guide</a> first, as well as all other <a href=".github">support guides</a>.
+</p>
+
+<h2 id="License & Copyright">License & Copyright</h2>
+
+<p>
+This template is distributed and licensed under the MIT License. See <a href="LICENSE">LICENSE</a> for more detailed information. This is NOT legal advice!
+</p>
+
+<a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
 <h2 id="Navigation">Navigation</h2>
 
 <h2 id="Project">Project</h3>
@@ -202,62 +254,6 @@ You can either do it manually or use the all-in-one <a href="scripts/install.sh"
 </p>
 --->
 
-<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
-### Uwagi do pliku `README.md`:
-------------
----/. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
-
-/game: Zasoby gry
-[miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
-# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
-
-**### # [README] - Miastox --- lista funkcji i implementajci
-
-## **Gotowy na Przygody?**
-
-Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-[Live MiastoX](https://dawju9.github.io/MiastoX/)
-[Live CityxN](https://dawju9.github.io/cityx/)
-
-## 👤 **Kontakt**
-
-- **Autor**: Whitekali
-- **E-mail**: whitekali@example.com
-- **GitHub**: [Dawju9](https://github.com/Dawju9)
-
----
-
-### Uwagi do skryptu `PreloadGameSetup`:
-- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
-
-
-
-
-
-
-
-
-
-<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1><!----
-
-<h2 id="Contributing">Contributing</h2>
-
-<p>
-There are several ways how you can potentially contribute to this project. One important way to contribute is to actually <i>report bugs/issues</i> you might identify. In addition you can also bring up <i>feature/enhancements</i> requests. Another way is to <i>help translating</i> the README to a wider range of different languages by committing to the <a href="translations">translations</a> folder.
-<br>
-Make sure you read the <a href=".github/CODE_OF_CONDUCT.md">Code of Conduct</a> and <a href=".github/CONTRIBUTING.md">Contributing Guide</a> first, as well as all other <a href=".github">support guides</a>.
-</p>
-
-<h2 id="License & Copyright">License & Copyright</h2>
-
-<p>
-This template is distributed and licensed under the MIT License. See <a href="LICENSE">LICENSE</a> for more detailed information. This is NOT legal advice!
-</p>
-
-<a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
----> 
-</html>
-
 
 
 
@@ -318,7 +314,6 @@ This template is distributed and licensed under the MIT License. See <a href="LI
       color: #ccc;
     }
   </style></head></div>
- --->
 <body>
   <div class="title">
     <div class="title-text">
@@ -483,8 +478,6 @@ This template is distributed and licensed under the MIT License. See <a href="LI
   <h1>Nałra of My Miastox Page</h1> 
  <p>This is a simple web page created using HTMLxDDDDDD.</p> 
 
---->
-
 
 
 
@@ -548,8 +541,6 @@ To get started, simply clone this repository and follow the setup instructions d
 <p>
 You can either do it manually or use the all-in-one <a href="scripts/install.sh">install.sh</a> script. You can find other useful command snippets in there as well.
 </p>
---->
-
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
 ### Uwagi do pliku `README.md`:
 ------------
@@ -603,5 +594,4 @@ This template is distributed and licensed under the MIT License. See <a href="LI
 </p>
 
 <a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
----> 
 </html>
