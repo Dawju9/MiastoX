@@ -1,50 +1,7 @@
-
+<html>
 <body>
-  <div class="title">
-    <div class="title-text">
-      <nav>
-        <ul>
-          <li><a href="#">MiastoX</a></li>
-          <li><a href="#">O nas</a></li>
-          <li><a href="#">Kontakt</a></li>
-        </ul>
-      </nav>
-      <h4>Miastox</h4>
-    </div>
-  </div>
-  <button class="click-option" onclick="clickOption()">Click Me</button>
-  <p id="result"></p> <img src="https://example.com/image.jpg" alt="Example Image"> 
- <div align='center'>
-    <img src="./gh-assets/project_logo.svg" alt="Project Logo" width="150" height="150">
-    <h1 id="Top">MiastoX</h1>
-    <h3>A City4All you out there in Roblox developers to inspire and alow goodnes and shown advanced tehniques to manage project like Pro GitHub workflows, build, and deploy active stations.</h3>
-    <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/ci.yaml/badge.svg" alt="CI">
-    <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/release.yaml/badge.svg" alt="Build & Deploy">
-    <a href=""><img src="https://img.shields.io/github/issues/iceeburr/roblox-template.svg" alt="Issues"></a>
-    <a href="https://www.paypal.me/dawju9"><img src="https://img.shields.io/badge/donate-PayPal-green.svg" alt="Donate"></a>
-
-    <section>
-    <h2>Features</h2>
-    <ul>
-<code>`./scripts/install.sh`</code>
-
-<details>
-    <summary>Manual Setup:</summary>
-    <br>
-    <p>
-    First, please head over to the <a href="https://github.com/LPGhatguy/aftman/releases/latest">aftman releases page</a> and download the latest version. Open your terminal and <code>cd</code> into the directory. Finally run <code>./aftman self-install</code>.</br>
-    Now you can run <code>aftman install</code>, followed by <code>wally install</code>.
-    </br>
-    That's it! Read how to build the place file further. (or use the <a href="scripts/build.sh">build.sh</a> script)
-    </p>
-</details>
-
- <h2 id="Building & Project Structure">Building & Project Structure</h2>
-
-<p></p>
-
+	
 <h2 id="Scripts">Scripts</h2>
-
 <p>Aftman is required to be installed for all scripts.</p>
 
 <details>
