@@ -1,21 +1,71 @@
-<!Doctype html> <html> <head> <title>My First Web Page</title> </head>
-
-
-
-
-
-
-
-
-
-
- <body> 
+<head>
+  <title>#MiastoX Home page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .title {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .title-text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .click-option {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .click-option:hover {
+      background-color: #3e8e41;
+    }
+    nav {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #ccc;
+    }
+  </style></head><body> 
  
- 
- 
- <h1>Welcome to My Web Page</h1> 
- <p>This is a simple web page created using HTML.</p> 
- <img src="https://example.com/image.jpg" alt="Example Image"> 
+<body>
+  <div class="title">
+    <div class="title-text">
+      <nav>
+        <ul>
+          <li><a href="#">MiastoX</a></li>
+          <li><a href="#">O nas</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+      <h4>Miastox</h4>
+    </div>
+  </div>
+  <button class="click-option" onclick="clickOption()">Click Me</button>
+  <p id="result"></p> <img src="https://example.com/image.jpg" alt="Example Image"> 
  <div align='center'>
     <img src="./gh-assets/project_logo.svg" alt="Project Logo" width="150" height="150">
     <h1 id="Top">MiastoX</h1>
@@ -154,6 +204,17 @@
 
     <li>Feature 3</li
 </div>
+
+  <script>
+    function clickOption() {
+      document.getElementById("result").innerHTML = "You clicked the button!";
+    }
+  </script>
+</body>
+</html>
+  <h1>Nałra of My Miastox Page</h1> 
+ <p>This is a simple web page created using HTMLxDDDDDD.</p> 
+
 --->
 
 
