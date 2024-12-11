@@ -1,8 +1,7 @@
 <div class="container"> 
 	
-	```
  Uwagi do pliku `README.md`: Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
-```
+
 <div class="header">
         <h1>Ninja Survival: Dimensions of the Infinite</h1>
     </div>
