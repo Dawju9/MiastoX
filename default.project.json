@@ -2,102 +2,89 @@
   "name": "miastox",
   "tree": {
     "$className": "DataModel",
-    "$path": ".",
     "HttpService": {
       "$properties": {
         "HttpEnabled": true
       }
     },
-
-    "Workspace": {
-      "$properties": {
-        "Scale": 1,
-        "AllowThirdPartySales": false,
-        "ClientAnimatorThrottling": "Default",
-        "FallenPartsDestroyHeight": -500,
-        "FluidForces": "Default",
-        "GlobalWind": [0, 0, 0],
-        "Gravity": 196.2,
-        "IKControlConstraintSupport": "Default",
-        "MeshPartHeadsAndAccessories": "Default",
-        "PhysicsSteppingMethod": "Default",
-        "PlayerCharacterDestroyBehavior": "Default",
-        "Retargeting": "Default",
-        "SignalBehavior": "Default",
-        "TouchesUseCollisionGroups": false,
-        "AirDensity": 0.001,
-        "RejectCharacterDeletions": "Default",
-        "EditorLiveScripting": "Disabled",
-        "StreamingEnabled": true,
-        "ModelStreamingBehavior": "Default",
-        "StreamingIntegrityMode": "Default",
-        "StreamingMinRadius": 64,
-        "StreamingTargetRadius": 1024,
-        "StreamOutBehavior": "Default"
-      },
-      "Map": {
-        "$path": "assets/models/Baseplate.rbxm"
-      }
-    },
-
-    "Players": {
-      "$properties": {
-        "RespawnTime": 0,
-        "CharacterAutoLoads": true,
-        "UseStrafingAnimations": false
-      }
-    },
-
     "Lighting": {
       "$className": "Lighting",
       "$properties": {
-        "Ambient": [0.014285714285714285, 0.014285714285714285, 0.014285714285714285],
-        "Brightness": 3,
-        "ColorShift_Bottom": [0, 0, 0],
-        "ColorShift_Top": [0, 0, 0],
-        "EnvironmentDiffuseScale": 1,
-        "EnvironmentSpecularScale": 1,
-        "GlobalShadows": true,
-        "OutdoorAmbient": [0.014285714285714285, 0.014285714285714285, 0.014285714285714285],
-        "ShadowSoftness": 1,
-        "Technology": "ShadowMap",
         "ClockTime": 14.5,
+        "ShadowSoftness": 1.0,
+        "ExposureCompensation": 0.0,
+        "EnvironmentSpecularScale": 1.0,
         "GeographicLatitude": 41.733,
-        "ExposureCompensation": 0
+        "Ambient": [
+          0.014285714285714284,
+          0.014285714285714284,
+          0.014285714285714284
+        ],
+        "GlobalShadows": true,
+        "Brightness": 3.0,
+        "ColorShift_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "EnvironmentDiffuseScale": 1.0,
+        "OutdoorAmbient": [
+          0.014285714285714284,
+          0.014285714285714284,
+          0.014285714285714284
+        ],
+        "ColorShift_Top": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Technology": "ShadowMap"
       }
     },
-
+    "Players": {
+      "$properties": {
+        "UseStrafingAnimations": false,
+        "RespawnTime": 0.0,
+        "CharacterAutoLoads": true
+      }
+    },
     "ReplicatedFirst": {
-      "$path": "src/ReplicatedFirst",
       "LightingEffects": {
         "$path": "assets/models/LightingEffects.rbxm"
-      }
+      },
+      "$path": "src/ReplicatedFirst"
     },
-
     "ReplicatedStorage": {
-      "$path": "src/ReplicatedStorage",
       "Packages": {
-        "$path": "Packages",
         "Custom": {
           "$className": "Folder",
           "fusion": {
             "$path": "CustomPackages/Fusion/src"
           }
-        }
-      }
+        },
+        "$path": "Packages"
+      },
+      "$path": "src/ReplicatedStorage"
     },
-
     "ServerScriptService": {
-      "$path": "src/ServerScriptService",
       "$properties": {
         "LoadStringEnabled": false
-      }
+      },
+      "$path": "src/ServerScriptService"
     },
-
     "ServerStorage": {
       "$path": "src/ServerStorage"
     },
-
+    "SoundService": {
+      "$properties": {
+        "DistanceFactor": 3.33,
+        "RolloffScale": 1.0,
+        "DopplerScale": 1.0,
+        "VolumetricAudio": "Automatic",
+        "RespectFilteringEnabled": true,
+        "AmbientReverb": "NoReverb"
+      }
+    },
     "StarterGui": {
       "$properties": {
         "ScreenOrientation": "LandscapeSensor",
@@ -106,60 +93,80 @@
         "VirtualCursorMode": "Default"
       }
     },
-
     "StarterPlayer": {
-      "$properties": {
-        "HealthDisplayDistance": 100,
-        "NameDisplayDistance": 100,
-        "CameraMaxZoomDistance": 400,
-        "CameraMinZoomDistance": 0.5,
-        "CameraMode": "Classic",
-        "DevCameraOcclusionMode": "Zoom",
-        "DevComputerCameraMovementMode": "UserChoice",
-        "DevTouchCameraMovementMode": "UserChoice",
-        "CharacterMaxSlopeAngle": 89,
-        "CharacterWalkSpeed": 16,
-        "EnableDynamicHeads": "Default",
-        "LoadCharacterAppearance": true,
-        "LoadCharacterLayeredClothing": "Default",
-        "UserEmotesEnabled": true,
-        "CharacterJumpPower": 50,
-        "CharacterUseJumpPower": true,
-        "DevComputerMovementMode": "UserChoice",
-        "DevTouchMovementMode": "UserChoice",
-        "EnableMouseLockOption": true,
-        "AutoJumpEnabled": true
-      },
-
       "StarterCharacterScripts": {
         "$className": "StarterCharacterScripts",
         "$path": "src/StarterCharacterScripts"
       },
-
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
         "$path": "src/StarterPlayerScripts"
-      }
-    },
-
-    "SoundService": {
+      },
       "$properties": {
-        "AmbientReverb": "NoReverb",
-        "DistanceFactor": 3.33,
-        "DopplerScale": 1,
-        "RespectFilteringEnabled": true,
-        "RolloffScale": 1,
-        "VolumetricAudio": "Automatic"
+        "DevComputerMovementMode": "UserChoice",
+        "EnableMouseLockOption": true,
+        "CharacterMaxSlopeAngle": 89.0,
+        "EnableDynamicHeads": "Default",
+        "CameraMinZoomDistance": 0.5,
+        "LoadCharacterLayeredClothing": "Default",
+        "CharacterWalkSpeed": 16.0,
+        "DevCameraOcclusionMode": "Zoom",
+        "HealthDisplayDistance": 100.0,
+        "DevComputerCameraMovementMode": "UserChoice",
+        "DevTouchCameraMovementMode": "UserChoice",
+        "LoadCharacterAppearance": true,
+        "NameDisplayDistance": 100.0,
+        "UserEmotesEnabled": true,
+        "CharacterJumpPower": 50.0,
+        "CameraMaxZoomDistance": 400.0,
+        "CharacterUseJumpPower": true,
+        "CameraMode": "Classic",
+        "DevTouchMovementMode": "UserChoice",
+        "AutoJumpEnabled": true
       }
     },
-
     "TextChatService": {
       "$properties": {
         "ChatTranslationEnabled": false,
+        "CreateDefaultTextChannels": true,
         "ChatVersion": "TextChatService",
-        "CreateDefaultCommands": true,
-        "CreateDefaultTextChannels": true
+        "CreateDefaultCommands": true
       }
-    }
+    },
+    "Workspace": {
+      "Map": {
+        "$path": "assets/models/Baseplate.rbxm"
+      },
+      "$properties": {
+        "PhysicsSteppingMethod": "Default",
+        "ClientAnimatorThrottling": "Default",
+        "Gravity": 196.2,
+        "PlayerCharacterDestroyBehavior": "Default",
+        "Retargeting": "Default",
+        "FallenPartsDestroyHeight": -500.0,
+        "StreamingIntegrityMode": "Default",
+        "StreamingMinRadius": 64.0,
+        "StreamingTargetRadius": 1024.0,
+        "StreamOutBehavior": "Default",
+        "AllowThirdPartySales": false,
+        "MeshPartHeadsAndAccessories": "Default",
+        "TouchesUseCollisionGroups": false,
+        "AirDensity": 0.001,
+        "FluidForces": "Default",
+        "RejectCharacterDeletions": "Default",
+        "GlobalWind": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Scale": 1.0,
+        "IKControlConstraintSupport": "Default",
+        "SignalBehavior": "Default",
+        "StreamingEnabled": true,
+        "ModelStreamingBehavior": "Default",
+        "EditorLiveScripting": "Disabled"
+      }
+    },
+    "$path": "."
   }
 }
