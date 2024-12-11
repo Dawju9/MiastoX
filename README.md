@@ -74,7 +74,7 @@
     <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/ci.yaml/badge.svg" alt="CI">
     <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/release.yaml/badge.svg" alt="Build & Deploy">
     <a href=""><img src="https://img.shields.io/github/issues/iceeburr/roblox-template.svg" alt="Issues"></a>
-    <a href="https://www.paypal.me/iceeburr"><img src="https://img.shields.io/badge/donate-PayPal-green.svg" alt="Donate"></a>
+    <a href="https://www.paypal.me/whitekali"><img src="https://img.shields.io/badge/donate-PayPal-green.svg" alt="Donate"></a>
 
     <section>
     <h2>Features</h2>
