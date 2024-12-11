@@ -80,7 +80,7 @@ You can either do it manually or use the all-in-one <a href="scripts/install.sh"
 <h2 id="Scripts">Scripts</h2>
 
 <p>Aftman is required to be installed for all scripts.</p>
-
+--->
 <details>
     <summary>Use Cases</summary>
     <br>
@@ -182,6 +182,7 @@ You can either do it manually or use the all-in-one <a href="scripts/install.sh"
         </tr>
     </table>
 </details>
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1><!----
 
 <h2 id="Contributing">Contributing</h2>
 
