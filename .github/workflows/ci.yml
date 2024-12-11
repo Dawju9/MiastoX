@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  CI:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Aftman
+        uses: ok-nick/setup-aftman@v0.4.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Wally Packages
+        run: wally install
+
+      - name: Generate Sourcemap
+        run: rojo sourcemap test.project.json -o sourcemap.json
+
+      - name: Export Wally Package Types
+        run: wally-package-types --sourcemap sourcemap.json Packages
+
+      - name: Curl Luau Types
+        shell: bash
+        run: curl -L "https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.lua" > "globalTypes.d.lua"
+
+      - name: Generate Sourcemap
+        run: rojo sourcemap test.project.json -o sourcemap.json
+
+      - name: Luau LSP Analysis
+        run: luau-lsp analyze --sourcemap sourcemap.json --definitions globalTypes.d.lua src tests
