@@ -1,7 +1,9 @@
+<!----
+
 <div align='center'>
     <img src="./gh-assets/project_logo.svg" alt="Project Logo" width="150" height="150">
-    <h1 id="Top">Your Project Name</h1>
-    <h3>A template for Roblox developers to integrate advanced CLI tools like Rojo into GitHub workflows, streamlining build, test, and deploy processes.</h3>
+    <h1 id="Top">MiastoX</h1>
+    <h3>A City4All you out there in Roblox developers to inspire and alow goodnes and shown advanced tehniques to manage project like Pro GitHub workflows, build, and deploy active stations.</h3>
     <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/ci.yaml/badge.svg" alt="CI">
     <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/release.yaml/badge.svg" alt="Build & Deploy">
     <a href=""><img src="https://img.shields.io/github/issues/iceeburr/roblox-template.svg" alt="Issues"></a>
@@ -196,3 +198,39 @@ This template is distributed and licensed under the MIT License. See <a href="LI
 </p>
 
 <a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
+---> 
+
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
+### Uwagi do pliku `README.md`:
+------------
+---/. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
+
+/game: Zasoby gry
+
+</div> [miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
+# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
+
+**### # [README] - Miastox --- lista funkcji i implementajci
+
+<section>
+<div align="left">
+## **Gotowy na Przygody?**
+
+Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
+[Live MiastoX](https://dawju9.github.io/MiastoX/)
+[Live CityxN](https://dawju9.github.io/cityx/)
+</div>
+<div align="right">
+## 👤 **Kontakt**
+
+- **Autor**: Whitekali
+- **E-mail**: whitekali@example.com
+- **GitHub**: [Dawju9](https://github.com/Dawju9)
+
+</div>
+</section>
+---
+
+### Uwagi do skryptu `PreloadGameSetup`:
+- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
+
