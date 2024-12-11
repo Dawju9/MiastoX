@@ -1,8 +1,8 @@
 {
-  "name": "your-project-name",
+  "name": "miastox",
   "tree": {
     "$className": "DataModel",
-
+    "$path": ".",
     "HttpService": {
       "$properties": {
         "HttpEnabled": true
