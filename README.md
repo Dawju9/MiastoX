@@ -1,5 +1,22 @@
-<!----
-<div align='center'>
+<!Doctype html> <html> <head> <title>My First Web Page</title> </head>
+
+
+
+
+
+
+
+
+
+
+ <body> 
+ 
+ 
+ 
+ <h1>Welcome to My Web Page</h1> 
+ <p>This is a simple web page created using HTML.</p> 
+ <img src="https://example.com/image.jpg" alt="Example Image"> 
+ <div align='center'>
     <img src="./gh-assets/project_logo.svg" alt="Project Logo" width="150" height="150">
     <h1 id="Top">MiastoX</h1>
     <h3>A City4All you out there in Roblox developers to inspire and alow goodnes and shown advanced tehniques to manage project like Pro GitHub workflows, build, and deploy active stations.</h3>
@@ -7,6 +24,135 @@
     <img src="https://github.com/iceeburr/roblox-video-codec/actions/workflows/release.yaml/badge.svg" alt="Build & Deploy">
     <a href=""><img src="https://img.shields.io/github/issues/iceeburr/roblox-template.svg" alt="Issues"></a>
     <a href="https://www.paypal.me/iceeburr"><img src="https://img.shields.io/badge/donate-PayPal-green.svg" alt="Donate"></a>
+
+    <section>
+    <h2>Features</h2>
+    <ul>
+<code>`./scripts/install.sh`</code>
+
+<details>
+    <summary>Manual Setup:</summary>
+    <br>
+    <p>
+    First, please head over to the <a href="https://github.com/LPGhatguy/aftman/releases/latest">aftman releases page</a> and download the latest version. Open your terminal and <code>cd</code> into the directory. Finally run <code>./aftman self-install</code>.</br>
+    Now you can run <code>aftman install</code>, followed by <code>wally install</code>.
+    </br>
+    That's it! Read how to build the place file further. (or use the <a href="scripts/build.sh">build.sh</a> script)
+    </p>
+</details>
+
+
+    <h2 id="Building & Project Structure">Building & Project Structure</h2>
+
+    <p></p>
+
+    <h2 id="Scripts">Scripts</h2>
+
+    <p>Aftman is required to be installed for all scripts.</p>
+
+    <details>
+        <summary>Use Cases</summary>
+        <br>
+        <p>
+        Actions:
+        <ul>
+            <li>Sourcemap - will generate a sourcemap.json of the project.</li>
+            <li>Packages - will install wally packages & update custom ones with git submodules.</li>
+            <li>Types - will fix broken wally types</li>
+            <li>Builds - will build the place file.</li>
+            <li>Serves - will automatically start serving the place file.</li>
+            <li>Starts - will automatically open the place file in studio.</li>
+            <li>CQ - Runs code quality checks.</li>
+            <li>❌ - Script does not execute the action.</li>
+            <li>✅ - Script will execute the action.</li>
+        </ul>
+        <p>
+        <br>
+        <table>
+            <tr align="center">
+                <th>Name</th>
+                <th>Sourcemap</th>
+                <th>Packages</th>
+                <th>Types</th>
+                <th>Builds</th>
+                <th>Serves</th>
+                <th>Starts</th>
+                <th>CQ</th>
+            </tr>
+            <tr align="center">
+                <td>install.sh</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>build.sh</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>serve.sh</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>start.sh</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>types.sh</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>packages.sh</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+            </tr>
+            <tr align="center">
+                <td>cq.sh</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>❌</td>
+                <td>✅</td>
+            </tr>
+        </table>
+    </details>
+
+    <li>Feature 3</li
 </div>
 --->
 
@@ -51,6 +197,11 @@ This repository serves as a template designed specifically for Roblox developers
     <br>
     <i>Want your game in this list? Open an issue or contact me on Discord @iceeburr</i>
 </details>
+ </body>
+ 
+  </html>
+
+
 
 <!----
 <h2 id="Features">Features</h2>
@@ -69,129 +220,6 @@ To get started, simply clone this repository and follow the setup instructions d
 You can either do it manually or use the all-in-one <a href="scripts/install.sh">install.sh</a> script. You can find other useful command snippets in there as well.
 </p>
 --->
-
-<code>`./scripts/install.sh`</code>
-
-<details>
-    <summary>Manual Setup:</summary>
-    <br>
-    <p>
-    First, please head over to the <a href="https://github.com/LPGhatguy/aftman/releases/latest">aftman releases page</a> and download the latest version. Open your terminal and <code>cd</code> into the directory. Finally run <code>./aftman self-install</code>.</br>
-    Now you can run <code>aftman install</code>, followed by <code>wally install</code>.
-    </br>
-    That's it! Read how to build the place file further. (or use the <a href="scripts/build.sh">build.sh</a> script)
-    </p>
-</details>
-
-<h2 id="Building & Project Structure">Building & Project Structure</h2>
-
-<p></p>
-
-<h2 id="Scripts">Scripts</h2>
-
-<p>Aftman is required to be installed for all scripts.</p>
-
-<details>
-    <summary>Use Cases</summary>
-    <br>
-    <p>
-    Actions:
-    <ul>
-        <li>Sourcemap - will generate a sourcemap.json of the project.</li>
-        <li>Packages - will install wally packages & update custom ones with git submodules.</li>
-        <li>Types - will fix broken wally types</li>
-        <li>Builds - will build the place file.</li>
-        <li>Serves - will automatically start serving the place file.</li>
-        <li>Starts - will automatically open the place file in studio.</li>
-        <li>CQ - Runs code quality checks.</li>
-        <li>❌ - Script does not execute the action.</li>
-        <li>✅ - Script will execute the action.</li>
-    </ul>
-    <p>
-    <br>
-    <table>
-        <tr align="center">
-            <th>Name</th>
-            <th>Sourcemap</th>
-            <th>Packages</th>
-            <th>Types</th>
-            <th>Builds</th>
-            <th>Serves</th>
-            <th>Starts</th>
-            <th>CQ</th>
-        </tr>
-        <tr align="center">
-            <td>install.sh</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>build.sh</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>serve.sh</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>start.sh</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>types.sh</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>packages.sh</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-        </tr>
-        <tr align="center">
-            <td>cq.sh</td>
-            <td>✅</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>❌</td>
-            <td>✅</td>
-        </tr>
-    </table>
-</details>
 
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
 ### Uwagi do pliku `README.md`:
@@ -247,3 +275,4 @@ This template is distributed and licensed under the MIT License. See <a href="LI
 
 <a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
 ---> 
+</html>
