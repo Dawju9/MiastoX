@@ -1,5 +1,4 @@
 <!----
-
 <div align='center'>
     <img src="./gh-assets/project_logo.svg" alt="Project Logo" width="150" height="150">
     <h1 id="Top">MiastoX</h1>
@@ -9,24 +8,19 @@
     <a href=""><img src="https://img.shields.io/github/issues/iceeburr/roblox-template.svg" alt="Issues"></a>
     <a href="https://www.paypal.me/iceeburr"><img src="https://img.shields.io/badge/donate-PayPal-green.svg" alt="Donate"></a>
 </div>
+--->
+
+
+
+
+
+
+
+
 
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
-<h2 id="Navigation">Navigation</h2>
 
-<nav>
-    <ol>
-        <li><a href="#Project">Project</a></li>
-        <ol>
-            <li><a href="#About">About</a></li>
-            <li><a href="#Features">Features</a></li>
-            <li><a href="#Getting Started">Getting Started</a></li>
-            <li><a href="#Building & Project Structure">Building & Project Structure</a></li>
-            <li><a href="#Scripts">Scripts</a></li>
-        </ol>
-        <li><a href="#Contributing">Contributing</a></li>
-        <li><a href="#License & Copyright">License & Copyright</a></li>
-    </ol>
-</nav>
+<h2 id="Navigation">Navigation</h2>
 
 <h2 id="Project">Project</h3>
 
@@ -37,13 +31,28 @@ This repository serves as a template designed specifically for Roblox developers
 </p>
 
 <details>
-    <summary>Featured Games</summary>
-    <a href="https://www.roblox.com/games/4618049391/V3-9-3-Patch-T-ang-County-Hebei"><h3>Tang County by Hebei Studios</h3></a>
-    <img src="https://tr.rbxcdn.com/a248ac5d3c509cb27cc4a44c7e978bbe/768/432/Image/Webp" alt="Tang County">
+	<summary>Featured Games</summary>
+	<nav>
+		<ol>
+			<li><a href="#Project">Project</a></li>
+			<ol>
+				<li><a href="#About">About</a></li>
+				<li><a href="#Features">Features</a></li>
+				<li><a href="#Getting Started">Getting Started</a></li>
+				<li><a href="#Building & Project Structure">Building & Project Structure</a></li>
+				<li><a href="#Scripts">Scripts</a></li>
+			</ol>
+			<li><a href="#Contributing">Contributing</a></li>
+			<li><a href="#License & Copyright">License & Copyright</a></li>
+		</ol>
+	</nav>
+    <a href=""><h3>Tang County by Hebei Studios</h3></a>
+    <img src="" alt="Tang County">
     <br>
     <i>Want your game in this list? Open an issue or contact me on Discord @iceeburr</i>
 </details>
 
+<!----
 <h2 id="Features">Features</h2>
 
 <p></p>
@@ -59,6 +68,7 @@ To get started, simply clone this repository and follow the setup instructions d
 <p>
 You can either do it manually or use the all-in-one <a href="scripts/install.sh">install.sh</a> script. You can find other useful command snippets in there as well.
 </p>
+--->
 
 <code>`./scripts/install.sh`</code>
 
@@ -80,7 +90,7 @@ You can either do it manually or use the all-in-one <a href="scripts/install.sh"
 <h2 id="Scripts">Scripts</h2>
 
 <p>Aftman is required to be installed for all scripts.</p>
---->
+
 <details>
     <summary>Use Cases</summary>
     <br>
@@ -182,6 +192,43 @@ You can either do it manually or use the all-in-one <a href="scripts/install.sh"
         </tr>
     </table>
 </details>
+
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
+### Uwagi do pliku `README.md`:
+------------
+---/. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
+
+/game: Zasoby gry
+[miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
+# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
+
+**### # [README] - Miastox --- lista funkcji i implementajci
+
+## **Gotowy na Przygody?**
+
+Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
+[Live MiastoX](https://dawju9.github.io/MiastoX/)
+[Live CityxN](https://dawju9.github.io/cityx/)
+
+## 👤 **Kontakt**
+
+- **Autor**: Whitekali
+- **E-mail**: whitekali@example.com
+- **GitHub**: [Dawju9](https://github.com/Dawju9)
+
+---
+
+### Uwagi do skryptu `PreloadGameSetup`:
+- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
+
+
+
+
+
+
+
+
+
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1><!----
 
 <h2 id="Contributing">Contributing</h2>
@@ -200,38 +247,3 @@ This template is distributed and licensed under the MIT License. See <a href="LI
 
 <a href="#Top"><i><u>Back To Top ⬆️</u></i></a>
 ---> 
-
-<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
-### Uwagi do pliku `README.md`:
-------------
----/. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
-
-/game: Zasoby gry
-
-</div> [miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
-# `📦 Project Miastox build on CityxN` !!~ New UPDATE ~!!
-
-**### # [README] - Miastox --- lista funkcji i implementajci
-
-<section>
-<div align="left">
-## **Gotowy na Przygody?**
-
-Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-[Live MiastoX](https://dawju9.github.io/MiastoX/)
-[Live CityxN](https://dawju9.github.io/cityx/)
-</div>
-<div align="right">
-## 👤 **Kontakt**
-
-- **Autor**: Whitekali
-- **E-mail**: whitekali@example.com
-- **GitHub**: [Dawju9](https://github.com/Dawju9)
-
-</div>
-</section>
----
-
-### Uwagi do skryptu `PreloadGameSetup`:
-- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
-
