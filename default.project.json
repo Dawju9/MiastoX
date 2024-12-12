@@ -2,34 +2,22 @@
   "name": "MiastoX",
   "tree": {
     "$className": "DataModel",
-    "Lighting": {
-      "$properties": {
-        "Outlines": false,
-        "Brightness": 2.0,
-        "GlobalShadows": true,
-        "Technology": "Voxel",
-        "Ambient": [
-          0.0,
-          0.0,
-          0.0
-        ]
-      }
-    },
+
     "ReplicatedStorage": {
       "Shared": {
         "$path": "src/shared"
       }
     },
+    "Packages":{
+      "$path": "Packages"
+    },
+
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
       }
     },
-    "SoundService": {
-      "$properties": {
-        "RespectFilteringEnabled": true
-      }
-    },
+
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "Client": {
@@ -37,31 +25,50 @@
         }
       }
     },
+
     "Workspace": {
+      "$properties": {
+        "FilteringEnabled": true
+      },
       "Baseplate": {
         "$className": "Part",
         "$properties": {
-          "Locked": true,
+          "Anchored": true,
           "Color": [
             0.38823,
             0.37254,
             0.38823
           ],
+          "Locked": true,
           "Position": [
-            0.0,
-            -10.0,
-            0.0
+            0,
+            -10,
+            0
           ],
-          "Anchored": true,
           "Size": [
-            512.0,
-            20.0,
-            512.0
+            512,
+            20,
+            512
           ]
         }
-      },
+      }
+    },
+    "Lighting": {
       "$properties": {
-        "FilteringEnabled": true
+        "Ambient": [
+          0,
+          0,
+          0
+        ],
+        "Brightness": 2,
+        "GlobalShadows": true,
+        "Outlines": false,
+        "Technology": "Voxel"
+      }
+    },
+    "SoundService": {
+      "$properties": {
+        "RespectFilteringEnabled": true
       }
     }
   }
