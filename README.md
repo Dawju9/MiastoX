@@ -3,21 +3,8 @@
 ----//=======================================//
 ---/.     Plik ten powinien kompleksowo opisywać grę poprzez 
 --/     opisanie jej mechaniki, zasobów, zdarzeń,
--/      oraz środowisko przedstawione gry.
-**### # [README] - Miastox --- lista funkcji i implementajci
-
-## **Gotowy na Przygody?**
-
-Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-[Live MiastoX](https://dawju9.github.io/MiastoX/)
-[Live CityxN](https
-
-### Uwagi do skryptu `PreloadGameSetup`:
-- Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
----->
+-/      oraz środowisko przedstawione gry.---->
 __`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
-
-
 ----------------- !!~ New UPDATE ~!!--------------
 ------//=======================================//
 -----//   `Project Miastox build on CityxN`   //
@@ -26,18 +13,52 @@ __`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
 --/           [Live CityxN](https://dawju9.github.io/cityx/)    //
 **### # [README] - Miastox --- lista funkcji i implementajci
 . Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
+####    ** [README] - Miastox --- Ess'a repo mojej gierki
+#      nowY! UPDATE ~ Plik misji
+#     `📦 Projekt CityxN Pracaram`
+#       -Ya stworzyłem te repozytorium z dumą z bycia leniwym często pracowitym, głównie leniwym.
+#       -Ya trochę jak Garffield, leże wygodnie w fotelu i kocham Lasange oraz Tod'a!
+                                                                    Ya White
 
 
+**Zjazd po gierze**
+------------------
 
-## **Gotowy na Przygody?**
 
-Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
-pLAN AKCJI
-[miro](https://miro.com/app/board/uXjVKtfWXNY=/?share_link_id=381033713650)
+------------------
+---------**Poziomy**---------
+```hack
+> **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.** 
+>>## 📜 **Opis Projektu**
+>>## 🔍 **Kluczowe Postacie** 
+>>## 🖥️ **Główne Mechaniki9**
+>>## 🏗️ **Struktura Lokacji**
+>>## 🌐 **Potencjalne Usprawnienia**
+>>## 💡 **Wpływ na Głowę**
+>>## 📝 **Uwagi**
+>  **Rozklejone buty, pomidor, tak**
+```
+
+
+---------**Credits**---------
+```hack
+>>## 🖥️ - **GitHub**: [Whitekali](https://github.com/Dawju9)
+>>## 🏗️ **Struktura Projektu**
+>>## 🌐 - **E-mail**: whitekali@example.com
+>>## 💡 - **Autor**: Whitekali
+>>## 📝 **Uwagi**
+> **Tylko gwiazdy znają nasze sekrety, żaden ziemski sąd nie jest wystarczający..** 
+```
 
 ### Uwagi do skryptu `PLANU AKCJI`:
 - 
 
+### Uwagi do skryptu `PreloadGameSetup`:
+-
+
+**********
+**********
+**********
 
 <!-------
 
