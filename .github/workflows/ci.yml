@@ -26,7 +26,7 @@ jobs:
         run: wally install
 
       - name: Generate Sourcemap
-        run: rojo sourcemap test.project.json -o sourcemap.json
+        run: rojo sourcemap default.project.json -o sourcemap.json
 
       - name: Export Wally Package Types
         run: wally-package-types --sourcemap sourcemap.json Packages
