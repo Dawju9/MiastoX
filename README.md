@@ -1,4 +1,6 @@
-
+layout: page
+title: "Index"
+permalink: ./Readme
 **Zjazd po gierze**
 ```hack
 --**Poziomy**
