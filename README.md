@@ -1,46 +1,4 @@
-<div class="container"> 
-	
- Uwagi do pliku `README.md`: Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
 
-<div class="header">
-        <h1>Ninja Survival: Dimensions of the Infinite</h1>
-    </div>
-
-
-    <div class="content">
-        <h2>Projekt Gry</h2>
-        <p>Postapokaliptyczny survival z elementami anomalii wymiarów, <br>w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
-        <h2>Misja i Wizja Gry</h2>
-        <p>Stworzenie immersyjnego i niekończącego się świata, w którym gracze mogą eksplorować, walczyć, budować i rozwijać swoje umiejętności ninja, zarówno samotnie, jak i we współpracy z innymi graczami.</p>
-        <button class="button" onclick="showInfo()">Pokaż informacje</button>
-        <div id="info"></div>
-        <div class="additional-info">
-            <h3>Główne Założenia Projektu</h3>
-            <p>Tematyka: Postapokaliptyczny survival z elementami anomalii wymiarów, w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
-            <p>Cel Gry: Zdobycie legendarnej katany wykonanej z Iron Sand, symbolu potęgi i niezłomności.</p>
-            <p>Świat Gry: Nieskończony, dynamicznie generowany świat składający się z różnych biomes, wiosek, osad, pól, rzek, jezior, gór, dolin, kanałów i tuneli.</p>
-        </div>
-    </div>
-</div>
-<script>
-    function showInfo() {
-        const infoDiv = document.getElementById("info");
-        if (infoDiv.style.display === "block") {
-            infoDiv.style.display = "none";
-        } else {
-            infoDiv.style.display = "block";
-            infoDiv.innerHTML = `
-                <h3>Główne Założenia Projektu</h3>
-                <p>Tematyka: Postapokaliptyczny survival z elementami anomalii wymiarów, w którym gracz wciela się w ninja, ucząc się starożytnej sztuki przetrwania i walki.</p>
-                <p>Cel Gry: Zdobycie legendarnej katany wykonanej z Iron Sand, symbolu potęgi i niezłomności.</p>
-                <p>Świat Gry: Nieskończony, dynamicznie generowany świat składający się z różnych biomes, wiosek, osad, pól, rzek, jezior, gór, dolin, kanałów i tuneli.</p>
-            `;
-        }
-    }
-</script>
-
-
-<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
 <h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
 ### Uwagi do pliku `README.md`:
 ------------
@@ -69,6 +27,7 @@ Odkryj sekrety CityX i zmierz się z wyzwaniami! 🏙️✨
 ### Uwagi do skryptu `PreloadGameSetup`:
 - Skrypt ten powinien kompleksowo przygotowywać grę poprzez wczytanie zasobów, konfigurację początkową, wiązanie zdarzeń oraz generację środowiska gry.
 
+<h1>THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!</h1>
 
 
 
