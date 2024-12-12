@@ -1,33 +1,11 @@
-<!----//=======================================//
------//-------- Uwagi do pliku `README.md`:   //
-----//=======================================//
----/.     Plik ten powinien kompleksowo opisywać grę poprzez 
---/     opisanie jej mechaniki, zasobów, zdarzeń,
--/      oraz środowisko przedstawione gry.---->
-__`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
------------------ !!~ New UPDATE ~!!--------------
-------//=======================================//
------//   `Project Miastox build on CityxN`   //
-----//=======================================//
----/          [Live MiastoX](https://dawju9.github.io/MiastoX/) //  
---/           [Live CityxN](https://dawju9.github.io/cityx/)    //
-**### # [README] - Miastox --- lista funkcji i implementajci
-. Plik ten powinien kompleksowo opisywać grę poprzez opisanie jej mechaniki, zasobów, zdarzeń, oraz środowisko przedstawione gry.
-####    ** [README] - Miastox --- Ess'a repo mojej gierki
-#      nowY! UPDATE ~ Plik misji
-#     `📦 Projekt CityxN Pracaram`
-#       -Ya stworzyłem te repozytorium z dumą z bycia leniwym często pracowitym, głównie leniwym.
-#       -Ya trochę jak Garffield, leże wygodnie w fotelu i kocham Lasange oraz Tod'a!
-                                                                    Ya White
-
 
 **Zjazd po gierze**
-------------------
-
-
-------------------
----------**Poziomy**---------
 ```hack
+------------------
+
+
+------------------
+--**Poziomy**
 > **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.** 
 >>## 📜 **Opis Projektu**
 >>## 🔍 **Kluczowe Postacie** 
@@ -37,11 +15,8 @@ __`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
 >>## 💡 **Wpływ na Głowę**
 >>## 📝 **Uwagi**
 >  **Rozklejone buty, pomidor, tak**
-```
 
-
----------**Credits**---------
-```hack
+--**Credits**
 >>## 🖥️ - **GitHub**: [Whitekali](https://github.com/Dawju9)
 >>## 🏗️ **Struktura Projektu**
 >>## 🌐 - **E-mail**: whitekali@example.com
@@ -49,6 +24,8 @@ __`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
 >>## 📝 **Uwagi**
 > **Tylko gwiazdy znają nasze sekrety, żaden ziemski sąd nie jest wystarczający..** 
 ```
+<!-------
+
 
 ### Uwagi do skryptu `PLANU AKCJI`:
 - 
@@ -59,9 +36,6 @@ __`THIS TEMPLATE IS STILL IN DEVELOPMENT<br>DO NOT USE IT YET!!!`__
 **********
 **********
 **********
-
-<!-------
-
 
 none
 
