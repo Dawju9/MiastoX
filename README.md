@@ -1,10 +1,6 @@
 
 **Zjazd po gierze**
 ```hack
-------------------
-
-
-------------------
 --**Poziomy**
 > **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.** 
 >>## 📜 **Opis Projektu**
