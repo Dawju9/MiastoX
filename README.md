@@ -1,6 +1,9 @@
 layout: page
-title: "Index"
+title: "README"
 permalink: ./Readme
+
+desc: Miastox README
+url: README.md
 **Zjazd po gierze**
 ```hack
 --**Poziomy**
