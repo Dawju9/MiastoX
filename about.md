@@ -1,3 +1,6 @@
 layout: page
-title: "Index"
+title: "About"
 permalink: ./About
+
+url: About.md
+desc: About
