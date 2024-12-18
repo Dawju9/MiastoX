@@ -1,9 +1,14 @@
-layout: page
-title: "README"
-permalink: ./Readme
+---
+layout: default
+title: README
+desc: Page README found
+url: /README
+---
 
-desc: Miastox README
-url: README.md
+
+
+
+
 **Zjazd po gierze**
 ```hack
 --**Poziomy**
