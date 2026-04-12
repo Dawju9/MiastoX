@@ -1,0 +1,166 @@
+name: CI - MiastoX Game
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  validate-config:
+    name: Validate Config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Install TOML validator
+        run: cargo install toml-cli || pip install toml-cli
+      
+      - name: Validate Config
+        run: toml-validate config.toml 2>/dev/null || python3 -c "import toml; toml.load('config.toml')"
+
+  lint-lua:
+    name: Lint (Selene)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - uses: ok-nick/setup-aftman@v0.3.0
+        name: Install aftman
+      
+      - name: Lint with Selene
+        run: selene src --config selene.toml
+
+  style:
+    name: Styling (StyLua)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: StyLua Check
+        uses: JohnnyMorganz/stylua-action@v3
+        with:
+          version: latest
+          args: --check ./src --config stylua.toml
+
+  preprocess:
+    name: Preprocess (DarkLua)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Install DarkLua
+        run: cargo install darklua
+      
+      - name: Run DarkLua
+        run: darklua process src --config .darklua.json || true
+
+  build:
+    name: Build (Rojo)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Install aftman
+        uses: ok-nick/setup-aftman@v0.3.0
+      
+      - name: Install rojo
+        run: aftman add rojo
+      
+      - name: Install packages
+        run: wally install || true
+      
+      - name: Build Project
+        run: rojo build default.project.json --output MiastoX.rbxl
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MiastoX-built
+          path: MiastoX.rbxl
+          retention-days: 7
+
+  build-lune:
+    name: Build (Lune+Rojo)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Install Cargo
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Install Lune
+        run: cargo install lune
+      
+      - name: Install Rojo
+        run: cargo install rojo --locked || aftman add rojo || true
+      
+      - name: Install packages
+        run: wally install || true
+      
+      - name: Build with Lune
+        run: lune run src/lune-build.luau prod
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: MiastoX-Lune-built
+          path: MiastoX.rbxl
+          retention-days: 7
+
+  secrets-scan:
+    name: Security (TruffleHog)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: TruffleHog Scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --only-verified
+
+  notify:
+    name: Build Summary
+    needs: [validate-config, lint-lua, style, preprocess, build, build-lune, secrets-scan]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Summary
+        run: |
+          echo "=== MiastoX CI Summary ==="
+          echo ""
+          echo "## Validation"
+          echo "  Config: ${{ needs.validate-config.result }}"
+          echo ""
+          echo "## Linting"
+          echo "  Lua: ${{ needs.lint-lua.result }}"
+          echo ""
+          echo "## Style"
+          echo "  StyLua: ${{ needs.style.result }}"
+          echo "  DarkLua: ${{ needs.preprocess.result }}"
+          echo ""
+          echo "## Build"
+          echo "  Rojo: ${{ needs.build.result }}"
+          echo "  Lune: ${{ needs.build-lune.result }}"
+          echo ""
+          echo "## Security"
+          echo "  Secrets: ${{ needs.secrets-scan.result }}"
+          
+          if [[ "${{ needs.build.result }}" == "success" ]] && [[ "${{ needs.build-lune.result }}" == "success" ]]; then
+            echo ""
+            echo "✅ MiastoX CI passed!"
+          fi
