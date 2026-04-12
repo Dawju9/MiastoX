@@ -1,0 +1,29 @@
+# MiastoX Configuration
+# Game configuration for MiastoX Roblox game
+
+[game]
+name = "MiastoX"
+version = "1.0.0"
+environment = "production"
+
+[game.modes]
+climb_to_the_top = true
+pvp = false
+creative = false
+
+[game.difficulty]
+easy = { enabled = true, unlocked = true }
+medium = { enabled = true, unlocked = true }
+hard = { enabled = true, unlocked = false, required_rank = 25 }
+extreme = { enabled = true, unlocked = false, required_rank = 50 }
+
+[limits]
+max_players = 30
+max_fps = 60
+network_rate = 20
+
+[settings]
+auto_respawn = true
+friendly_fire = false
+show_nametags = true
+show_health = true

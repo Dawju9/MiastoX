@@ -2,45 +2,38 @@
 --!optimize 2
 --!strict
 
---// Local Variables \\--
+-- MiastoX Player Controller
+-- Uses cityx UIManager + custom loading screen
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Packages = ReplicatedStorage.Packages
-local CustomPackages = Packages.Custom
-local Fusion = require(CustomPackages.fusion)
-local FusionVersion = Fusion.version
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 local LocalPlayer = Players.LocalPlayer
-local PlayerGui = LocalPlayer.PlayerGui
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
-local Peek = Fusion.peek
-local Children = Fusion.Children
-local Out = Fusion.Out
-local OnEvent = Fusion.OnEvent
-local OnChange = Fusion.OnChange
-local Ref = Fusion.Ref
-type UsedAs<T> = Fusion.UsedAs<T>
-
-local Components = ReplicatedStorage.Components
-local Scope = Fusion.scoped(Fusion, {
-   BasicComponent = require(Components.BasicComponent),
-})
-
---// Code \\--
-task.wait(2)
-local NewLoadingScreen = Scope:New("ScreenGui") {
-   Parent = PlayerGui,
-   IgnoreGuiInset = true,
-   [Children] = {
-      Scope:BasicComponent {
-         Version = FusionVersion,
-      },
-   },
-}
--- Take over the static loading screen
-local OldLoadingScreen = PlayerGui:FindFirstChild("StaticLoadingScreen")
-if OldLoadingScreen then
-   OldLoadingScreen:Destroy()
+-- First, use cityx framework for core UI
+local CityXClient = ReplicatedStorage:FindFirstChild("CityXClient")
+if CityXClient and CityXClient.UIManager then
+	local UIManager = require(CityXClient.UIManager)
+	UIManager.init(PlayerGui)
 end
+
+-- Then, handle MiastoX-specific loading screen
+local Screen = script:FindFirstChild("Screen")
+if Screen then
+	Screen.Parent = PlayerGui
+end
+
+-- Remove default loading screen
+ReplicatedFirst:RemoveDefaultLoadingScreen()
+
+-- Custom loading screen logic
 task.wait(2)
-Scope:doCleanup()
+local OldScreen = PlayerGui:FindFirstChild("StaticLoadingScreen")
+if OldScreen then
+	OldScreen:Destroy()
+end
+
+task.wait(1)
+print("[MiastoX] Player controller initialized")

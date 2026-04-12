@@ -1,5 +1,24 @@
-title: __Miastox__ - Best stab city iNET
-description: miastox walczy o pierwsze miejsce w rankingu najlepszych miast w sieci
+title: MiastoX
+description: MiastoX - Climb to the Top game on Roblox
+url: https://dawju9.github.io
+baseurl: /MiastoX
+github_username: Dawju9
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - node_modules/
+  - .git/
+  - Packages/
+  - src/
+  - scripts/
+  - .github/
+
 collections_dir: collections
 collections:
   team_members:

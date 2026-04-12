@@ -8,7 +8,7 @@
         "$path": "src/shared"
       },
       "CityX": {
-        "$path": "Packages/_Index/whitekali_cityx@0.1.0/cityx/src/core"
+        "$path": "Packages/_Index/whitekali_cityx@0.1.0/cityx/src/Core"
       },
       "CityXClient": {
         "$path": "Packages/_Index/whitekali_cityx@0.1.0/cityx/src/Client"
@@ -70,47 +70,24 @@
 
     "Workspace": {
       "$properties": {
-        "FilteringEnabled": true
+        "FilteringEnabled": false
       },
-      "Baseplate": {
-        "$className": "Part",
-        "$properties": {
-          "Anchored": true,
-          "Color": [
-            0.38823,
-            0.37254,
-            0.38823
-          ],
-          "Locked": true,
-          "Position": [
-            0,
-            -10,
-            0
-          ],
-          "Size": [
-            512,
-            20,
-            512
-          ]
-        }
+      "TestService": {
+        "$className": "Folder"
       }
     },
     "Lighting": {
       "$properties": {
-        "Ambient": [
-          0,
-          0,
-          0
-        ],
-        "Brightness": 2,
-        "GlobalShadows": true,
+        "Ambient": [0.5, 0.5, 0.5],
+        "Brightness": 1,
+        "GlobalShadows": false,
         "Outlines": false,
-        "Technology": "Voxel"
+        "Technology": "Legacy"
       }
     },
     "SoundService": {
       "$properties": {
-        "RespectFilteringEnabled": true
+        "RespectFilteringEnabled": false
       }
     }
   }
