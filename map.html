@@ -1,0 +1,799 @@
+---
+layout: default
+title: MiastoX - Live Map
+desc: Real-time map viewer for MiastoX
+url: /map.html
+---
+
+<style>
+.map-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    height: calc(100vh - 200px);
+    min-height: 600px;
+}
+
+.map-sidebar {
+    width: 280px;
+    background: var(--background_color_dark, #1a1a2e);
+    border-radius: 12px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.map-main {
+    flex: 1;
+    background: var(--background_color_dark, #1a1a2e);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+#mapCanvas {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+#mapCanvas:active {
+    cursor: grabbing;
+}
+
+.sidebar-title {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: var(--accent_color, #e94560);
+}
+
+.stat-box {
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.floor-list {
+    margin-top: 20px;
+}
+
+.floor-item {
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floor-item:hover {
+    background: rgba(233, 69, 96, 0.2);
+}
+
+.floor-item.active {
+    background: var(--accent_color, #e94560);
+}
+
+.floor-type {
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+}
+
+.legend {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.legend-title {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+    font-size: 0.85em;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.player-list {
+    margin-top: 20px;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    margin: 5px 0;
+}
+
+.player-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00ff88;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.map-controls {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.map-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.map-btn:hover {
+    background: var(--accent_color, #e94560);
+}
+
+.map-info {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.85em;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-dot.online { background: #00ff88; }
+.status-dot.offline { background: #ff4444; }
+
+.platform-tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 100;
+    display: none;
+    border: 1px solid var(--accent_color, #e94560);
+}
+
+.platform-tooltip.visible {
+    display: block;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 50;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top-color: var(--accent_color, #e94560);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+</style>
+
+<div class="map-container">
+    <div class="map-sidebar">
+        <div class="sidebar-title">🗺️ MiastoX Map</div>
+        
+        <div class="connection-status" id="connectionStatus">
+            <div class="status-dot offline" id="statusDot"></div>
+            <span id="statusText">Connecting...</span>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">Current Floor</div>
+            <div class="stat-value" id="currentFloor">1</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">Players Online</div>
+            <div class="stat-value" id="playerCount">0</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">Level Type</div>
+            <div class="stat-value" id="levelType" style="font-size: 1em;">Normal</div>
+        </div>
+
+        <div class="floor-list">
+            <div class="legend-title">Floors (Click to View)</div>
+            <div id="floorList"></div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">Platform Types</div>
+            <div class="legend-item"><div class="legend-color" style="background: #00b4d8;"></div> Basic</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ff6b6b;"></div> Moving</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ffd93d;"></div> Rotating</div>
+            <div class="legend-item"><div class="legend-color" style="background: #6bcb77;"></div> Spiral</div>
+            <div class="legend-item"><div class="legend-color" style="background: #9d4edd;"></div> Checkpoint</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ff9500;"></div> Boost Pad</div>
+            <div class="legend-item"><div class="legend-color" style="background: #00ff88;"></div> Bounce</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ff006e;"></div> Spike</div>
+            <div class="legend-item"><div class="legend-color" style="background: #8b5cf6;"></div> Teleporter</div>
+        </div>
+
+        <div class="player-list">
+            <div class="legend-title">Active Players</div>
+            <div id="playerList"></div>
+        </div>
+    </div>
+
+    <div class="map-main">
+        <canvas id="mapCanvas"></canvas>
+        
+        <div class="map-controls">
+            <button class="map-btn" onclick="mapViewer.zoomIn()" title="Zoom In">+</button>
+            <button class="map-btn" onclick="mapViewer.zoomOut()" title="Zoom Out">-</button>
+            <button class="map-btn" onclick="mapViewer.resetView()" title="Reset">⟲</button>
+            <button class="map-btn" onclick="mapViewer.toggleAutoRotate()" title="Auto Rotate">↻</button>
+        </div>
+
+        <div class="map-info">
+            <div id="mapInfoText">Floor 1 - Normal • Drag to pan, scroll to zoom</div>
+        </div>
+
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <div>Loading map data...</div>
+        </div>
+
+        <div class="platform-tooltip" id="platformTooltip"></div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+<script>
+const PlatformColors = {
+    basic: '#00b4d8',
+    platform: '#00b4d8',
+    moving: '#ff6b6b',
+    rotating: '#ffd93d',
+    spiral: '#6bcb77',
+    checkpoint: '#9d4edd',
+    elevator: '#00b4d8',
+    special: '#ff9500',
+    boost: '#ff9500',
+    bounce: '#00ff88',
+    spike: '#ff006e',
+    ice: '#a0e7e5',
+    crumbling: '#8b4513',
+    disappearing: '#666666',
+    teleporter: '#8b5cf6',
+    laser: '#ff0000',
+    enemy: '#ff4444'
+};
+
+const LevelTypes = {
+    normal: { name: 'Normal', color: '#00b4d8' },
+    infinite: { name: 'Infinite Spiral', color: '#ffd93d' },
+    paradox: { name: 'Paradox', color: '#9d4edd' },
+    time_loop: { name: 'Time Loop', color: '#00ffff' },
+    mirror: { name: 'Mirror', color: '#c0c0c0' },
+    void: { name: 'The Void', color: '#ff0000' },
+    disaster: { name: 'Disaster', color: '#ff6b6b' }
+};
+
+const DisasterTypes = {
+    tornado: { name: 'Tornado', color: '#888888' },
+    earthquake: { name: 'Earthquake', color: '#8b4513' },
+    meteor: { name: 'Meteor', color: '#ff4500' }
+};
+
+class MapViewer {
+    constructor() {
+        this.canvas = document.getElementById('mapCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.canvas.width = 800;
+        this.canvas.height = 600;
+        
+        this.zoom = 1;
+        this.offsetX = 0;
+        this.offsetY = 0;
+        this.isDragging = false;
+        this.lastMouseX = 0;
+        this.lastMouseY = 0;
+        
+        this.currentFloor = 1;
+        this.floors = {};
+        this.players = {};
+        this.selectedFloor = 1;
+        
+        this.autoRotate = false;
+        this.animationId = null;
+        
+        this.setupEventListeners();
+        this.loadDemoData();
+        this.startRenderLoop();
+        
+        setTimeout(() => {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }, 1500);
+    }
+
+    setupEventListeners() {
+        this.canvas.addEventListener('mousedown', (e) => {
+            this.isDragging = true;
+            this.lastMouseX = e.offsetX;
+            this.lastMouseY = e.offsetY;
+        });
+        
+        this.canvas.addEventListener('mousemove', (e) => {
+            if (this.isDragging) {
+                const dx = e.offsetX - this.lastMouseX;
+                const dy = e.offsetY - this.lastMouseY;
+                this.offsetX += dx;
+                this.offsetY += dy;
+                this.lastMouseX = e.offsetX;
+                this.lastMouseY = e.offsetY;
+            }
+            this.checkPlatformHover(e);
+        });
+        
+        this.canvas.addEventListener('mouseup', () => this.isDragging = false);
+        this.canvas.addEventListener('mouseleave', () => this.isDragging = false);
+        
+        this.canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 0.9 : 1.1;
+            this.zoom = Math.max(0.3, Math.min(3, this.zoom * delta));
+        });
+    }
+
+    loadDemoData() {
+        for (let f = 1; f <= 30; f++) {
+            const levelType = this.getLevelTypeForFloor(f);
+            this.floors[f] = {
+                level: Math.ceil(f / 10),
+                floor: f,
+                type: levelType,
+                platforms: this.generateDemoPlatforms(f, levelType)
+            };
+        }
+        
+        this.players = {
+            'player_1': { name: 'Dawju9', floor: 5, x: 120, y: 80, color: '#00ff88' },
+            'player_2': { name: 'Whitekali', floor: 12, x: 200, y: 150, color: '#ff6b6b' },
+            'player_3': { name: 'ProGamer', floor: 3, x: 50, y: 200, color: '#ffd93d' },
+            'player_4': { name: 'Climber99', floor: 18, x: 180, y: 100, color: '#00b4d8' },
+            'player_5': { name: 'TopPlayer', floor: 25, x: 100, y: 180, color: '#9d4edd' }
+        };
+        
+        this.renderFloorList();
+        this.updatePlayerList();
+    }
+
+    getLevelTypeForFloor(floor) {
+        if (floor % 100 === 0) return 'void';
+        if (floor % 75 === 0) return 'paradox';
+        if (floor % 50 === 0) return 'time_loop';
+        if (floor % 33 === 0) return 'mirror';
+        if (floor >= 15 && floor % 10 === 0) return 'infinite';
+        if (floor >= 50 && floor % 10 === 0) return 'disaster';
+        return 'normal';
+    }
+
+    generateDemoPlatforms(floor, levelType) {
+        const platforms = [];
+        const platformCount = floor < 20 ? 5 : 8;
+        
+        const types = levelType === 'infinite' ? ['spiral', 'moving'] :
+                     levelType === 'paradox' ? ['checkpoint', 'teleporter'] :
+                     levelType === 'mirror' ? ['basic', 'ice'] :
+                     levelType === 'void' ? ['basic', 'spike'] :
+                     ['basic', 'platform', 'moving', 'rotating', 'spiral', 'checkpoint', 'boost', 'bounce', 'spike'];
+        
+        for (let i = 0; i < platformCount; i++) {
+            const angle = (i / platformCount) * Math.PI * 2 + (floor * 0.1);
+            const radius = levelType === 'infinite' ? 80 + i * 15 : 
+                          levelType === 'paradox' ? 50 + Math.random() * 100 :
+                          levelType === 'void' ? 30 + Math.random() * 80 :
+                          40 + Math.random() * 60;
+            
+            platforms.push({
+                id: `floor_${floor}_platform_${i}`,
+                type: types[Math.floor(Math.random() * types.length)],
+                x: Math.cos(angle) * radius + 200,
+                y: Math.sin(angle) * radius + 200,
+                width: levelType === 'void' ? 25 : 35 + Math.random() * 20,
+                height: 10,
+                rotation: angle,
+                floor: floor
+            });
+        }
+        
+        return platforms;
+    }
+
+    renderFloorList() {
+        const container = document.getElementById('floorList');
+        container.innerHTML = '';
+        
+        Object.keys(this.floors).forEach(floorNum => {
+            const floor = this.floors[floorNum];
+            const typeInfo = LevelTypes[floor.type] || LevelTypes.normal;
+            
+            const item = document.createElement('div');
+            item.className = `floor-item ${floorNum === this.selectedFloor ? 'active' : ''}`;
+            item.innerHTML = `
+                <span>Floor ${floorNum}</span>
+                <span class="floor-type" style="background: ${typeInfo.color}22; color: ${typeInfo.color}">${typeInfo.name}</span>
+            `;
+            item.onclick = () => this.selectFloor(floorNum);
+            container.appendChild(item);
+        });
+    }
+
+    selectFloor(floorNum) {
+        this.selectedFloor = floorNum;
+        this.currentFloor = floorNum;
+        document.getElementById('currentFloor').textContent = floorNum;
+        
+        const floor = this.floors[floorNum];
+        const typeInfo = LevelTypes[floor.type] || LevelTypes.normal;
+        document.getElementById('levelType').textContent = typeInfo.name;
+        document.getElementById('levelType').style.color = typeInfo.color;
+        
+        document.getElementById('mapInfoText').textContent = 
+            `Floor ${floorNum} - ${typeInfo.name} • Drag to pan, scroll to zoom`;
+        
+        this.renderFloorList();
+    }
+
+    updatePlayerList() {
+        const container = document.getElementById('playerList');
+        container.innerHTML = '';
+        
+        let count = 0;
+        Object.values(this.players).forEach(player => {
+            if (player.floor === this.selectedFloor) {
+                count++;
+                const item = document.createElement('div');
+                item.className = 'player-item';
+                item.innerHTML = `
+                    <div class="player-dot" style="background: ${player.color}"></div>
+                    <span>${player.name}</span>
+                    <span style="color: #666; font-size: 0.8em;">Floor ${player.floor}</span>
+                `;
+                container.appendChild(item);
+            }
+        });
+        
+        document.getElementById('playerCount').textContent = Object.keys(this.players).length;
+    }
+
+    zoomIn() {
+        this.zoom = Math.min(3, this.zoom * 1.2);
+    }
+
+    zoomOut() {
+        this.zoom = Math.max(0.3, this.zoom / 1.2);
+    }
+
+    resetView() {
+        this.zoom = 1;
+        this.offsetX = 0;
+        this.offsetY = 0;
+    }
+
+    toggleAutoRotate() {
+        this.autoRotate = !this.autoRotate;
+    }
+
+    startRenderLoop() {
+        const render = () => {
+            this.render();
+            
+            Object.values(this.players).forEach(player => {
+                player.x += (Math.random() - 0.5) * 3;
+                player.y += (Math.random() - 0.5) * 3;
+                player.x = Math.max(20, Math.min(380, player.x));
+                player.y = Math.max(20, Math.min(380, player.y));
+            });
+            
+            if (this.autoRotate) {
+                this.offsetX += 0.5;
+            }
+            
+            this.animationId = requestAnimationFrame(render);
+        };
+        render();
+    }
+
+    render() {
+        const ctx = this.ctx;
+        const floor = this.floors[this.selectedFloor];
+        
+        ctx.fillStyle = '#0f0f23';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        if (!floor) return;
+        
+        ctx.save();
+        ctx.translate(this.canvas.width / 2 + this.offsetX, this.canvas.height / 2 + this.offsetY);
+        ctx.scale(this.zoom, this.zoom);
+        
+        this.drawGrid();
+        
+        const typeInfo = LevelTypes[floor.type] || LevelTypes.normal;
+        
+        if (floor.type === 'infinite') {
+            this.drawSpiralBackground(floor.floor);
+        }
+        
+        floor.platforms.forEach(platform => {
+            this.drawPlatform(platform);
+        });
+        
+        Object.values(this.players)
+            .filter(p => p.floor === this.selectedFloor)
+            .forEach(player => {
+                this.drawPlayer(player);
+            });
+        
+        ctx.restore();
+    }
+
+    drawGrid() {
+        const ctx = this.ctx;
+        ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+        ctx.lineWidth = 1;
+        
+        for (let x = -400; x < 400; x += 40) {
+            ctx.beginPath();
+            ctx.moveTo(x, -300);
+            ctx.lineTo(x, 300);
+            ctx.stroke();
+        }
+        
+        for (let y = -300; y < 300; y += 40) {
+            ctx.beginPath();
+            ctx.moveTo(-400, y);
+            ctx.lineTo(400, y);
+            ctx.stroke();
+        }
+    }
+
+    drawSpiralBackground(floor) {
+        const ctx = this.ctx;
+        ctx.strokeStyle = 'rgba(255,215,0,0.1)';
+        ctx.lineWidth = 2;
+        
+        for (let i = 0; i < 20; i++) {
+            const angle = (i / 10) * Math.PI * 2;
+            const radius = 30 + i * 20;
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, angle, angle + Math.PI * 1.5);
+            ctx.stroke();
+        }
+    }
+
+    drawPlatform(platform) {
+        const ctx = this.ctx;
+        const color = PlatformColors[platform.type] || PlatformColors.basic;
+        
+        ctx.save();
+        ctx.translate(platform.x - 200, platform.y - 200);
+        ctx.rotate(platform.rotation || 0);
+        
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 10;
+        
+        ctx.fillStyle = color + '88';
+        ctx.fillRect(-platform.width/2, -platform.height/2, platform.width, platform.height);
+        
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(-platform.width/2, -platform.height/2, platform.width, platform.height);
+        
+        if (platform.type === 'teleporter') {
+            ctx.beginPath();
+            ctx.arc(0, 0, 8, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+        
+        if (platform.type === 'spike') {
+            ctx.fillStyle = color;
+            for (let i = -platform.width/2 + 5; i < platform.width/2 - 5; i += 8) {
+                ctx.beginPath();
+                ctx.moveTo(i, platform.height/2);
+                ctx.lineTo(i + 4, platform.height/2 - 8);
+                ctx.lineTo(i + 8, platform.height/2);
+                ctx.fill();
+            }
+        }
+        
+        if (platform.type === 'boost') {
+            ctx.fillStyle = '#ff9500';
+            ctx.fillRect(-platform.width/2, -2, platform.width, 4);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-platform.width/4, -1, platform.width/2, 2);
+        }
+        
+        if (platform.type === 'bounce') {
+            ctx.beginPath();
+            ctx.arc(0, 0, 10, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+        
+        ctx.restore();
+    }
+
+    drawPlayer(player) {
+        const ctx = this.ctx;
+        
+        ctx.save();
+        ctx.translate(player.x - 200, player.y - 200);
+        
+        ctx.shadowColor = player.color;
+        ctx.shadowBlur = 15;
+        
+        ctx.beginPath();
+        ctx.arc(0, 0, 12, 0, Math.PI * 2);
+        ctx.fillStyle = player.color;
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(0, -4, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 10px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(player.name.substring(0, 8), 0, 25);
+        
+        ctx.restore();
+    }
+
+    checkPlatformHover(e) {
+        const rect = this.canvas.getBoundingClientRect();
+        const scaleX = this.canvas.width / rect.width;
+        const scaleY = this.canvas.height / rect.height;
+        
+        const mouseX = (e.offsetX * scaleX - this.canvas.width / 2 - this.offsetX) / this.zoom + 200;
+        const mouseY = (e.offsetY * scaleY - this.canvas.height / 2 - this.offsetY) / this.zoom + 200;
+        
+        const floor = this.floors[this.selectedFloor];
+        if (!floor) return;
+        
+        let hovered = null;
+        floor.platforms.forEach(platform => {
+            const dx = Math.abs(mouseX - platform.x);
+            const dy = Math.abs(mouseY - platform.y);
+            if (dx < platform.width/2 && dy < platform.height/2 + 10) {
+                hovered = platform;
+            }
+        });
+        
+        const tooltip = document.getElementById('platformTooltip');
+        if (hovered) {
+            tooltip.innerHTML = `
+                <strong>${hovered.type.toUpperCase()}</strong><br>
+                Position: (${Math.round(hovered.x)}, ${Math.round(hovered.y)})<br>
+                Size: ${Math.round(hovered.width)}x${Math.round(hovered.height)}
+            `;
+            tooltip.style.left = (e.offsetX + 15) + 'px';
+            tooltip.style.top = (e.offsetY + 15) + 'px';
+            tooltip.classList.add('visible');
+        } else {
+            tooltip.classList.remove('visible');
+        }
+    }
+}
+
+let mapViewer;
+let firebaseReady = false;
+
+function initMap() {
+    mapViewer = new MapViewer();
+    initFirebase();
+}
+
+function initFirebase() {
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    
+    try {
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEMO_CONFIG",
+            authDomain: "miastox-map.firebaseapp.com",
+            databaseURL: "https://miastox-map-default-rtdb.firebaseio.com",
+            projectId: "miastox-map",
+            storageBucket: "miastox-map.appspot.com",
+            messagingSenderId: "000000000000",
+            appId: "1:000000000000:web:0000000000000"
+        };
+        
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.database(app);
+        
+        statusDot.className = 'status-dot online';
+        statusText.textContent = 'Demo Mode';
+        
+        console.log('Firebase ready (demo mode)');
+    } catch (err) {
+        console.log('Firebase not configured, using demo data');
+        statusDot.className = 'status-dot online';
+        statusText.textContent = 'Demo Mode';
+    }
+}
+
+window.onload = initMap;
+</script>
