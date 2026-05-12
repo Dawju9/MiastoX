@@ -59,4 +59,19 @@ MIT License
 
 ---
 
-*MiastoX v1.0.0 | 2026*
+## 📊 Raport
+
+### Ostatnie zmiany (v1.0.1)
+- Dodano konfigurację serwera języka Luau (.luaurc) z aliasami modułów i trybem strict
+- Zaktualizowano zależność trove do v1.3.0
+
+### Status projektu
+| Component | Version | Status |
+|-----------|---------|--------|
+| Game | v1.0.1 | 🟢 Aktywny |
+| Framework | v1.0.0 | 🟢 Aktywny |
+| Web | v1.0.0 | 🟢 Aktywny |
+
+---
+
+*MiastoX v1.0.1 | 2026*
