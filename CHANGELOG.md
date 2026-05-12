@@ -24,6 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Deprecated src/shared/Hello.luau
 
+## [v1.0.1] - 2026-05-12
+
+### Added
+- Luau language server configuration (.luaurc) with module aliases and strict mode
+
+### Changed
+- Updated trove dependency to v1.3.0
+
 ## [Unreleased]
 
 ### Planned
