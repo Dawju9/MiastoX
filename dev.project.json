@@ -4,9 +4,6 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "Shared": {
-        "$path": "src/shared"
-      },
       "CityX": {
         "$path": "Packages/_Index/whitekali_cityx@0.1.0/cityx/src/Core"
       },

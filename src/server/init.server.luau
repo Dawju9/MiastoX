@@ -31,7 +31,7 @@ local config = {
 		"basic", "platform", "moving", "rotating", "spiral", "checkpoint", "elevator", "special"
 	},
 	weather = {
-		"sunny", "rainy", "foggy", "stormy", "snowy", "cloudy", "night", "eclipse", "apocalyptic"
+		"sunny", "rainy", "foggy", "stormy", "snowy", "cloudy", "night", "eclipse", "apocalyptic", "tornado", "earthquake", "meteor"
 	}
 }
 
