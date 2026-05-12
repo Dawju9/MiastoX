@@ -7,6 +7,7 @@ local Players = game:GetService("Players")
 
 local CityX = require(ReplicatedStorage.CityX)
 local DataStore = require(ReplicatedStorage.CityX.DataStore)
+local LevelManager = require(script.LevelManager)
 
 local config = {
 	gameName = "MiastoX",
@@ -76,6 +77,11 @@ game.Players.PlayerRemoving:Connect(onPlayerLeave)
 
 CityX.init(config)
 
+local levelManager = LevelManager.new()
+levelManager:generateFullLevel(1)
+levelManager:reset()
+
+print("[MiastoX] Level system initialized")
 print("[MiastoX] Initialized on CityX Framework v0.1.0")
 print(string.format("[MiastoX] Game: %s | Players: %d/%d", 
 	config.gameName, 
