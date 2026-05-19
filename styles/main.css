@@ -506,6 +506,24 @@ button:hover {
 	color: white;
 }
 
+/* Changelog */
+.changelog-entry {
+	margin-left: 20px;
+	padding: 10px 20px;
+	background: var(--background_color_light);
+	border-radius: 6px;
+	border-left: 3px solid var(--accent_color);
+}
+.changelog-entry h3 {
+	font-size: 20px;
+	margin: 10px 0 5px;
+}
+.changelog-entry ul {
+	margin: 4px 0 12px;
+	padding-left: 24px;
+	line-height: 1.6;
+}
+
 @media (max-width: 900px) {
 	/* Mobile portrait version */
 	.team-grid {

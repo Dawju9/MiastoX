@@ -34,9 +34,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned
-- Player statistics tracking
-- Leaderboard integration
-- Weather system
-- Power-up system
-- PvP zones
+### Added
+- City block generation: buildings, scaffolding, fire escapes, cranes, bridges
+- 18+ city object types (moving_scaffold, rotating_sign, collapsing_ledge, crumbling_stairs, boost_vent, bounce_tarp, rebar, elevator_shaft, wet_roof, construction_laser)
+- Weather system: 9 city weather types (smog, drizzle, overcast)
+- Interactive rank hierarchy page with player roster (hierarchy.html)
+- Team recruitment page (jobs.html) with role collection
+- Changelog page (changelog.html)
+- Player roster API endpoint (api/ranks.json)
+- Continuous city generation (5 blocks per level, difficulty scaling)
+
+### Changed
+- LevelGenerator.luau: full rewrite with CityObjectType enum and factory methods
+- LevelManager.server.luau: continuous block generation, removed special levels
+- WeatherSystem.luau: removed supernatural weather (eclipse, apocalyptic, tornado, earthquake, meteor, stormy)
+- Generator.client.luau: safe LightingRiver guards, task.spawn wrappers
+- init.server.luau: city config, CityX system stubs
+- Nav menu: added Changelog, Nasi gracze links
+
+### Fixed
+- CityX symlink: /Development/cityx/src → /Development/projekt/cityx/src
