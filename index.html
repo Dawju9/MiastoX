@@ -4,11 +4,11 @@ title: " — Climb to the Top"
 desc: "MiastoX — epic climbing game on Roblox built with CityX framework. Explore 30 floors, special levels, weather, PvP, and more."
 ---
 
-<section class="hero">
+<section class="hero bg-neon-aurora">
   <div class="hero-bg"></div>
   <canvas id="hero-canvas" class="hero-canvas"></canvas>
   <div class="hero-content">
-    <h1 class="hero-title">MiastoX</h1>
+    <h1 class="hero-title neon-text">MiastoX</h1>
     <p class="hero-sub">Climb to the Top — wielopoziomowe doświadczenie w Roblox</p>
     <div class="hero-actions">
       <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="btn btn-primary" target="_blank"><i class="fab fa-roblox"></i> Graj teraz</a>
@@ -159,7 +159,7 @@ if (canvas) {
   }
   window.addEventListener('resize', resize);
 
-  const colors = [0x3325A4, 0x4f3fcc, 0x00b4d8, 0xff6b6b, 0xffd93d, 0x00ff88, 0x9d4edd, 0xff9500];
+  const colors = [0x00f5ff, 0xff00aa, 0x39ff14, 0x00b4d8, 0xff6b6b, 0xffd93d, 0x00ff88, 0x9d4edd];
   const platforms = [];
   for (let i = 0; i < 18; i++) {
     const w = 0.3 + Math.random() * 0.4;
@@ -186,7 +186,7 @@ if (canvas) {
     platforms.push(mesh);
   }
 
-  const ambient = new THREE.AmbientLight(0x3325A4, 0.3);
+  const ambient = new THREE.AmbientLight(0x00f5ff, 0.25);
   scene.add(ambient);
   const dir = new THREE.DirectionalLight(0xffffff, 1);
   dir.position.set(2, 5, 3);
@@ -202,7 +202,7 @@ if (canvas) {
   }
   pGeom.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
   const pMat = new THREE.PointsMaterial({
-    color: 0x7b6bff, size: 0.03, transparent: true, opacity: 0.4
+    color: 0x00f5ff, size: 0.03, transparent: true, opacity: 0.4
   });
   const particles = new THREE.Points(pGeom, pMat);
   scene.add(particles);
@@ -239,7 +239,7 @@ if (cxCanvas) {
   const ctx = cxCanvas.getContext('2d');
 
   const nodes = [
-    { x: 0.5, y: 0.15, label: 'Router', color: '#3325A4' },
+    { x: 0.5, y: 0.15, label: 'Router', color: '#00f5ff' },
     { x: 0.15, y: 0.5, label: 'Server 1', color: '#00b4d8' },
     { x: 0.38, y: 0.5, label: 'Server 2', color: '#ff6b6b' },
     { x: 0.62, y: 0.5, label: 'Server 3', color: '#ffd93d' },
