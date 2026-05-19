@@ -1,22 +1,22 @@
 /* ═══════════════════════════════════════════
    NeoCity X Design System — MiastoX
-   Klimat: Cyberpunk / Futurystyczne Miasto Nocą
+   Klimat: Dark / Futurystyczne Miasto Nocą — Grayscale
    ═══════════════════════════════════════════ */
 
 :root {
-  /* ── Neon Accents ── */
-  --accent: #00f5ff;
-  --accent-light: #00f5ff;
-  --accent-secondary: #ff00aa;
-  --accent-tertiary: #39ff14;
-  --accent-glow: rgba(0, 245, 255, 0.3);
-  --accent-glow-strong: rgba(0, 245, 255, 0.6);
+  /* ── Grayscale Accents ── */
+  --accent: #d4d4d4;
+  --accent-light: #d4d4d4;
+  --accent-secondary: #888888;
+  --accent-tertiary: #555555;
+  --accent-glow: rgba(212, 212, 212, 0.15);
+  --accent-glow-strong: rgba(212, 212, 212, 0.25);
 
   /* ── Greyscale Backgrounds ── */
   --bg: #0a0a0a;
-  --bg-surface: #12121a;
-  --bg-card: #16161e;
-  --bg-elevated: #1e1e2a;
+  --bg-surface: #121212;
+  --bg-card: #1a1a1a;
+  --bg-elevated: #242424;
 
   /* ── Text ── */
   --text: #e0e0e0;
@@ -25,8 +25,8 @@
   --text-dim: #666666;
 
   /* ── Borders & Effects ── */
-  --border: rgba(0, 245, 255, 0.13);
-  --border-strong: rgba(0, 245, 255, 0.25);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
   --radius: 12px;
   --radius-sm: 8px;
 
@@ -147,9 +147,9 @@ a:hover { color: var(--accent-secondary); }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(0,245,255,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(255,0,170,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(57,255,20,0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(212,212,212,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(180,180,180,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(160,160,160,0.03) 0%, transparent 50%);
   z-index: 0;
 }
 .hero-canvas {
@@ -447,10 +447,10 @@ a:hover { color: var(--accent-secondary); }
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.tag-luau { background: #00d2ff20; color: #00d2ff; }
-.tag-rojo { background: #ff6b6b20; color: #ff6b6b; }
-.tag-cityx { background: #a855f720; color: #a855f7; }
-.tag-roblox { background: #ffd93d20; color: #ffd93d; }
+.tag-luau { background: rgba(212, 212, 212, 0.13); color: #c0c0c0; }
+.tag-rojo { background: rgba(180, 180, 180, 0.13); color: #aaaaaa; }
+.tag-cityx { background: rgba(150, 150, 150, 0.13); color: #999999; }
+.tag-roblox { background: rgba(130, 130, 130, 0.13); color: #888888; }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
@@ -483,7 +483,7 @@ a:hover { color: var(--accent-secondary); }
 }
 
 /* ═══════════════════════════════════════════
-   NeoCity X Effects
+   NeoCity X Effects — Grayscale
    ═══════════════════════════════════════════ */
 
 /* ── Scanline Overlay ── */
@@ -562,8 +562,8 @@ body::after {
 /* ── Grid Overlay (subtle) ── */
 .grid-overlay {
   background-image:
-    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -573,8 +573,8 @@ body::after {
     135deg,
     var(--bg) 0%,
     var(--bg-surface) 30%,
-    rgba(0, 245, 255, 0.05) 50%,
-    rgba(255, 0, 170, 0.03) 70%,
+    rgba(212, 212, 212, 0.04) 50%,
+    rgba(180, 180, 180, 0.02) 70%,
     var(--bg-elevated) 100%
   );
   background-size: 400% 400%;

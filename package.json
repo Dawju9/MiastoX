@@ -1,9 +1,0 @@
-{
-  "name": "miastox-web",
-  "version": "1.1.0",
-  "description": "MiastoX website",
-  "scripts": {
-    "dev": "jekyll serve --watch",
-    "build": "jekyll build"
-  }
-}
