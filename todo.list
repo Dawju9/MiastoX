@@ -1,0 +1,48 @@
+# TODO: MiastoX — Game Implementation
+
+## Faza 1: LevelGenerator — Zamek Bogów w centrum
+- [ ] 1.1 createCastle(position) — wieże, mury, brama, dziedziniec, złota poświata
+- [ ] 1.2 Plac Królewski — bankomaty, leaderboard, shop, spawn
+- [ ] 1.3 Miasto promieniste — 4 sektory dzielnic wokół (0,0)
+
+## Faza 2: System Rang Administracyjnych
+- [ ] 2.1 ServerStorage/RankSystem.luau — główny moduł rang
+- [ ] 2.2 DataStore — zapis rang graczy
+- [ ] 2.3 Komendy czat: /setrank, /rank, /hierarchy, /members
+- [ ] 2.4 Tagowanie na czacie [Owner] Nick: wiadomość
+- [ ] 2.5 Nametag nad głową z rangą i kolorem
+- [ ] 2.6 Zasady: brak przewagi gameplayowej, brak ochrony przed regulaminem
+
+## Faza 3: Enable CityX Systems
+- [ ] 3.1 enablePvP = true + init PvPManager
+- [ ] 3.2 Init WeaponSystem (pistolet: 25dmg, 12 ammo, reload 2s)
+- [ ] 3.3 Init ScoringSystem (prestiż: punkty + level + XP + money)
+- [ ] 3.4 Init BankomatSystem (4 bankomaty na placu)
+- [ ] 3.5 Init Leaderboard (Top 10 na placu)
+- [ ] 3.6 Init Shop (power-upy: Speed, Jump, Shield, 2x Coins, Extra Life)
+- [ ] 3.7 Init RobberySystem (okradanie, rękawiczki, QTE)
+- [ ] 3.8 Init PoliceNPCManager (policja w mieście)
+
+## Faza 4: System Prestiżu (Gameplay)
+- [ ] 4.1 Prestiż = funkcja(wysokość, kasa, poziom, kille, czas gry)
+- [ ] 4.2 Leaderboard prestiżu w mieście
+- [ ] 4.3 Achievementy: nowe dzielnice, skórki, tytuły
+
+## Faza 5: Dzielnice Miasta
+- [ ] 5.1 Dzielnica Królewska (północ) — łatwa, place, ogrody
+- [ ] 5.2 Dzielnica Kupiecka (wschód) — średnia, stragany, sklepy, NPC
+- [ ] 5.3 Dzielnica Przemysłowa (południe) — trudna, fabryki, dźwigi
+- [ ] 5.4 Slumsy (zachód) — hard/extreme, ciasne uliczki, rabusie
+- [ ] 5.5 Każda dzielnica: własny kolor oświetlenia i zestaw obiektów
+
+---
+
+## ✅ Zrobione (plan.todo)
+- LevelGenerator.luau — 18+ fabryk obiektów miejskich, generateCityBlock()
+- LevelManager.server.luau — ciągła generacja, brak specjalnych poziomów
+- WeatherSystem.luau — 9 pogód miejskich, bez nadnaturalnych
+- init.server.luau — config miejski
+- Generator.client.luau — safe guards, task.spawn
+- Strona www: hierarchy.html, jobs.html, changelog.html, api/ranks.json
+- Wszystkie testy: selene 0 błędów, stylua, rojo build 517K
+- Symlink CityX naprawiony → /Development/projekt/cityx/src

@@ -1,8 +1,8 @@
-# Plan Major: MiastoX — Królestwo Miasta
+# Plan Major: MiastoX — Królestwo Miasta (WEB DROPPED)
 
-## Cel
-Gra z otwartym miastem, pośrodku Zamek Bogów (siedziba władzy),
-gracze żyją w mieście, wspinają się, walczą, handlują, zdobywają prestiż.
+## Stan
+- `plan.todo` (city transform) — 100% zrobione
+- Strona www (hierarchy, jobs, api) — zrobiona, dalszy rozwój wstrzymany
 
 ---
 
@@ -61,7 +61,6 @@ CITIZEN TIER (gracze w mieście)
 - [ ] Komendy czat: `/setrank`, `/rank`, `/hierarchy`, `/members`
 - [ ] Tagowanie na czacie: `[Owner] Nick: wiadomość`
 - [ ] Nametag nad głową (CityX NametagService) z rangą i kolorem
-- [ ] API endpoint dla strony www: `/api/ranks`
 
 ### 2.3 Zasady
 - [ ] Ranga nie daje przewagi gameplayowej
@@ -87,12 +86,11 @@ CITIZEN TIER (gracze w mieście)
 ## [ ] Faza 4: System Prestiżu (Gameplay)
 
 - [ ] Prestiż = funkcja(wysokość wspinaczki, kasa, poziom, kille, czas gry)
-- [ ] Leaderboard prestiżu — oddzielny na stronie www
+- [ ] Leaderboard prestiżu w mieście
 - [ ] Osiągnięcia prestiżowe odblokowują:
   - Nowe dzielnice miasta
   - Skórki postaci
   - Tytuły (np. "Zdobywca", "Milioner", "Zabójca")
-- [ ] Osiągnięcia wyświetlane na stronie gracza
 
 ---
 
@@ -106,22 +104,7 @@ CITIZEN TIER (gracze w mieście)
 
 ---
 
-## [ ] Faza 6: Strona WWW — Hierarchia + API
+## [x] ~~Faza 6: Strona WWW~~ (DROPPED)
 
-### 6.1 Struktura strony
-- [ ] `/` — strona główna z mapą miasta i statystykami
-- [ ] `/hierarchy` — drzewo rang (Tree.js wizualizacja)
-- [ ] `/players` — lista graczy z rangą i prestiżem
-- [ ] `/rules` — regulamin
-- [ ] `/api/ranks` — JSON endpoint z danymi rang
-
-### 6.2 Wizualizacja Tree.js
-- [ ] Interaktywne drzewo hierarchii
-- [ ] Każdy węzeł = ranga z kolorem i opisem
-- [ ] Gracze jako liście pod rangą
-- [ ] Responsive, czysty design
-
-### 6.3 API
-- [ ] Endpoint zwracający listę graczy z rangami
-- [ ] Endpoint zwracający statystyki gry (online, top 10)
-- [ ] Auto-odświeżanie z DataStore
+Strona WWW zrobiona w podstawowym zakresie (hierarchy.html, jobs.html, api/ranks.json).
+Dalszy rozwój strony wstrzymany. Skupiamy się na implementacji gry.
