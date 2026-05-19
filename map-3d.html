@@ -439,10 +439,10 @@ const floorSpacing = 5;
 const container = document.getElementById('canvas-container');
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x070714);
-scene.fog = new THREE.Fog(0x070714, 60, 120);
+scene.fog = new THREE.Fog(0x070714, 80, 200);
 
 const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 200);
-camera.position.set(28, 22, 32);
+camera.position.set(32, 28, 32);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -478,10 +478,10 @@ composer.addPass(outputPass);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
-controls.minDistance = 12;
-controls.maxDistance = 120;
+    controls.minDistance = 15;
+    controls.maxDistance = 150;
 controls.maxPolarAngle = Math.PI / 2.05;
-controls.target.set(0, 18, 0);
+controls.target.set(0, 70, 0);
 
 // ---- LIGHTS ----
 const ambientLight = new THREE.AmbientLight(0x334466, 0.5);
@@ -508,50 +508,43 @@ scene.add(hemiLight);
 // ---- CITY SKYLINE ----
 function createSkyline() {
   const group = new THREE.Group();
-  const buildingColors = [0x1a1a3e, 0x222244, 0x2a2a4e, 0x1e1e3a, 0x262648];
-  const windowMat = new THREE.MeshBasicMaterial({ color: 0xffdd88, transparent: true, opacity: 0.4 });
+  const bColors = [0x1a1a3e, 0x222244, 0x2a2a4e, 0x1e1e3a, 0x262648, 0x162038, 0x2e1e3e, 0x1e2844];
+  const wMat = new THREE.MeshBasicMaterial({ color: 0xffdd88, transparent: true, opacity: 0.35 });
 
-  const positions = [
-    { angle: 0, dist: 16 }, { angle: Math.PI * 0.25, dist: 18 },
-    { angle: Math.PI * 0.5, dist: 15 }, { angle: Math.PI * 0.75, dist: 17 },
-    { angle: Math.PI, dist: 16 }, { angle: Math.PI * 1.25, dist: 19 },
-    { angle: Math.PI * 1.5, dist: 14 }, { angle: Math.PI * 1.75, dist: 18 },
-  ];
-
-  positions.forEach((pos, idx) => {
-    const h = 3 + Math.random() * 8;
-    const w = 1.2 + Math.random() * 1.5;
-    const d = 1.2 + Math.random() * 1.5;
-    const color = buildingColors[idx % buildingColors.length];
-
-    const mat = new THREE.MeshStandardMaterial({
-      color, roughness: 0.6, metalness: 0.3,
-      emissive: color, emissiveIntensity: 0.05
-    });
-    const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-    const x = Math.cos(pos.angle) * pos.dist;
-    const z = Math.sin(pos.angle) * pos.dist;
-    mesh.position.set(x, h / 2 - 2, z);
-    mesh.castShadow = true;
-    group.add(mesh);
-
-    const winCount = Math.floor(h * 2);
-    for (let wi = 0; wi < winCount; wi++) {
-      const wy = -h / 2 + 0.5 + wi * 0.8;
-      const win = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.4), windowMat);
-      win.position.set(Math.sign(x) * w / 2.1, wy, z);
-      if (Math.abs(x) < 0.5) win.position.set(x, wy, Math.sign(z) * d / 2.1);
-      group.add(win);
+  for (let ring = 0; ring < 2; ring++) {
+    const count = ring === 0 ? 16 : 24;
+    const dist = ring === 0 ? 12 : 18;
+    for (let i = 0; i < count; i++) {
+      const a = (i / count) * Math.PI * 2 + ring * 0.5;
+      const h = 2 + Math.random() * (ring === 0 ? 5 : 12);
+      const w = 0.8 + Math.random() * 1.2;
+      const d = 0.8 + Math.random() * 1.2;
+      const c = bColors[(i + ring * 3) % bColors.length];
+      const mat = new THREE.MeshStandardMaterial({ color: c, roughness: 0.6, metalness: 0.3, emissive: c, emissiveIntensity: 0.04 });
+      const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+      const x = Math.cos(a) * (dist + Math.random() * 2);
+      const z = Math.sin(a) * (dist + Math.random() * 2);
+      mesh.position.set(x, h / 2 - 1.5, z);
+      mesh.castShadow = true;
+      group.add(mesh);
+      const wc = Math.floor(h * 1.5);
+      for (let wi = 0; wi < wc; wi++) {
+        const wy = -h / 2 + 0.4 + wi * 0.7;
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(0.25, 0.3), wMat);
+        win.position.set(Math.sign(x) * w / 2.05, wy, z);
+        if (Math.abs(x) < 0.3) win.position.set(x, wy, Math.sign(z) * d / 2.05);
+        group.add(win);
+      }
     }
-  });
+  }
   return group;
 }
 scene.add(createSkyline());
 
 // ---- GROUND ----
-const groundGeom = new THREE.PlaneGeometry(80, 80);
+const groundGeom = new THREE.PlaneGeometry(100, 100);
 const groundMat = new THREE.MeshStandardMaterial({
-  color: 0x0a0a1a, roughness: 0.9, metalness: 0.0
+  color: 0x060612, roughness: 0.9, metalness: 0.0
 });
 const ground = new THREE.Mesh(groundGeom, groundMat);
 ground.rotation.x = -Math.PI / 2;
@@ -559,7 +552,7 @@ ground.position.y = -2.5;
 ground.receiveShadow = true;
 scene.add(ground);
 
-const gridHelper = new THREE.GridHelper(80, 40, 0x1a1a3e, 0x111128);
+const gridHelper = new THREE.GridHelper(100, 50, 0x1a1a3e, 0x111128);
 gridHelper.position.y = -2.4;
 scene.add(gridHelper);
 
@@ -581,7 +574,7 @@ function createTitle() {
   return new CSS2DObject(div);
 }
 const titleLabel = createTitle();
-titleLabel.position.set(0, 153, 0);
+titleLabel.position.set(0, 160, 0);
 scene.add(titleLabel);
 
 function createSubtitle() {
@@ -600,7 +593,7 @@ function createSubtitle() {
   return new CSS2DObject(div);
 }
 const subtitleLabel = createSubtitle();
-subtitleLabel.position.set(0, 148, 0);
+subtitleLabel.position.set(0, 155, 0);
 scene.add(subtitleLabel);
 
 // ---- PARTICLES ----
@@ -610,7 +603,7 @@ const particlePos = new Float32Array(particleCount * 3);
 const particleSizes = new Float32Array(particleCount);
 for (let i = 0; i < particleCount; i++) {
   particlePos[i * 3] = (Math.random() - 0.5) * 80;
-  particlePos[i * 3 + 1] = Math.random() * 160 - 5;
+  particlePos[i * 3 + 1] = Math.random() * 175 - 5;
   particlePos[i * 3 + 2] = (Math.random() - 0.5) * 80;
   particleSizes[i] = 0.02 + Math.random() * 0.05;
 }
@@ -734,9 +727,9 @@ function hexToRgb(hex) {
 
 function generatePlatforms(floorNum, levelType) {
   const platforms = [];
-  const count = floorNum < 20 ? 6 : 10;
-  const radiusMin = 4 + (floorNum % 5) * 0.3;
-  const radiusMax = 8 + (floorNum % 5) * 0.3;
+  const HS = 5;
+  const rng = (s, e) => s + Math.random() * (e - s);
+  const pick = a => a[Math.floor(Math.random() * a.length)];
 
   const types = levelType === 'infinite' ? ['spiral', 'moving'] :
     levelType === 'paradox' ? ['checkpoint', 'teleporter'] :
@@ -744,60 +737,55 @@ function generatePlatforms(floorNum, levelType) {
     levelType === 'void' ? ['basic', 'spike'] :
     ['basic', 'platform', 'moving', 'rotating', 'spiral', 'checkpoint', 'boost', 'bounce', 'spike'];
 
-  for (let i = 0; i < count; i++) {
-    const angle = (i / count) * Math.PI * 2 + (floorNum * 0.15);
-    const radius = radiusMin + Math.random() * (radiusMax - radiusMin);
-    const type = types[Math.floor(Math.random() * types.length)];
-
-    let w = 2 + Math.random() * 1.5;
-    let h = 0.3;
-    let d = 1 + Math.random() * 1;
-
-    if (type === 'boost') { w = 2.5; d = 1.2; }
-    if (type === 'bounce') { w = 1.8; d = 1.8; }
-    if (type === 'spike') { w = 1.5; d = 1.5; }
-
-    if (levelType === 'void') {
-      w *= 0.6;
-      d *= 0.6;
+  const gridPositions = [];
+  const seed = floorNum * 7;
+  for (let i = 0; i < 12; i++) {
+    const angle = seed + i * 2.1;
+    const dist = rng(1.5, 4.5);
+    gridPositions.push({
+      x: Math.cos(angle) * dist,
+      z: Math.sin(angle) * dist,
+      rot: angle
+    });
+  }
+  if (levelType === 'infinite') {
+    for (let i = 0; i < 4; i++) {
+      const a = i * 1.57 + seed * 0.1;
+      gridPositions.push({
+        x: Math.cos(a) * rng(5, 6.5),
+        z: Math.sin(a) * rng(5, 6.5),
+        rot: a
+      });
     }
+  }
 
+  const count = levelType === 'void' ? 4 : 6;
+  const selected = gridPositions.slice(0, count);
+
+  selected.forEach((pos, i) => {
+    const type = pick(types);
+    const w = type === 'boost' ? 2.2 : type === 'bounce' ? 1.6 : type === 'spike' ? 1.4 : rng(1.2, 2.5);
+    const d = type === 'boost' ? 1.0 : type === 'bounce' ? 1.6 : type === 'spike' ? 1.4 : rng(0.8, 1.8);
+    const h = type === 'teleporter' ? 0.6 : 0.3;
+    const sz = levelType === 'void' ? 0.6 : 1;
     const animOffset = Math.random() * Math.PI * 2;
     platforms.push({
       id: `f${floorNum}_p${i}`,
       type,
-      x: Math.cos(angle) * radius,
-      z: Math.sin(angle) * radius,
-      baseX: Math.cos(angle) * radius,
-      baseZ: Math.sin(angle) * radius,
-      width: w,
-      depth: d,
+      x: pos.x,
+      z: pos.z,
+      baseX: pos.x,
+      baseZ: pos.z,
+      width: w * sz,
+      depth: d * sz,
       height: h,
-      rotation: angle,
+      rotation: pos.rot,
       floor: floorNum,
       animOffset,
-      animSpeed: 0.5 + Math.random() * 0.5,
-      animRange: type === 'moving' ? 1.5 : type === 'rotating' ? 0.3 : 0
+      animSpeed: 0.4 + Math.random() * 0.4,
+      animRange: type === 'moving' ? 1.2 : type === 'rotating' ? 0.2 : 0
     });
-  }
-
-  if (levelType === 'infinite') {
-    for (let i = 0; i < 3; i++) {
-      const a = (i / 3) * Math.PI * 2 + 0.3;
-      const sOff = Math.random() * Math.PI * 2;
-      platforms.push({
-        id: `f${floorNum}_s${i}`,
-        type: 'spiral',
-        x: Math.cos(a) * (radiusMax + 2 + i * 1.5),
-        z: Math.sin(a) * (radiusMax + 2 + i * 1.5),
-        baseX: Math.cos(a) * (radiusMax + 2 + i * 1.5),
-        baseZ: Math.sin(a) * (radiusMax + 2 + i * 1.5),
-        width: 1.5, depth: 1.5, height: 0.3,
-        rotation: a, floor: floorNum, isExtra: true,
-        animOffset: sOff, animSpeed: 0.5, animRange: 0
-      });
-    }
-  }
+  });
 
   return platforms;
 }
@@ -808,14 +796,14 @@ function generatePlayers(floorCount) {
   const result = {};
   names.forEach((name, i) => {
     const floor = Math.floor(Math.random() * floorCount) + 1;
-    const angle = Math.random() * Math.PI * 2;
-    const radius = 3 + Math.random() * 4;
+    const a = Math.random() * Math.PI * 2;
+    const d = 1 + Math.random() * 3.5;
     result[`p_${i}`] = {
       name, floor,
-      x: Math.cos(angle) * radius,
-      z: Math.sin(angle) * radius,
+      x: Math.cos(a + i * 1.3) * d,
+      z: Math.sin(a + i * 1.3) * d,
       color: colors[i],
-      angle: angle, radius: radius, phase: Math.random() * Math.PI * 2
+      phase: Math.random() * Math.PI * 2
     };
   });
   return result;
@@ -861,200 +849,249 @@ function rebuildMeshes() {
   floorMeshes = [];
   playerMeshes = [];
   platformMeshes = [];
+  const HS = 5.5;
 
-  const floorGeom = new THREE.PlaneGeometry(18, 18);
-  const floorMat = new THREE.MeshStandardMaterial({
-    color: 0x1a1a2e,
-    transparent: true,
-    opacity: 0.3,
-    side: THREE.DoubleSide,
-    roughness: 0.8,
-    metalness: 0.2
-  });
+  // Staircase group at 4 sides connecting all floors
+  const stairMat = new THREE.MeshStandardMaterial({ color: 0x333355, roughness: 0.7, metalness: 0.2 });
 
   Object.keys(floors).forEach(fKey => {
     const f = floors[fKey];
     const fn = parseInt(fKey);
     const yPos = (fn - 1) * floorSpacing;
     const typeInfo = LevelTypes[f.type] || LevelTypes.normal;
+    const tColor = new THREE.Color(typeInfo.color);
 
-    const platformMesh = new THREE.Mesh(floorGeom, floorMat.clone());
-    platformMesh.position.set(0, yPos - 0.1, 0);
-    platformMesh.rotation.x = -Math.PI / 2;
-    platformMesh.receiveShadow = true;
-    scene.add(platformMesh);
-    floorMeshes.push(platformMesh);
-
-    const ringGeom = new THREE.RingGeometry(8.5, 9, 48);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(typeInfo.color),
-      transparent: true,
-      opacity: 0.2,
-      side: THREE.DoubleSide
+    // -- City block base (square concrete slab) --
+    const baseMat = new THREE.MeshStandardMaterial({
+      color: 0x1a1a2e, roughness: 0.85, metalness: 0.1,
+      transparent: true, opacity: 0.4
     });
-    const ring = new THREE.Mesh(ringGeom, ringMat);
-    ring.position.set(0, yPos + 0.05, 0);
-    ring.rotation.x = -Math.PI / 2;
-    scene.add(ring);
-    floorMeshes.push(ring);
+    const base = new THREE.Mesh(new THREE.PlaneGeometry(HS * 2, HS * 2), baseMat);
+    base.rotation.x = -Math.PI / 2;
+    base.position.set(0, yPos - 0.05, 0);
+    base.receiveShadow = true;
+    scene.add(base);
+    floorMeshes.push(base);
 
-    const columns = 24;
-    for (let i = 0; i < columns; i++) {
-      const a = (i / columns) * Math.PI * 2;
-      const pillarGeom = new THREE.CylinderGeometry(0.05, 0.05, yPos, 4);
-      const pillarMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(typeInfo.color),
-        transparent: true,
-        opacity: 0.1
-      });
-      const pillar = new THREE.Mesh(pillarGeom, pillarMat);
-      pillar.position.set(Math.cos(a) * 9, yPos / 2, Math.sin(a) * 9);
-      scene.add(pillar);
-      floorMeshes.push(pillar);
+    // -- Street grid overlay --
+    const gridMat = new THREE.MeshBasicMaterial({ color: tColor, transparent: true, opacity: 0.06, side: THREE.DoubleSide });
+    const grid = new THREE.Mesh(new THREE.PlaneGeometry(HS * 2, HS * 2), gridMat);
+    grid.rotation.x = -Math.PI / 2;
+    grid.position.set(0, yPos + 0.02, 0);
+    scene.add(grid);
+    floorMeshes.push(grid);
+
+    // Street lines (cross pattern)
+    const lineMat = new THREE.MeshBasicMaterial({ color: tColor, transparent: true, opacity: 0.08 });
+    [-2, 0, 2].forEach(offset => {
+      const lx = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.01, HS * 2), lineMat);
+      lx.position.set(offset, yPos + 0.04, 0);
+      scene.add(lx);
+      floorMeshes.push(lx);
+      const lz = new THREE.Mesh(new THREE.BoxGeometry(HS * 2, 0.01, 0.04), lineMat);
+      lz.position.set(0, yPos + 0.04, offset);
+      scene.add(lz);
+      floorMeshes.push(lz);
+    });
+
+    // -- Block edge / curb --
+    const curbMat = new THREE.MeshBasicMaterial({ color: 0x444466, transparent: true, opacity: 0.15 });
+    for (let side = 0; side < 4; side++) {
+      const a = side * Math.PI / 2;
+      const curb = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.08, HS * 2), curbMat);
+      curb.position.set(Math.cos(a) * HS, yPos + 0.04, Math.sin(a) * HS);
+      curb.rotation.y = -a;
+      scene.add(curb);
+      floorMeshes.push(curb);
     }
 
+    // -- Staircase at each corner connecting to next floor --
+    if (fn < Object.keys(floors).length) {
+      const corners = [[1,1], [-1,1], [1,-1], [-1,-1]];
+      corners.forEach(c => {
+        const sx = c[0] * 5.2;
+        const sz = c[1] * 5.2;
+        for (let s = 0; s < 8; s++) {
+          const t = s / 8;
+          const step = new THREE.Mesh(
+            new THREE.BoxGeometry(0.6, 0.08, 0.35),
+            new THREE.MeshStandardMaterial({ color: 0x44446a, roughness: 0.6, metalness: 0.2 })
+          );
+          step.position.set(
+            sx + c[0] * t * 0.35,
+            yPos + 0.04 + t * floorSpacing,
+            sz + c[1] * t * 0.35
+          );
+          scene.add(step);
+          floorMeshes.push(step);
+        }
+        // Railing posts
+        for (let p = 0; p < 4; p++) {
+          const pt = p / 3;
+          const post = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.02, 0.02, floorSpacing, 4),
+            new THREE.MeshBasicMaterial({ color: 0x555588, transparent: true, opacity: 0.2 })
+          );
+          post.position.set(
+            sx + c[0] * (pt * 0.35 + 0.1),
+            yPos + floorSpacing / 2,
+            sz + c[1] * (pt * 0.35 + 0.1)
+          );
+          scene.add(post);
+          floorMeshes.push(post);
+        }
+      });
+    }
+
+    // -- Building on the block --
+    const buildingCount = typeInfo.name === 'The Void' ? 1 : 3 + Math.floor(Math.random() * 3);
+    for (let bi = 0; bi < buildingCount; bi++) {
+      const bh = 0.4 + Math.random() * 0.8;
+      const bw = 0.6 + Math.random() * 0.6;
+      const bd = 0.6 + Math.random() * 0.6;
+      const bAngle = Math.random() * Math.PI * 2;
+      const bDist = 0.5 + Math.random() * 2.5;
+      const bx = Math.cos(bAngle + bi * 2.1) * bDist;
+      const bz = Math.sin(bAngle + bi * 2.1) * bDist;
+      const bColor = 0x222244 + Math.floor(Math.random() * 0x222222);
+      const bMat = new THREE.MeshStandardMaterial({
+        color: bColor, roughness: 0.7, metalness: 0.1,
+        emissive: new THREE.Color(bColor), emissiveIntensity: 0.03
+      });
+      const bMesh = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, bd), bMat);
+      bMesh.position.set(bx, yPos + bh / 2, bz);
+      bMesh.castShadow = true;
+      bMesh.receiveShadow = true;
+      scene.add(bMesh);
+      floorMeshes.push(bMesh);
+
+      // Windows
+      const wMatB = new THREE.MeshBasicMaterial({ color: 0xffdd77, transparent: true, opacity: 0.15 + Math.random() * 0.2 });
+      const wc = Math.floor(bh * 4);
+      for (let wi = 0; wi < wc; wi++) {
+        const wy = -bh / 2 + 0.1 + wi * 0.2;
+        [0, 1].forEach(side => {
+          const win = new THREE.Mesh(new THREE.PlaneGeometry(0.12, 0.14), wMatB);
+          const sd = side === 0 ? bw / 2.05 : bd / 2.05;
+          win.position.set(
+            side === 0 ? Math.sign(bx || 1) * sd : bx + (Math.random() - 0.5) * bw * 0.4,
+            yPos + bh / 2 + wy,
+            side === 1 ? Math.sign(bz || 1) * sd : bz + (Math.random() - 0.5) * bd * 0.4
+          );
+          scene.add(win);
+          floorMeshes.push(win);
+        });
+      }
+    }
+
+    // -- Platforms (gameplay elements on this block) --
     f.platforms.forEach(p => {
       const color = PlatformColors[p.type] || PlatformColors.basic;
       const c = hexToRgb(color);
-
       const isSpecial = p.type === 'teleporter' || p.type === 'boost' || p.type === 'bounce' || p.type === 'spike';
-      const emissiveIntensity = isSpecial ? 0.4 : 0.2;
+      const emissiveIntensity = isSpecial ? 0.45 : 0.25;
 
       const geom = p.type === 'bounce'
         ? new THREE.CylinderGeometry(p.width / 2, p.width / 2, p.height * 2, 16)
         : new THREE.BoxGeometry(p.width, p.height, p.depth);
 
       const mat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(color),
-        roughness: 0.3,
-        metalness: 0.4,
-        emissive: new THREE.Color(color),
-        emissiveIntensity
+        color: new THREE.Color(color), roughness: 0.3, metalness: 0.4,
+        emissive: new THREE.Color(color), emissiveIntensity
       });
-
       const mesh = new THREE.Mesh(geom, mat);
-      mesh.position.set(p.x, yPos + p.height / 2, p.z);
+      mesh.position.set(p.x, yPos + p.height / 2 + 0.1, p.z);
       mesh.rotation.y = p.rotation || 0;
       mesh.castShadow = true;
       mesh.receiveShadow = true;
-      mesh.userData = { platform: p, baseIntensity: emissiveIntensity, initialY: yPos + p.height / 2 };
+      mesh.userData = { platform: p, baseIntensity: emissiveIntensity, initialY: yPos + p.height / 2 + 0.1 };
       scene.add(mesh);
       floorMeshes.push(mesh);
       platformMeshes.push(mesh);
 
+      // Wireframe glow edge
       const edgeGeom = new THREE.EdgesGeometry(geom);
-      const edgeMat = new THREE.LineBasicMaterial({
-        color: new THREE.Color(color),
-        transparent: true,
-        opacity: 0.3
-      });
-      const edgeLine = new THREE.LineSegments(edgeGeom, edgeMat);
+      const edgeLine = new THREE.LineSegments(edgeGeom, new THREE.LineBasicMaterial({
+        color: new THREE.Color(color), transparent: true, opacity: 0.35
+      }));
       edgeLine.position.copy(mesh.position);
       edgeLine.rotation.copy(mesh.rotation);
       scene.add(edgeLine);
       floorMeshes.push(edgeLine);
 
+      // -- Type-specific decorations --
       if (p.type === 'teleporter') {
-        const ringGeom2 = new THREE.TorusGeometry(p.width / 2 + 0.15, 0.08, 8, 24);
-        const ringMat2 = new THREE.MeshBasicMaterial({
-          color: new THREE.Color(color),
-          transparent: true,
-          opacity: 0.8
-        });
-        const ring2 = new THREE.Mesh(ringGeom2, ringMat2);
-        ring2.position.set(p.x, yPos + p.height + 0.05, p.z);
-        ring2.rotation.x = Math.PI / 2;
-        scene.add(ring2);
-        floorMeshes.push(ring2);
-
-        const glowGeom2 = new THREE.TorusGeometry(p.width / 2 + 0.3, 0.12, 8, 24);
-        const glowMat2 = new THREE.MeshBasicMaterial({
-          color: new THREE.Color(color),
-          transparent: true,
-          opacity: 0.2
-        });
-        const glow2 = new THREE.Mesh(glowGeom2, glowMat2);
-        glow2.position.copy(ring2.position);
-        glow2.rotation.copy(ring2.rotation);
-        scene.add(glow2);
-        floorMeshes.push(glow2);
+        const r1 = new THREE.Mesh(new THREE.TorusGeometry(p.width / 2 + 0.15, 0.06, 8, 20),
+          new THREE.MeshBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity: 0.7 }));
+        r1.position.set(p.x, yPos + 0.2, p.z);
+        r1.rotation.x = Math.PI / 2;
+        scene.add(r1);
+        floorMeshes.push(r1);
+        const r2 = new THREE.Mesh(new THREE.TorusGeometry(p.width / 2 + 0.3, 0.1, 8, 20),
+          new THREE.MeshBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity: 0.15 }));
+        r2.position.copy(r1.position);
+        r2.rotation.copy(r1.rotation);
+        scene.add(r2);
+        floorMeshes.push(r2);
       }
-
       if (p.type === 'boost') {
-        const stripGeom = new THREE.BoxGeometry(p.width * 0.8, 0.05, p.depth * 0.3);
-        const stripMat = new THREE.MeshBasicMaterial({
-          color: 0xffffff,
-          transparent: true,
-          opacity: 0.6
-        });
-        const strip = new THREE.Mesh(stripGeom, stripMat);
-        strip.position.set(p.x, yPos + p.height + 0.05, p.z);
-        scene.add(strip);
-        floorMeshes.push(strip);
-
-        const dirGeom = new THREE.BoxGeometry(0.1, 0.6, p.depth * 0.15);
-        const dirMat = new THREE.MeshBasicMaterial({
-          color: 0xffffff,
-          transparent: true,
-          opacity: 0.3
-        });
-        for (let di = -1; di <= 1; di += 2) {
-          const dir = new THREE.Mesh(dirGeom, dirMat);
-          dir.position.set(p.x + di * p.width * 0.25, yPos + p.height + 0.35, p.z);
-          scene.add(dir);
-          floorMeshes.push(dir);
-        }
+        const arrow = new THREE.Mesh(new THREE.BoxGeometry(p.width * 0.7, 0.04, p.depth * 0.25),
+          new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5 }));
+        arrow.position.set(p.x, yPos + 0.2, p.z);
+        scene.add(arrow);
+        floorMeshes.push(arrow);
       }
-
       if (p.type === 'spike') {
-        for (let s = -p.width / 2 + 0.3; s < p.width / 2; s += 0.6) {
-          const spikeGeom = new THREE.ConeGeometry(0.15, 0.4, 4);
-          const spikeMat = new THREE.MeshStandardMaterial({
-            color: new THREE.Color(color),
-            emissive: new THREE.Color(color),
-            emissiveIntensity: 0.4,
-            roughness: 0.2,
-            metalness: 0.6
-          });
-          const spike = new THREE.Mesh(spikeGeom, spikeMat);
-          spike.position.set(p.x + s, yPos + p.height + 0.2, p.z);
-          scene.add(spike);
-          floorMeshes.push(spike);
+        for (let s = -p.width / 2 + 0.25; s < p.width / 2; s += 0.5) {
+          const cone = new THREE.Mesh(new THREE.ConeGeometry(0.12, 0.3, 4),
+            new THREE.MeshStandardMaterial({ color: new THREE.Color(color), emissive: new THREE.Color(color), emissiveIntensity: 0.4 }));
+          cone.position.set(p.x + s, yPos + 0.35, p.z);
+          scene.add(cone);
+          floorMeshes.push(cone);
         }
       }
-
       if (p.type === 'bounce') {
-        const ringGeom2 = new THREE.TorusGeometry(p.width * 0.4, 0.04, 6, 16);
-        const ringMat2 = new THREE.MeshBasicMaterial({
-          color: new THREE.Color(color),
-          transparent: true,
-          opacity: 0.6
-        });
-        const ring2 = new THREE.Mesh(ringGeom2, ringMat2);
-        ring2.position.set(p.x, yPos + p.height + 0.05, p.z);
-        ring2.rotation.x = Math.PI / 2;
-        scene.add(ring2);
-        floorMeshes.push(ring2);
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(p.width * 0.35, 0.03, 6, 14),
+          new THREE.MeshBasicMaterial({ color: new THREE.Color(color), transparent: true, opacity: 0.5 }));
+        ring.position.set(p.x, yPos + 0.2, p.z);
+        ring.rotation.x = Math.PI / 2;
+        scene.add(ring);
+        floorMeshes.push(ring);
       }
     });
 
+    // -- Small street trees --
+    const treeMat = new THREE.MeshStandardMaterial({ color: 0x1a3a2a, roughness: 0.9 });
+    const trunkMat = new THREE.MeshStandardMaterial({ color: 0x443322, roughness: 0.9 });
+    for (let ti = 0; ti < 3; ti++) {
+      const ta = Math.random() * Math.PI * 2;
+      const td = 3 + Math.random() * 2;
+      const tx = Math.cos(ta + fn * 1.3) * td;
+      const tz = Math.sin(ta + fn * 1.3) * td;
+      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.06, 0.2, 4), trunkMat);
+      trunk.position.set(tx, yPos + 0.1, tz);
+      scene.add(trunk);
+      floorMeshes.push(trunk);
+      const crown = new THREE.Mesh(new THREE.SphereGeometry(0.18, 5, 5), treeMat);
+      crown.position.set(tx, yPos + 0.25, tz);
+      scene.add(crown);
+      floorMeshes.push(crown);
+    }
+
+    // -- Floor label (at block edge) --
     const label = createFloorLabel(fn, typeInfo);
-    label.position.set(0, yPos + 0.5, 9.8);
+    label.position.set(HS + 0.3, yPos + 0.5, 0);
     scene.add(label);
     floorMeshes.push(label);
   });
 
+  // ---- PLAYERS ----
   Object.values(players).forEach(player => {
     const yPos = (player.floor - 1) * floorSpacing + 0.5;
-    const c = hexToRgb(player.color);
-
-    const sphereGeom = new THREE.SphereGeometry(0.45, 16, 16);
+    const sphereGeom = new THREE.SphereGeometry(0.4, 14, 14);
     const sphereMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(player.color),
-      emissive: new THREE.Color(player.color),
-      emissiveIntensity: 0.5,
-      roughness: 0.2,
-      metalness: 0.3
+      color: new THREE.Color(player.color), emissive: new THREE.Color(player.color),
+      emissiveIntensity: 0.5, roughness: 0.2, metalness: 0.3
     });
     const sphere = new THREE.Mesh(sphereGeom, sphereMat);
     sphere.position.set(player.x, yPos, player.z);
@@ -1063,62 +1100,30 @@ function rebuildMeshes() {
     scene.add(sphere);
     playerMeshes.push(sphere);
 
-    const glowGeom = new THREE.SphereGeometry(0.85, 12, 12);
-    const glowMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(player.color),
-      transparent: true,
-      opacity: 0.15
+    [0.75, 1.05].forEach((r, i) => {
+      const g = new THREE.Mesh(new THREE.SphereGeometry(r, 10, 10),
+        new THREE.MeshBasicMaterial({ color: new THREE.Color(player.color), transparent: true, opacity: i === 0 ? 0.15 : 0.05 }));
+      g.position.copy(sphere.position);
+      scene.add(g);
+      playerMeshes.push(g);
     });
-    const glow = new THREE.Mesh(glowGeom, glowMat);
-    glow.position.copy(sphere.position);
-    scene.add(glow);
-    playerMeshes.push(glow);
 
-    const outerGlowGeom = new THREE.SphereGeometry(1.2, 8, 8);
-    const outerGlowMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(player.color),
-      transparent: true,
-      opacity: 0.06
-    });
-    const outerGlow = new THREE.Mesh(outerGlowGeom, outerGlowMat);
-    outerGlow.position.copy(sphere.position);
-    scene.add(outerGlow);
-    playerMeshes.push(outerGlow);
-
-    const labelDiv = document.createElement('div');
-    labelDiv.textContent = player.name;
-    labelDiv.style.color = '#ffffff';
-    labelDiv.style.fontSize = '10px';
-    labelDiv.style.fontWeight = '600';
-    labelDiv.style.fontFamily = 'IBM Plex Sans, sans-serif';
-    labelDiv.style.textShadow = `0 0 8px ${player.color}, 0 0 20px rgba(0,0,0,0.9)`;
-    labelDiv.style.background = `rgba(0,0,0,0.5)`;
-    labelDiv.style.padding = '1px 6px';
-    labelDiv.style.borderRadius = '4px';
-    labelDiv.style.border = `1px solid ${player.color}66`;
-    labelDiv.style.whiteSpace = 'nowrap';
-    const label = new CSS2DObject(labelDiv);
-    label.position.set(player.x, yPos + 1.0, player.z);
+    const ld = document.createElement('div');
+    ld.textContent = player.name;
+    ld.style.cssText = `color:#fff;font-size:10px;font-weight:600;font-family:IBM Plex Sans,sans-serif;text-shadow:0 0 8px ${player.color},0 0 20px rgba(0,0,0,0.9);background:rgba(0,0,0,0.5);padding:1px 6px;border-radius:4px;border:1px solid ${player.color}66;white-space:nowrap;`;
+    const label = new CSS2DObject(ld);
+    label.position.set(player.x, yPos + 0.9, player.z);
     scene.add(label);
     playerMeshes.push(label);
   });
 
-  // Stars background
-  [...scene.children].filter(c => c.isMesh && c.userData.isStar).forEach(c => scene.remove(c));
+  // ---- STARS ----
+  [...scene.children].filter(c => c.isPoints && c.userData.isStar).forEach(c => scene.remove(c));
   const starGeom = new THREE.BufferGeometry();
-  const starCount = 200;
-  const starPos = new Float32Array(starCount * 3);
-  for (let i = 0; i < starCount * 3; i++) {
-    starPos[i] = (Math.random() - 0.5) * 200;
-  }
+  const starPos = new Float32Array(600);
+  for (let i = 0; i < 600; i++) starPos[i] = (Math.random() - 0.5) * 200;
   starGeom.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  const starMat = new THREE.PointsMaterial({
-    color: 0xffffff,
-    size: 0.15,
-    transparent: true,
-    opacity: 0.6
-  });
-  const stars = new THREE.Points(starGeom, starMat);
+  const stars = new THREE.Points(starGeom, new THREE.PointsMaterial({ color: 0xffffff, size: 0.12, transparent: true, opacity: 0.5 }));
   stars.position.y = -5;
   stars.userData = { isStar: true };
   scene.add(stars);
@@ -1234,8 +1239,8 @@ let autoRotate = false;
 
 document.getElementById('resetView').addEventListener('click', () => {
   autoRotate = false;
-  camera.position.set(25, 20, 30);
-  controls.target.set(0, 15, 0);
+  camera.position.set(35, 75, 35);
+  controls.target.set(0, 70, 0);
   controls.update();
 });
 
@@ -1263,7 +1268,7 @@ function animate() {
     const angle = time * 0.15;
     camera.position.x = pivot.x + radius * Math.sin(angle);
     camera.position.z = pivot.z + radius * Math.cos(angle);
-    camera.position.y = pivot.y + 10;
+    camera.position.y = pivot.y + 25;
     camera.lookAt(pivot);
   }
 
@@ -1271,7 +1276,7 @@ function animate() {
   const pos = particles.geometry.attributes.position.array;
   for (let i = 0; i < particleCount; i++) {
     pos[i * 3 + 1] -= 0.02;
-    if (pos[i * 3 + 1] < -5) pos[i * 3 + 1] = 155;
+    if (pos[i * 3 + 1] < -5) pos[i * 3 + 1] = 170;
   }
   particles.geometry.attributes.position.needsUpdate = true;
 
@@ -1310,8 +1315,8 @@ function animate() {
     }
   });
 
-  titleLabel.position.y = 153 + Math.sin(time * 0.3) * 0.3;
-  subtitleLabel.position.y = 148 + Math.sin(time * 0.3 + 0.5) * 0.2;
+  titleLabel.position.y = 160 + Math.sin(time * 0.3) * 0.3;
+  subtitleLabel.position.y = 155 + Math.sin(time * 0.3 + 0.5) * 0.2;
 
   bloomPass.strength = 0.3 + Math.sin(time * 0.1) * 0.05;
 
