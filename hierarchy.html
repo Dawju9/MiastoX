@@ -1,0 +1,55 @@
+---
+layout: default
+title: Nasi gracze - Player Roster & Rank Tree
+desc: MiastoX - Lista graczy, hierarchia administracyjna i drzewo rang
+url: /hierarchy.html
+---
+<head>
+<link rel="stylesheet" href="styles/main.css">
+<title>MiastoX - Nasi gracze</title>
+</head>
+
+<div class="body-content">
+    <div class="header-content">
+        <h1>🏛️ Nasi gracze</h1>
+        <p class="subtext">Lista graczy, hierarchia administracyjna i drzewo rang — przejrzysta struktura serwera MiastoX</p>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>📊 Rank Tree</h2>
+        <p>Interactive visualization of the MiastoX administrative hierarchy. Hover over nodes for details.</p>
+        <div id="tree-container"></div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>📋 Rank Descriptions</h2>
+        <div id="rank-descriptions"></div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>👥 Player Roster</h2>
+        <p>Fresh players and high-prestige citizens appear first. Regular citizens (Obywatel) show max 10 at a time.</p>
+        <p id="roster-updated" style="font-size:13px;opacity:0.6;">Loading...</p>
+        <div id="player-roster"></div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>⚖️ Principles</h2>
+        <ul>
+            <li><b>Rank ≠ Power</b> — Administrative rank grants no gameplay advantage</li>
+            <li><b>Rank ≠ Prestige</b> — Prestige is separate gameplay progression (climbing height, kills, money, level)</li>
+            <li><b>No exemptions</b> — All ranks are subject to the same server rules</li>
+            <li><b>Transparency</b> — Every rank and its responsibilities are publicly documented here</li>
+        </ul>
+    </section>
+</div>
+
+<script src="assets/js/tree.js"></script>

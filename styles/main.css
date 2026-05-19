@@ -386,6 +386,126 @@ button:hover {
 
 /* Responsiveness */
 
+/* Tree tooltip */
+.tree-tooltip {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid var(--background_color_dark);
+	border-radius: 8px;
+	padding: 12px 16px;
+	font-size: 13px;
+	line-height: 1.4;
+	max-width: 280px;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+	z-index: 100;
+	pointer-events: none;
+	color: var(--text_color);
+	font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Rank list */
+.rank-list {
+	max-width: 700px;
+	margin: 0 auto;
+}
+.rank-badge {
+	display: inline-block;
+	padding: 4px 12px;
+	border-radius: 4px;
+	color: white;
+	font-weight: 700;
+	font-size: 14px;
+	font-family: 'Big Shoulders Display';
+	letter-spacing: 0.5px;
+}
+.rank-item {
+	transition: opacity 0.2s;
+}
+.rank-item:hover {
+	opacity: 0.85;
+}
+
+/* Tree container */
+#tree-container {
+	min-height: 400px;
+	padding: 20px 0;
+}
+#tree-container svg {
+	background: transparent;
+}
+
+/* Player roster */
+#player-roster {
+	max-width: 700px;
+	margin: 0 auto;
+}
+.player-rank-section {
+	margin-bottom: 24px;
+}
+.player-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.player-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 12px;
+	background: var(--background_color_light);
+	border-radius: 4px;
+	transition: background 0.2s;
+}
+.player-row:hover {
+	background: var(--background_color_dark);
+}
+.player-row-hidden {
+	display: none;
+}
+.player-name {
+	font-weight: 600;
+	font-size: 15px;
+}
+.player-tags {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+.tag {
+	font-size: 11px;
+	font-weight: 700;
+	padding: 2px 8px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+.tag-fresh {
+	background: #00cc66;
+	color: white;
+}
+.tag-prestige {
+	background: var(--accent_color);
+	color: white;
+}
+.player-toggle {
+	display: block;
+	margin: 8px auto 0;
+	background: var(--background_color_dark);
+	border: none;
+	padding: 8px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--text_color);
+	transition: background 0.2s;
+}
+.player-toggle:hover {
+	background: var(--tint_color);
+	color: white;
+}
+
 @media (max-width: 900px) {
 	/* Mobile portrait version */
 	.team-grid {

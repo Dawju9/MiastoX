@@ -4,7 +4,7 @@
 local WeatherSystem = {}
 WeatherSystem.__index = WeatherSystem
 
-export type WeatherType = "sunny" | "rainy" | "foggy" | "stormy" | "snowy" | "cloudy" | "night" | "eclipse" | "apocalyptic" | "tornado" | "earthquake" | "meteor"
+export type WeatherType = "sunny" | "rainy" | "foggy" | "snowy" | "cloudy" | "night" | "smog" | "drizzle" | "overcast"
 
 local WeatherEffects = {
 	sunny = {
@@ -29,14 +29,6 @@ local WeatherEffects = {
 		fogColor = Color3.new(0.6, 0.6, 0.6),
 		fogDensity = 0.7,
 	},
-	stormy = {
-		skybox = "Dark",
-		ambient = Color3.new(0.15, 0.15, 0.2),
-		brightness = 0.4,
-		fogEnabled = true,
-		fogColor = Color3.new(0.1, 0.1, 0.15),
-		fogDensity = 0.5,
-	},
 	snowy = {
 		skybox = "White",
 		ambient = Color3.new(0.7, 0.7, 0.75),
@@ -57,50 +49,28 @@ local WeatherEffects = {
 		brightness = 0.3,
 		fogEnabled = false,
 	},
-	eclipse = {
-		skybox = "Dark",
-		ambient = Color3.new(0.05, 0.05, 0.1),
-		brightness = 0.2,
-		fogEnabled = true,
-		fogColor = Color3.new(0, 0, 0.05),
-		fogDensity = 0.4,
-	},
-	apocalyptic = {
-		skybox = "Hell",
-		ambient = Color3.new(0.3, 0.1, 0),
+	smog = {
+		skybox = "Gray",
+		ambient = Color3.new(0.35, 0.3, 0.25),
 		brightness = 0.5,
 		fogEnabled = true,
-		fogColor = Color3.new(0.4, 0.1, 0),
+		fogColor = Color3.new(0.5, 0.45, 0.4),
 		fogDensity = 0.6,
 	},
-	tornado = {
-		skybox = "Dark",
-		ambient = Color3.new(0.2, 0.2, 0.25),
-		brightness = 0.3,
+	drizzle = {
+		skybox = "Gray",
+		ambient = Color3.new(0.35, 0.35, 0.4),
+		brightness = 0.7,
 		fogEnabled = true,
-		fogColor = Color3.new(0.15, 0.15, 0.2),
-		fogDensity = 0.8,
-		shakeIntensity = 5,
+		fogColor = Color3.new(0.3, 0.3, 0.35),
+		fogDensity = 0.15,
 	},
-	earthquake = {
-		skybox = "Dark",
-		ambient = Color3.new(0.3, 0.2, 0.1),
+	overcast = {
+		skybox = "Gray",
+		ambient = Color3.new(0.4, 0.4, 0.45),
 		brightness = 0.6,
-		fogEnabled = true,
-		fogColor = Color3.new(0.25, 0.15, 0.1),
-		fogDensity = 0.3,
-		shakeIntensity = 10,
+		fogEnabled = false,
 	},
-	meteor = {
-		skybox = "Hell",
-		ambient = Color3.new(0.4, 0.1, 0),
-		brightness = 0.4,
-		fogEnabled = true,
-		fogColor = Color3.new(0.5, 0.15, 0),
-		fogDensity = 0.5,
-		shakeIntensity = 15,
-		particles = "fire",
-	}
 }
 
 function WeatherSystem.new()
@@ -136,11 +106,6 @@ end
 
 function WeatherSystem:getEffects(weatherType: WeatherType)
 	return WeatherEffects[weatherType]
-end
-
-function WeatherSystem:getRandomDisaster(): WeatherType
-	local disasters = {"tornado", "earthquake", "meteor"}
-	return disasters[math.random(#disasters)]
 end
 
 return WeatherSystem
