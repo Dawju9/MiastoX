@@ -92,7 +92,6 @@ game.Players.PlayerRemoving:Connect(onPlayerLeave)
 CityX.init(config)
 
 local levelManager = LevelManager.new()
-levelManager:generateFullLevel(1)
 levelManager:reset()
 
 print("[MiastoX] Level system initialized")

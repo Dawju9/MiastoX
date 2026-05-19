@@ -16,7 +16,7 @@ url: /map.html
 
 .map-sidebar {
     width: 280px;
-    background: var(--background_color_dark, #1a1a2e);
+    background: var(--background_color_light, #f5f5f5);
     border-radius: 12px;
     padding: 20px;
     overflow-y: auto;
@@ -24,7 +24,7 @@ url: /map.html
 
 .map-main {
     flex: 1;
-    background: var(--background_color_dark, #1a1a2e);
+    background: var(--background_color_light, #f5f5f5);
     border-radius: 12px;
     position: relative;
     overflow: hidden;
@@ -43,7 +43,7 @@ url: /map.html
 .sidebar-title {
     font-size: 1.3em;
     margin-bottom: 15px;
-    color: var(--accent_color, #e94560);
+    color: var(--accent_color, #0066cc);
 }
 
 .stat-box {
@@ -85,7 +85,7 @@ url: /map.html
 }
 
 .floor-item.active {
-    background: var(--accent_color, #e94560);
+    background: var(--accent_color, #0066cc);
 }
 
 .floor-type {
@@ -169,14 +169,14 @@ url: /map.html
 }
 
 .map-btn:hover {
-    background: var(--accent_color, #e94560);
+    background: var(--accent_color, #0066cc);
 }
 
 .map-info {
     position: absolute;
     bottom: 15px;
     left: 15px;
-    background: rgba(0,0,0,0.7);
+    background: rgba(255,255,255,0.7);
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 0.85em;
@@ -208,7 +208,7 @@ url: /map.html
     pointer-events: none;
     z-index: 100;
     display: none;
-    border: 1px solid var(--accent_color, #e94560);
+    border: 1px solid var(--accent_color, #0066cc);
 }
 
 .platform-tooltip.visible {
@@ -234,7 +234,7 @@ url: /map.html
     width: 50px;
     height: 50px;
     border: 4px solid rgba(255,255,255,0.1);
-    border-top-color: var(--accent_color, #e94560);
+    border-top-color: var(--accent_color, #0066cc);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -294,6 +294,7 @@ url: /map.html
 
     <div class="map-main">
         <canvas id="mapCanvas"></canvas>
+<p style="margin-top:8px; font-size:0.9em; color:#555;">Run <code>./scripts/generate_city_map_from_schematics.py</code> to regenerate the city map.</p>
         
         <div class="map-controls">
             <button class="map-btn" onclick="mapViewer.zoomIn()" title="Zoom In">+</button>
@@ -415,7 +416,37 @@ class MapViewer {
     }
 
     loadDemoData() {
-        for (let f = 1; f <= 30; f++) {
+        // Load city map data from JSON
+        fetch('assets/city_map.json')
+            .then(res => res.json())
+            .then(data => {
+                // Create a floor entry for each block
+                data.blocks.forEach(block => {
+                    const floor = block.id;
+                    this.floors[floor] = {
+                        level: Math.ceil(floor / 10),
+                        floor: floor,
+                        type: block.difficulty,
+                        platforms: [{
+                            type: 'basic',
+                            x: block.position.x, y: block.position.z, width: 20, height: 20
+                        }]
+                    };
+                });
+                // No player data in static map
+                this.players = {};
+                this.renderFloorList();
+                this.updatePlayerList();
+            })
+            .catch(err => {
+                console.error('Failed to load city map:', err);
+                this.loadDemoDataFallback();
+            });
+    }
+
+    // Fallback demo data if fetch fails
+    loadDemoDataFallback() {
+        for (let f = 1; f <= 5; f++) {
             const levelType = this.getLevelTypeForFloor(f);
             this.floors[f] = {
                 level: Math.ceil(f / 10),
@@ -424,15 +455,7 @@ class MapViewer {
                 platforms: this.generateDemoPlatforms(f, levelType)
             };
         }
-        
-        this.players = {
-            'player_1': { name: 'Dawju9', floor: 5, x: 120, y: 80, color: '#00ff88' },
-            'player_2': { name: 'Whitekali', floor: 12, x: 200, y: 150, color: '#ff6b6b' },
-            'player_3': { name: 'ProGamer', floor: 3, x: 50, y: 200, color: '#ffd93d' },
-            'player_4': { name: 'Climber99', floor: 18, x: 180, y: 100, color: '#00b4d8' },
-            'player_5': { name: 'TopPlayer', floor: 25, x: 100, y: 180, color: '#9d4edd' }
-        };
-        
+        this.players = {};
         this.renderFloorList();
         this.updatePlayerList();
     }

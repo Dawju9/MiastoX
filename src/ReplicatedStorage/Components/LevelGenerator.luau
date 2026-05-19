@@ -53,6 +53,9 @@ local CityColors = {
 	wetDark = Color3.fromRGB(90, 95, 105),
 	balconyIron = Color3.fromRGB(60, 60, 60),
 	windowGlow = Color3.fromRGB(200, 210, 230),
+	atmBlue = Color3.fromRGB(0, 120, 215),
+	leaderboardGold = Color3.fromRGB(255, 215, 0),
+	shopGreen = Color3.fromRGB(50, 180, 50),
 }
 
 local DifficultySettings = {
@@ -547,12 +550,296 @@ function LevelGenerator:createConstructionLaser(position: Vector3): Instance
 	return part
 end
 
-function LevelGenerator:generateCityBlock(blockNumber: number, difficulty: LevelDifficulty): { [string]: any }
+function LevelGenerator:createCastle(position: Vector3): { Instance }
+	local parts: { Instance } = {}
+	local stone = Color3.fromRGB(200, 185, 155)
+	local darkStone = Color3.fromRGB(160, 145, 120)
+	local roof = Color3.fromRGB(140, 75, 55)
+	local gold = Color3.fromRGB(255, 215, 0)
+
+	local H = 20
+	local T = 3
+	local R = 32
+
+	-- Base platform
+	local base = self:createPart("CastleBase", Vector3.new(R * 2 + 8, 2, R * 2 + 8), darkStone, true)
+	base.Position = position - Vector3.new(0, 1, 0)
+	base.Material = Enum.Material.Slate
+	table.insert(parts, base)
+
+	-- Floor / courtyard
+	local floor = self:createPart("CastleFloor", Vector3.new(R * 2 - 2, 0.5, R * 2 - 2), stone, true)
+	floor.Position = position + Vector3.new(0, 0.25, 0)
+	floor.Material = Enum.Material.Slate
+	table.insert(parts, floor)
+
+	-- Outer walls
+	local function makeWall(name, size, pos)
+		local w = self:createPart(name, size, stone, true)
+		w.Position = pos
+		w.Material = Enum.Material.Concrete
+		table.insert(parts, w)
+		return w
+	end
+
+	makeWall("Wall_N", Vector3.new(R * 2, H, T), position + Vector3.new(0, H / 2, -R))
+	makeWall("Wall_S", Vector3.new(R * 2, H, T), position + Vector3.new(0, H / 2, R))
+	makeWall("Wall_E", Vector3.new(T, H, R * 2), position + Vector3.new(R, H / 2, 0))
+	makeWall("Wall_W", Vector3.new(T, H, R * 2), position + Vector3.new(-R, H / 2, 0))
+
+	-- Wall crenellations
+	for side = -1, 1, 2 do
+		for x = -R + 3, R - 3, 4 do
+			local c = makeWall(`Crenel_N_{x}`, Vector3.new(2, 2, 1), position + Vector3.new(x, H + 1, -R * side))
+			c.Color = darkStone
+		end
+	end
+	for side = -1, 1, 2 do
+		for z = -R + 3, R - 3, 4 do
+			local c = makeWall(`Crenel_E_{z}`, Vector3.new(1, 2, 2), position + Vector3.new(R * side, H + 1, z))
+			c.Color = darkStone
+		end
+	end
+
+	-- Main gate (south side, arch)
+	makeWall("Gate_L", Vector3.new(2, 10, T), position + Vector3.new(-5, 5, R))
+	makeWall("Gate_R", Vector3.new(2, 10, T), position + Vector3.new(5, 5, R))
+	makeWall("Gate_Arch", Vector3.new(14, 2, T), position + Vector3.new(0, 11, R))
+
+	-- Gate decorative columns
+	makeWall("GateColumn_L", Vector3.new(1.5, H, 1.5), position + Vector3.new(-7, H / 2, R + 1))
+	makeWall("GateColumn_R", Vector3.new(1.5, H, 1.5), position + Vector3.new(7, H / 2, R + 1))
+
+	-- Corner towers
+	local towerPositions = {
+		{ -R + 5, -R + 5 },
+		{ R - 5, -R + 5 },
+		{ -R + 5, R - 5 },
+		{ R - 5, R - 5 },
+	}
+	for i, tp in towerPositions do
+		local tx, tz = tp[1], tp[2]
+		local tBase = makeWall(`TowerBase_{i}`, Vector3.new(10, 30, 10), position + Vector3.new(tx, 15, tz))
+		tBase.Material = Enum.Material.Concrete
+
+		local tRoof = makeWall(`TowerRoof_{i}`, Vector3.new(12, 4, 12), position + Vector3.new(tx, 32, tz))
+		tRoof.Color = roof
+		tRoof.Material = Enum.Material.Slate
+
+		local tSpire = makeWall(`TowerSpire_{i}`, Vector3.new(1.5, 6, 1.5), position + Vector3.new(tx, 37, tz))
+		tSpire.Color = gold
+
+		-- Tower windows
+		for s = -2, 2, 2 do
+			local win = self:createPart(`TowerWin_{i}_{s}`, Vector3.new(1.5, 2, 0.2), CityColors.glass, true)
+			win.Position = position + Vector3.new(tx + s, 10, tz - 5.1)
+			win.Transparency = 0.2
+			win.Material = Enum.Material.Glass
+			table.insert(parts, win)
+		end
+	end
+
+	-- Central keep
+	local keep = makeWall("CentralKeep", Vector3.new(16, 45, 16), position + Vector3.new(0, 22.5, 0))
+	keep.Material = Enum.Material.Concrete
+
+	-- Keep upper tier
+	local upper = makeWall("UpperKeep", Vector3.new(12, 15, 12), position + Vector3.new(0, 52.5, 0))
+	upper.Color = Color3.fromRGB(220, 200, 170)
+	upper.Material = Enum.Material.Concrete
+
+	-- Keep roof
+	local keepRoof = makeWall("KeepRoof", Vector3.new(14, 3, 14), position + Vector3.new(0, 61.5, 0))
+	keepRoof.Color = roof
+	keepRoof.Material = Enum.Material.Slate
+
+	-- Central spire (tall, golden)
+	local spire = makeWall("CentralSpire", Vector3.new(2, 20, 2), position + Vector3.new(0, 73, 0))
+	spire.Color = gold
+
+	-- Golden glow
+	local light = Instance.new("PointLight")
+	light.Color = gold
+	light.Range = 80
+	light.Brightness = 5
+	light.Shadows = true
+	light.Parent = spire
+	light.Name = "CastleGlow"
+	table.insert(parts, light)
+
+	-- Particle emitter
+	local emitter = Instance.new("ParticleEmitter")
+	emitter.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+	emitter.Rate = 15
+	emitter.Lifetime = NumberRange.new(2, 5)
+	emitter.Speed = NumberRange.new(1, 4)
+	emitter.VelocityInheritance = 0
+	emitter.Color = ColorSequence.new(gold)
+	emitter.Size = NumberSequence.new(0.3, 0.8)
+	emitter.Transparency = NumberSequence.new(0.6, 0.9)
+	emitter.LightEmission = 1
+	emitter.Parent = spire
+	emitter.Name = "CastleParticles"
+
+	-- Keep windows (glowing)
+	for s = -5, 5, 3 do
+		for y = 8, 38, 10 do
+			local kW = self:createPart(`KeepWin_{s}_{y}`, Vector3.new(2, 3, 0.2), Color3.fromRGB(255, 230, 150), true)
+			kW.Position = position + Vector3.new(s, y, 8.1)
+			kW.Transparency = 0.1
+			kW.Material = Enum.Material.Glass
+			table.insert(parts, kW)
+		end
+	end
+
+	-- Interior staircase (visual, inside keep)
+	for s = 0, 15 do
+		local stair = self:createPart(`CastleStair_{s}`, Vector3.new(4, 0.3, 2), stone, true)
+		stair.Position = position + Vector3.new(0, 2 + s * 3, -2)
+		stair.Transparency = math.min(0.7, 0.3 + s * 0.03)
+		stair.Material = Enum.Material.Slate
+		table.insert(parts, stair)
+
+		-- Alternating stair segments
+		local stair2 = self:createPart(`CastleStair_{s}_b`, Vector3.new(2, 0.3, 4), stone, true)
+		stair2.Position = position + Vector3.new(2, 3.5 + s * 3, 0)
+		stair2.Transparency = math.min(0.7, 0.3 + s * 0.03)
+		stair2.Material = Enum.Material.Slate
+		table.insert(parts, stair2)
+	end
+
+	print(`[LevelGenerator] Created Castle of Gods at {position}`)
+	return parts
+end
+
+function LevelGenerator:createATM(position: Vector3): { Instance }
+	local parts: { Instance } = {}
+	local body = self:createPart("ATM_Body", Vector3.new(3, 6, 1.5), Color3.fromRGB(50, 50, 50), true)
+	body.Position = position + Vector3.new(0, 3, 0)
+	body.Material = Enum.Material.Metal
+	table.insert(parts, body)
+
+	local screen = self:createPart("ATM_Screen", Vector3.new(2.2, 1.8, 0.2), CityColors.atmBlue, true)
+	screen.Position = position + Vector3.new(0, 4.5, 0.7)
+	screen.Material = Enum.Material.Neon
+	table.insert(parts, screen)
+
+	local keypad = self:createPart("ATM_Keypad", Vector3.new(2, 0.2, 1), Color3.fromRGB(150, 150, 150), true)
+	keypad.Position = position + Vector3.new(0, 3.2, 1)
+	keypad.Material = Enum.Material.Metal
+	table.insert(parts, keypad)
+
+	print(`[LevelGenerator] Created ATM at {position}`)
+	return parts
+end
+
+function LevelGenerator:createLeaderboard(position: Vector3): { Instance }
+	local parts: { Instance } = {}
+	local base = self:createPart("Leaderboard_Base", Vector3.new(10, 1, 4), Color3.fromRGB(80, 80, 80), true)
+	base.Position = position + Vector3.new(0, 0.5, 0)
+	base.Material = Enum.Material.Concrete
+	table.insert(parts, base)
+
+	local frame = self:createPart("Leaderboard_Frame", Vector3.new(12, 16, 1), Color3.fromRGB(40, 40, 40), true)
+	frame.Position = position + Vector3.new(0, 9, 0)
+	frame.Material = Enum.Material.Metal
+	table.insert(parts, frame)
+
+	local display = self:createPart("Leaderboard_Display", Vector3.new(11, 14, 0.2), Color3.fromRGB(20, 20, 20), true)
+	display.Position = position + Vector3.new(0, 9, 0.5)
+	display.Material = Enum.Material.Glass
+	table.insert(parts, display)
+
+	local crown = self:createPart("Leaderboard_Crown", Vector3.new(4, 2, 0.5), CityColors.leaderboardGold, true)
+	crown.Position = position + Vector3.new(0, 18, 0)
+	crown.Material = Enum.Material.Neon
+	table.insert(parts, crown)
+
+	print(`[LevelGenerator] Created Leaderboard at {position}`)
+	return parts
+end
+
+function LevelGenerator:createShop(position: Vector3): { Instance }
+	local parts: { Instance } = {}
+	local booth = self:createPart("Shop_Booth", Vector3.new(8, 8, 8), Color3.fromRGB(120, 90, 60), true)
+	booth.Position = position + Vector3.new(0, 4, 0)
+	booth.Material = Enum.Material.Wood
+	table.insert(parts, booth)
+
+	local counter = self:createPart("Shop_Counter", Vector3.new(8.5, 1, 2), Color3.fromRGB(100, 80, 50), true)
+	counter.Position = position + Vector3.new(0, 3.5, 3.5)
+	counter.Material = Enum.Material.Wood
+	table.insert(parts, counter)
+
+	local roof = self:createPart("Shop_Roof", Vector3.new(10, 1, 10), CityColors.shopGreen, true)
+	roof.Position = position + Vector3.new(0, 8.5, 0)
+	roof.Material = Enum.Material.Fabric
+	table.insert(parts, roof)
+
+	local sign = self:createPart("Shop_Sign", Vector3.new(4, 2, 0.2), CityColors.shopGreen, true)
+	sign.Position = position + Vector3.new(0, 7, 4.1)
+	sign.Material = Enum.Material.SmoothPlastic
+	table.insert(parts, sign)
+
+	print(`[LevelGenerator] Created Shop at {position}`)
+	return parts
+end
+
+function LevelGenerator:createRoyalSquare(position: Vector3): { [string]: any }
+	local objects: { [string]: any } = {}
+	local R = 64 -- Radius of the square
+
+	-- Floor
+	local floor = self:createPart("RoyalSquare_Floor", Vector3.new(R * 2, 1, R * 2), Color3.fromRGB(120, 120, 120), true)
+	floor.Position = position
+	floor.Material = Enum.Material.Pavement
+	objects["Floor"] = floor
+
+	-- Leaderboard in center
+	local lbParts = self:createLeaderboard(position + Vector3.new(0, 0.5, 0))
+	for i, p in lbParts do
+		objects[`Leaderboard_{i}`] = p
+	end
+
+	-- ATMs at 4 corners
+	local atmOffset = R - 10
+	local atmPositions = {
+		Vector3.new(atmOffset, 0.5, atmOffset),
+		Vector3.new(-atmOffset, 0.5, atmOffset),
+		Vector3.new(atmOffset, 0.5, -atmOffset),
+		Vector3.new(-atmOffset, 0.5, -atmOffset),
+	}
+	for i, pos in atmPositions do
+		local atmParts = self:createATM(position + pos)
+		for j, p in atmParts do
+			objects[`ATM_{i}_{j}`] = p
+		end
+	end
+
+	-- Shop near the edge
+	local shopParts = self:createShop(position + Vector3.new(0, 0.5, -R + 15))
+	for i, p in shopParts do
+		objects[`Shop_{i}`] = p
+	end
+
+	-- Spawns on edges
+	objects["SpawnPoints"] = {
+		position + Vector3.new(R - 5, 2, 0),
+		position + Vector3.new(-R + 5, 2, 0),
+		position + Vector3.new(0, 2, R - 5),
+		position + Vector3.new(0, 2, -R + 5),
+	}
+
+	print(`[LevelGenerator] Created Royal Square at {position}`)
+	return objects
+end
+
+function LevelGenerator:generateCityBlock(blockNumber: number, difficulty: LevelDifficulty, centerPos: Vector3?): { [string]: any }
 	local settings = DifficultySettings[difficulty]
 	local blockObjects: { [string]: any } = {}
-	local baseHeight = blockNumber * 20
-	local blockCenterX = (math.random() - 0.5) * 20
-	local blockCenterZ = (math.random() - 0.5) * 20
+	local baseHeight = centerPos and centerPos.Y or blockNumber * 20
+	local blockCenterX = centerPos and centerPos.X or (math.random() - 0.5) * 20
+	local blockCenterZ = centerPos and centerPos.Z or (math.random() - 0.5) * 20
 
 	local numBuildings = math.random(2, 4)
 	local buildingConfigs: { BuildingConfig } = {}
