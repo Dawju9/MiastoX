@@ -1,0 +1,29 @@
+{
+  "updated": "2026-05-19T12:00:00Z",
+  "players": [
+    { "name": "FreshNoob", "rank": "Cywil", "prestige": 0, "fresh": true },
+    { "name": "NewGuy42", "rank": "Cywil", "prestige": 5, "fresh": true },
+    { "name": "JustJoined", "rank": "Obywatel", "prestige": 12, "fresh": true },
+    { "name": "ClimberKing", "rank": "Obywatel", "prestige": 8500, "fresh": false },
+    { "name": "Skyscraper", "rank": "Obywatel", "prestige": 7200, "fresh": false },
+    { "name": "RoofHopper", "rank": "Obywatel", "prestige": 6100, "fresh": false },
+    { "name": "CityRunner", "rank": "Obywatel", "prestige": 5400, "fresh": false },
+    { "name": "ParkourPro", "rank": "Obywatel", "prestige": 4800, "fresh": false },
+    { "name": "BuilderMan", "rank": "Obywatel", "prestige": 3200, "fresh": false },
+    { "name": "NightOwl", "rank": "Obywatel", "prestige": 2900, "fresh": false },
+    { "name": "WallJump", "rank": "Obywatel", "prestige": 2100, "fresh": false },
+    { "name": "LedgeGrab", "rank": "Obywatel", "prestige": 1800, "fresh": false },
+    { "name": "VentBoost", "rank": "Obywatel", "prestige": 1500, "fresh": false },
+    { "name": "TarpBounce", "rank": "Obywatel", "prestige": 900, "fresh": false },
+    { "name": "RebarKing", "rank": "Obywatel", "prestige": 600, "fresh": false },
+    { "name": "WorkerBee", "rank": "Worker", "prestige": 450, "fresh": false },
+    { "name": "BuildMaster", "rank": "Budowniczy", "prestige": 2300, "fresh": false },
+    { "name": "OfficerJoe", "rank": "Urzędnik", "prestige": 1600, "fresh": false },
+    { "name": "SneakyGuy", "rank": "Rabuś", "prestige": 3100, "fresh": false },
+    { "name": "ShopKeep", "rank": "Sprzedawca", "prestige": 1200, "fresh": false },
+    { "name": "HelpfulHand", "rank": "Helper", "prestige": 4100, "fresh": false },
+    { "name": "ModDude", "rank": "Moderator", "prestige": 6200, "fresh": false },
+    { "name": "BigBoss", "rank": "Admin", "prestige": 8800, "fresh": false },
+    { "name": "Whitekali", "rank": "Owner", "prestige": 9999, "fresh": false }
+  ]
+}
