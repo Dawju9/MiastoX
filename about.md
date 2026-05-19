@@ -98,7 +98,7 @@ permalink: /about
       <p>Statystyki graczy, tabla wyników, system pogodowy v2, power-upy, strefy PvP i ulepszony system zapisu.</p>
     </div>
     <div class="card">
-      <div class="card-icon"><i class="fab fa-github" style="color:#7b6bff;"></i></div>
+      <div class="card-icon"><i class="fab fa-github" style="color:#00f5ff;"></i></div>
       <h3>Open Source</h3>
       <p>Kod źródłowy gry dostępny na <a href="https://github.com/Dawju9/MiastoX" target="_blank">GitHub</a> na licencji MIT. Zapraszamy do kontrybucji!</p>
     </div>

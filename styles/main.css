@@ -1,19 +1,38 @@
+/* ═══════════════════════════════════════════
+   NeoCity X Design System — MiastoX
+   Klimat: Cyberpunk / Futurystyczne Miasto Nocą
+   ═══════════════════════════════════════════ */
+
 :root {
-  --accent: #3325A4;
-  --accent-light: #4f3fcc;
-  --accent-glow: rgba(51, 37, 164, 0.3);
-  --bg: #0a0a0f;
+  /* ── Neon Accents ── */
+  --accent: #00f5ff;
+  --accent-light: #00f5ff;
+  --accent-secondary: #ff00aa;
+  --accent-tertiary: #39ff14;
+  --accent-glow: rgba(0, 245, 255, 0.3);
+  --accent-glow-strong: rgba(0, 245, 255, 0.6);
+
+  /* ── Greyscale Backgrounds ── */
+  --bg: #0a0a0a;
   --bg-surface: #12121a;
-  --bg-card: #1a1a28;
-  --bg-elevated: #22223a;
-  --text: #e8e8f0;
-  --text-muted: #8888aa;
-  --text-dim: #555577;
-  --border: rgba(255,255,255,0.06);
+  --bg-card: #16161e;
+  --bg-elevated: #1e1e2a;
+
+  /* ── Text ── */
+  --text: #e0e0e0;
+  --text-heading: #ffffff;
+  --text-muted: #aaaaaa;
+  --text-dim: #666666;
+
+  /* ── Borders & Effects ── */
+  --border: rgba(0, 245, 255, 0.13);
+  --border-strong: rgba(0, 245, 255, 0.25);
   --radius: 12px;
   --radius-sm: 8px;
-  --font-display: 'Big Shoulders Display', sans-serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
+
+  /* ── Typography ── */
+  --font-display: 'Space Grotesk', 'Unica One', sans-serif;
+  --font-body: 'Inter', 'Satoshi', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --nav-height: 64px;
 }
@@ -41,7 +60,7 @@ h2 { font-size: clamp(1.5rem, 3.5vw, 2.75rem); margin-bottom: 1rem; }
 h3 { font-size: clamp(1.2rem, 2.5vw, 1.75rem); margin-bottom: 0.75rem; }
 p  { color: var(--text-muted); margin-bottom: 1rem; }
 a  { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
-a:hover { color: #7b6bff; }
+a:hover { color: var(--accent-secondary); }
 
 /* ---- Navigation ---- */
 .navbar {
@@ -128,9 +147,9 @@ a:hover { color: #7b6bff; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(51,37,164,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(79,63,204,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.4) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(0,245,255,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,0,170,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(57,255,20,0.04) 0%, transparent 50%);
   z-index: 0;
 }
 .hero-canvas {
@@ -149,7 +168,7 @@ a:hover { color: #7b6bff; }
   text-transform: uppercase;
   line-height: 1;
   margin-bottom: 0.25em;
-  background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -171,14 +190,15 @@ a:hover { color: #7b6bff; }
   border: none; cursor: pointer; transition: all 0.25s; text-decoration: none;
 }
 .btn-primary {
-  background: var(--accent); color: white;
-  box-shadow: 0 0 20px var(--accent-glow);
+  background: var(--accent); color: var(--bg);
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
 }
-.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow); color: white; }
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 0 30px var(--accent-glow-strong), 0 0 60px var(--accent-glow); color: var(--bg); }
 .btn-outline {
-  background: transparent; color: var(--text); border: 1px solid var(--border);
+  background: transparent; color: var(--accent); border: 1px solid var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
 }
-.btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); transform: translateY(-2px); }
+.btn-outline:hover { border-color: var(--accent); color: var(--bg); background: var(--accent); transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-glow-strong); }
 .btn-ghost {
   background: rgba(255,255,255,0.04); color: var(--text-muted);
 }
@@ -218,9 +238,11 @@ a:hover { color: #7b6bff; }
   transition: all 0.3s;
 }
 .card:hover {
-  border-color: rgba(79,63,204,0.3);
+  border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow:
+    0 0 15px var(--accent-glow),
+    0 8px 30px rgba(0,0,0,0.4);
 }
 .card-icon {
   font-size: 2rem; margin-bottom: 12px;
@@ -458,4 +480,167 @@ a:hover { color: #7b6bff; }
 
 @media (min-width: 769px) {
   .nav-toggle { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   NeoCity X Effects
+   ═══════════════════════════════════════════ */
+
+/* ── Scanline Overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Neon Glow Text ── */
+.neon-text {
+  text-shadow:
+    0 0 7px var(--accent),
+    0 0 10px var(--accent),
+    0 0 21px var(--accent),
+    0 0 42px var(--accent-secondary),
+    0 0 82px var(--accent-secondary),
+    0 0 92px var(--accent-secondary);
+}
+
+.neon-text-magenta {
+  text-shadow:
+    0 0 7px var(--accent-secondary),
+    0 0 10px var(--accent-secondary),
+    0 0 21px var(--accent-secondary),
+    0 0 42px var(--accent-secondary);
+}
+
+.neon-text-lime {
+  text-shadow:
+    0 0 7px var(--accent-tertiary),
+    0 0 10px var(--accent-tertiary),
+    0 0 21px var(--accent-tertiary);
+}
+
+/* ── Neon Glow Border ── */
+.neon-border {
+  border: 1px solid var(--accent);
+  box-shadow:
+    0 0 5px var(--accent-glow),
+    0 0 10px var(--accent-glow),
+    inset 0 0 5px var(--accent-glow);
+}
+
+.neon-border-magenta {
+  border: 1px solid var(--accent-secondary);
+  box-shadow:
+    0 0 5px rgba(255, 0, 170, 0.3),
+    0 0 10px rgba(255, 0, 170, 0.3);
+}
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(22, 22, 30, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+}
+
+.glass-strong {
+  background: rgba(22, 22, 30, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-strong);
+}
+
+/* ── Grid Overlay (subtle) ── */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Animated Gradient Background ── */
+.bg-neon-aurora {
+  background: linear-gradient(
+    135deg,
+    var(--bg) 0%,
+    var(--bg-surface) 30%,
+    rgba(0, 245, 255, 0.05) 50%,
+    rgba(255, 0, 170, 0.03) 70%,
+    var(--bg-elevated) 100%
+  );
+  background-size: 400% 400%;
+  animation: aurora 15s ease infinite;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Neon Button ── */
+.btn-neon {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  background: var(--accent); color: var(--bg);
+  border: none; cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+  transition: all 0.25s;
+}
+.btn-neon:hover {
+  box-shadow: 0 0 30px var(--accent-glow-strong), 0 0 60px var(--accent-glow);
+  transform: translateY(-2px);
+  color: var(--bg);
+}
+
+/* ── Neon Button Outline ── */
+.btn-neon-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  background: transparent; color: var(--accent);
+  border: 2px solid var(--accent);
+  cursor: pointer; text-decoration: none;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: all 0.25s;
+}
+.btn-neon-outline:hover {
+  background: var(--accent); color: var(--bg);
+  box-shadow: 0 0 30px var(--accent-glow-strong);
+  transform: translateY(-2px);
+}
+
+/* ── Section Heading with Neon Accent ── */
+.section-title .accent {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ── Update existing accent color references ── */
+.accent { color: var(--accent); }
+
+/* ── Card icon glow ── */
+.card-icon { color: var(--accent); }
+
+/* ── Tag styles with neon accents ── */
+.tag-luau { background: rgba(0, 245, 255, 0.13); color: var(--accent); }
+.tag-rojo { background: rgba(255, 0, 170, 0.13); color: var(--accent-secondary); }
+.tag-cityx { background: rgba(57, 255, 20, 0.13); color: var(--accent-tertiary); }
+.tag-roblox { background: rgba(255, 0, 170, 0.08); color: var(--accent-secondary); }
+
+/* ── Focus ring ── */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
