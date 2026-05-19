@@ -1,24 +1,28 @@
 ---
 layout: default
-title: jobs
-desc: Page jobs found
-url: ./jobs.html
+title: Dołącz do nas - MiastoX Team Roles
+desc: MiastoX - Dołącz do zespołu jako Helper, Moderator, Builder lub Developer
+url: /jobs.html
 ---
 
-<h2>Working at Torpedo Software</h2>
+<h2>Dołącz do zespołu MiastoX</h2>
 <p style="width: 90%;">
-	Torpedo Software is uniquely focused on making a <span class="accent">positive impact</span> in people's lives. This absolutely includes the <span class="accent">talented folks</span> within the company, not just our users!
-	<br>We have a culture of <span class="accent">collaboration</span> and <span class="accent">innovation</span> with our <span class="accent">brilliant</span> team.
-	We have a <span class="accent">flexible</span> PTO policy and work schedule, with a fully <span class="accent">remote</span> team. At Torpedo Software, we believe that a high quality <span class="accent">work-life balance</span> brings out your best work, so we are motivated to ensure you're happy here.
-	<br>You'll have the opportunity to make a real difference in lives, working on <span class="accent">high impact</span> projects that deliver valuable resources to our users.
+	MiastoX buduje społeczność wokół wspinaczki, miasta i fair play. 
+	Szukamy osób, które chcą <span class="accent">pomagać</span>, <span class="accent">budować</span> i 
+	<span class="accent">rozwijać</span> to miejsce razem z nami.
+	<br><br>
+	Wszystkie role są <span class="accent">wolontariackie</span> — robimy to dla pasji i społeczności.
+	Jeśli czujesz, że pasujesz, <span class="accent"> aplikuj</span>!
 </p>
+
 <hr>
-<h2>Roles</h2>
+
+<h2>Otwarte role</h2>
 <div class="team-grid">
 	{% assign jobs = site.jobs | sort: "display_order" %}
 	{% for job in jobs %}
 	<div class="card">
-		<a class = "fill-div" href="{{ job.url }}">
+		<a class="fill-div" href="{{ job.url }}">
 			<br>
 			<img src="{{ job.image }}" alt="{{ job.title }} icon" class="rounded" style="width: 80%;">
 			<h3 style="color: #ffffff;">{{ job.job-title }}</h3>
@@ -27,3 +31,11 @@ url: ./jobs.html
 	</div>
 	{% endfor %}
 </div>
+
+<hr style="margin-top: 40px;">
+
+<h2>Jak aplikować?</h2>
+<p style="width: 90%;">
+	Napisz na Discordzie do <strong>Whitekali</strong> lub wyślij zgłoszenie przez formularz na serwerze.
+	Dołącz do naszego <a href="https://discord.gg/miastox">Discorda</a> i daj znać, którą rolą jesteś zainteresowany.
+</p>

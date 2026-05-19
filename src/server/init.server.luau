@@ -2,8 +2,6 @@
 -- Built on CityX Framework
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerScriptService = game:GetService("ServerScriptService")
-local Players = game:GetService("Players")
 
 local CityX = require(ReplicatedStorage.CityX)
 local DataStore = require(ReplicatedStorage.CityX.DataStore)
@@ -19,41 +17,57 @@ local config = {
 		{ name = "easy", unlocked = true },
 		{ name = "medium", unlocked = true },
 		{ name = "hard", unlocked = false, requiredRank = 25 },
-		{ name = "extreme", unlocked = false, requiredRank = 50 }
+		{ name = "extreme", unlocked = false, requiredRank = 50 },
 	},
-	platforms = {
-		{ name = "blue", color = Color3.fromRGB(0, 0, 255), speed = 2 },
-		{ name = "red", color = Color3.fromRGB(255, 0, 0), speed = 1.5 },
-		{ name = "green", color = Color3.fromRGB(0, 255, 0), speed = 0 },
-		{ name = "purple", color = Color3.fromRGB(128, 0, 128), speed = 1 },
-		{ name = "yellow", color = Color3.fromRGB(255, 255, 0), speed = 2 }
-	},
-	stairs = {
-		"basic", "platform", "moving", "rotating", "spiral", "checkpoint", "elevator", "special"
+	city_objects = {
+		"building",
+		"scaffolding",
+		"fire_escape",
+		"crane",
+		"bridge_plank",
+		"ladder",
+		"billboard",
+		"balcony",
+		"moving_scaffold",
+		"rotating_sign",
+		"collapsing_ledge",
+		"crumbling_stairs",
+		"boost_vent",
+		"bounce_tarp",
+		"rebar",
+		"elevator_shaft",
+		"wet_roof",
+		"construction_laser",
 	},
 	weather = {
-		"sunny", "rainy", "foggy", "stormy", "snowy", "cloudy", "night", "eclipse", "apocalyptic", "tornado", "earthquake", "meteor"
-	}
+		"sunny",
+		"rainy",
+		"foggy",
+		"snowy",
+		"cloudy",
+		"night",
+		"smog",
+		"drizzle",
+		"overcast",
+	},
 }
 
 local dataStore = DataStore.new()
-dataStore:init({
+dataStore:init {
 	maxPlayers = 30,
 	saveInterval = 60,
-})
+}
 
 local function onPlayerJoin(player)
 	print(string.format("[MiastoX] Player joined: %s", player.Name))
-	
+
 	local playerData = dataStore:loadPlayerData(player.UserId)
 	dataStore:setCoins(player.UserId, playerData.coins or 0)
-	
-	print(string.format("[MiastoX] %s loaded - Coins: %d, Level: %d", 
-		player.Name, 
-		playerData.coins or 0, 
-		playerData.level or 1
-	))
-	
+
+	print(
+		string.format("[MiastoX] %s loaded - Coins: %d, Level: %d", player.Name, playerData.coins or 0, playerData.level or 1)
+	)
+
 	player.CharacterAdded:Connect(function(character)
 		local humanoid = character:FindFirstChild("Humanoid")
 		if humanoid then
@@ -67,7 +81,7 @@ end
 
 local function onPlayerLeave(player)
 	print(string.format("[MiastoX] Player left: %s", player.Name))
-	
+
 	dataStore:savePlayerData(player.UserId)
 	dataStore:deletePlayerData(player.UserId)
 end
@@ -83,8 +97,4 @@ levelManager:reset()
 
 print("[MiastoX] Level system initialized")
 print("[MiastoX] Initialized on CityX Framework v0.1.0")
-print(string.format("[MiastoX] Game: %s | Players: %d/%d", 
-	config.gameName, 
-	game.Players.MaxPlayers, 
-	config.maxPlayers
-))
+print(string.format("[MiastoX] Game: %s | Players: %d/%d", config.gameName, game.Players.MaxPlayers, config.maxPlayers))

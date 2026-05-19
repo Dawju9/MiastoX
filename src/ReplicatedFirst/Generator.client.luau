@@ -1,71 +1,106 @@
---// Services \\--
+--!native
+--!optimize 2
+--!strict
+
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local Players = game:GetService("Players")
 local Lighting = game:GetService("Lighting")
 local CollectionService = game:GetService("CollectionService")
 
---// Local Variables \\--
 local LocalPlayer = Players.LocalPlayer
-local Screen = require(ReplicatedFirst.Screen)
-local LightingRiver = ReplicatedFirst.LightingRiver
-local Generator = ReplicatedFirst.Generator
-
---// Code \\--
--- Remove the default loading screen and then replace it
 local PlayerGUI: PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+local Screen = require(ReplicatedFirst.Screen)
 Screen.Parent = PlayerGUI
 ReplicatedFirst:RemoveDefaultLoadingScreen()
 
--- Add the default lighting effects
-for _, Object in pairs(LightingRiver:GetDescendants()) do
-   Object.Parent = Lighting
-end
-LightingRiver:Destroy()
+local LightingRiver = ReplicatedFirst:FindFirstChild("LightingRiver")
+local Generator = ReplicatedFirst:FindFirstChild("Generator")
 
---// Generator \\--
-local function generate()
-    local template = Generator.Template
-    local instance = template:Clone()
-    instance.Parent = Generator
-    CollectionService:AddTag(instance, "Generated")
-    wait(1)
-    instance:Destroy()
+--// LightingRiver Element Manager \\--
+local function manageLightingRiverElement(element: Instance)
+	if element:IsA("BasePart") then
+		element.Anchored = true
+		element.CanCollide = false
+	end
 end
 
 --// LightingRiver Manager \\--
 local function manageLightingRiver()
-    for _, object in pairs(LightingRiver:GetDescendants()) do
-        if object:IsA("BasePart") then
-            object.Anchored = true
-            object.CanCollide = false
-        end
-    end
+	if not LightingRiver then
+		return
+	end
+	for _, object in LightingRiver:GetDescendants() do
+		manageLightingRiverElement(object)
+	end
 end
 
---// LightingRiver Element Manager \\--
-local function manageLightingRiverElement(element)
-    if element:IsA("BasePart") then
-        element.Anchored = true
-        element.CanCollide = false
-    end
+--// Apply static lighting elements \\--
+local function applyLightingRiver()
+	if not LightingRiver then
+		return
+	end
+
+	manageLightingRiver()
+
+	for _, object in LightingRiver:GetDescendants() do
+		object.Parent = Lighting
+	end
+
+	LightingRiver:Destroy()
+	print("[MiastoX] LightingRiver applied to Lighting")
 end
 
---// Generator Loop \\--
-while true do
-    generate()
-    wait(5)
+--// Generator \\--
+local function generate()
+	if not Generator then
+		return
+	end
+	local template = Generator:FindFirstChild("Template")
+	if not template then
+		return
+	end
+	local instance = template:Clone()
+	instance.Parent = Generator
+	CollectionService:AddTag(instance, "Generated")
+	task.wait(1)
+	instance:Destroy()
 end
 
 --// LightingRiver Element Generator \\--
 local function generateLightingRiverElement()
-    local template = LightingRiver.Template
-    local instance = template:Clone()
-    instance.Parent = LightingRiver
-    manageLightingRiverElement(instance)
+	local riverTemplate = LightingRiver and LightingRiver:FindFirstChild("Template")
+	if not riverTemplate then
+		return
+	end
+	local instance = riverTemplate:Clone()
+	manageLightingRiverElement(instance)
+	instance.Parent = Lighting
 end
 
+--// Apply static lighting \\--
+applyLightingRiver()
+
+--// City ambience \\--
+Lighting.Ambient = Color3.fromRGB(80, 80, 85)
+Lighting.Brightness = 1.2
+Lighting.GlobalShadows = true
+Lighting.Outlines = false
+
+--// Generator Loop \\--
+task.spawn(function()
+	while true do
+		generate()
+		task.wait(5)
+	end
+end)
+
 --// LightingRiver Element Loop \\--
-while true do
-    generateLightingRiverElement()
-    wait(10)
-end
+task.spawn(function()
+	while true do
+		generateLightingRiverElement()
+		task.wait(10)
+	end
+end)
+
+print("[MiastoX] Generator initialized — lighting + generator systems running")
