@@ -1,0 +1,111 @@
+---
+layout: default
+title: Changelog - Historia zmian
+desc: MiastoX - Pełna historia zmian i wersji gry
+url: /changelog.html
+---
+<head>
+<link rel="stylesheet" href="styles/main.css">
+<title>MiastoX - Changelog</title>
+</head>
+
+<div class="body-content">
+    <div class="header-content">
+        <h1>📜 Changelog</h1>
+        <p class="subtext">Historia zmian MiastoX — wszystkie wersje i aktualizacje</p>
+    </div>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>🔜 Unreleased</h2>
+        <div class="changelog-entry">
+            <h3>Dodano</h3>
+            <ul>
+                <li>Generacja bloków miejskich: budynki, rusztowania, dźwigi, mosty, schody przeciwpożarowe</li>
+                <li>18+ typów obiektów miejskich (moving_scaffold, rotating_sign, collapsing_ledge, crumbling_stairs, boost_vent, bounce_tarp, rebar, elevator_shaft, wet_roof, construction_laser)</li>
+                <li>System pogody: 9 typów miejskich (smog, drizzle, overcast)</li>
+                <li>Interaktywna strona hierarchii z listą graczy (hierarchy.html)</li>
+                <li>Strona rekrutacji zespołu (jobs.html) z kolekcją ról</li>
+                <li>Strona changeloga (changelog.html)</li>
+                <li>API endpoint rosteru graczy (api/ranks.json)</li>
+                <li>Ciągła generacja miasta (5 bloków na poziom, skalowanie trudności)</li>
+            </ul>
+            <h3>Zmieniono</h3>
+            <ul>
+                <li>LevelGenerator.luau: pełna przebudowa z CityObjectType enum i fabrykami</li>
+                <li>LevelManager.server.luau: ciągła generacja bloków, usunięto specjalne poziomy</li>
+                <li>WeatherSystem.luau: usunięto nadnaturalne pogody (eclipse, apocalyptic, tornado, earthquake, meteor, stormy)</li>
+                <li>Generator.client.luau: bezpieczne guardy LightingRiver, task.spawn</li>
+                <li>init.server.luau: config miejski, stuby CityX systemów</li>
+                <li>Nav menu: dodano linki Changelog, Nasi gracze</li>
+            </ul>
+            <h3>Naprawiono</h3>
+            <ul>
+                <li>Symlink CityX: /Development/cityx/src → /Development/projekt/cityx/src</li>
+            </ul>
+            <h3>Planowane</h3>
+            <ul>
+                <li>Zamek Bogów w centrum miasta (createCastle)</li>
+                <li>Plac Królewski z bankomatami, leaderboardem, shopem</li>
+                <li>System rang administracyjnych w grze</li>
+                <li>Włączenie CityX systemów (PvP, broń, scoring, robbery, policja)</li>
+                <li>System prestiżu i achievementy</li>
+                <li>4 dzielnice miasta z własnym oświetleniem</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>v1.0.1 — 2026-05-12</h2>
+        <div class="changelog-entry">
+            <h3>Dodano</h3>
+            <ul>
+                <li>Konfiguracja języka Luau (.luaurc) z aliasami modułów i trybem strict</li>
+            </ul>
+            <h3>Zmieniono</h3>
+            <ul>
+                <li>Aktualizacja trove do v1.3.0</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>v1.0.0 — 2026-04-12</h2>
+        <div class="changelog-entry">
+            <h3>Dodano</h3>
+            <ul>
+                <li>Integracja z CityX framework przez Wally package system</li>
+                <li>CI/CD pipeline z GitHub Actions (lint, build, security scan)</li>
+                <li>Lune build scripts dla alternatywnego systemu budowania</li>
+                <li>Wiele konfiguracji builda (default, dev, test)</li>
+                <li>Pliki konfiguracyjne: selene.toml, stylua.toml, .editorconfig, .pre-commit-config.yaml, .darklua.json</li>
+                <li>GitHub Pages z Jekyll (Gemfile, _config.yml)</li>
+                <li>Systemy gry: PauseMenu, HUD, Shop, DataStore</li>
+                <li>Build output: MiastoX-Final.rbxl, MiastoX-Rojo.rbxl</li>
+                <li>Skrypty developerskie: dev.sh, release.sh, setup.sh</li>
+            </ul>
+            <h3>Zmieniono</h3>
+            <ul>
+                <li>Aktualizacja inicjalizacji klienta/serwera do używania modułów CityX</li>
+                <li>Ulepszona struktura projektu dla modularności</li>
+                <li>Aktualizacja dokumentacji (index.html, about.md)</li>
+            </ul>
+            <h3>Usunięto</h3>
+            <ul>
+                <li>Przestarzały plik src/shared/Hello.luau</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr style="margin: 30px 0;">
+
+    <section>
+        <h2>📁 Plik changelog</h2>
+        <p>Pełna historia zmian dostępna w <a href="https://github.com/Dawju9/MiastoX/blob/main/CHANGELOG.md">CHANGELOG.md</a> na GitHubie.</p>
+    </section>
+</div>

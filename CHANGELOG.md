@@ -32,32 +32,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated trove dependency to v1.3.0
 
-## [v1.1.0] - 2026-05-19
-
-### Added
-- 3D map viewer (map-3d.html) with Three.js: bloom, raycaster hover/click, animated platforms, keyboard shortcuts, floor search
-- Dynamic per-floor lighting based on level type
-- Floor search input in sidebar
-- Keyboard shortcuts: arrows (floor nav), R (reset view), Space (auto-rotate)
-- Interactive platform tooltips on hover
-
-### Changed
-- Complete website redesign: dark theme, multi-page layout (Home, Map 3D, Join, About, Donate, Contact)
-- Home page: Three.js hero animation + Canvas-based CityX architecture visualization
-- All subpages with responsive design and Font Awesome icons
-- map-3d.html: standalone page with matching navigation, fixed tag structure
-
-### CI/CD
-- web-deploy.yml: optimized Jekyll deploy with path filtering (web branch)
-- game-deploy.yml: full pipeline (analyze → build → rbxcloud deploy) for main branch
-- release.yml: cleaned up for release-based builds
-- main branch created from master for game source separation
-
 ## [Unreleased]
 
-### Planned
-- Player statistics tracking
-- Leaderboard integration
-- Weather system v2
-- Power-up system
-- PvP zones
+### Added
+- City block generation: buildings, scaffolding, fire escapes, cranes, bridges
+- 18+ city object types (moving_scaffold, rotating_sign, collapsing_ledge, crumbling_stairs, boost_vent, bounce_tarp, rebar, elevator_shaft, wet_roof, construction_laser)
+- Weather system: 9 city weather types (smog, drizzle, overcast)
+- Interactive rank hierarchy page with player roster (hierarchy.html)
+- Team recruitment page (jobs.html) with role collection
+- Changelog page (changelog.html)
+- Player roster API endpoint (api/ranks.json)
+- Continuous city generation (5 blocks per level, difficulty scaling)
+
+### Changed
+- LevelGenerator.luau: full rewrite with CityObjectType enum and factory methods
+- LevelManager.server.luau: continuous block generation, removed special levels
+- WeatherSystem.luau: removed supernatural weather (eclipse, apocalyptic, tornado, earthquake, meteor, stormy)
+- Generator.client.luau: safe LightingRiver guards, task.spawn wrappers
+- init.server.luau: city config, CityX system stubs
+- Nav menu: added Changelog, Nasi gracze links
+
+### Fixed
+- CityX symlink: /Development/cityx/src → /Development/projekt/cityx/src

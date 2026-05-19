@@ -1,0 +1,110 @@
+# Plan Major: MiastoX — Królestwo Miasta (WEB DROPPED)
+
+## Stan
+- `plan.todo` (city transform) — 100% zrobione
+- Strona www (hierarchy, jobs, api) — zrobiona, dalszy rozwój wstrzymany
+
+---
+
+## [ ] Faza 1: LevelGenerator — Zamek Bogów w centrum
+
+### 1.1 Generowanie zamku
+- [ ] `createCastle(position)` — ogromna struktura na (0, 0, 0):
+  - Wieże (4x narożne + 1x centralna, najwyższa)
+  - Mury obronne łączące wieże
+  - Brama główna (łuk triumfalny)
+  - Dziedziniec wewnętrzny
+  - Złota poświata (PointLight + particles)
+  - Klatka schodowa w górę — nieskończona, symboliczna
+- [ ] Zamek anchored = true, CanCollide = true (ale gracze nie mogą wejść na górę)
+- [ ] Wokół zamku: plac królewski (płaski teren z fontanną)
+
+### 1.2 Plac Królewski
+- [ ] Bankomaty (CityX BankomatSystem) — 4 sztuki na rogach placu
+- [ ] Leaderboard fizyczny (CityX Leaderboard) — na środku placu
+- [ ] Shop NPC (CityX Shop)
+- [ ] Spawn point graczy — na obrzeżach placu
+
+### 1.3 Miasto promieniste
+- [ ] Dzielnice generowane w sektorach wokół (0,0):
+  - Sektor A (północ) — Dzielnica Królewska
+  - Sektor B (wschód) — Dzielnica Kupiecka
+  - Sektor C (południe) — Dzielnica Przemysłowa
+  - Sektor D (zachód) — Dzielnica Mieszkalna / Slumsy
+- [ ] Zamek widoczny z każdej dzielnicy (brak zasłaniania)
+
+---
+
+## [ ] Faza 2: System Rang Administracyjnych
+
+### 2.1 Hierarchia
+```
+ROYAL TIER (niewidzialni dla zwykłych graczy, na zamku)
+├── Owner (Król Świata)
+├── Admin (Służba Królewska)
+├── Moderator (Straż Królewska)
+└── Helper (Pomocnicy Królewscy)
+
+CITIZEN TIER (gracze w mieście)
+├── Obywatel (pełnoprawny mieszkaniec)
+├── Sprzedawca (handel, stoisko)
+├── Rabuś (kradzieże, podziemie)
+├── Urzędnik (administracja miasta)
+├── Budowniczy (budowa, naprawy)
+├── Worker (prace miejskie)
+└── Cywil (podstawowa ranga)
+```
+
+### 2.2 Implementacja
+- [ ] ServerStorage/RankSystem.luau — główny moduł rang
+- [ ] DataStore rozszerzenie — zapis rang graczy
+- [ ] Komendy czat: `/setrank`, `/rank`, `/hierarchy`, `/members`
+- [ ] Tagowanie na czacie: `[Owner] Nick: wiadomość`
+- [ ] Nametag nad głową (CityX NametagService) z rangą i kolorem
+
+### 2.3 Zasady
+- [ ] Ranga nie daje przewagi gameplayowej
+- [ ] Ranga nie chroni przed regulaminem
+- [ ] Ranga jest zarządzana przez Owner/Admin
+
+---
+
+## [ ] Faza 3: Enable CityX Systems
+
+- [ ] `enablePvP = true` w configu
+- [ ] Init PvPManager (melee, health 100, respawn 5s)
+- [ ] Init WeaponSystem (pistolet: 25dmg, 12 ammo, reload 2s)
+- [ ] Init ScoringSystem (prestiż: punkty + level + XP + money)
+- [ ] Init BankomatSystem (4 bankomaty na placu)
+- [ ] Init Leaderboard (Top 10 na placu)
+- [ ] Init Shop (power-upy: Speed, Jump, Shield, 2x Coins, Extra Life)
+- [ ] Init RobberySystem (okradanie, rękawiczki, QTE)
+- [ ] Init PoliceNPCManager (policja w mieście)
+
+---
+
+## [ ] Faza 4: System Prestiżu (Gameplay)
+
+- [ ] Prestiż = funkcja(wysokość wspinaczki, kasa, poziom, kille, czas gry)
+- [ ] Leaderboard prestiżu w mieście
+- [ ] Osiągnięcia prestiżowe odblokowują:
+  - Nowe dzielnice miasta
+  - Skórki postaci
+  - Tytuły (np. "Zdobywca", "Milioner", "Zabójca")
+
+---
+
+## [ ] Faza 5: Dzielnice Miasta
+
+- [ ] **Dzielnica Królewska** (północ, blisko zamku) — łatwa, place, ogrody
+- [ ] **Dzielnica Kupiecka** (wschód) — średnia, stragany, sklepy, NPC
+- [ ] **Dzielnica Przemysłowa** (południe) — trudna, fabryki, dźwigi, rusztowania
+- [ ] **Slumsy** (zachód) — hard/extreme, ciasne uliczki, rabusie
+- [ ] Każda dzielnica ma własny kolor oświetlenia i zestaw obiektów
+
+---
+
+## [x] ~~Faza 6: Strona WWW~~ (DROPPED)
+
+Strona WWW zrobiona w podstawowym zakresie (hierarchy.html, jobs.html, api/ranks.json).
+Dalszy rozwój strony wstrzymany. Skupiamy się na implementacji gry.
