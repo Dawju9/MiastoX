@@ -18,7 +18,7 @@ end
 -- MiastoX-specific player tracking
 Players.PlayerAdded:Connect(function(Player)
 	print(string.format("[MiastoX] Player joined: %s (ID: %d)", Player.Name, Player.UserId))
-	
+
 	-- Set player attributes
 	Player:SetAttribute("JoinedTime", os.time())
 	Player:SetAttribute("PlayTime", 0)
@@ -39,7 +39,7 @@ local function createPlayerData(player)
 		Deaths = 0,
 		Kills = 0,
 		CurrentFloor = 1,
-		BestFloor = 1
+		BestFloor = 1,
 	}
 end
 

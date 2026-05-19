@@ -6,72 +6,40 @@ permalink: /about/
 
 # 🏙️ O MiastoX
 
-MiastoX to gra typu "climb to the top" stworzona dla platformy Roblox.
+**MiastoX** is a Roblox "climb to the top" game where players compete to reach the highest point of a procedurally generated city. The game features dynamic weather, PvP combat, and a variety of power‑ups.
 
----
-
-## 🎮 O Grze
-
-Wspinaj się na szczyt! Rywalizuj z innymi graczami w czasie rzeczywistym, unikaj przeszkód i zbieraj nagrody.
-
-### Główne cechy:
-
-- 🏔️ **6 poziomów** - od tutorial do chaos
-- ⚡ **PvP** - walka z innymi graczami
-- 🌧️ **9 typów pogody** - od słonecznego dnia do apokalipsy
-- 💰 **System nagród** - monety, XP, levele
-- 🎲 **Power-upy** - speed, jump, shield i więcej
-
----
+## 🎮 Gameplay
+- **6 Levels** – From a tutorial to chaotic end‑game challenges.
+- **PvP** – Real‑time player versus player battles with kill tracking.
+- **9 Weather Types** – Sunny, rainy, foggy, night, apocalyptic, and more.
+- **Reward System** – Coins, XP, and level progression.
+- **Power‑ups** – Speed, jump boost, shield, invincibility, double coins & XP.
 
 ## 🛠️ Tech Stack
+| Technology | Description |
+|------------|-------------|
+| **Luau** | Roblox scripting language |
+| **CityX Framework** | Custom modular framework powering the game |
+| **Roblox Studio** | Development environment |
+| **Jekyll** | Static site generator for the website |
+| **Rojo** | Syncs Lua code to Roblox |
+| **Wally** | Lua package manager |
+| **Selene** | Linter |
+| **StyLua** | Formatter |
 
-| Technologia | Opis |
-|------------|-----|
-| **Luau** | Język gry |
-| **CityX Framework** | Nasz autorski framework |
-| **Roblox Studio** | Edytor |
-| **Jekyll** | Strona www |
-
----
-
-## 🌐 Linki
-
-| Zasób | Link |
-|-------|------|
-| **Strona WWW** | https://dawju9.github.io/MiastoX |
+## 🌐 Links
+| Resource | Link |
+|----------|------|
+| **Website** | https://dawju9.github.io/MiastoX |
 | **GitHub** | https://github.com/Dawju9/MiastoX |
-| **Gra w Roblox** | https://www.roblox.com/games/play |
+| **Roblox Game** | https://www.roblox.com/games/11633610328/MiastoX-Updated-24th |
 
----
+## 👤 Authors
+- **Author**: Whitekali (Dawju9)
+- **Framework**: CityX (by whyiekali)
+- **Discord**: Join our community on Discord!
 
-## 👤 Autorzy
-
-- **Autor**: Dawju9
-- **Framework**: CityX (whyiekali)
-- **Discord**: Dołącz do nas!
-
----
-
-## 📝 Licencja
-
+## 📝 License
 MIT License
 
----
-
-## 📊 Raport
-
-### Ostatnie zmiany (v1.0.1)
-- Dodano konfigurację serwera języka Luau (.luaurc) z aliasami modułów i trybem strict
-- Zaktualizowano zależność trove do v1.3.0
-
-### Status projektu
-| Component | Version | Status |
-|-----------|---------|--------|
-| Game | v1.0.1 | 🟢 Aktywny |
-| Framework | v1.0.0 | 🟢 Aktywny |
-| Web | v1.0.0 | 🟢 Aktywny |
-
----
-
-*MiastoX v1.0.1 | 2026*
+*MiastoX – Climb to the Top*

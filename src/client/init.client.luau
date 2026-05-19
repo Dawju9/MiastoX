@@ -35,7 +35,7 @@ local function setupInput()
 		if gameProcessed then
 			return
 		end
-		
+
 		if input.KeyCode == Enum.KeyCode.P then
 			if shop:isOpen() then
 				shop:close()
