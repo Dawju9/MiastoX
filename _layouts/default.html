@@ -15,28 +15,26 @@
 		<meta property="og:description" content="{{ page.desc }}">
 		<meta name="twitter:description" content="{{ page.desc }}">
 
-		<meta property="og:url" content="https://www.MiastoXsoftware.llc{{ page.url }}">
-		<link rel="canonical" href="https://www.MiastoXsoftware.llc{{ page.url }}">
+		<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+		<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 
-		<meta name="twitter:image" content="/assets/brand/wordmark.svg">
-		<meta property="og:image" content="/assets/brand/wordmark.svg">
-		<meta property="og:image:alt" content="MiastoX Software Wordmark">
+		<meta name="twitter:image" content="{{ site.baseurl }}/assets/brand/wordmark.svg">
+		<meta property="og:image" content="{{ site.baseurl }}/assets/brand/wordmark.svg">
+		<meta property="og:image:alt" content="MiastoX Wordmark">
 
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:site" content="@MiastoXSoftware">
-		<meta name="twitter:creator" content="@BoatbomberRBLX">
 
 		<link href='https://fonts.googleapis.com/css?family=Big Shoulders Display' rel='stylesheet'>
 		<link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
-		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
 
-		<link rel="icon" type="image/x-icon" href="/assets/brand/logo.svg">
 		<meta name="theme-color" content="#3325A4">
 	</head>
 
 	<body>
 		<header class="navigation">
-			<a style="position: fixed; top: 10px; left: 10px;" href="/"><img src="https://cdn.discordapp.com/attachments/1231224034323333182/1319435827222151220/est_2000.png?ex=6771d15f&is=67707fdf&hm=96c7664065966f4db0bcbfa203569521ef153a56d4ee96f9173eeff86295c19f&" alt="Home" width="50" height="50"></a>
+			<a style="position: fixed; top: 10px; left: 10px;" href="{{ site.baseurl }}/"><img src="https://cdn.discordapp.com/attachments/1231224034323333182/1319435827222151220/est_2000.png?ex=6771d15f&is=67707fdf&hm=96c7664065966f4db0bcbfa203569521ef153a56d4ee96f9173eeff86295c19f&" alt="Home" width="50" height="50"></a>
 
 			<!-- Hamburger icon -->
 			<input class="side-menu" type="checkbox" id="side-menu"/>
@@ -45,9 +43,9 @@
 			<!-- Menu -->
 			<nav class="nav">
 				<div class="menu">
-					<a href="/"><b>Home</b></a>
-					<a href="/projects"><b>Projects</b></a>
-					<a href="/jobs"><b>Jobs</b></a>
+					<a href="{{ site.baseurl }}/"><b>Home</b></a>
+					<a href="{{ site.baseurl }}/projects"><b>Projects</b></a>
+					<a href="{{ site.baseurl }}/jobs"><b>Jobs</b></a>
 				</div>
 			</nav>
 		</header>
@@ -70,11 +68,10 @@
 		</div>
 
 		<footer>
-			<p>© MiastoX Software LLC 2022</p>
+			<p>© MiastoX 2024</p>
 			<div class="socialnav">
-				<a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fwww.MiastoXsoftware.llc&screen_name=MiastoXSoftware" target="_blank" rel="noopener noreferrer"><img src="/assets/social/twitter.svg" alt="Twitter" width="30" height="30"></a>
-				<a href="https://www.linkedin.com/company/MiastoX-software-llc?original_referer=https%3A%2F%2Fwww.MiastoXsoftware.llc" target="_blank" rel="noopener noreferrer"><img src="/assets/social/linkedin.svg" alt="LinkedIn" width="30" height="30"></a>
-				<a href="https://www.roblox.com/groups/14766364/MiastoX-Software-LLC" target="_blank" rel="noopener noreferrer"><img src="/assets/social/roblox.svg" alt="Roblox" width="30" height="30"></a>
+				<a href="https://github.com/Dawju9/MiastoX" target="_blank" rel="noopener noreferrer" title="GitHub">⬡</a>
+				<a href="https://www.roblox.com/groups/14766364/MiastoX-Software-LLC" target="_blank" rel="noopener noreferrer" title="Roblox">⬟</a>
 			</div>
 		</footer>
 	</body>
