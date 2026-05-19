@@ -1,249 +1,61 @@
----
-layout: default
-title: MiastoX - Climb to the Top
-desc: MiastoX - Epic climbing game in Roblox
-url: /index.html
----
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="styles/main.css">
-<title>MiastoX - Climb to the Top!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiastoX - NeoCity X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="/tailwind.css" rel="stylesheet">
 </head>
+<body class="bg-[#0a0a0a] text-[#e0e0e0] font-sans">
 
-<div class="body-content">
-    <div class="header-content">
-        <h1>🏙️ MiastoX</h1>
-        <p class="subtext">Climb to the Top - Epic climbing experience in Roblox</p>
-        
-        <div style="margin: 20px 0;">
-            <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="button-link" style="background: var(--accent_color); padding: 15px 30px; border-radius: 5px; text-decoration: none; color: white; display: inline-block;">
-                🎮 Play Now!
-            </a>
-            <a href="https://github.com/Dawju9/MiastoX" class="button-link" style="background: var(--background_color_dark); padding: 15px 30px; border-radius: 5px; text-decoration: none; color: var(--text_color); display: inline-block; margin-left: 10px;">
-                📂 GitHub
-            </a>
-            <a href="/MiastoX/map.html" class="button-link" style="background: #00b4d8; padding: 15px 30px; border-radius: 5px; text-decoration: none; color: white; display: inline-block; margin-left: 10px;">
-                🗺️ Live Map
-            </a>
-        </div>
+  <!-- Neon navbar -->
+  <nav class="fixed top-0 left-0 right-0 bg-[#16161e] p-4 border-b border-[#00f5ff22]">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold text-[#00f5ff]">MiastoX</div>
+      <div class="space-x-4">
+        <a href="#" class="px-4 py-2 rounded-full bg-[#00f5ff] text-black font-bold hover:scale-105 transition duration-300">GRAJ NA ROBLOX</a>
+        <a href="/map-3d" class="px-4 py-2 rounded-full border-2 border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-black transition duration-300">EXPLORE 3D MAP</a>
+      </div>
     </div>
+  </nav>
 
-    <hr style="margin: 30px 0;">
+  <!-- Hero section -->
+  <section class="h-screen flex items-center justify-center text-center px-8">
+    <div class="backdrop-blur-lg bg-[#16161e]/80 p-8 rounded-lg">
+      <h1 class="text-6xl font-bold text-[#00f5ff] mb-4">MiastoX</h1>
+      <p class="text-xl text-[#aaaaaa] mb-8">CLIMB TO THE TOP</p>
+      <div class="text-sm text-[#aaaaaa] mb-8">30+ pięter • 16 typów platform • 7 trybów • ∞ możliwości</div>
+    </div>
+  </section>
 
-    <section>
-        <h2>🚀 Features</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🪜</h3>
-                <h3>6 Levels</h3>
-                <p>Tutorial, Basic Course, Intermediate, Advanced, Master & Chaos</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🎯</h3>
-                <h3>5 Platform Types</h3>
-                <p>Blue, Red, Green, Purple & Yellow platforms</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>⚡</h3>
-                <h3>8 Stair Types</h3>
-                <p>Basic, Platform, Moving, Rotating, Spiral, Checkpoint, Elevator & Special</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🌤️</h3>
-                <h3>9 Weather Types</h3>
-                <p>Sunny, Rainy, Foggy, Stormy, Snowy, Cloudy, Night, Eclipse & Apocalyptic</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>⚔️</h3>
-                <h3>PvP System</h3>
-                <p>Player vs Player with kill tracking</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>💎</h3>
-                <h3>Power-ups</h3>
-                <p>Speed, Jump, Shield, Invincibility, Double Coins & XP</p>
-            </div>
-        </div>
-    </section>
+  <!-- Stats grid -->
+  <section class="py-16">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-[#16161e] p-6 rounded-lg border border-[#00f5ff22] hover:glow-neon-cyan">
+        <h3 class="text-xl font-bold text-[#00f5ff] mb-2">Graczy online</h3>
+        <p class="text-3xl text-[#e0e0e0]">Live counter</p>
+      </div>
+      <!-- More stats cards -->
+    </div>
+  </section>
 
-    <hr style="margin: 30px 0;">
+  <!-- 3D Map section -->
+  <section class="py-16">
+    <div class="container mx-auto">
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe src="/map-3d" class="w-full h-96 rounded-lg overflow-hidden"></iframe>
+      </div>
+    </div>
+  </section>
 
-    <section>
-        <h2>🛠️ Tech Stack</h2>
-        
-        <table style="width: 100%; border-collapse: collapse;">
-            <tr style="background: var(--background_color_light);">
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);"><b>Technology</b></td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);"><b>Description</b></td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Luau</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Roblox scripting language</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Rojo</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Build tool for Roblox</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Wally</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Package manager</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Selene</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua linter</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">StyLua</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua formatter</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">DarkLua</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua preprocessor</td>
-            </tr>
-        </table>
-    </section>
+  <!-- Footer -->
+  <footer class="bg-[#16161e] p-8">
+    <div class="container mx-auto text-center">
+      <p class="text-sm text-[#aaaaaa]">© 2024 MiastoX. Built with ❤️ using NeoCity X Design System.</p>
+    </div>
+  </footer>
 
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>📁 Project Structure</h2>
-        
-        <pre style="padding: 20px; border-radius: 5px;">
-MiastoX/
-├── src/
-│   ├── ServerStorage/
-│   ├── ReplicatedStorage/
-│   ├── ReplicatedFirst/
-│   ├── StarterPlayerScripts/
-│   ├── StarterCharacterScripts/
-│   └── server/
-├── Packages/
-│   ├── _Index/
-│   │   ├── evaera_promise@4.0.0/
-│   │   └── sleitnick_trove@1.5.0/
-│   ├── promise.lua
-│   └── trove.lua
-├── scripts/
-│   ├── build.sh
-│   ├── dev.sh
-│   └── setup.sh
-├── .github/workflows/
-│   ├── ci.yml
-│   └── jekyll-gh-pages.yml
-├── config.toml
-├── selene.toml
-├── stylua.toml
-└── default.project.json
-        </pre>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>🏗️ Framework: CityX</h2>
-        <p>MiastoX is built on <a href="https://github.com/Dawju9/cityx">CityX Framework</a> - a modular game framework combining Rust and Lua technologies.</p>
-        
-        <h3>Key Framework Features:</h3>
-        <ul>
-            <li>Modular architecture with 50+ core modules</li>
-            <li>Automated CI/CD with GitHub Actions</li>
-            <li>Linting (Selene) & Formatting (StyLua)</li>
-            <li>Code preprocessing with DarkLua</li>
-            <li>Security scanning with TruffleHog</li>
-            <li>Full test coverage</li>
-        </ul>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>📊 CI/CD Pipeline</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 15px;">
-                <h3>✅</h3>
-                <p>Config Validation</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔍</h3>
-                <p>Selene Lint</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🎨</h3>
-                <p>StyLua Format</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>⚙️</h3>
-                <p>DarkLua Process</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔨</h3>
-                <p>Rojo Build</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔐</h3>
-                <p>TruffleHog Scan</p>
-            </div>
-        </div>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>📝 Development</h2>
-        
-        <h3>Installation:</h3>
-        <pre style="padding: 20px;">
-# Clone repository
-git clone https://github.com/Dawju9/MiastoX.git
-cd MiastoX
-
-# Install dependencies
-./scripts/setup.sh
-
-# Development
-npm run dev
-
-# Build
-npm run build
-
-# Lint
-npm run lint
-
-# Format
-npm run format
-        </pre>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>👥 Team</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 20px;">
-                <h3>👑</h3>
-                <p><b>Whitekali</b></p>
-                <p class="subtext">Developer</p>
-            </div>
-        </div>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <section>
-        <h2>📜 License</h2>
-        <p>This project is licensed under the MIT License - see the <a href="https://github.com/Dawju9/MiastoX/blob/master/LICENSE">LICENSE</a> file for details.</p>
-    </section>
-
-    <hr style="margin: 30px 0;">
-
-    <footer>
-        <p>© 2024 MiastoX. Built with ❤️ using CityX Framework.</p>
-    </footer>
-</div>
+  <script src="/script.js"></script>
+</body>
+</html>
