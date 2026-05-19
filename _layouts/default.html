@@ -1,78 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="pl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta property="og:locale" content="en_GB">
-		<meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:type" content="website">
+  <title>MiastoX{{ page.title }}</title>
+  <meta property="og:title" content="{{ page.title }}">
+  <meta name="twitter:title" content="MiastoX{{ page.title }}">
+  <meta name="description" content="{{ page.desc }}">
+  <meta property="og:description" content="{{ page.desc }}">
+  <meta name="twitter:description" content="{{ page.desc }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@MiastoX">
 
-		<title> MiastoX {{ page.title }}</title>
-		<meta property="og:title" content="  {{ page.title }}">
-		<meta name="twitter:title" content="MiastoX  {{ page.title }}">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+  <meta name="theme-color" content="#3325A4">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="{{ site.baseurl }}/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#3325A4"/><text x="16" y="23" text-anchor="middle" fill="white" font-family="Big Shoulders Display" font-weight="900" font-size="20">M</text></svg>
+      <span class="nav-brand">MiastoX</span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-hamburger"><span></span></label>
+    <nav class="nav-menu">
+      <a href="{{ site.baseurl }}/" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a>
+      <a href="{{ site.baseurl }}/map-3d" class="nav-link{% if page.url contains '/map' %} active{% endif %}">Mapa 3D</a>
+      <a href="{{ site.baseurl }}/join" class="nav-link{% if page.url contains '/join' %} active{% endif %}">Dołącz</a>
+      <a href="{{ site.baseurl }}/about" class="nav-link{% if page.url contains '/about' %} active{% endif %}">O projekcie</a>
+      <a href="{{ site.baseurl }}/donation" class="nav-link{% if page.url contains '/donation' %} active{% endif %}">Wsparcie</a>
+      <a href="{{ site.baseurl }}/contact" class="nav-link{% if page.url contains '/contact' %} active{% endif %}">Kontakt</a>
+    </nav>
+  </header>
 
-		<meta name="description" content="{{ page.desc }}">
-		<meta property="og:description" content="{{ page.desc }}">
-		<meta name="twitter:description" content="{{ page.desc }}">
-
-		<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-		<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-
-		<meta name="twitter:image" content="{{ site.baseurl }}/assets/brand/wordmark.svg">
-		<meta property="og:image" content="{{ site.baseurl }}/assets/brand/wordmark.svg">
-		<meta property="og:image:alt" content="MiastoX Wordmark">
-
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@MiastoXSoftware">
-
-		<link href='https://fonts.googleapis.com/css?family=Big Shoulders Display' rel='stylesheet'>
-		<link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
-		<link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
-
-		<meta name="theme-color" content="#3325A4">
-	</head>
-
-	<body>
-		<header class="navigation">
-			<a style="position: fixed; top: 10px; left: 10px;" href="{{ site.baseurl }}/"><img src="https://cdn.discordapp.com/attachments/1231224034323333182/1319435827222151220/est_2000.png?ex=6771d15f&is=67707fdf&hm=96c7664065966f4db0bcbfa203569521ef153a56d4ee96f9173eeff86295c19f&" alt="Home" width="50" height="50"></a>
-
-			<!-- Hamburger icon -->
-			<input class="side-menu" type="checkbox" id="side-menu"/>
-			<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
-
-			<!-- Menu -->
-			<nav class="nav">
-				<div class="menu">
-					<a href="{{ site.baseurl }}/"><b>Home</b></a>
-					<a href="{{ site.baseurl }}/projects"><b>Projects</b></a>
-					<a href="{{ site.baseurl }}/jobs"><b>Jobs</b></a>
-				</div>
-			</nav>
-		</header>
-
-		<div class="body-content">
-			<div class="header-content">
-				<img src="https://cdn.discordapp.com/attachments/1231224034323333182/1319435827222151220/est_2000.png?ex=6771d15f&is=67707fdf&hm=96c7664065966f4db0bcbfa203569521ef153a56d4ee96f9173eeff86295c19f&" alt="MiastoX Software" style="width:15%;">
-				<h1 style="padding-left: 3.5%;">Making <span class="accent">waves</span> by <span class="accent">propelling</span> new technologies.</h1>
-			</div>
-
-			<br> <hr>
-
-			<!-- Page content from jekyll layout -->
+  <main class="main-content">
 {{ content }}
-			<!-- End page content -->
+  </main>
 
-			<hr>
-			
-				<img src="https://cdn.discordapp.com/attachments/1231224034323333182/1322705232739700736/grewgwe.jpeg?ex=6771d8be&is=6770873e&hm=0395a98791ef35892e5859a4576ef85164c70951823c1c528fb0b86b4e11868e&" alt="MiastoX Software" style="width: 45%;">
-		</div>
-
-		<footer>
-			<p>© MiastoX 2024</p>
-			<div class="socialnav">
-				<a href="https://github.com/Dawju9/MiastoX" target="_blank" rel="noopener noreferrer" title="GitHub">⬡</a>
-				<a href="https://www.roblox.com/groups/14766364/MiastoX-Software-LLC" target="_blank" rel="noopener noreferrer" title="Roblox">⬟</a>
-			</div>
-		</footer>
-	</body>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="24" height="24" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#3325A4"/><text x="16" y="23" text-anchor="middle" fill="white" font-family="Big Shoulders Display" font-weight="900" font-size="20">M</text></svg>
+        <span>MiastoX</span>
+      </div>
+      <div class="footer-links">
+        <a href="{{ site.baseurl }}/">Home</a>
+        <a href="{{ site.baseurl }}/join">Dołącz</a>
+        <a href="{{ site.baseurl }}/about">O projekcie</a>
+        <a href="{{ site.baseurl }}/donation">Wsparcie</a>
+        <a href="{{ site.baseurl }}/contact">Kontakt</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://github.com/Dawju9/MiastoX" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.roblox.com/games/11633610328/MiastoX-Updated-24th" target="_blank" title="Roblox"><i class="fab fa-roblox"></i></a>
+        <a href="https://discord.gg/miastox" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024-2026 MiastoX. Built on <a href="https://github.com/whitekali/cityx" target="_blank">CityX Framework</a> by Whitekali.
+    </div>
+  </footer>
+</body>
 </html>

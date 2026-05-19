@@ -1,9 +1,16 @@
 ---
-layout: default
-title: MiastoX - 3D Map Viewer
-desc: Interactive 3D map viewer for MiastoX game
-url: /map-3d.html
+permalink: /map-3d/
 ---
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiastoX — Mapa 3D</title>
+<meta name="description" content="Interaktywna mapa 3D gry MiastoX na Roblox. Podgląd pięter, platform i graczy.">
+<meta name="theme-color" content="#0f0f23">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root {
   --accent: #e94560;
@@ -11,6 +18,7 @@ url: /map-3d.html
   --bg-panel: #1a1a2e;
   --text: #ffffff;
   --text-dim: #888;
+  --nav-height: 56px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,6 +30,32 @@ body {
   overflow: hidden;
   height: 100vh;
 }
+
+/* ---- Minimal nav for map page ---- */
+.map-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--nav-height);
+  display: flex; align-items: center; padding: 0 16px;
+  background: rgba(15,15,35,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
+}
+.map-nav a {
+  color: var(--text); text-decoration: none;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  display: flex; align-items: center; gap: 6px;
+}
+.map-nav a:hover { color: #e94560; }
+.map-nav .nav-spacer { flex: 1; }
+.map-nav .nav-back {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.8rem; color: var(--text-dim);
+  padding: 6px 12px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.map-nav .nav-back:hover { border-color: #e94560; color: var(--text); }
 
 .map-container {
   display: flex;
@@ -301,7 +335,14 @@ body {
 }
 </style>
 
-<div class="map-container">
+<nav class="map-nav">
+  <a href="/MiastoX/"><i class="fas fa-cube"></i> MiastoX</a>
+  <span style="color:var(--text-dim);font-size:0.8rem;">/</span>
+  <span style="color:var(--text-dim);font-size:0.85rem;">Mapa 3D</span>
+  <div class="nav-spacer"></div>
+  <a href="/MiastoX/" class="nav-back"><i class="fas fa-arrow-left"></i> Strona główna</a>
+</nav>
+<div class="map-container" style="padding-top:var(--nav-height);height:100vh;">
   <div class="map-sidebar">
     <div class="sidebar-title">🗺️ MiastoX 3D</div>
 
@@ -1300,3 +1341,5 @@ setTimeout(() => {
 
 animate();
 </script>
+</body>
+</html>
