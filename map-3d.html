@@ -225,6 +225,32 @@ body {
   background: var(--accent);
 }
 
+.ctrl-btn.active {
+  background: var(--accent);
+}
+
+.floor-search {
+  width:100%;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);color:#fff;font-size:13px;margin-bottom:8px;outline:none;
+}
+.floor-search:focus {
+  border-color: var(--accent);
+  background: rgba(233,69,96,0.1);
+}
+
+#tooltip-3d {
+  position:fixed;pointer-events:none;z-index:100;
+  background:rgba(0,0,0,0.92);padding:10px 14px;border-radius:8px;
+  border:1px solid var(--accent);font-size:13px;display:none;
+  color:#fff;max-width:240px;backdrop-filter:blur(8px);
+}
+
+.kbd-hint {
+  position:absolute;bottom:20px;right:20px;
+  font-size:11px;color:rgba(255,255,255,0.3);
+  text-align:right;line-height:1.6;
+}
+
 .loading-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -296,6 +322,7 @@ body {
 
     <div class="floor-section">
       <div class="section-title">Floors</div>
+      <input type="text" id="floorSearch" placeholder="Search floor (e.g. 15)..." style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;font-size:13px;margin-bottom:8px;outline:none;">
       <div class="floor-list" id="floorList"></div>
     </div>
 
@@ -317,6 +344,7 @@ body {
       <button class="ctrl-btn" id="topView" title="Top View">⬇</button>
     </div>
     <div id="info-overlay">Floor 1 - Normal • Drag to orbit, scroll to zoom</div>
+    <div class="kbd-hint">↑↓ arrows • R reset • Space rotate</div>
     <div class="loading-overlay" id="loadingOverlay">
       <div style="font-family: 'Big Shoulders Display', sans-serif; font-size: 2.5em; color: var(--accent); letter-spacing: 6px;">MIASTOX</div>
       <div class="spinner"></div>
@@ -338,6 +366,10 @@ body {
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const PlatformColors = {
   basic: '#00b4d8', platform: '#00b4d8',
@@ -387,6 +419,20 @@ labelRenderer.domElement.style.top = '0';
 labelRenderer.domElement.style.left = '0';
 labelRenderer.domElement.style.pointerEvents = 'none';
 container.appendChild(labelRenderer.domElement);
+
+// ---- POST-PROCESSING ----
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const bloomPass = new UnrealBloomPass(
+  new THREE.Vector2(container.clientWidth, container.clientHeight),
+  0.3, 0.2, 0.1
+);
+composer.addPass(bloomPass);
+
+const outputPass = new OutputPass();
+composer.addPass(outputPass);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -536,6 +582,91 @@ const particleMat = new THREE.PointsMaterial({
 const particles = new THREE.Points(particleGeom, particleMat);
 scene.add(particles);
 
+// ---- RAYCASTER & INTERACTION ----
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+let hoveredMesh = null;
+let hoveredPlatform = null;
+let platformMeshes = [];
+const originalColors = new Map();
+
+const tooltip = document.createElement('div');
+tooltip.id = 'tooltip-3d';
+tooltip.style.cssText = 'position:fixed;pointer-events:none;z-index:100;background:rgba(0,0,0,0.92);padding:10px 14px;border-radius:8px;border:1px solid var(--accent);font-size:13px;display:none;color:#fff;max-width:240px;backdrop-filter:blur(8px);';
+container.appendChild(tooltip);
+
+renderer.domElement.addEventListener('pointermove', (e) => {
+  const rect = renderer.domElement.getBoundingClientRect();
+  pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+});
+
+renderer.domElement.addEventListener('pointerdown', (e) => {
+  if (!hoveredMesh || !hoveredPlatform) return;
+  const y = (hoveredPlatform.floor - 1) * floorSpacing + 2;
+  camera.position.set(hoveredMesh.position.x, y + 3, hoveredMesh.position.z + 5);
+  controls.target.set(hoveredMesh.position.x, y, hoveredMesh.position.z);
+  focusFloor(hoveredPlatform.floor);
+});
+
+function updateHover() {
+  raycaster.setFromCamera(pointer, camera);
+  const intersects = raycaster.intersectObjects(platformMeshes);
+  if (hoveredMesh && (!intersects.length || intersects[0].object !== hoveredMesh)) {
+    if (originalColors.has(hoveredMesh)) {
+      hoveredMesh.material.emissiveIntensity = hoveredMesh.userData.baseIntensity || 0.2;
+    }
+    hoveredMesh = null;
+    hoveredPlatform = null;
+    tooltip.style.display = 'none';
+  }
+  if (intersects.length > 0) {
+    const obj = intersects[0].object;
+    if (obj.userData && obj.userData.platform) {
+      hoveredMesh = obj;
+      hoveredPlatform = obj.userData.platform;
+      if (!originalColors.has(obj)) {
+        originalColors.set(obj, obj.material.emissiveIntensity);
+      }
+      obj.material.emissiveIntensity = 0.8;
+      const p = hoveredPlatform;
+      tooltip.innerHTML = `<b style="color:${PlatformColors[p.type]||'#fff'}">${p.type.toUpperCase()}</b> — Floor ${p.floor}<br>Position: ${p.x.toFixed(1)}, ${p.z.toFixed(1)}`;
+      const tx = intersects[0].point.project(camera);
+      const mx = (tx.x * 0.5 + 0.5) * renderer.domElement.clientWidth;
+      const my = (-tx.y * 0.5 + 0.5) * renderer.domElement.clientHeight;
+      tooltip.style.left = Math.min(mx + 15, window.innerWidth - 240) + 'px';
+      tooltip.style.top = Math.min(my + 15, window.innerHeight - 100) + 'px';
+      tooltip.style.display = 'block';
+    }
+  }
+}
+
+// ---- KEYBOARD SHORTCUTS ----
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+    const next = Math.min(currentViewFloor + 1, Object.keys(floors).length);
+    focusFloor(next);
+  }
+  if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+    const prev = Math.max(currentViewFloor - 1, 1);
+    focusFloor(prev);
+  }
+  if (e.key === 'r' || e.key === 'R') {
+    autoRotate = false;
+    camera.position.set(25, 20, 30);
+    controls.target.set(0, 15, 0);
+    controls.update();
+  }
+  if (e.key === ' ') {
+    e.preventDefault();
+    document.getElementById('toggleRotate').click();
+  }
+  if (e.key === '+' || e.key === '=') {
+    const d = camera.position.distanceTo(controls.target);
+    camera.position.lerp(controls.target, 0.1);
+  }
+});
+
 // ---- FLOOR DATA ----
 const floors = {};
 const players = {};
@@ -590,29 +721,39 @@ function generatePlatforms(floorNum, levelType) {
       d *= 0.6;
     }
 
+    const animOffset = Math.random() * Math.PI * 2;
     platforms.push({
       id: `f${floorNum}_p${i}`,
       type,
       x: Math.cos(angle) * radius,
       z: Math.sin(angle) * radius,
+      baseX: Math.cos(angle) * radius,
+      baseZ: Math.sin(angle) * radius,
       width: w,
       depth: d,
       height: h,
       rotation: angle,
-      floor: floorNum
+      floor: floorNum,
+      animOffset,
+      animSpeed: 0.5 + Math.random() * 0.5,
+      animRange: type === 'moving' ? 1.5 : type === 'rotating' ? 0.3 : 0
     });
   }
 
   if (levelType === 'infinite') {
     for (let i = 0; i < 3; i++) {
       const a = (i / 3) * Math.PI * 2 + 0.3;
+      const sOff = Math.random() * Math.PI * 2;
       platforms.push({
         id: `f${floorNum}_s${i}`,
         type: 'spiral',
         x: Math.cos(a) * (radiusMax + 2 + i * 1.5),
         z: Math.sin(a) * (radiusMax + 2 + i * 1.5),
+        baseX: Math.cos(a) * (radiusMax + 2 + i * 1.5),
+        baseZ: Math.sin(a) * (radiusMax + 2 + i * 1.5),
         width: 1.5, depth: 1.5, height: 0.3,
-        rotation: a, floor: floorNum, isExtra: true
+        rotation: a, floor: floorNum, isExtra: true,
+        animOffset: sOff, animSpeed: 0.5, animRange: 0
       });
     }
   }
@@ -678,6 +819,7 @@ function rebuildMeshes() {
   playerMeshes.forEach(m => { scene.remove(m); if (m.geometry) m.geometry.dispose(); if (m.material) m.material.dispose(); });
   floorMeshes = [];
   playerMeshes = [];
+  platformMeshes = [];
 
   const floorGeom = new THREE.PlaneGeometry(18, 18);
   const floorMat = new THREE.MeshStandardMaterial({
@@ -754,9 +896,10 @@ function rebuildMeshes() {
       mesh.rotation.y = p.rotation || 0;
       mesh.castShadow = true;
       mesh.receiveShadow = true;
-      mesh.userData = { platform: p };
+      mesh.userData = { platform: p, baseIntensity: emissiveIntensity, initialY: yPos + p.height / 2 };
       scene.add(mesh);
       floorMeshes.push(mesh);
+      platformMeshes.push(mesh);
 
       const edgeGeom = new THREE.EdgesGeometry(geom);
       const edgeMat = new THREE.LineBasicMaterial({
@@ -989,6 +1132,29 @@ function updatePlayerList() {
   });
 }
 
+document.getElementById('floorSearch').addEventListener('input', (e) => {
+  const val = e.target.value.trim();
+  const items = document.querySelectorAll('.floor-item');
+  items.forEach(item => {
+    const match = !val || item.textContent.includes(val);
+    item.style.display = match ? '' : 'none';
+  });
+});
+
+document.getElementById('floorSearch').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const val = e.target.value.trim();
+    const num = parseInt(val);
+    if (num && floors[num]) focusFloor(num);
+    else {
+      const items = document.querySelectorAll('.floor-item');
+      for (const item of items) {
+        if (item.style.display !== 'none') { item.click(); break; }
+      }
+    }
+  }
+});
+
 function focusFloor(floorNum) {
   currentViewFloor = floorNum;
   const y = (floorNum - 1) * floorSpacing;
@@ -1013,6 +1179,14 @@ function focusFloor(floorNum) {
   document.querySelectorAll('.floor-item').forEach((el, i) => {
     el.classList.toggle('active', i + 1 === floorNum);
   });
+
+  const baseColor = typeInfo.color || '#00b4d8';
+  const c = new THREE.Color(baseColor);
+  ambientLight.color.lerp(c, 0.3);
+  scene.background = new THREE.Color(baseColor).multiplyScalar(0.08);
+  fillLight.color.setHSL(c.getHSL({}).h, 0.6, 0.5);
+  const dark = new THREE.Color(baseColor).multiplyScalar(0.3);
+  hemiLight.groundColor.lerp(dark, 0.5);
 }
 
 let autoRotate = false;
@@ -1026,7 +1200,7 @@ document.getElementById('resetView').addEventListener('click', () => {
 
 document.getElementById('toggleRotate').addEventListener('click', () => {
   autoRotate = !autoRotate;
-  document.getElementById('toggleRotate').style.background = autoRotate ? 'var(--accent)' : '';
+  document.getElementById('toggleRotate').classList.toggle('active', autoRotate);
 });
 
 document.getElementById('topView').addEventListener('click', () => {
@@ -1060,6 +1234,28 @@ function animate() {
   }
   particles.geometry.attributes.position.needsUpdate = true;
 
+  platformMeshes.forEach(mesh => {
+    const p = mesh.userData.platform;
+    if (!p) return;
+    if (p.type === 'moving') {
+      const dx = Math.sin(time * p.animSpeed + p.animOffset) * p.animRange;
+      const dz = Math.cos(time * p.animSpeed + p.animOffset) * p.animRange;
+      mesh.position.x = p.baseX + dx;
+      mesh.position.z = p.baseZ + dz;
+    }
+    if (p.type === 'rotating') {
+      mesh.rotation.y = p.rotation + time * 0.5;
+    }
+    if (p.type === 'bounce') {
+      const bounce = Math.abs(Math.sin(time * 1.5 + p.animOffset)) * 0.15;
+      mesh.position.y = mesh.userData.initialY + bounce;
+      mesh.scale.y = 1 - bounce * 1.5;
+    }
+    if (p.type === 'teleporter') {
+      mesh.rotation.y = time * 0.8;
+    }
+  });
+
   Object.values(players).forEach((player, i) => {
     const yPos = (player.floor - 1) * floorSpacing + 0.5;
     const dx = Math.sin(time * 0.5 + player.phase) * 0.5;
@@ -1076,8 +1272,11 @@ function animate() {
   titleLabel.position.y = 153 + Math.sin(time * 0.3) * 0.3;
   subtitleLabel.position.y = 148 + Math.sin(time * 0.3 + 0.5) * 0.2;
 
+  bloomPass.strength = 0.3 + Math.sin(time * 0.1) * 0.05;
+
+  updateHover();
   controls.update();
-  renderer.render(scene, camera);
+  composer.render();
   labelRenderer.render(scene, camera);
 }
 
@@ -1089,6 +1288,7 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
   labelRenderer.setSize(w, h);
+  composer.setSize(w, h);
 });
 
 // ---- INIT ----
