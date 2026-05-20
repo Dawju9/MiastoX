@@ -14,9 +14,6 @@ plugins:
 exclude:
   - node_modules/
   - .git/
-  - Packages/
-  - src/
-  - scripts/
   - .github/
 
 collections_dir: collections

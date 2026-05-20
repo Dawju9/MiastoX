@@ -1,0 +1,101 @@
+name: Website — Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "website/**"
+      - ".github/workflows/deploy-website.yml"
+      - "plan-major.todo"
+      - "plan.todo"
+      - "CHANGELOG.md"
+      - "wally.toml"
+      - "config.toml"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force deploy even if no website changes'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-changelog:
+    name: Generate API Data
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      changelog: ${{ steps.changelog.outputs.data }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+
+      - name: Extract Version
+        id: version
+        run: |
+          version=$(grep -oP '(?<=^version = ")[^"]+' wally.toml || echo "0.0.0")
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Generate Changelog JSON
+        id: changelog
+        run: |
+          changelog=$(git log --oneline --no-decorate -20 --format='{"hash":"%h","date":"%ad","message":"%s","author":"MiastoX Team"}' --date=short | jq -s '.')
+          echo "data=$changelog" >> $GITHUB_OUTPUT
+
+  build-and-deploy:
+    name: Build & Deploy to GitHub Pages
+    needs: generate-changelog
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Generate API Files
+        run: |
+          VERSION="${{ needs.generate-changelog.outputs.version }}"
+          COMMIT="${{ github.sha }}"
+          SHORT_COMMIT="${COMMIT:0:7}"
+
+          mkdir -p website/api
+
+          # status.json
+          cat > website/api/status.json << EOF
+          {
+            "version": "$VERSION",
+            "lastBuild": "$(date +%Y-%m-%d)",
+            "players": 0,
+            "gameUrl": "https://www.roblox.com/games/PLACE_ID",
+            "sourceUrl": "https://github.com/Dawju9/MiastoX",
+            "buildCommit": "$SHORT_COMMIT",
+            "status": "operational"
+          }
+          EOF
+
+          # changelog.json
+          echo '${{ needs.generate-changelog.outputs.changelog }}' > website/api/changelog.json
+
+          echo "Generated API files:"
+          ls -la website/api/
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

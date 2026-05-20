@@ -1,249 +1,315 @@
 ---
 layout: default
-title: MiastoX - Climb to the Top
-desc: MiastoX - Epic climbing game in Roblox
-url: /index.html
+title: " — Climb to the Top"
+desc: "MiastoX — epic climbing game on Roblox built with CityX framework. Explore 30 floors, special levels, weather, PvP, and more."
 ---
-<head>
-<link rel="stylesheet" href="styles/main.css">
-<title>MiastoX - Climb to the Top!</title>
-</head>
 
-<div class="body-content">
-    <div class="header-content">
-        <h1>🏙️ MiastoX</h1>
-        <p class="subtext">Climb to the Top - Epic climbing experience in Roblox</p>
-        
-        <div style="margin: 20px 0;">
-            <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="button-link" style="background: var(--accent_color); padding: 15px 30px; border-radius: 5px; text-decoration: none; color: white; display: inline-block;">
-                🎮 Play Now!
-            </a>
-            <a href="https://github.com/Dawju9/MiastoX" class="button-link" style="background: var(--background_color_dark); padding: 15px 30px; border-radius: 5px; text-decoration: none; color: var(--text_color); display: inline-block; margin-left: 10px;">
-                📂 GitHub
-            </a>
-            <a href="/MiastoX/map.html" class="button-link" style="background: #00b4d8; padding: 15px 30px; border-radius: 5px; text-decoration: none; color: white; display: inline-block; margin-left: 10px;">
-                🗺️ Live Map
-            </a>
-        </div>
+<section class="hero bg-neon-aurora">
+  <div class="hero-bg"></div>
+  <canvas id="hero-canvas" class="hero-canvas"></canvas>
+  <div class="hero-content">
+    <h1 class="hero-title neon-text">MiastoX</h1>
+    <p class="hero-sub">Climb to the Top — wielopoziomowe doświadczenie w Roblox</p>
+    <div class="hero-actions">
+      <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="btn btn-primary" target="_blank"><i class="fab fa-roblox"></i> Graj teraz</a>
+      <a href="{{ site.baseurl }}/map-3d" class="btn btn-outline"><i class="fas fa-cube"></i> Mapa 3D</a>
+      <a href="{{ site.baseurl }}/join" class="btn btn-ghost"><i class="fas fa-play"></i> Jak dołączyć</a>
     </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-value">30</div><div class="hero-stat-label">Pięter</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">16</div><div class="hero-stat-label">Typów platform</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">7</div><div class="hero-stat-label">Trybów poziomów</div></div>
+      <div class="hero-stat"><div class="hero-stat-value">∞</div><div class="hero-stat-label">Możliwości</div></div>
+    </div>
+  </div>
+</section>
 
-    <hr style="margin: 30px 0;">
+<section class="section" id="about">
+  <h2 class="section-title">Czym jest <span class="accent">MiastoX</span>?</h2>
+  <p class="section-sub">Wielopoziomowa gra wspinaczkowa na Roblox, w której mierzysz się z coraz trudniejszymi piętrami, unikalnymi typami poziomów i zmienną pogodą.</p>
 
-    <section>
-        <h2>🚀 Features</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🪜</h3>
-                <h3>6 Levels</h3>
-                <p>Tutorial, Basic Course, Intermediate, Advanced, Master & Chaos</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🎯</h3>
-                <h3>5 Platform Types</h3>
-                <p>Blue, Red, Green, Purple & Yellow platforms</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>⚡</h3>
-                <h3>8 Stair Types</h3>
-                <p>Basic, Platform, Moving, Rotating, Spiral, Checkpoint, Elevator & Special</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>🌤️</h3>
-                <h3>9 Weather Types</h3>
-                <p>Sunny, Rainy, Foggy, Stormy, Snowy, Cloudy, Night, Eclipse & Apocalyptic</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>⚔️</h3>
-                <h3>PvP System</h3>
-                <p>Player vs Player with kill tracking</p>
-            </div>
-            
-            <div class="card" style="padding: 20px; text-align: left;">
-                <h3>💎</h3>
-                <h3>Power-ups</h3>
-                <p>Speed, Jump, Shield, Invincibility, Double Coins & XP</p>
-            </div>
-        </div>
-    </section>
+  <div class="highlight">
+    <p><strong>MiastoX</strong> to gra osadzona w frameworku <span class="accent">CityX</span> autorstwa Whitekali — modułowym systemie serwerowym dla Roblox. Każde piętro to osobny ekosystem: generowane procedurally platformy, dynamiczna pogoda, system PvP i rankingi. Gra obsługuje wiele serwerów równolegle, każdy z własnym stanem, a dane graczy synchronizowane są przez Firebase.</p>
+  </div>
 
-    <hr style="margin: 30px 0;">
+  <div class="card-grid mt-2">
+    <div class="card"><div class="card-icon"><i class="fas fa-layer-group"></i></div><h3>30+ Pięter</h3><p>Od tutorialu po chaos — każde piętro to nowe wyzwanie z rosnącym stopniem trudności.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-cloud-sun"></i></div><h3>Dynamiczna pogoda</h3><p>Słonecznie, deszcz, burza, śnieg, mgła, apokalipsa — warunki zmieniają się w trakcie gry.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-bolt"></i></div><h3>Power-upy</h3><p>Speed, Jump, Shield, Invincibility, Double Coins i XP — zbieraj i wspinaj się szybciej.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-skull"></i></div><h3>System PvP</h3><p>Rywalizuj z innymi graczami na arenie. Track zabójstw, rankingi i nagrody.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-dharmachakra"></i></div><h3>Specjalne typy</h3><p>Infinite Spiral, Paradox, Time Loop, Mirror, Void, Disaster — każdy zmienia zasady gry.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-server"></i></div><h3>CityX Framework</h3><p>Modułowy system serwerowy: pool serwerów, automatyczne skalowanie, replikacja stanu.</p></div>
+  </div>
+</section>
 
-    <section>
-        <h2>🛠️ Tech Stack</h2>
-        
-        <table style="width: 100%; border-collapse: collapse;">
-            <tr style="background: var(--background_color_light);">
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);"><b>Technology</b></td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);"><b>Description</b></td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Luau</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Roblox scripting language</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Rojo</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Build tool for Roblox</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Wally</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Package manager</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Selene</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua linter</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">StyLua</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua formatter</td>
-            </tr>
-            <tr>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">DarkLua</td>
-                <td style="padding: 15px; border: 1px solid var(--background_color_dark);">Lua preprocessor</td>
-            </tr>
-        </table>
-    </section>
+<section class="section" id="architecture">
+  <h2 class="section-title">Architektura <span class="accent">CityX</span></h2>
+  <p class="section-sub">Jak działa serwerowa strona MiastoX? CityX to framework mikroserwerów dla Roblox — każdy komponent jest izolowany i komunikuje się przez zdarzenia.</p>
 
-    <hr style="margin: 30px 0;">
+  <div class="arch-grid">
+    <div class="arch-node"><div class="arch-node-icon"><i class="fas fa-globe"></i></div><div class="arch-node-label">Router</div><div class="arch-node-value">Web Server</div></div>
+    <div class="arch-node"><div class="arch-node-icon"><i class="fas fa-users"></i></div><div class="arch-node-label">Serwer 1</div><div class="arch-node-value">Gracze 1-12</div></div>
+    <div class="arch-node"><div class="arch-node-icon"><i class="fas fa-users"></i></div><div class="arch-node-label">Serwer 2</div><div class="arch-node-value">Gracze 13-24</div></div>
+    <div class="arch-node"><div class="arch-node-icon"><i class="fas fa-users"></i></div><div class="arch-node-label">Serwer N</div><div class="arch-node-value">Skalowanie</div></div>
+    <div class="arch-node"><div class="arch-node-icon"><i class="fas fa-database"></i></div><div class="arch-node-label">Stan</div><div class="arch-node-value">Firebase</div></div>
+  </div>
 
-    <section>
-        <h2>📁 Project Structure</h2>
-        
-        <pre style="padding: 20px; border-radius: 5px;">
-MiastoX/
-├── src/
-│   ├── ServerStorage/
-│   ├── ReplicatedStorage/
-│   ├── ReplicatedFirst/
-│   ├── StarterPlayerScripts/
-│   ├── StarterCharacterScripts/
-│   └── server/
-├── Packages/
-│   ├── _Index/
-│   │   ├── evaera_promise@4.0.0/
-│   │   └── sleitnick_trove@1.5.0/
-│   ├── promise.lua
-│   └── trove.lua
-├── scripts/
-│   ├── build.sh
-│   ├── dev.sh
-│   └── setup.sh
-├── .github/workflows/
-│   ├── ci.yml
-│   └── jekyll-gh-pages.yml
-├── config.toml
-├── selene.toml
-├── stylua.toml
-└── default.project.json
-        </pre>
-    </section>
+  <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;">Każdy serwer Roblox uruchamia izolowaną instancję CityX z własnym poziomem, pogodą i pulą graczy. Router kieruje nowych graczy do najmniej obciążonego serwera.</p>
 
-    <hr style="margin: 30px 0;">
+  <div class="viz-container" id="cityx-viz">
+    <canvas id="cityx-canvas"></canvas>
+  </div>
+</section>
 
-    <section>
-        <h2>🏗️ Framework: CityX</h2>
-        <p>MiastoX is built on <a href="https://github.com/Dawju9/cityx">CityX Framework</a> - a modular game framework combining Rust and Lua technologies.</p>
-        
-        <h3>Key Framework Features:</h3>
-        <ul>
-            <li>Modular architecture with 50+ core modules</li>
-            <li>Automated CI/CD with GitHub Actions</li>
-            <li>Linting (Selene) & Formatting (StyLua)</li>
-            <li>Code preprocessing with DarkLua</li>
-            <li>Security scanning with TruffleHog</li>
-            <li>Full test coverage</li>
-        </ul>
-    </section>
+<section class="section" id="features">
+  <h2 class="section-title">Typy <span class="accent">Platform</span></h2>
+  <p class="section-sub">Każdy typ platformy to unikalna mechanika, którą musisz opanować, by wspiąć się wyżej.</p>
 
-    <hr style="margin: 30px 0;">
+  <div class="card-grid-3">
+    <div class="card"><span class="tag tag-luau">Basic</span><h3>Podstawowa</h3><p>Stabilna platforma. Twój fundament do nauki wspinaczki.</p></div>
+    <div class="card"><span class="tag" style="background:#ff6b6b20;color:#ff6b6b;">Moving</span><h3>Ruchoma</h3><p>Platforma przesuwa się w rytmie sinusoidalnym. Wymaga wyczucia czasu.</p></div>
+    <div class="card"><span class="tag" style="background:#ffd93d20;color:#ffd93d;">Rotating</span><h3>Wirująca</h3><p>Obraca się wokół własnej osi. Skacz, gdy krawędź jest najbliżej.</p></div>
+    <div class="card"><span class="tag" style="background:#6bcb7720;color:#6bcb77;">Spiral</span><h3>Spirala</h3><p>Prowadzi cię w górę po eliptycznym torze. Nie zatrzymuj się!</p></div>
+    <div class="card"><span class="tag" style="background:#00ff8820;color:#00ff88;">Bounce</span><h3>Odbijająca</h3><p>Skacz, a platforma odrzuci cię wyżej. Ryzyko: upadek.</p></div>
+    <div class="card"><span class="tag" style="background:#ff006e20;color:#ff006e;">Spike</span><h3>Kolczasta</h3><p>Dotknięcie = natychmiastowa śmierć. Unikaj za wszelką cenę.</p></div>
+    <div class="card"><span class="tag" style="background:#8b5cf620;color:#8b5cf6;">Teleporter</span><h3>Teleport</h3><p>Przenosi cię do innego punktu na piętrze. Szybka nawigacja.</p></div>
+    <div class="card"><span class="tag" style="background:#ff950020;color:#ff9500;">Boost</span><h3>Przyspieszenie</h3><p>Daje ci tymczasowy sprint. Używaj mądrze na długich dystansach.</p></div>
+    <div class="card"><span class="tag" style="background:#a0e7e520;color:#a0e7e5;">Ice</span><h3>Lodowa</h3><p>Śliska powierzchnia — trudniej się zatrzymać. Kontrola to klucz.</p></div>
+    <div class="card"><span class="tag" style="background:#ff000020;color:#ff0000;">Laser</span><h3>Laser</h3><p>Wiązka lasera przecina platformę. Unikaj lub giń.</p></div>
+    <div class="card"><span class="tag" style="background:#8b451320;color:#8b4513;">Crumbling</span><h3>Krusząca</h3><p>Rozpada się po chwili stania. Szybko, dalej!</p></div>
+    <div class="card"><span class="tag" style="background:#66666620;color:#999;">Disappearing</span><h3>Znikająca</h3><p>Pojawia się i znika cyklicznie. Musisz wyczuć rytm.</p></div>
+  </div>
+</section>
 
-    <section>
-        <h2>📊 CI/CD Pipeline</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 15px;">
-                <h3>✅</h3>
-                <p>Config Validation</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔍</h3>
-                <p>Selene Lint</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🎨</h3>
-                <p>StyLua Format</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>⚙️</h3>
-                <p>DarkLua Process</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔨</h3>
-                <p>Rojo Build</p>
-            </div>
-            <div class="card" style="padding: 15px;">
-                <h3>🔐</h3>
-                <p>TruffleHog Scan</p>
-            </div>
-        </div>
-    </section>
+<section class="section" id="levels">
+  <h2 class="section-title">Tryby <span class="accent">Poziomów</span></h2>
+  <p class="section-sub">Każde piętro może mieć unikalny tryb rozgrywki, który zmienia zasady.</p>
 
-    <hr style="margin: 30px 0;">
+  <div class="card-grid">
+    <div class="card"><div class="card-icon"><i class="fas fa-check-circle" style="color:#00b4d8;"></i></div><h3>Normal</h3><p>Standardowa wspinaczka. Zbieraj monety, omijaj przeszkody, dotrzyj na szczyt.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-infinity" style="color:#ffd93d;"></i></div><h3>Infinite Spiral</h3><p>Nieskończona spirala platform. Nie ma końca — liczy się dystans.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-circle-notch" style="color:#9d4edd;"></i></div><h3>Paradox</h3><p>Pętla czasowa. Te same platformy, ale za każdym razem inne ustawienie.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-clock" style="color:#00ffff;"></i></div><h3>Time Loop</h3><p>Limit czasu na każde piętro. Nie zdążysz — zaczynasz od nowa.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-ghost" style="color:#c0c0c0;"></i></div><h3>Mirror</h3><p>Lustrzane odbicie — platformy są symetryczne, ale pułapki też.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-skull" style="color:#ff0000;"></i></div><h3>The Void</h3><p>Brak platform startowych. Musisz tworzyć własne ścieżki.</p></div>
+    <div class="card"><div class="card-icon"><i class="fas fa-biohazard" style="color:#ff6b6b;"></i></div><h3>Disaster</h3><p>Kataklizmy: tornado, trzęsienie ziemi, deszcz meteorytów. Przetrwaj.</p></div>
+  </div>
+</section>
 
-    <section>
-        <h2>📝 Development</h2>
-        
-        <h3>Installation:</h3>
-        <pre style="padding: 20px;">
-# Clone repository
-git clone https://github.com/Dawju9/MiastoX.git
-cd MiastoX
+<section class="section" id="quickstart">
+  <h2 class="section-title">Jak <span class="accent">zacząć</span>?</h2>
+  <p class="section-sub">W 3 prostych krokach rozpoczniesz wspinaczkę w MiastoX.</p>
 
-# Install dependencies
-./scripts/setup.sh
+  <div class="steps">
+    <div class="step">
+      <h3>Wejdź do gry</h3>
+      <p>Kliknij przycisk "Graj teraz" lub otwórz Roblox i wyszukaj "MiastoX". Gra jest darmowa.</p>
+    </div>
+    <div class="step">
+      <h3>Wybierz piętro</h3>
+      <p>Użyj interaktywnej mapy 3D, by sprawdzić układ pięter, typy platform i pozycje graczy.</p>
+    </div>
+    <div class="step">
+      <h3>Wspinaj się!</h3>
+      <p>Pokonuj platformy, zbieraj monety, unikaj pułapek i zdobywaj kolejne piętra. Rekordy są zapisywane.</p>
+    </div>
+  </div>
 
-# Development
-npm run dev
+  <div class="text-center mt-2">
+    <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="btn btn-primary" target="_blank"><i class="fab fa-roblox"></i> Graj teraz — za darmo</a>
+    <a href="{{ site.baseurl }}/map-3d" class="btn btn-outline" style="margin-left:10px;"><i class="fas fa-cube"></i> Zobacz mapę 3D</a>
+  </div>
+</section>
 
-# Build
-npm run build
+<section class="section-wide text-center" style="padding:60px 24px;border-top:1px solid var(--border);">
+  <p style="color:var(--text-dim);font-size:0.85rem;max-width:600px;margin:0 auto;">
+    MiastoX jest zbudowane na <a href="https://github.com/whitekali/cityx" target="_blank">CityX Framework</a> — otwartym, modułowym systemie serwerowym dla Roblox autorstwa Whitekali.
+    <br>Kod źródłowy dostępny na <a href="https://github.com/Dawju9/MiastoX" target="_blank">GitHub</a>.
+  </p>
+</section>
 
-# Lint
-npm run lint
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
 
-# Format
-npm run format
-        </pre>
-    </section>
+const canvas = document.getElementById('hero-canvas');
+if (canvas) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+  camera.position.set(0, 4, 8);
 
-    <hr style="margin: 30px 0;">
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
-    <section>
-        <h2>👥 Team</h2>
-        
-        <div class="team-grid">
-            <div class="card" style="padding: 20px;">
-                <h3>👑</h3>
-                <p><b>Whitekali</b></p>
-                <p class="subtext">Developer</p>
-            </div>
-        </div>
-    </section>
+  function resize() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (renderer.domElement.width !== w || renderer.domElement.height !== h) {
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+  }
+  window.addEventListener('resize', resize);
 
-    <hr style="margin: 30px 0;">
+  const colors = [0x00f5ff, 0xff00aa, 0x39ff14, 0x00b4d8, 0xff6b6b, 0xffd93d, 0x00ff88, 0x9d4edd];
+  const platforms = [];
+  for (let i = 0; i < 18; i++) {
+    const w = 0.3 + Math.random() * 0.4;
+    const d = 0.3 + Math.random() * 0.4;
+    const h = 0.08;
+    const geom = new THREE.BoxGeometry(w, h, d);
+    const mat = new THREE.MeshStandardMaterial({
+      color: colors[i % colors.length],
+      emissive: colors[i % colors.length],
+      emissiveIntensity: 0.1,
+      metalness: 0.3, roughness: 0.4
+    });
+    const mesh = new THREE.Mesh(geom, mat);
+    const angle = (i / 18) * Math.PI * 2;
+    const radius = 1.5 + Math.random() * 0.8;
+    mesh.position.set(
+      Math.cos(angle) * radius,
+      0.5 + Math.sin(i * 1.5) * 0.3,
+      Math.sin(angle) * radius
+    );
+    mesh.rotation.y = Math.random() * Math.PI;
+    mesh.userData = { angle, radius, speed: 0.3 + Math.random() * 0.4, phase: Math.random() * Math.PI * 2 };
+    scene.add(mesh);
+    platforms.push(mesh);
+  }
 
-    <section>
-        <h2>📜 License</h2>
-        <p>This project is licensed under the MIT License - see the <a href="https://github.com/Dawju9/MiastoX/blob/master/LICENSE">LICENSE</a> file for details.</p>
-    </section>
+  const ambient = new THREE.AmbientLight(0x00f5ff, 0.25);
+  scene.add(ambient);
+  const dir = new THREE.DirectionalLight(0xffffff, 1);
+  dir.position.set(2, 5, 3);
+  scene.add(dir);
 
-    <hr style="margin: 30px 0;">
+  const particleCount = 400;
+  const pGeom = new THREE.BufferGeometry();
+  const pPos = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    pPos[i * 3] = (Math.random() - 0.5) * 12;
+    pPos[i * 3 + 1] = (Math.random() - 0.5) * 6;
+    pPos[i * 3 + 2] = (Math.random() - 0.5) * 12;
+  }
+  pGeom.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({
+    color: 0x00f5ff, size: 0.03, transparent: true, opacity: 0.4
+  });
+  const particles = new THREE.Points(pGeom, pMat);
+  scene.add(particles);
 
-    <footer>
-        <p>© 2024 MiastoX. Built with ❤️ using CityX Framework.</p>
-    </footer>
-</div>
+  const time = performance.now() * 0.001;
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = performance.now() * 0.001;
+    platforms.forEach((p, i) => {
+      const a = p.userData.angle + t * p.userData.speed * 0.15;
+      p.position.x = Math.cos(a) * p.userData.radius;
+      p.position.z = Math.sin(a) * p.userData.radius;
+      p.position.y = 0.5 + Math.sin(t * p.userData.speed + p.userData.phase) * 0.25;
+      p.rotation.y += 0.005;
+    });
+    particles.rotation.y = t * 0.015;
+    camera.position.x = Math.sin(t * 0.08) * 8;
+    camera.position.z = Math.cos(t * 0.08) * 8;
+    camera.lookAt(0, 1, 0);
+    resize();
+    renderer.render(scene, camera);
+  }
+  animate();
+}
+
+// ---- CityX architecture visualization ----
+const cxCanvas = document.getElementById('cityx-canvas');
+if (cxCanvas) {
+  const container = cxCanvas.parentElement;
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+  cxCanvas.width = w;
+  cxCanvas.height = h;
+  const ctx = cxCanvas.getContext('2d');
+
+  const nodes = [
+    { x: 0.5, y: 0.15, label: 'Router', color: '#00f5ff' },
+    { x: 0.15, y: 0.5, label: 'Server 1', color: '#00b4d8' },
+    { x: 0.38, y: 0.5, label: 'Server 2', color: '#ff6b6b' },
+    { x: 0.62, y: 0.5, label: 'Server 3', color: '#ffd93d' },
+    { x: 0.85, y: 0.5, label: 'Server N', color: '#00ff88' },
+    { x: 0.5, y: 0.85, label: 'Firebase DB', color: '#9d4edd' },
+  ];
+
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random(), y: Math.random(),
+    vx: (Math.random() - 0.5) * 0.002,
+    vy: (Math.random() - 0.5) * 0.002,
+    r: 1 + Math.random() * 2
+  }));
+
+  function drawArch(t) {
+    ctx.clearRect(0, 0, w, h);
+
+    nodes.forEach((a, i) => {
+      nodes.slice(i + 1).forEach(b => {
+        const dx = (b.x - a.x) * w;
+        const dy = (b.y - a.y) * h;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const alpha = Math.max(0, 0.3 - dist / (w * 0.8));
+        if (alpha > 0.02) {
+          ctx.strokeStyle = `rgba(79,63,204,${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x * w, a.y * h);
+          ctx.lineTo(b.x * w, b.y * h);
+          ctx.stroke();
+        }
+      });
+    });
+
+    nodes.forEach(n => {
+      const nx = n.x * w;
+      const ny = n.y * h;
+      const pulse = 6 + Math.sin(t * 0.002 + n.x * 10) * 2;
+      const gradient = ctx.createRadialGradient(nx, ny, 0, nx, ny, pulse + 10);
+      gradient.addColorStop(0, n.color + '60');
+      gradient.addColorStop(1, n.color + '00');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(nx, ny, pulse + 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = n.color;
+      ctx.beginPath();
+      ctx.arc(nx, ny, pulse, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#e8e8f0';
+      ctx.font = '11px IBM Plex Sans';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.label, nx, ny + pulse + 16);
+    });
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > 1) p.vx *= -1;
+      if (p.y < 0 || p.y > 1) p.vy *= -1;
+      ctx.fillStyle = `rgba(79,63,204,${0.2 + Math.sin(t * 0.001 + p.x * 10) * 0.1})`;
+      ctx.beginPath();
+      ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawArch);
+  }
+  drawArch(performance.now());
+}
+</script>
