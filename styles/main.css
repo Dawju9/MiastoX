@@ -5,28 +5,28 @@
 
 :root {
   /* ── Grayscale Accents ── */
-  --accent: #d4d4d4;
-  --accent-light: #d4d4d4;
-  --accent-secondary: #888888;
-  --accent-tertiary: #555555;
-  --accent-glow: rgba(212, 212, 212, 0.15);
-  --accent-glow-strong: rgba(212, 212, 212, 0.25);
+  --accent: #f0f0f0;
+  --accent-light: #f5f5f5;
+  --accent-secondary: #c0c0c0;
+  --accent-tertiary: #909090;
+  --accent-glow: rgba(240, 240, 240, 0.2);
+  --accent-glow-strong: rgba(240, 240, 240, 0.35);
 
   /* ── Greyscale Backgrounds ── */
-  --bg: #0a0a0a;
-  --bg-surface: #121212;
-  --bg-card: #1a1a1a;
-  --bg-elevated: #242424;
+  --bg: #080808;
+  --bg-surface: #101010;
+  --bg-card: #181818;
+  --bg-elevated: #222222;
 
   /* ── Text ── */
-  --text: #e0e0e0;
+  --text: #e8e8e8;
   --text-heading: #ffffff;
-  --text-muted: #aaaaaa;
-  --text-dim: #666666;
+  --text-muted: #b8b8b8;
+  --text-dim: #787878;
 
   /* ── Borders & Effects ── */
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
   --radius: 12px;
   --radius-sm: 8px;
 
@@ -147,9 +147,9 @@ a:hover { color: var(--accent-secondary); }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(212,212,212,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(180,180,180,0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(160,160,160,0.03) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(240,240,240,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(210,210,210,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(180,180,180,0.05) 0%, transparent 50%);
   z-index: 0;
 }
 .hero-canvas {
@@ -447,10 +447,10 @@ a:hover { color: var(--accent-secondary); }
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.tag-luau { background: rgba(212, 212, 212, 0.13); color: #c0c0c0; }
-.tag-rojo { background: rgba(180, 180, 180, 0.13); color: #aaaaaa; }
-.tag-cityx { background: rgba(150, 150, 150, 0.13); color: #999999; }
-.tag-roblox { background: rgba(130, 130, 130, 0.13); color: #888888; }
+.tag-luau { background: rgba(240, 240, 240, 0.15); color: #e0e0e0; }
+.tag-rojo { background: rgba(200, 200, 200, 0.15); color: #c8c8c8; }
+.tag-cityx { background: rgba(160, 160, 160, 0.15); color: #a0a0a0; }
+.tag-roblox { background: rgba(140, 140, 140, 0.15); color: #8c8c8c; }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
