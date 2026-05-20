@@ -53,6 +53,7 @@ jobs:
     needs: deploy
     if: success()
     steps:
+      - uses: actions/checkout@v4
       - name: Send Discord Changelog Notification
         run: |
           COMMIT_MSG="$(git log -1 --pretty=%B | head -1)"
