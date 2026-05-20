@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+Packages/
+wally.lock
+
+# Build outputs
+*.rbxl
+MiastoX*.rbxl
+_site/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# n8n workflows
+n8n/
+
+# Artifacts
+artifacts/
+
+# Lock files
+package-lock.json
