@@ -19,24 +19,20 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
-  <meta name="theme-color" content="#00f5ff">
+  <meta name="theme-color" content="#d4d4d4">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <header class="navbar">
     <a href="{{ site.baseurl }}/" class="nav-logo">
-      <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#00f5ff"/><text x="16" y="23" text-anchor="middle" fill="#0a0a0a" font-family="Space Grotesk" font-weight="700" font-size="20">M</text></svg>
+      <svg width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#d4d4d4"/><text x="16" y="23" text-anchor="middle" fill="#0a0a0a" font-family="Space Grotesk" font-weight="700" font-size="20">M</text></svg>
       <span class="nav-brand">MiastoX</span>
     </a>
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-hamburger"><span></span></label>
     <nav class="nav-menu">
       <a href="{{ site.baseurl }}/" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a>
-      <a href="{{ site.baseurl }}/map-3d" class="nav-link{% if page.url contains '/map' %} active{% endif %}">Mapa 3D</a>
-      <a href="{{ site.baseurl }}/join" class="nav-link{% if page.url contains '/join' %} active{% endif %}">Dołącz</a>
-      <a href="{{ site.baseurl }}/about" class="nav-link{% if page.url contains '/about' %} active{% endif %}">O projekcie</a>
-      <a href="{{ site.baseurl }}/donation" class="nav-link{% if page.url contains '/donation' %} active{% endif %}">Wsparcie</a>
-      <a href="{{ site.baseurl }}/contact" class="nav-link{% if page.url contains '/contact' %} active{% endif %}">Kontakt</a>
+      <a href="{{ site.baseurl }}/map" class="nav-link{% if page.url contains '/map' %} active{% endif %}">Mapa</a>
     </nav>
   </header>
 
@@ -47,15 +43,12 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <svg width="24" height="24" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#00f5ff"/><text x="16" y="23" text-anchor="middle" fill="#0a0a0a" font-family="Space Grotesk" font-weight="700" font-size="20">M</text></svg>
+        <svg width="24" height="24" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#d4d4d4"/><text x="16" y="23" text-anchor="middle" fill="#0a0a0a" font-family="Space Grotesk" font-weight="700" font-size="20">M</text></svg>
         <span>MiastoX</span>
       </div>
       <div class="footer-links">
         <a href="{{ site.baseurl }}/">Home</a>
-        <a href="{{ site.baseurl }}/join">Dołącz</a>
-        <a href="{{ site.baseurl }}/about">O projekcie</a>
-        <a href="{{ site.baseurl }}/donation">Wsparcie</a>
-        <a href="{{ site.baseurl }}/contact">Kontakt</a>
+        <a href="{{ site.baseurl }}/map">Mapa</a>
       </div>
       <div class="footer-social">
         <a href="https://github.com/Dawju9/MiastoX" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>

@@ -1,0 +1,495 @@
+---
+layout: default
+title: " — Mapa Pięter"
+desc: "Interaktywna mapa pięter MiastoX. Przeglądaj 30+ pięter, typy platform i warunki pogodowe."
+permalink: /map
+---
+
+<section class="map-page">
+  <div class="map-header">
+    <h1 class="map-title">Mapa <span class="accent">Pięter</span></h1>
+    <p class="map-sub">Przeglądaj piętra MiastoX — kliknij aby zobaczyć szczegóły</p>
+    
+    <div class="map-controls">
+      <div class="map-filter-group">
+        <button class="map-filter active" data-filter="all">Wszystkie</button>
+        <button class="map-filter" data-filter="easy">Łatwe</button>
+        <button class="map-filter" data-filter="medium">Średnie</button>
+        <button class="map-filter" data-filter="hard">Trudne</button>
+        <button class="map-filter" data-filter="chaos">Chaos</button>
+      </div>
+      <div class="map-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="floor-search" placeholder="Szukaj piętra...">
+      </div>
+    </div>
+  </div>
+
+  <div class="map-floor-grid" id="floor-grid"></div>
+
+  <div class="map-modal" id="floor-modal">
+    <div class="map-modal-content">
+      <button class="map-modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+      <div class="map-modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+.map-page {
+  padding: 100px 24px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.map-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.map-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.map-filter-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.map-filter {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.map-filter:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.map-filter.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.map-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.map-search i {
+  position: absolute;
+  left: 12px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.map-search input {
+  padding: 8px 12px 8px 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 0.85rem;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.map-search input:focus {
+  border-color: var(--accent);
+}
+
+.map-floor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.floor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.floor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.floor-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.floor-card:hover::before {
+  opacity: 1;
+}
+
+.floor-card.hidden {
+  display: none;
+}
+
+.floor-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.floor-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floor-difficulty {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.floor-difficulty.easy { background: rgba(212,212,212,0.15); color: #d4d4d4; }
+.floor-difficulty.medium { background: rgba(180,180,180,0.15); color: #b4b4b4; }
+.floor-difficulty.hard { background: rgba(130,130,130,0.2); color: #828282; }
+.floor-difficulty.chaos { background: rgba(80,80,80,0.25); color: #666; }
+
+.floor-weather {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.floor-weather i {
+  margin-right: 4px;
+}
+
+/* Modal */
+.map-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.map-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.map-modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 32px;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+.map-modal.active .map-modal-content {
+  transform: scale(1);
+}
+
+.map-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.map-modal-close:hover {
+  color: var(--text);
+}
+
+.modal-floor-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.modal-floor-name {
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  margin: 8px 0 16px;
+}
+
+.modal-section {
+  margin-bottom: 16px;
+}
+
+.modal-section-title {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.modal-section-value {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.modal-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.modal-platform-tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .map-page {
+    padding: 80px 16px 60px;
+  }
+
+  .map-floor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+
+  .floor-card {
+    padding: 12px;
+  }
+
+  .floor-number {
+    font-size: 1.5rem;
+  }
+
+  .map-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .map-search input {
+    width: 100%;
+  }
+
+  .map-search {
+    width: 100%;
+  }
+
+  .map-modal-content {
+    padding: 24px;
+    width: 95%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const floors = [
+    { num: 1, name: "Tutorial", diff: "easy", weather: "Słonecznie", platforms: ["Solidna", "Ruchoma"] },
+    { num: 2, name: "Przedmieście", diff: "easy", weather: "Słonecznie", platforms: ["Solidna", "Ruchoma"] },
+    { num: 3, name: "Centrum", diff: "easy", weather: "Pochmurno", platforms: ["Solidna", "Krucha"] },
+    { num: 4, name: "Park", diff: "easy", weather: "Słonecznie", platforms: ["Solidna", "Skacząca"] },
+    { num: 5, name: "Dzielnica Handlowa", diff: "medium", weather: "Deszcz", platforms: ["Solidna", "Ruchoma", "Krucha"] },
+    { num: 6, name: "Stacja Metra", diff: "medium", weather: "Pochmurno", platforms: ["Solidna", "Znikająca"] },
+    { num: 7, name: "Most", diff: "medium", weather: "Wiatr", platforms: ["Solidna", "Ruchoma", "Krucha"] },
+    { num: 8, name: "Fabryka", diff: "medium", weather: "Deszcz", platforms: ["Solidna", "Obrotowa", "Krucha"] },
+    { num: 9, name: "Wieżowiec", diff: "medium", weather: "Wiatr", platforms: ["Solidna", "Ruchoma", "Znikająca"] },
+    { num: 10, name: "Dach Miasta", diff: "medium", weather: "Burza", platforms: ["Solidna", "Krucha", "Znikająca"] },
+    { num: 11, name: "Port", diff: "medium", weather: "Deszcz", platforms: ["Solidna", "Ruchoma", "Skacząca"] },
+    { num: 12, name: "Latarnia Morska", diff: "hard", weather: "Burza", platforms: ["Solidna", "Obrotowa", "Krucha"] },
+    { num: 13, name: "Plac Budowy", diff: "hard", weather: "Wiatr", platforms: ["Solidna", "Ruchoma", "Znikająca"] },
+    { num: 14, name: "Kopalnia", diff: "hard", weather: "Mgła", platforms: ["Solidna", "Krucha", "Obrotowa"] },
+    { num: 15, name: "Tunel", diff: "hard", weather: "Mgła", platforms: ["Solidna", "Znikająca", "Ruchoma"] },
+    { num: 16, name: "Elektrownia", diff: "hard", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca"] },
+    { num: 17, name: "Kominy", diff: "hard", weather: "Wiatr", platforms: ["Solidna", "Obrotowa", "Skacząca"] },
+    { num: 18, name: "Strefa Wojskowa", diff: "hard", weather: "Deszcz", platforms: ["Solidna", "Ruchoma", "Krucha"] },
+    { num: 19, name: "Lotnisko", diff: "hard", weather: "Wiatr", platforms: ["Solidna", "Ruchoma", "Znikająca"] },
+    { num: 20, name: "Wieża Kontroli", diff: "hard", weather: "Burza", platforms: ["Solidna", "Obrotowa", "Krucha", "Znikająca"] },
+    { num: 21, name: "Chmury", diff: "hard", weather: "Mgła", platforms: ["Solidna", "Znikająca", "Skacząca"] },
+    { num: 22, name: "Stacja Kosmiczna", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca"] },
+    { num: 23, name: "Księżyc", diff: "chaos", weather: "Śnieg", platforms: ["Solidna", "Obrotowa", "Skacząca"] },
+    { num: 24, name: "Mars", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca"] },
+    { num: 25, name: "Jowisz", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Obrotowa", "Krucha"] },
+    { num: 26, name: "Saturn", diff: "chaos", weather: "Mgła", platforms: ["Solidna", "Ruchoma", "Znikająca", "Skacząca"] },
+    { num: 27, name: "Pierścień Saturna", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Krucha", "Obrotowa"] },
+    { num: 28, name: "Czarna Dziura", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca"] },
+    { num: 29, name: "Wymiar Chaosu", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca", "Obrotowa"] },
+    { num: 30, name: "Finał", diff: "chaos", weather: "Burza", platforms: ["Solidna", "Ruchoma", "Krucha", "Znikająca", "Obrotowa", "Skacząca"] }
+  ];
+
+  const grid = document.getElementById('floor-grid');
+  const modal = document.getElementById('floor-modal');
+  const modalBody = document.getElementById('modal-body');
+  const modalClose = document.getElementById('modal-close');
+  const searchInput = document.getElementById('floor-search');
+
+  function getWeatherIcon(weather) {
+    const icons = {
+      'Słonecznie': 'fa-sun',
+      'Pochmurno': 'fa-cloud',
+      'Deszcz': 'fa-cloud-rain',
+      'Burza': 'fa-bolt',
+      'Wiatr': 'fa-wind',
+      'Mgła': 'fa-smog',
+      'Śnieg': 'fa-snowflake'
+    };
+    return icons[weather] || 'fa-cloud';
+  }
+
+  function renderFloors(filtered) {
+    grid.innerHTML = '';
+    filtered.forEach(floor => {
+      const card = document.createElement('div');
+      card.className = 'floor-card';
+      card.dataset.diff = floor.diff;
+      card.dataset.name = floor.name.toLowerCase();
+      card.innerHTML = `
+        <div class="floor-number">${floor.num}</div>
+        <div class="floor-name">${floor.name}</div>
+        <span class="floor-difficulty ${floor.diff}">${floor.diff}</span>
+        <div class="floor-weather"><i class="fas ${getWeatherIcon(floor.weather)}"></i> ${floor.weather}</div>
+      `;
+      card.addEventListener('click', () => openModal(floor));
+      grid.appendChild(card);
+    });
+  }
+
+  function openModal(floor) {
+    modalBody.innerHTML = `
+      <div class="modal-floor-number">${floor.num}</div>
+      <div class="modal-floor-name">${floor.name}</div>
+      
+      <div class="modal-section">
+        <div class="modal-section-title">Trudność</div>
+        <div class="modal-section-value"><span class="floor-difficulty ${floor.diff}">${floor.diff}</span></div>
+      </div>
+      
+      <div class="modal-section">
+        <div class="modal-section-title">Pogoda</div>
+        <div class="modal-section-value"><i class="fas ${getWeatherIcon(floor.weather)}"></i> ${floor.weather}</div>
+      </div>
+      
+      <div class="modal-section">
+        <div class="modal-section-title">Typy Platform</div>
+        <div class="modal-platforms">
+          ${floor.platforms.map(p => `<span class="modal-platform-tag">${p}</span>`).join('')}
+        </div>
+      </div>
+    `;
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.querySelectorAll('.map-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.map-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      const search = searchInput.value.toLowerCase();
+      const filtered = floors.filter(f => {
+        const matchFilter = filter === 'all' || f.diff === filter;
+        const matchSearch = f.name.toLowerCase().includes(search) || f.num.toString() === search;
+        return matchFilter && matchSearch;
+      });
+      renderFloors(filtered);
+    });
+  });
+
+  searchInput.addEventListener('input', () => {
+    const activeFilter = document.querySelector('.map-filter.active').dataset.filter;
+    const search = searchInput.value.toLowerCase();
+    const filtered = floors.filter(f => {
+      const matchFilter = activeFilter === 'all' || f.diff === filter;
+      const matchSearch = f.name.toLowerCase().includes(search) || f.num.toString() === search;
+      return matchFilter && matchSearch;
+    });
+    renderFloors(filtered);
+  });
+
+  renderFloors(floors);
+});
+</script>
