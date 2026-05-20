@@ -1,0 +1,133 @@
+**Oto gotowe skrypty Python dla Twoich webhooków Discord.**
+
+### 1. Skrypt do wysyłania embeda (podobny do wiadomości z linku)
+
+Użyj tego skryptu do wysyłania ogłoszeń / changelogów z ładnym embedem.
+
+```python
+import requests
+import json
+from datetime import datetime
+
+# === KONFIGURACJA ===
+CHANGELOG_WEBHOOK = "https://discord.com/api/webhooks/1268540748106567720/nG5gF34Eg_K_OMj7cvSEou8ikUE5n_PN-CxVE66E3aczPni5jV1wp9xHanFaZBUd1QOT"
+OGŁOSZENIA_WEBHOOK = "https://discord.com/api/webhooks/1260855041426853888/52_9tcd8S_0VPsYIa9AepqIeYcDW5myXYEd384ERtlP4mQ81Fwc08Nu8Q5zqD42-Pf31"
+
+# Kolory embedów (hex)
+COLOR_CHANGELOG = 0x00ff00    # zielony
+COLOR_OGLOSZENIA = 0x3498db  # niebieski
+
+def send_discord_embed(webhook_url, title, description, fields=None, color=0x00ff00, footer=None):
+    """
+    Wysyła embed przez webhook.
+    """
+    embed = {
+        "title": title,
+        "description": description,
+        "color": color,
+        "timestamp": datetime.utcnow().isoformat(),
+        "footer": {"text": footer} if footer else None
+    }
+    
+    if fields:
+        embed["fields"] = fields  # lista dictów: [{"name": "...", "value": "...", "inline": True/False}, ...]
+
+    # Usuń None
+    if embed["footer"] is None:
+        del embed["footer"]
+
+    data = {
+        "username": "ChangeLog Bot",      # możesz zmienić
+        "avatar_url": "https://i.imgur.com/...png",  # opcjonalnie avatar
+        "embeds": [embed]
+    }
+
+    headers = {"Content-Type": "application/json"}
+    response = requests.post(webhook_url, data=json.dumps(data), headers=headers)
+    
+    if response.status_code == 204:
+        print("✅ Wiadomość wysłana pomyślnie!")
+    else:
+        print(f"❌ Błąd: {response.status_code} - {response.text}")
+
+# ===================== PRZYKŁAD UŻYCIA =====================
+
+# Przykład changelogu (dostosuj do treści z Twojej wiadomości)
+fields_example = [
+    {"name": "🆕 Nowości", "value": "• Dodano nową funkcję X\n• Poprawiono Y", "inline": False},
+    {"name": "🐛 Poprawki", "value": "• Naprawiono błąd Z", "inline": False},
+    {"name": "🔧 Zmiany", "value": "• Zmieniono zachowanie komendy ABC", "inline": False}
+]
+
+send_discord_embed(
+    webhook_url=CHANGELOG_WEBHOOK,
+    title="📋 Change Log v1.2.3",
+    description="**Data wydania:** 20.05.2026\n\nGłówne zmiany w tej wersji:",
+    fields=fields_example,
+    color=COLOR_CHANGELOG,
+    footer="Dziękujemy za używanie naszego bota!"
+)
+
+# Przykład ogłoszenia
+send_discord_embed(
+    webhook_url=OGŁOSZENIA_WEBHOOK,
+    title="📢 Ogłoszenie",
+    description="Treść ogłoszenia tutaj...",
+    color=COLOR_OGLOSZENIA
+)
+```
+
+### 2. Prosty "bot" do automatycznego wysyłania changelogów
+
+Jeśli chcesz mieć osobny skrypt/bota, który np. co jakiś czas lub na żądanie wysyła changelog na osobny kanał:
+
+```python
+# changelog_bot.py
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"Bot zalogowany jako {bot.user}")
+
+@bot.command(name="changelog")
+@commands.has_permissions(administrator=True)  # tylko admini
+async def send_changelog(ctx, version: str):
+    """Przykład: !changelog 1.2.3"""
+    embed = discord.Embed(
+        title=f"📋 Change Log v{version}",
+        description="Opis zmian...",
+        color=0x00ff00,
+        timestamp=discord.utils.utcnow()
+    )
+    embed.add_field(name="Nowości", value="• ...", inline=False)
+    # dodaj więcej pól...
+
+    # Wyślij na konkretny kanał (zamień ID)
+    channel = bot.get_channel(1332426528067162292)  # ID kanału changelog
+    if channel:
+        await channel.send(embed=embed)
+        await ctx.send("✅ Changelog wysłany!")
+    else:
+        await ctx.send("❌ Nie znaleziono kanału!")
+
+bot.run("TWÓJ_TOKEN_BOTA")
+```
+
+### Jak używać:
+
+1. Zainstaluj zależności:
+   ```bash
+   pip install requests discord.py
+   ```
+
+2. Wklej swoje webhooki (już są w kodzie).
+
+3. Dostosuj treść embeda do wiadomości, którą widziałeś pod linkiem (jeśli podasz mi treść tej wiadomości, zrobię dokładną kopię).
+
+4. Uruchom skrypt `python nazwa_skryptu.py`.
+
+Chcesz wersję z plikiem JSON (łatwe edytowanie changelogów z zewnątrz) albo integrację z GitHub Actions / CI? Daj znać.

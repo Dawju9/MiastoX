@@ -8,16 +8,16 @@ permalink: /map-3d/
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MiastoX — Mapa 3D</title>
 <meta name="description" content="Interaktywna mapa 3D gry MiastoX na Roblox. Podgląd pięter, platform i graczy.">
-<meta name="theme-color" content="#0f0f23">
+<meta name="theme-color" content="#0a0a0a">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root {
-  --accent: #e94560;
-  --bg-dark: #0f0f23;
-  --bg-panel: #1a1a2e;
-  --text: #ffffff;
-  --text-dim: #888;
+  --accent: #d4d4d4;
+  --bg-dark: #0a0a0a;
+  --bg-panel: #121212;
+  --text: #e0e0e0;
+  --text-dim: #aaaaaa;
   --nav-height: 56px;
 }
 
@@ -47,7 +47,7 @@ body {
   font-weight: 700; font-size: 1.1rem;
   display: flex; align-items: center; gap: 6px;
 }
-.map-nav a:hover { color: #e94560; }
+.map-nav a:hover { color: var(--accent); }
 .map-nav .nav-spacer { flex: 1; }
 .map-nav .nav-back {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -55,7 +55,7 @@ body {
   padding: 6px 12px; border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.1);
 }
-.map-nav .nav-back:hover { border-color: #e94560; color: var(--text); }
+.map-nav .nav-back:hover { border-color: #d4d4d4; color: var(--text); }
 
 .map-container {
   display: flex;
@@ -92,13 +92,12 @@ body {
 }
 
 .status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #00ff88;
-  animation: pulse 1.5s infinite;
-}
-
+    width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background: var(--text-dim);
+   animation: pulse 1.5s infinite;
+ 
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
@@ -265,7 +264,7 @@ body {
 
 .floor-search {
   width:100%;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);
-  background:rgba(255,255,255,0.05);color:#fff;font-size:13px;margin-bottom:8px;outline:none;
+background:rgba(255,255,255,0.05);color:var(--text-heading);font-size:13px;margin-bottom:8px;outline:none;
 }
 .floor-search:focus {
   border-color: var(--accent);
@@ -276,7 +275,7 @@ body {
   position:fixed;pointer-events:none;z-index:100;
   background:rgba(0,0,0,0.92);padding:10px 14px;border-radius:8px;
   border:1px solid var(--accent);font-size:13px;display:none;
-  color:#fff;max-width:240px;backdrop-filter:blur(8px);
+color:var(--text-heading);max-width:240px;backdrop-filter:blur(8px);
 }
 
 .kbd-hint {
@@ -389,7 +388,7 @@ body {
     <div class="loading-overlay" id="loadingOverlay">
       <div style="font-family: 'Big Shoulders Display', sans-serif; font-size: 2.5em; color: var(--accent); letter-spacing: 6px;">MIASTOX</div>
       <div class="spinner"></div>
-      <div style="color: #8899bb; font-size: 0.9em;">Loading 3D map...</div>
+      <div style="color: var(--text-dim); font-size: 0.9em;">Loading 3D map...</div>
     </div>
   </div>
 </div>
@@ -413,24 +412,24 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const PlatformColors = {
-  basic: '#00b4d8', platform: '#00b4d8',
-  moving: '#ff6b6b', rotating: '#ffd93d',
-  spiral: '#6bcb77', checkpoint: '#9d4edd',
-  elevator: '#00b4d8', special: '#ff9500',
-  boost: '#ff9500', bounce: '#00ff88',
-  spike: '#ff006e', ice: '#a0e7e5',
-  crumbling: '#8b4513', disappearing: '#666666',
-  teleporter: '#8b5cf6', laser: '#ff0000', enemy: '#ff4444'
+   basic: '#d4d4d4', platform: '#d4d4d4',
+   moving: '#b0b0b0', rotating: '#888888',
+   spiral: '#555555', checkpoint: '#d4d4d4',
+   elevator: '#d4d4d4', special: '#b0b0b0',
+   boost: '#b0b0b0', bounce: '#888888',
+   spike: '#555555', ice: '#d4d4d4',
+   crumbling: '#b0b0b0', disappearing: '#888888',
+   teleporter: '#555555', laser: '#d4d4d4', enemy: '#b0b0b0'
 };
 
 const LevelTypes = {
-  normal: { name: 'Normal', color: '#00b4d8' },
-  infinite: { name: 'Infinite Spiral', color: '#ffd93d' },
-  paradox: { name: 'Paradox', color: '#9d4edd' },
-  time_loop: { name: 'Time Loop', color: '#00ffff' },
-  mirror: { name: 'Mirror', color: '#c0c0c0' },
-  void: { name: 'The Void', color: '#ff0000' },
-  disaster: { name: 'Disaster', color: '#ff6b6b' }
+   normal: { name: 'Normal', color: '#d4d4d4' },
+   infinite: { name: 'Infinite Spiral', color: '#b0b0b0' },
+   paradox: { name: 'Paradox', color: '#888888' },
+   time_loop: { name: 'Time Loop', color: '#555555' },
+   mirror: { name: 'Mirror', color: '#444444' },
+   void: { name: 'The Void', color: '#333333' },
+   disaster: { name: 'Disaster', color: '#222222' }
 };
 
 const floorSpacing = 5;
@@ -563,8 +562,8 @@ function createTitle() {
   div.style.fontFamily = "'Big Shoulders Display', sans-serif";
   div.style.fontSize = '52px';
   div.style.fontWeight = '700';
-  div.style.color = '#e94560';
-  div.style.textShadow = '0 0 30px #e94560, 0 0 60px #e9456044, 0 0 120px #e9456022';
+  div.style.color = '#d4d4d4';
+  div.style.textShadow = '0 0 30px #d4d4d4, 0 0 60px #d4d4d444, 0 0 120px #d4d4d422';
   div.style.letterSpacing = '12px';
   div.style.background = 'linear-gradient(180deg, rgba(233,69,96,0.12) 0%, transparent 100%)';
   div.style.padding = '12px 50px';
@@ -583,7 +582,7 @@ function createSubtitle() {
   div.style.fontFamily = "'IBM Plex Sans', sans-serif";
   div.style.fontSize = '14px';
   div.style.fontWeight = '300';
-  div.style.color = '#8899bb';
+  div.style.color = '#aaaaaa';
   div.style.textShadow = '0 0 20px rgba(0,0,0,0.8)';
   div.style.letterSpacing = '6px';
   div.style.background = 'rgba(0,0,0,0.4)';
@@ -792,7 +791,7 @@ function generatePlatforms(floorNum, levelType) {
 
 function generatePlayers(floorCount) {
   const names = ['Dawju9', 'Whitekali', 'ProGamer', 'Climber99', 'TopPlayer'];
-  const colors = ['#00ff88', '#ff6b6b', '#ffd93d', '#00b4d8', '#9d4edd'];
+  const colors = ['#888888', '#b0b0b0', '#d4d4d4', '#aaaaaa', '#555555'];
   const result = {};
   names.forEach((name, i) => {
     const floor = Math.floor(Math.random() * floorCount) + 1;
@@ -1110,7 +1109,7 @@ function rebuildMeshes() {
 
     const ld = document.createElement('div');
     ld.textContent = player.name;
-    ld.style.cssText = `color:#fff;font-size:10px;font-weight:600;font-family:IBM Plex Sans,sans-serif;text-shadow:0 0 8px ${player.color},0 0 20px rgba(0,0,0,0.9);background:rgba(0,0,0,0.5);padding:1px 6px;border-radius:4px;border:1px solid ${player.color}66;white-space:nowrap;`;
+    ld.style.cssText = `color:var(--text-heading);font-size:10px;font-weight:600;font-family:IBM Plex Sans,sans-serif;text-shadow:0 0 8px ${player.color},0 0 20px rgba(0,0,0,0.9);background:rgba(0,0,0,0.5);padding:1px 6px;border-radius:4px;border:1px solid ${player.color}66;white-space:nowrap;`;
     const label = new CSS2DObject(ld);
     label.position.set(player.x, yPos + 0.9, player.z);
     scene.add(label);
@@ -1172,7 +1171,7 @@ function updatePlayerList() {
     item.innerHTML = `
       <div class="player-dot" style="background: ${p.color}"></div>
       <span>${p.name}</span>
-      <span style="color: #666; font-size: 0.8em;">F${p.floor}</span>
+      <span style="color: var(--text-dim); font-size: 0.8em;">F${p.floor}</span>
     `;
     container.appendChild(item);
   });
@@ -1226,7 +1225,7 @@ function focusFloor(floorNum) {
     el.classList.toggle('active', i + 1 === floorNum);
   });
 
-  const baseColor = typeInfo.color || '#00b4d8';
+  const baseColor = typeInfo.color || LevelTypes.normal.color;
   const c = new THREE.Color(baseColor);
   ambientLight.color.lerp(c, 0.3);
   scene.background = new THREE.Color(baseColor).multiplyScalar(0.08);
