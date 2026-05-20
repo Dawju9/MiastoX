@@ -1,43 +1,48 @@
 ---
 layout: default
-title: " — Climb to the Top"
-desc: "MiastoX — procedural climbing game on Roblox. Explore 30 floors, dynamic weather, PvP, and more."
+title: ""
+desc: "MiastoX — proceduralna gra wspinaczkowa na Roblox. 30 pięter, dynamiczna pogoda, PvP i system rang."
 ---
 
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1 class="hero-title">MiastoX</h1>
-    <p class="hero-sub">Climb to the Top — wielopoziomowa gra wspinaczkowa na Roblox</p>
-    
+    <p class="hero-sub">Climb to the Top — proceduralna gra wspinaczkowa na Roblox</p>
     <div class="hero-actions">
       <a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th" class="btn btn-primary" target="_blank">
         <i class="fab fa-roblox"></i> Graj teraz
       </a>
+      <a href="#map-preview" class="btn btn-outline">
+        <i class="fas fa-map"></i> Mapa miasta
+      </a>
     </div>
-
-    <div class="hero-stats">
+    <div class="hero-stats" id="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-value" id="server-status">
-          <span class="status-dot online"></span> Online
-        </div>
-        <div class="hero-stat-label">Status serwera</div>
+        <div class="hero-stat-value" id="hero-visits">—</div>
+        <div class="hero-stat-label">Odwiedzin</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-value" id="player-count">0</div>
+        <div class="hero-stat-value" id="hero-players">—</div>
         <div class="hero-stat-label">Graczy online</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-value">30</div>
-        <div class="hero-stat-label">Pięter</div>
+        <div class="hero-stat-value" id="hero-rating">—</div>
+        <div class="hero-stat-label">Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" id="hero-updates">—</div>
+        <div class="hero-stat-label">Updatów</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ O GRZE ═══════════════ -->
 <section class="section" id="about">
   <h2 class="section-title">Czym jest <span class="accent">MiastoX</span>?</h2>
-  <p class="section-sub">Wielopoziomowa gra wspinaczkowa na Roblox, w której mierzysz się z coraz trudniejszymi piętrami, unikalnymi typami poziomów i zmienną pogodą.</p>
+  <p class="section-sub">Proceduralnie generowane miasto, w którym wspinasz się po budynkach, rusztowaniach i obiektach miejskich. 30 pięter, dynamiczna pogoda, system PvP i ranga.</p>
 
   <div class="card-grid">
     <div class="card">
@@ -60,9 +65,176 @@ desc: "MiastoX — procedural climbing game on Roblox. Explore 30 floors, dynami
       <h3>System PvP</h3>
       <p>Rywalizuj z innymi graczami na arenie. Track zabójstw, rankingi i nagrody.</p>
     </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-crown"></i></div>
+      <h3>System rang</h3>
+      <p>Od Cywila po Ownera — zdobywaj prestiż i wspinaj się po drabinie hierarchii.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-sync"></i></div>
+      <h3>Prestiż</h3>
+      <p>Ukończ grę, zdobądź punkt i rozpocznij od nowa — z większymi rewardami.</p>
+    </div>
   </div>
 </section>
 
+<!-- ═══════════════ STRUKTURA PROJEKTU ═══════════════ -->
+<section class="section" id="structure">
+  <h2 class="section-title">Struktura <span class="accent">projektu</span></h2>
+  <p class="section-sub">Architektura MiastoX oparta na frameworku CityX — modułowy system serwerowy dla Roblox.</p>
+
+  <div class="arch-grid">
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-server"></i></div>
+      <div class="arch-node-label">Server</div>
+      <div class="arch-node-value">GameLoop</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-dice"></i></div>
+      <div class="arch-node-label">Generator</div>
+      <div class="arch-node-value">Procedural</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-cloud"></i></div>
+      <div class="arch-node-label">Weather</div>
+      <div class="arch-node-value">9 typów</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-users"></i></div>
+      <div class="arch-node-label">Players</div>
+      <div class="arch-node-value">Replication</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-database"></i></div>
+      <div class="arch-node-label">DataStore</div>
+      <div class="arch-node-value">Firebase</div>
+    </div>
+    <div class="arch-node">
+      <div class="arch-node-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="arch-node-label">PvP</div>
+      <div class="arch-node-value">Arena</div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <p><strong>CityX Framework</strong> — modułowy system serwerowy autorstwa Whitekali. Zapewnia izolację serwerów, poolowanie i replikację stanu przez Firebase. MiastoX wykorzystuje go do zarządzania 30+ piętrami, graczami i systemem pogodowym.</p>
+  </div>
+
+  <div class="card-grid-3 mt-2">
+    <div class="card">
+      <span class="tag tag-luau">Luau</span>
+      <h3>Luau</h3>
+      <p>Język programowania gry — bezpieczny, wydajny fork Lua 5.1 od Roblox.</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-rojo">Rojo</span>
+      <h3>Rojo + Wally</h3>
+      <p>Synchronizacja kodu z Roblox Studio i zarządzanie pakietami (Promise, Trove, Signal).</p>
+    </div>
+    <div class="card">
+      <span class="tag tag-cityx">CI/CD</span>
+      <h3>GitHub Actions</h3>
+      <p>Automatyczne lintowanie (Selene), formatowanie (StyLua), build (Rojo) i deploy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MAPA MIASTA ═══════════════ -->
+<section class="section" id="map-preview">
+  <h2 class="section-title">Mapa <span class="accent">miasta</span></h2>
+  <p class="section-sub">Przeglądaj 30 pięter MiastoX — kliknij aby zobaczyć szczegóły każdego piętra.</p>
+
+  <div class="map-controls-inline">
+    <div class="map-filters-inline">
+      <button class="map-filter-inline active" data-filter="all">Wszystkie</button>
+      <button class="map-filter-inline" data-filter="easy">Łatwe</button>
+      <button class="map-filter-inline" data-filter="medium">Średnie</button>
+      <button class="map-filter-inline" data-filter="hard">Trudne</button>
+      <button class="map-filter-inline" data-filter="chaos">Chaos</button>
+    </div>
+    <div class="map-search-inline">
+      <i class="fas fa-search"></i>
+      <input type="text" id="floor-search" placeholder="Szukaj piętra...">
+    </div>
+  </div>
+
+  <div class="map-floor-grid" id="floor-grid"></div>
+
+  <div class="text-center mt-2">
+    <a href="/map" class="btn btn-outline">
+      <i class="fas fa-cube"></i> Pełna mapa 3D
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════ HIERARCHIA RANG ═══════════════ -->
+<section class="section" id="ranks">
+  <h2 class="section-title">Hierarchia <span class="accent">rang</span></h2>
+  <p class="section-sub">Struktura administracyjna i obywatelska MiastoX — od nowych graczy po właściciela.</p>
+
+  <div class="ranks-tiers" id="ranks-container"></div>
+</section>
+
+<!-- ═══════════════ STATYSTYKI GRY ═══════════════ -->
+<section class="section" id="stats">
+  <h2 class="section-title">Statystyki <span class="accent">gry</span></h2>
+  <p class="section-sub">Aktualne dane z gry — odwiedzin, graczy, uptime i więcej.</p>
+
+  <div class="stats-grid" id="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-sign-in-alt"></i></div>
+      <div class="stat-value" id="stat-visits">—</div>
+      <div class="stat-label">Łączne odwiedzin</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-clock"></i></div>
+      <div class="stat-value" id="stat-playtime">—</div>
+      <div class="stat-label">Średni czas gry</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-server"></i></div>
+      <div class="stat-value" id="stat-uptime">—</div>
+      <div class="stat-label">Uptime serwera</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
+      <div class="stat-value" id="stat-commits">—</div>
+      <div class="stat-label">Commitów</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
+      <div class="stat-value" id="stat-floor1">—</div>
+      <div class="stat-label">Ukończyło piętro 1</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+      <div class="stat-value" id="stat-floor30">—</div>
+      <div class="stat-label">Ukończyło grę (F30)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-redo"></i></div>
+      <div class="stat-value" id="stat-prestige">—</div>
+      <div class="stat-label">Graczy z prestiżem</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+      <div class="stat-value" id="stat-invites">—</div>
+      <div class="stat-label">Zaproszonych graczy</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-star"></i></div>
+      <div class="stat-value" id="stat-rating">—</div>
+      <div class="stat-label">Rating Roblox</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-heart"></i></div>
+      <div class="stat-value" id="stat-favorites">—</div>
+      <div class="stat-label">Ulubionych</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ JAK ZACZĄĆ ═══════════════ -->
 <section class="section" id="quickstart">
   <h2 class="section-title">Jak <span class="accent">zacząć</span>?</h2>
   <p class="section-sub">W 3 prostych krokach rozpoczniesz wspinaczkę w MiastoX.</p>
@@ -70,7 +242,7 @@ desc: "MiastoX — procedural climbing game on Roblox. Explore 30 floors, dynami
   <div class="steps">
     <div class="step">
       <h3>Wejdź do gry</h3>
-      <p>Kliknij przycisk "Graj teraz" lub otwórz Roblox i wyszukaj "MiastoX". Gra jest darmowa.</p>
+      <p>Kliknij "Graj teraz" lub wyszukaj "MiastoX" w Roblox. Gra jest darmowa.</p>
     </div>
     <div class="step">
       <h3>Wybierz piętro</h3>
@@ -89,19 +261,628 @@ desc: "MiastoX — procedural climbing game on Roblox. Explore 30 floors, dynami
   </div>
 </section>
 
-<script>
-// Simple server status simulation
-document.addEventListener('DOMContentLoaded', function() {
-  // Simulate player count (replace with actual API call when available)
-  const playerCount = Math.floor(Math.random() * 50) + 10;
-  document.getElementById('player-count').textContent = playerCount;
-  
-  // Update status
-  const statusEl = document.getElementById('server-status');
-  if (playerCount > 0) {
-    statusEl.innerHTML = '<span class="status-dot online"></span> Online';
-  } else {
-    statusEl.innerHTML = '<span class="status-dot offline"></span> Offline';
+<!-- ═══════════════ MODAL ═══════════════ -->
+<div class="map-modal" id="floor-modal">
+  <div class="map-modal-content">
+    <button class="map-modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+    <div class="map-modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ STYLES ═══════════════ -->
+<style>
+/* ---- Map inline ---- */
+.map-controls-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.map-filters-inline {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.map-filter-inline {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.map-filter-inline:hover { border-color: var(--accent); color: var(--text); }
+.map-filter-inline.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+.map-search-inline {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.map-search-inline i {
+  position: absolute;
+  left: 12px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.map-search-inline input {
+  padding: 8px 12px 8px 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 0.85rem;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.map-search-inline input:focus { border-color: var(--accent); }
+
+.map-floor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.floor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.floor-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.floor-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.floor-card:hover::before { opacity: 1; }
+
+.floor-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.floor-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.floor-difficulty {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.floor-difficulty.easy { background: rgba(212,212,212,0.15); color: #d4d4d4; }
+.floor-difficulty.medium { background: rgba(180,180,180,0.15); color: #b4b4b4; }
+.floor-difficulty.hard { background: rgba(130,130,130,0.2); color: #828282; }
+.floor-difficulty.chaos { background: rgba(80,80,80,0.25); color: #666; }
+
+.floor-weather {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.floor-weather i { margin-right: 4px; }
+
+/* ---- Ranks ---- */
+.ranks-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rank-tier {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.rank-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rank-tier-icon {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.rank-tier-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rank-tier-badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: rgba(212,212,212,0.1);
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rank-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rank-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.rank-player:hover {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.06);
+}
+
+.rank-player-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.rank-player-prestige {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.rank-player.fresh {
+  opacity: 0.6;
+}
+
+/* ---- Stats ---- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.stat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---- Modal ---- */
+.map-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.map-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.map-modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 32px;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+.map-modal.active .map-modal-content { transform: scale(1); }
+
+.map-modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none; border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.map-modal-close:hover { color: var(--text); }
+
+.modal-floor-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+
+.modal-floor-name {
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  margin: 8px 0 16px;
+}
+
+.modal-section { margin-bottom: 16px; }
+
+.modal-section-title {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.modal-section-value { font-size: 0.95rem; color: var(--text); }
+
+.modal-platforms { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.modal-platform-tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .map-floor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
   }
+
+  .floor-card { padding: 12px; }
+  .floor-number { font-size: 1.5rem; }
+
+  .map-controls-inline {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .map-search-inline input { width: 100%; }
+  .map-search-inline { width: 100%; }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .stat-value { font-size: 1.5rem; }
+
+  .rank-players { flex-direction: column; }
+}
+</style>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ── Floor data ──
+  const FLOORS = [
+    { num:1, name:"Tutorial", diff:"easy", weather:"Słonecznie", platforms:["Solidna","Ruchoma"] },
+    { num:2, name:"Przedmieście", diff:"easy", weather:"Słonecznie", platforms:["Solidna","Ruchoma"] },
+    { num:3, name:"Centrum", diff:"easy", weather:"Pochmurno", platforms:["Solidna","Krucha"] },
+    { num:4, name:"Park", diff:"easy", weather:"Słonecznie", platforms:["Solidna","Skacząca"] },
+    { num:5, name:"Dzielnica Handlowa", diff:"medium", weather:"Deszcz", platforms:["Solidna","Ruchoma","Krucha"] },
+    { num:6, name:"Stacja Metra", diff:"medium", weather:"Pochmurno", platforms:["Solidna","Znikająca"] },
+    { num:7, name:"Most", diff:"medium", weather:"Wiatr", platforms:["Solidna","Ruchoma","Krucha"] },
+    { num:8, name:"Fabryka", diff:"medium", weather:"Deszcz", platforms:["Solidna","Obrotowa","Krucha"] },
+    { num:9, name:"Wieżowiec", diff:"medium", weather:"Wiatr", platforms:["Solidna","Ruchoma","Znikająca"] },
+    { num:10, name:"Dach Miasta", diff:"medium", weather:"Burza", platforms:["Solidna","Krucha","Znikająca"] },
+    { num:11, name:"Port", diff:"medium", weather:"Deszcz", platforms:["Solidna","Ruchoma","Skacząca"] },
+    { num:12, name:"Latarnia Morska", diff:"hard", weather:"Burza", platforms:["Solidna","Obrotowa","Krucha"] },
+    { num:13, name:"Plac Budowy", diff:"hard", weather:"Wiatr", platforms:["Solidna","Ruchoma","Znikająca"] },
+    { num:14, name:"Kopalnia", diff:"hard", weather:"Mgła", platforms:["Solidna","Krucha","Obrotowa"] },
+    { num:15, name:"Tunel", diff:"hard", weather:"Mgła", platforms:["Solidna","Znikająca","Ruchoma"] },
+    { num:16, name:"Elektrownia", diff:"hard", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca"] },
+    { num:17, name:"Kominy", diff:"hard", weather:"Wiatr", platforms:["Solidna","Obrotowa","Skacząca"] },
+    { num:18, name:"Strefa Wojskowa", diff:"hard", weather:"Deszcz", platforms:["Solidna","Ruchoma","Krucha"] },
+    { num:19, name:"Lotnisko", diff:"hard", weather:"Wiatr", platforms:["Solidna","Ruchoma","Znikająca"] },
+    { num:20, name:"Wieża Kontroli", diff:"hard", weather:"Burza", platforms:["Solidna","Obrotowa","Krucha","Znikająca"] },
+    { num:21, name:"Chmury", diff:"hard", weather:"Mgła", platforms:["Solidna","Znikająca","Skacząca"] },
+    { num:22, name:"Stacja Kosmiczna", diff:"chaos", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca"] },
+    { num:23, name:"Księżyc", diff:"chaos", weather:"Śnieg", platforms:["Solidna","Obrotowa","Skacząca"] },
+    { num:24, name:"Mars", diff:"chaos", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca"] },
+    { num:25, name:"Jowisz", diff:"chaos", weather:"Burza", platforms:["Solidna","Obrotowa","Krucha"] },
+    { num:26, name:"Saturn", diff:"chaos", weather:"Mgła", platforms:["Solidna","Ruchoma","Znikająca","Skacząca"] },
+    { num:27, name:"Pierścień Saturna", diff:"chaos", weather:"Burza", platforms:["Solidna","Krucha","Obrotowa"] },
+    { num:28, name:"Czarna Dziura", diff:"chaos", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca"] },
+    { num:29, name:"Wymiar Chaosu", diff:"chaos", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca","Obrotowa"] },
+    { num:30, name:"Finał", diff:"chaos", weather:"Burza", platforms:["Solidna","Ruchoma","Krucha","Znikająca","Obrotowa","Skacząca"] }
+  ];
+
+  const WEATHER_ICONS = {
+    'Słonecznie':'fa-sun','Pochmurno':'fa-cloud','Deszcz':'fa-cloud-rain',
+    'Burza':'fa-bolt','Wiatr':'fa-wind','Mgła':'fa-smog','Śnieg':'fa-snowflake'
+  };
+
+  // ── Floor grid ──
+  const grid = document.getElementById('floor-grid');
+  const modal = document.getElementById('floor-modal');
+  const modalBody = document.getElementById('modal-body');
+  const modalClose = document.getElementById('modal-close');
+  const searchInput = document.getElementById('floor-search');
+
+  function renderFloors(filtered) {
+    grid.innerHTML = '';
+    filtered.forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'floor-card';
+      card.innerHTML = `
+        <div class="floor-number">${f.num}</div>
+        <div class="floor-name">${f.name}</div>
+        <span class="floor-difficulty ${f.diff}">${f.diff}</span>
+        <div class="floor-weather"><i class="fas ${WEATHER_ICONS[f.weather]||'fa-cloud'}"></i> ${f.weather}</div>
+      `;
+      card.addEventListener('click', () => {
+        modalBody.innerHTML = `
+          <div class="modal-floor-number">${f.num}</div>
+          <div class="modal-floor-name">${f.name}</div>
+          <div class="modal-section">
+            <div class="modal-section-title">Trudność</div>
+            <div class="modal-section-value"><span class="floor-difficulty ${f.diff}">${f.diff}</span></div>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title">Pogoda</div>
+            <div class="modal-section-value"><i class="fas ${WEATHER_ICONS[f.weather]||'fa-cloud'}"></i> ${f.weather}</div>
+          </div>
+          <div class="modal-section">
+            <div class="modal-section-title">Typy Platform</div>
+            <div class="modal-platforms">${f.platforms.map(p=>`<span class="modal-platform-tag">${p}</span>`).join('')}</div>
+          </div>
+        `;
+        modal.classList.add('active');
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  modalClose.addEventListener('click', () => modal.classList.remove('active'));
+  modal.addEventListener('click', e => { if(e.target===modal) modal.classList.remove('active'); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') modal.classList.remove('active'); });
+
+  function applyFilters() {
+    const filter = document.querySelector('.map-filter-inline.active').dataset.filter;
+    const search = searchInput.value.toLowerCase();
+    renderFloors(FLOORS.filter(f => {
+      const mf = filter==='all'||f.diff===filter;
+      const ms = f.name.toLowerCase().includes(search)||f.num.toString()===search;
+      return mf&&ms;
+    }));
+  }
+
+  document.querySelectorAll('.map-filter-inline').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.map-filter-inline').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+  renderFloors(FLOORS);
+
+  // ── Ranks ──
+  const RANK_TIERS = [
+    { name:"Royal Tier", icon:"fa-crown", badge:"Zamek Bogów", ranks:["Owner","Admin","Moderator"] },
+    { name:"Staff Tier", icon:"fa-shield-alt", badge:"Administracja", ranks:["Helper","Budowniczy","Worker"] },
+    { name:"Citizen Tier", icon:"fa-users", badge:"Obywatele", ranks:["Sprzedawca","Rabuś","Urzędnik","Obywatel"] },
+    { name:"Newcomer Tier", icon:"fa-user", badge:"Nowi gracze", ranks:["Cywil"] }
+  ];
+
+  fetch('/api/ranks.json')
+    .then(r => r.json())
+    .then(data => {
+      const container = document.getElementById('ranks-container');
+      RANK_TIERS.forEach(tier => {
+        const section = document.createElement('div');
+        section.className = 'rank-tier';
+        const players = data.players.filter(p => tier.ranks.includes(p.rank))
+          .sort((a,b) => b.prestige - a.prestige);
+
+        section.innerHTML = `
+          <div class="rank-tier-header">
+            <i class="fas ${tier.icon} rank-tier-icon"></i>
+            <span class="rank-tier-title">${tier.name}</span>
+            <span class="rank-tier-badge">${tier.badge}</span>
+          </div>
+          <div class="rank-players">
+            ${players.map(p => `
+              <div class="rank-player ${p.fresh?'fresh':''}">
+                <span class="rank-player-name">${p.name}</span>
+                <span class="rank-player-prestige">${p.rank} · P ${p.prestige.toLocaleString()}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        container.appendChild(section);
+      });
+    })
+    .catch(() => {
+      document.getElementById('ranks-container').innerHTML = '<p style="color:var(--text-dim)">Nie udało się załadować danych rang.</p>';
+    });
+
+  // ── Live Stats ──
+  const PLACE_ID = '11633610328';
+  const REPO = 'Dawju9/MiastoX';
+
+  function fmt(n) {
+    if(n>=1e6) return (n/1e6).toFixed(1)+'M';
+    if(n>=1e3) return (n/1e3).toFixed(1)+'K';
+    return n.toString();
+  }
+
+  function fmtTime(hours) {
+    if(hours>=1) return hours.toFixed(1)+'h';
+    return Math.round(hours*60)+'min';
+  }
+
+  function fmtUptime(seconds) {
+    const d = Math.floor(seconds/86400);
+    const h = Math.floor((seconds%86400)/3600);
+    return d>0 ? `${d}d ${h}h` : `${h}h`;
+  }
+
+  // Roblox API
+  fetch(`https://games.roblox.com/v1/games?universeIds=${PLACE_ID}`)
+    .then(r => r.json())
+    .then(data => {
+      if(data.data && data.data[0]) {
+        const g = data.data[0];
+        const visits = g.visits || 0;
+        const favorites = g.favoritedCount || 0;
+        const rating = g.upVotes && g.downVotes
+          ? ((g.upVotes/(g.upVotes+g.downVotes))*100).toFixed(0)+'%'
+          : '—';
+
+        document.getElementById('hero-visits').textContent = fmt(visits);
+        document.getElementById('hero-rating').textContent = rating;
+        document.getElementById('stat-visits').textContent = fmt(visits);
+        document.getElementById('stat-favorites').textContent = fmt(favorites);
+        document.getElementById('stat-rating').textContent = rating;
+      }
+    })
+    .catch(() => {
+      document.getElementById('hero-visits').textContent = '—';
+      document.getElementById('hero-rating').textContent = '—';
+    });
+
+  // Roblox players online
+  fetch(`https://games.roblox.com/v1/games/${PLACE_ID}/servers/public?sortOrder=Asc&limit=100`)
+    .then(r => r.json())
+    .then(data => {
+      if(data.data) {
+        const total = data.data.reduce((sum,s) => sum + (s.playing||0), 0);
+        document.getElementById('hero-players').textContent = total;
+      }
+    })
+    .catch(() => {
+      document.getElementById('hero-players').textContent = '—';
+    });
+
+  // GitHub commits
+  fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1`)
+    .then(r => {
+      const total = r.headers.get('link');
+      let count = 0;
+      if(total) {
+        const match = total.match(/page=(\d+)>; rel="last"/);
+        if(match) count = parseInt(match[1]);
+      }
+      return count;
+    })
+    .then(count => {
+      document.getElementById('hero-updates').textContent = count;
+      document.getElementById('stat-commits').textContent = count;
+    })
+    .catch(() => {
+      document.getElementById('hero-updates').textContent = '—';
+      document.getElementById('stat-commits').textContent = '—';
+    });
+
+  // Game stats (simulated — replace with real API when available)
+  const gameStats = {
+    playtime: 2.4,
+    uptime: 172800,
+    floor1: 1247,
+    floor30: 89,
+    prestige: 34,
+    invites: 562
+  };
+
+  document.getElementById('stat-playtime').textContent = fmtTime(gameStats.playtime);
+  document.getElementById('stat-uptime').textContent = fmtUptime(gameStats.uptime);
+  document.getElementById('stat-floor1').textContent = fmt(gameStats.floor1);
+  document.getElementById('stat-floor30').textContent = fmt(gameStats.floor30);
+  document.getElementById('stat-prestige').textContent = fmt(gameStats.prestige);
+  document.getElementById('stat-invites').textContent = fmt(gameStats.invites);
 });
 </script>
