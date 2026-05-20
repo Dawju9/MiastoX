@@ -1,67 +1,89 @@
----
-layout: default
-title: README
-desc: MiastoX – Roblox climbing game
-url: /README
----
-
 # MiastoX
 
-**MiastoX** is a Roblox "climb to the top" game built with the **Luau** language and the **CityX** framework. Players race to ascend a procedurally‑generated city, overcoming obstacles, weather effects, and competing in PvP.
+**MiastoX** is a Roblox "climb to the top" game built with **Luau** and the **CityX** framework. Players race to ascend a procedurally-generated city, overcoming obstacles, weather effects, and competing in PvP.
 
-## Features
-- Six progressive levels (Tutorial → Chaos)
-- Multiple weather types (sunny, rainy, foggy, night, etc.)
-- PvP combat with kill tracking
-- Power‑ups (speed, jump, shield, invincibility, double coins & XP)
-- Dynamic level generation using `LevelGenerator` and `LevelManager`
+## 🎮 Features
+- **30+ Floors** — Progressive difficulty from tutorial to chaos
+- **Dynamic Weather** — Sunny, rain, storm, snow, fog, and more
+- **Power-ups** — Speed, Jump, Shield, Invincibility, Double Coins & XP
+- **PvP System** — Arena combat with kill tracking and rankings
+- **Procedural Generation** — Unique levels every time you play
 
-## Tech Stack
+## 🛠️ Tech Stack
 | Component | Details |
 |---|---|
-| Language | Luau (Roblox scripting) |
-| Framework | CityX (custom modular framework) |
-| Build tool | Rojo (syncs Lua code to Roblox) |
-| Package manager | Wally |
+| Language | Luau (Roblox) |
+| Framework | CityX (modular server framework) |
+| Build Tool | Rojo |
+| Package Manager | Wally |
 | Linter | Selene |
 | Formatter | StyLua |
 
-## Repository Structure
+## 📁 Project Structure
 ```
 MiastoX/
-├─ src/                 # Game source code
-│  ├─ server/           # Server‑side scripts
-│  ├─ ReplicatedStorage/  # Shared modules
-│  ├─ ReplicatedFirst/    # Client initialization
-│  ├─ StarterPlayerScripts/
-│  └─ StarterCharacterScripts/
-├─ Packages/            # Wally dependencies
-├─ scripts/             # Helper scripts (setup, build, release)
-├─ .github/             # CI/CD workflows
-├─ config.toml          # Site configuration (Jekyll)
-├─ stylua.toml          # Formatter config
-└─ wally.toml           # Package definition
+├── src/                    # Game source code
+│   ├── server/             # Server-side scripts
+│   ├── client/             # Client-side scripts
+│   ├── ReplicatedStorage/  # Shared modules
+│   └── ReplicatedFirst/    # Client initialization
+├── Packages/               # Wally dependencies
+├── styles/                 # Website CSS
+├── _layouts/               # Jekyll layouts
+└── index.html              # Main website page
 ```
 
-## Setup & Development
+## 🚀 Quick Start
+
+### Prerequisites
+- Roblox Studio
+- [Rojo](https://rojo.space/)
+- [Wally](https://wally.run/)
+
+### Setup
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/Dawju9/MiastoX.git
 cd MiastoX
 
-# Install Lua dependencies via Wally
+# Install dependencies
 wally install
 
-# Install helper scripts (requires bash)
-./scripts/setup.sh
-
-# Sync to Roblox Studio using Rojo
+# Sync to Roblox Studio
 rojo serve
 ```
-> **Note:** The project does not use npm; all tooling is Lua‑based.
 
-## Contributing
-Feel free to open issues or submit pull requests. Follow the contribution guidelines in `.github/CONTRIBUTING.md`.
+### Development
+```bash
+# Start dev server
+npm run dev
 
-## License
-MIT © 2024 Whitekali
+# Build production
+npm run build
+
+# Format code
+npm run format
+
+# Lint code
+npm run lint
+```
+
+## 🌐 Website
+The project includes a simple website hosted on GitHub Pages:
+- **URL**: https://Dawju9.github.io/MiastoX
+- **Deploy**: Automatic on push to `web` branch
+
+## 🤝 Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+MIT © 2024-2026 MiastoX Team
+
+## 🔗 Links
+- [Play on Roblox](https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th)
+- [GitHub Repository](https://github.com/Dawju9/MiastoX)
+- [CityX Framework](https://github.com/whitekali/cityx)
