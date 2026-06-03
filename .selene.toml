@@ -1,0 +1,19 @@
+std = "roblox"
+
+[lints]
+global_usage = "deny"
+shadowing = "warn"
+unused_variable = "warn"
+empty_if = "warn"
+unscoped_variables = "deny"
+
+[files]
+exclude = [
+  "Packages",
+  "node_modules",
+  "artifacts",
+  "gh-assets"
+]
+
+[rules]
+multiple_statements = "allow"
