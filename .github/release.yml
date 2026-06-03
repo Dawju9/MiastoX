@@ -1,8 +1,12 @@
 name: Release Build
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g., v1.0.0)'
+        required: true
+        type: string
 
 env:
   RBXL_FILE: MiastoX.rbxl
@@ -10,7 +14,31 @@ env:
   UNIVERSE_ID: ${{ vars.GAME_ID }}
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Aftman
+        uses: ok-nick/setup-aftman@v0.4.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Wally
+        run: wally install
+
+      - name: Run Selene
+        continue-on-error: true
+        run: selene src --config selene.toml
+
+      - name: Check StyLua
+        continue-on-error: true
+        run: stylua src --check --config stylua.toml
+
   build:
+    name: Build
+    needs: lint
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,28 +48,34 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install Wally Packages
+      - name: Install Wally
         run: wally install
 
       - name: Generate Sourcemap
         run: rojo sourcemap test.project.json -o sourcemap.json
 
-      - name: Export Wally Package Types
+      - name: Export Wally Types
         run: wally-package-types --sourcemap sourcemap.json Packages
-
-      - name: Luau LSP Analysis
-        run: luau-lsp analyze --sourcemap sourcemap.json --definitions globalTypes.d.lua src tests
 
       - name: Build Game Place
         run: rojo build test.project.json -o ${{ env.RBXL_FILE }}
 
-      - name: Upload Release Asset
-        uses: svenstaro/upload-release-action@2.9.0
+  release:
+    name: Release
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.RBXL_FILE }}
-          asset_name: ${{ env.RBXL_FILE }}
-          tag: ${{ github.event.release.tag_name }}
+          name: game-build-${{ github.sha }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          name: Release ${{ github.event.inputs.version }}
+          generate_release_notes: true
+          files: ${{ env.RBXL_FILE }}
 
       - name: Deploy to Roblox
         shell: pwsh

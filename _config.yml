@@ -11,6 +11,11 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+include:
+  - api
+  - assets
+  - "_!*"
+
 exclude:
   - node_modules/
   - .git/
