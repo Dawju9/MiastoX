@@ -6,119 +6,119 @@ on:
     paths:
       - "src/**"
       - "Packages/**"
+      - "MiastoX.rbxl"
       - "default.project.json"
-      - "test.project.json"
+      - "build.project.json"
       - "wally.toml"
+      - "aftman.toml"
       - ".darklua.json"
       - ".lune/**"
-      - "aftman.toml"
   workflow_dispatch:
+    inputs:
+      version_type:
+        description: "Published — publikuje od razu, Saved — zapisuje wersję bez publikacji"
+        required: true
+        default: "Published"
+        type: choice
+        options:
+          - Published
+          - Saved
+
+permissions:
+  contents: read
+
+concurrency:
+  group: roblox-deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 env:
   RBXL_FILE: MiastoX.rbxl
-  PLACE_ID: ${{ vars.PLACE_ID }}
-  UNIVERSE_ID: ${{ vars.GAME_ID }}
+  UNIVERSE_ID: ${{ vars.ROBLOX_UNIVERSE_ID || secrets.ROBLOX_UNIVERSE_ID }}
+  PLACE_ID: ${{ vars.PLACE_ID || secrets.PLACE_ID }}
+  VERSION_TYPE: ${{ inputs.version_type || 'Published' }}
 
 jobs:
-  analyze:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
+    timeout-minutes: 20
+    environment:
+      name: roblox-production
+      url: https://www.roblox.com/games/${{ env.PLACE_ID }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Aftman
+      - name: Install Aftman tools
         uses: ok-nick/setup-aftman@v0.4.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Cache Wally Packages
-        uses: actions/cache@v4
-        with:
-          path: Packages/
-          key: ${{ runner.os }}-wally-${{ hashFiles('wally.toml') }}
-
-      - name: Install Wally Packages
-        run: wally install
-
-      - name: Generate Sourcemap
-        run: rojo sourcemap test.project.json -o sourcemap.json
-
-      - name: Export Wally Package Types
-        run: wally-package-types --sourcemap sourcemap.json Packages
-
-      - name: Generate Global Luau Types
-        run: curl -L "https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.lua" > globalTypes.d.lua
-
-      - name: Install Luau LSP
-        run: |
-          # Skip luau-lsp install as it may not be needed for this workflow
-          # If needed, install a valid version manually:
-          # curl -fsSL https://github.com/JohnnyMorganz/luau-lsp/releases/download/v1.27.0/luau-lsp-linux-x86_64.tar.gz | tar -xz
-          # mv luau-lsp /usr/local/bin/
-          echo "Skipping luau-lsp installation"
-
-      - name: Extract Version
-        id: version
+      - name: Install dependencies
         shell: bash
         run: |
-          version=$(grep -oP '(?<=^version = ")[^"]+' wally.toml || echo "0.0.0")
-          echo "version=$version" >> $GITHUB_OUTPUT
+          aftman install
+          wally install
 
-  build:
-    needs: analyze
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
+      - name: Build place file
+        shell: bash
+        run: rojo build default.project.json -o "$RBXL_FILE"
 
-      - name: Install Aftman
-        uses: ok-nick/setup-aftman@v0.4.2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify place file
+        shell: bash
+        run: |
+          test -s "$RBXL_FILE" || { echo "::error::Place file is missing or empty"; exit 1; }
+          echo "Built $RBXL_FILE ($(stat -c%s "$RBXL_FILE") bytes)"
 
-      - name: Restore Wally Packages (cached)
-        run: wally install
-
-      - name: Build Game Place
-        run: rojo build test.project.json -o ${{ env.RBXL_FILE }}
-
-      - name: Upload Build Artifact
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: game-build
           path: ${{ env.RBXL_FILE }}
           retention-days: 7
 
-  deploy:
-    needs: [analyze, build]
-    runs-on: windows-latest
-    environment:
-      name: roblox-production
-      url: https://www.roblox.com/games/${{ env.PLACE_ID }}
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: game-build
-
-      - name: Deploy to Roblox via rbxcloud
-        shell: pwsh
+      - name: Publish to Roblox place
+        id: publish
+        shell: bash
+        env:
+          ROBLOX_API_KEY: ${{ secrets.API_KEY || secrets.ROBLOX_API_KEY }}
         run: |
-          rbxcloud.exe experience publish `
-            --filename ${{ env.RBXL_FILE }} `
-            --place-id ${{ env.PLACE_ID }} `
-            --universe-id ${{ env.UNIVERSE_ID }} `
-            --version-type published `
-            --api-key ${{ secrets.DEPLOY_API_KEY }}
+          set -euo pipefail
+          for name in ROBLOX_API_KEY UNIVERSE_ID PLACE_ID; do
+            if [ -z "${!name:-}" ]; then
+              echo "::error::Missing $name — set it in repository secrets/variables"
+              exit 1
+            fi
+          done
+          case "$VERSION_TYPE" in
+            Saved|Published) ;;
+            *) echo "::error::VERSION_TYPE must be Saved or Published"; exit 1 ;;
+          esac
 
-      - name: Create Deployment Report
-        shell: pwsh
+          response=$(curl -sS -X POST \
+            -H "x-api-key: $ROBLOX_API_KEY" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary "@$RBXL_FILE" \
+            -w $'\n%{http_code}' \
+            "https://apis.roblox.com/universes/v1/$UNIVERSE_ID/places/$PLACE_ID/versions?versionType=$VERSION_TYPE")
+          code="${response##*$'\n'}"
+          body="${response%$'\n'*}"
+          if [ "$code" != "200" ]; then
+            echo "::error::Publish failed ($code): $body"
+            exit 1
+          fi
+          echo "version=$body" >> "$GITHUB_OUTPUT"
+          echo "Published version $body to place $PLACE_ID"
+
+      - name: Deployment summary
+        shell: bash
+        env:
+          VERSION: ${{ steps.publish.outputs.version }}
         run: |
-          $report = @"
-          ## Deployment Report
-          - **Version:** ${{ needs.analyze.outputs.version }}
-          - **Commit:** ${{ github.sha }}
-          - **Branch:** ${{ github.ref_name }}
-          - **Deployed to:** https://www.roblox.com/games/${{ env.PLACE_ID }}
-          - **Time:** $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss UTC')
-          "@
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $report
+          {
+            echo "## Deployment report"
+            echo "- **Place ID:** ${{ env.PLACE_ID }}"
+            echo "- **Universe ID:** ${{ env.UNIVERSE_ID }}"
+            echo "- **Version type:** ${{ env.VERSION_TYPE }}"
+            echo "- **Published version:** ${VERSION:-unknown}"
+            echo "- **Commit:** ${{ github.sha }}"
+            echo "- **Game:** https://www.roblox.com/games/${{ env.PLACE_ID }}"
+          } >> "$GITHUB_STEP_SUMMARY"
