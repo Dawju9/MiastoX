@@ -43,6 +43,14 @@
   code {
     @apply rounded bg-[#16161e] px-1 py-0.5 text-[#00f5ff];
   }
+
+  ul {
+    @apply mb-4 ml-5 list-disc;
+  }
+
+  li {
+    @apply mb-1;
+  }
 }
 
 @layer components {
@@ -98,6 +106,10 @@
   }
 
   .changelog-entry h3 { @apply mt-0; }
+
+  #tree-container, #player-roster, #rank-descriptions {
+    @apply overflow-x-auto;
+  }
 
   @keyframes scanline {
     0% { transform: translateY(-100%); }

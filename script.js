@@ -18,6 +18,20 @@ if (menuToggle && mobileMenu) {
   menuToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuToggle.checked = false;
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      mobileMenu.classList.add('hidden');
+      menuToggle.checked = false;
+    }
+  });
 }
 
 // Fade in sections on scroll

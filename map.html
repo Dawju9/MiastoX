@@ -245,6 +245,32 @@ url: /map.html
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+    .map-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 0;
+        padding: 12px;
+    }
+
+    .map-main {
+        order: 1;
+        height: 60vh;
+        min-height: 360px;
+    }
+
+    .map-sidebar {
+        order: 2;
+        width: 100%;
+        max-height: none;
+    }
+
+    .floor-list, .player-list {
+        max-height: 220px;
+        overflow-y: auto;
+    }
+}
 </style>
 
 <div class="map-container">
