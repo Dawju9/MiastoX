@@ -9,3 +9,4 @@ shadowing = { ignore_pattern = "^_" }
 unused_variable = "warn"
 shadowing = "allow"
 global_usage = "allow"
+incorrect_standard_library_use = "allow"
