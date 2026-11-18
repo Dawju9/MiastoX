@@ -1,0 +1,115 @@
+{
+  "name": "MiastoX — Website Deploy",
+  "description": "Generates static website from game data and deploys to GitHub Pages. Triggered by MCP or cron.",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "miastox-deploy-website",
+        "responseMode": "lastNode"
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook: Deploy Website",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && git pull origin main"
+      },
+      "id": "cmd-pull",
+      "name": "Git Pull Latest",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && git log --oneline --no-decorate -20 --format='%h||%ad||%s' --date=short"
+      },
+      "id": "cmd-git-log",
+      "name": "Get Git Log for Changelog",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [750, 300]
+    },
+    {
+    {
+      "parameters": {
+        "jsCode": "// Generate changelog.json and status.json from git log\nconst logOutput = $input.first().json.stdout;\nconst entries = logOutput.split('\\n').filter(Boolean).map(line => {\n  const parts = line.split('||');\n  const hash = parts[0] || '';\n  const date = parts[1] || '';\n  const message = parts.slice(2).join('||');\n  return { hash, date, message, author: 'MiastoX Team' };\n});\n\nconst version = '1.0.1';\nconst statusData = {\n  version: version,\n  lastBuild: new Date().toISOString().split('T')[0],\n  players: 0,\n  gameUrl: 'https://www.roblox.com/games/PLACE_ID',\n  sourceUrl: 'https://github.com/Dawju9/MiastoX',\n  buildCommit: entries[0]?.hash || 'unknown',\n  status: 'operational'\n};\n\nconst changelogData = entries;\n\nreturn [{\n  json: {\n    statusJson: JSON.stringify(statusData, null, 2),\n    changelogJson: JSON.stringify(changelogData, null, 2),\n    version: version,\n    commit: entries[0]?.hash || 'unknown'\n  }\n}];"
+      },
+      "id": "code-generate-data",
+      "name": "Generate API Data (changelog + status)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "command": "#!/bin/bash\n\nREPO=\"/Development/repos/MiastoX\"\nWEB_DIR=\"$REPO/website\"\nAPI_DIR=\"$WEB_DIR/api\"\nmkdir -p \"$API_DIR\"\n\n# Write status.json (passed from n8n via stdin)\ncat > \"$API_DIR/status.json\" << 'STATUS_EOF'\n{{ $json.status }}\nSTATUS_EOF\n\n# Write changelog.json\ncat > \"$API_DIR/changelog.json\" << 'CHANGELOG_EOF'\n{{ $json.changelog }}\nCHANGELOG_EOF\n\necho \"API files written\""
+      },
+      "id": "cmd-write-api-files",
+      "name": "Write API JSON Files",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "command": "#!/bin/bash\ncd /Development/repos/MiastoX\n\n# Configure git for gh-pages\ngit config user.name \"MiastoX Bot\"\ngit config user.email \"bot@miastox.dev\"\n\n# Copy website to temp dir and switch to gh-pages\nmkdir -p /tmp/miastox-deploy\ncp -r website/* /tmp/miastox-deploy/\n\ngit checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages\n\n# Remove old files (keep .git)\nfind . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} \\;\n\n# Copy website files\ncp -r /tmp/miastox-deploy/* ./\n\n# Commit and push\ngit add -A\ngit commit -m \"Deploy website: $(date +%Y-%m-%d_%H:%M)\" || true\ngit push origin gh-pages --force\n\ngit checkout main\necho \"Deployed to GitHub Pages: https://Dawju9.github.io/MiastoX\""
+      },
+      "id": "cmd-deploy-gh-pages",
+      "name": "Deploy to GitHub Pages (gh-pages branch)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1500, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    status: 'deployed',\n    url: 'https://Dawju9.github.io/MiastoX',\n    timestamp: new Date().toISOString(),\n    version: $input.first().json.version\n  }\n}];"
+      },
+      "id": "code-deploy-result",
+      "name": "Format Deploy Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1750, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json"
+      },
+      "id": "webhook-response",
+      "name": "Return Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2000, 300]
+    }
+  ],
+  "connections": {
+    "Webhook: Deploy Website": {
+      "main": [[ { "node": "Git Pull Latest", "type": "main", "index": 0 } ]]
+    },
+    "Git Pull Latest": {
+      "main": [[ { "node": "Get Git Log for Changelog", "type": "main", "index": 0 } ]]
+    },
+    "Get Git Log for Changelog": {
+      "main": [[ { "node": "Generate API Data (changelog + status)", "type": "main", "index": 0 } ]]
+    },
+    "Generate API Data (changelog + status)": {
+      "main": [[ { "node": "Write API JSON Files", "type": "main", "index": 0 } ]]
+    },
+    "Write API JSON Files": {
+      "main": [[ { "node": "Deploy to GitHub Pages (gh-pages branch)", "type": "main", "index": 0 } ]]
+    },
+    "Deploy to GitHub Pages (gh-pages branch)": {
+      "main": [[ { "node": "Format Deploy Result", "type": "main", "index": 0 } ]]
+    },
+    "Format Deploy Result": {
+      "main": [[ { "node": "Return Response", "type": "main", "index": 0 } ]]
+    }
+  },
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner"
+  }
+}

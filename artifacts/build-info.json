@@ -1,0 +1,9 @@
+{
+  "name": "MiastoX",
+  "version": "1.0.1",
+  "commit": "2663224",
+  "buildTimestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "sourceFiles": 16,
+  "buildType": "synthetic",
+  "status": "success"
+}

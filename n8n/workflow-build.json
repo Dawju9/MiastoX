@@ -1,0 +1,102 @@
+{
+  "name": "MiastoX — Build Artifacts",
+  "description": "Triggers the full MiastoX build pipeline from n8n MCP: pull → install deps → lint → build → upload artifact",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "miastox-build",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook: Build Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && git pull origin main"
+      },
+      "id": "cmd-git-pull",
+      "name": "Git Pull Latest",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && wally install"
+      },
+      "id": "cmd-wally-install",
+      "name": "Install Wally Packages",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && selene src --config selene.toml || true"
+      },
+      "id": "cmd-selene-lint",
+      "name": "Run Selene Lint",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Development/repos/MiastoX && rojo build default.project.json -o MiastoX.rbxl"
+      },
+      "id": "cmd-rojo-build",
+      "name": "Build .rbxl with Rojo",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const buildResult = $input.first().json;\nconst success = buildResult.exitCode === 0;\n\n// Get git pull output from upstream node\nconst gitNodeData = $('Git Pull Latest').first().json;\nconst gitStdout = gitNodeData.stdout || '';\nconst commitShort = gitStdout.split('\\n').find(l => l.startsWith('Updating ') || l.includes('->')) || 'unknown';\n\nreturn [{\n  json: {\n    status: success ? 'success' : 'failure',\n    output: buildResult.stdout || buildResult.stderr,\n    artifact: success ? 'MiastoX.rbxl' : null,\n    timestamp: new Date().toISOString(),\n    version: '1.0.1',\n    commit: commitShort.trim()\n  }\n}];"
+      },
+      "id": "code-build-result",
+      "name": "Format Build Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1500, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json"
+      },
+      "id": "webhook-response",
+      "name": "Return Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1750, 300]
+    }
+  ],
+  "connections": {
+    "Webhook: Build Trigger": {
+      "main": [[ { "node": "Git Pull Latest", "type": "main", "index": 0 } ]]
+    },
+    "Git Pull Latest": {
+      "main": [[ { "node": "Install Wally Packages", "type": "main", "index": 0 } ]]
+    },
+    "Install Wally Packages": {
+      "main": [[ { "node": "Run Selene Lint", "type": "main", "index": 0 } ]]
+    },
+    "Run Selene Lint": {
+      "main": [[ { "node": "Build .rbxl with Rojo", "type": "main", "index": 0 } ]]
+    },
+    "Build .rbxl with Rojo": {
+      "main": [[ { "node": "Format Build Result", "type": "main", "index": 0 } ]]
+    },
+    "Format Build Result": {
+      "main": [[ { "node": "Return Response", "type": "main", "index": 0 } ]]
+    }
+  },
+  "settings": {
+    "callerPolicy": "workflowsFromSameOwner"
+  }
+}

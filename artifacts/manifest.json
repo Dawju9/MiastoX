@@ -1,0 +1,124 @@
+{
+  "name": "MiastoX",
+  "version": "1.0.1",
+  "commit": "2663224",
+  "totalFiles": 16,
+  "categories": {
+    "lune-build.luau": [
+      "lune-build"
+    ],
+    "ReplicatedStorage": [
+      "BasicComponent",
+      "WeatherSystem",
+      "LevelGenerator",
+      "HumanoidStates",
+      "RobloxTypes"
+    ],
+    "ServerScriptService": [
+      "ServerController.server"
+    ],
+    "ReplicatedFirst": [
+      "Generator.client",
+      "Screen",
+      "Initialize.client"
+    ],
+    "client": [
+      "init.client"
+    ],
+    "StarterPlayerScripts": [
+      "PlayerController.client"
+    ],
+    "StarterCharacterScripts": [
+      "CharacterController.client"
+    ],
+    "server": [
+      "init.server",
+      "LevelManager.server"
+    ],
+    "ServerStorage": [
+      "Template.bench"
+    ]
+  },
+  "modules": [
+    {
+      "path": "lune-build.luau",
+      "category": "lune-build.luau",
+      "name": "lune-build"
+    },
+    {
+      "path": "ReplicatedStorage/Components/BasicComponent.luau",
+      "category": "ReplicatedStorage",
+      "name": "BasicComponent"
+    },
+    {
+      "path": "ReplicatedStorage/Components/WeatherSystem.luau",
+      "category": "ReplicatedStorage",
+      "name": "WeatherSystem"
+    },
+    {
+      "path": "ReplicatedStorage/Components/LevelGenerator.luau",
+      "category": "ReplicatedStorage",
+      "name": "LevelGenerator"
+    },
+    {
+      "path": "ReplicatedStorage/Settings/HumanoidStates.luau",
+      "category": "ReplicatedStorage",
+      "name": "HumanoidStates"
+    },
+    {
+      "path": "ReplicatedStorage/Utils/RobloxTypes.luau",
+      "category": "ReplicatedStorage",
+      "name": "RobloxTypes"
+    },
+    {
+      "path": "ServerScriptService/ServerController.server.luau",
+      "category": "ServerScriptService",
+      "name": "ServerController.server"
+    },
+    {
+      "path": "ReplicatedFirst/Generator.client.luau",
+      "category": "ReplicatedFirst",
+      "name": "Generator.client"
+    },
+    {
+      "path": "ReplicatedFirst/Screen.luau",
+      "category": "ReplicatedFirst",
+      "name": "Screen"
+    },
+    {
+      "path": "ReplicatedFirst/Initialize.client.luau",
+      "category": "ReplicatedFirst",
+      "name": "Initialize.client"
+    },
+    {
+      "path": "client/init.client.luau",
+      "category": "client",
+      "name": "init.client"
+    },
+    {
+      "path": "StarterPlayerScripts/PlayerController.client.luau",
+      "category": "StarterPlayerScripts",
+      "name": "PlayerController.client"
+    },
+    {
+      "path": "StarterCharacterScripts/CharacterController.client.luau",
+      "category": "StarterCharacterScripts",
+      "name": "CharacterController.client"
+    },
+    {
+      "path": "server/init.server.luau",
+      "category": "server",
+      "name": "init.server"
+    },
+    {
+      "path": "server/LevelManager.server.luau",
+      "category": "server",
+      "name": "LevelManager.server"
+    },
+    {
+      "path": "ServerStorage/Template.bench.luau",
+      "category": "ServerStorage",
+      "name": "Template.bench"
+    }
+  ]
+}
