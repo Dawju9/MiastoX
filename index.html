@@ -2,60 +2,77 @@
 layout: null
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MiastoX - NeoCity X</title>
+  <meta name="description" content="MiastoX - Climb to the Top. 30+ pięter, 16 typów platform i 7 trybów gry.">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link href="{{ site.baseurl }}/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-[#0a0a0a] text-[#e0e0e0] font-sans">
+<body class="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] font-sans">
 
-  <!-- Neon navbar -->
-  <nav class="fixed top-0 left-0 right-0 bg-[#16161e] p-4 border-b border-[#00f5ff22]">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="text-2xl font-bold text-[#00f5ff]">MiastoX</div>
-      <div class="space-x-4">
-        <a href="https://www.roblox.com/games/11633610328/MiastoX-Updated-24th" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[#00f5ff] text-black font-bold hover:scale-105 transition duration-300">GRAJ NA ROBLOX</a>
-        <a href="{{ site.baseurl }}/map.html" class="px-4 py-2 rounded-full border-2 border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-black transition duration-300">EXPLORE 3D MAP</a>
+  <nav class="sticky top-0 z-50 border-b border-[#00f5ff33] bg-[#16161e]/95 shadow-[0_4px_30px_rgba(0,245,255,0.12)] backdrop-blur-lg">
+    <div class="container mx-auto flex flex-wrap items-center justify-between gap-4 p-4">
+      <a href="{{ site.baseurl }}/" class="text-2xl font-bold text-[#00f5ff] drop-shadow-[0_0_12px_rgba(0,245,255,0.6)]">MiastoX</a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a href="{{ site.baseurl }}/map.html" class="text-[#aaaaaa] transition duration-300 hover:text-[#00f5ff]">Mapa</a>
+        <a href="{{ site.baseurl }}/jobs.html" class="text-[#aaaaaa] transition duration-300 hover:text-[#00f5ff]">Dołącz</a>
+        <a href="{{ site.baseurl }}/projects.html" class="text-[#aaaaaa] transition duration-300 hover:text-[#00f5ff]">Projekty</a>
+        <a href="{{ site.baseurl }}/changelog.html" class="text-[#aaaaaa] transition duration-300 hover:text-[#00f5ff]">Changelog</a>
+        <a href="{{ site.baseurl }}/hierarchy.html" class="text-[#aaaaaa] transition duration-300 hover:text-[#00f5ff]">Gracze</a>
+        <a href="https://www.roblox.com/games/11633610328/MiastoX-Updated-24th" target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#00f5ff] px-4 py-2 font-bold text-black transition duration-300 hover:scale-105">GRAJ NA ROBLOX</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero section -->
-  <section class="h-screen flex items-center justify-center text-center px-8">
-    <div class="backdrop-blur-lg bg-[#16161e]/80 p-8 rounded-lg">
-      <h1 class="text-6xl font-bold text-[#00f5ff] mb-4">MiastoX</h1>
-      <p class="text-xl text-[#aaaaaa] mb-8">CLIMB TO THE TOP</p>
-      <div class="text-sm text-[#aaaaaa] mb-8">30+ pięter • 16 typów platform • 7 trybów • ∞ możliwości</div>
+  <section class="flex min-h-[70vh] items-center justify-center px-8 text-center">
+    <div class="rounded-lg bg-[#16161e]/80 p-8 backdrop-blur-lg shadow-[0_0_60px_rgba(0,245,255,0.15)]">
+      <h1 class="mb-4 text-6xl font-bold text-[#00f5ff] drop-shadow-[0_0_18px_rgba(0,245,255,0.5)]">MiastoX</h1>
+      <p class="mb-8 text-xl text-[#aaaaaa]">CLIMB TO THE TOP</p>
+      <div class="mb-2 text-sm text-[#aaaaaa]">30+ pięter • 16 typów platform • 7 trybów • ∞ możliwości</div>
     </div>
   </section>
 
-  <!-- Stats grid -->
   <section class="py-16">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="bg-[#16161e] p-6 rounded-lg border border-[#00f5ff22] hover:glow-neon-cyan">
-        <h3 class="text-xl font-bold text-[#00f5ff] mb-2">Graczy online</h3>
-        <p class="text-3xl text-[#e0e0e0]">Live counter</p>
+    <div class="container mx-auto grid grid-cols-1 gap-6 md:grid-cols-4">
+      <div class="card transition duration-300 hover:shadow-[0_0_25px_rgba(0,245,255,0.25)]">
+        <h3 class="mb-2 text-xl font-bold text-[#00f5ff]">Graczy online</h3>
+        <p class="text-3xl">Live counter</p>
       </div>
-      <!-- More stats cards -->
+      <div class="card transition duration-300 hover:shadow-[0_0_25px_rgba(0,245,255,0.25)]">
+        <h3 class="mb-2 text-xl font-bold text-[#00f5ff]">Piętra</h3>
+        <p class="text-3xl">30+</p>
+      </div>
+      <div class="card transition duration-300 hover:shadow-[0_0_25px_rgba(0,245,255,0.25)]">
+        <h3 class="mb-2 text-xl font-bold text-[#00f5ff]">Platformy</h3>
+        <p class="text-3xl">16 typów</p>
+      </div>
+      <div class="card transition duration-300 hover:shadow-[0_0_25px_rgba(0,245,255,0.25)]">
+        <h3 class="mb-2 text-xl font-bold text-[#00f5ff]">Tryby gry</h3>
+        <p class="text-3xl">7</p>
+      </div>
     </div>
   </section>
 
-  <!-- 3D Map section -->
   <section class="py-16">
     <div class="container mx-auto">
-      <div class="aspect-w-16 aspect-h-9">
-        <iframe src="{{ site.baseurl }}/map.html" class="w-full h-96 rounded-lg overflow-hidden"></iframe>
+      <div class="card flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-[#00f5ff]">Mapa MiastoX</h2>
+          <p class="mt-2 text-[#aaaaaa]">Zobacz piętra, platformy i graczy na żywo w interaktywnej mapie 3D.</p>
+        </div>
+        <a href="{{ site.baseurl }}/map.html" class="rounded-full border-2 border-[#00f5ff] px-6 py-3 font-bold text-[#00f5ff] transition duration-300 hover:bg-[#00f5ff] hover:text-black">OTWÓRZ MAPĘ 3D</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#16161e] p-8">
-    <div class="container mx-auto text-center">
-      <p class="text-sm text-[#aaaaaa]">© 2024 MiastoX. Built with ❤️ using NeoCity X Design System.</p>
+  <footer class="border-t border-[#00f5ff22] bg-[#16161e] p-8 text-center text-sm text-[#aaaaaa]">
+    <p>© 2024 MiastoX. Built with ❤️ using NeoCity X Design System.</p>
+    <div class="mt-3 flex justify-center gap-4">
+      <a href="https://discord.gg/miastox" class="hover:text-[#00f5ff]">Discord</a>
+      <a href="{{ site.baseurl }}/changelog.html" class="hover:text-[#00f5ff]">Changelog</a>
     </div>
   </footer>
 
