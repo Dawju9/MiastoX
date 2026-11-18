@@ -1,83 +1,48 @@
+---
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiastoX {{ page.title }}</title>
+  <meta name="description" content="{{ page.desc }}">
+  <meta property="og:title" content="MiastoX {{ page.title }}">
+  <meta property="og:description" content="{{ page.desc }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/gh-assets/project_logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="{{ site.baseurl }}/gh-assets/project_logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/tailwind.css">
+</head>
+<body class="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] font-sans">
+  <nav class="sticky top-0 z-50 border-b border-[#00f5ff22] bg-[#16161e]/95 backdrop-blur-lg">
+    <div class="container mx-auto flex flex-wrap items-center justify-between gap-4 p-4">
+      <a href="{{ site.baseurl }}/" class="flex items-center gap-3 text-xl font-bold text-[#00f5ff]">
+        <img src="{{ site.baseurl }}/gh-assets/project_logo.svg" alt="" class="h-8 w-8">
+        MiastoX
+      </a>
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <a href="{{ site.baseurl }}/map.html" class="text-[#aaaaaa] hover:text-[#00f5ff] transition duration-300">Mapa</a>
+        <a href="{{ site.baseurl }}/jobs.html" class="text-[#aaaaaa] hover:text-[#00f5ff] transition duration-300">Dołącz</a>
+        <a href="{{ site.baseurl }}/projects.html" class="text-[#aaaaaa] hover:text-[#00f5ff] transition duration-300">Projekty</a>
+        <a href="{{ site.baseurl }}/changelog.html" class="text-[#aaaaaa] hover:text-[#00f5ff] transition duration-300">Changelog</a>
+        <a href="{{ site.baseurl }}/hierarchy.html" class="text-[#aaaaaa] hover:text-[#00f5ff] transition duration-300">Gracze</a>
+      </div>
+    </div>
+  </nav>
 
-		<meta property="og:locale" content="en_GB">
-		<meta property="og:type" content="website">
+  <main class="mx-auto w-full max-w-7xl px-4 py-8">
+    {{ content }}
+  </main>
 
-		<title> MiastoX {{ page.title }}</title>
-		<meta property="og:title" content="  {{ page.title }}">
-		<meta name="twitter:title" content="MiastoX  {{ page.title }}">
-
-		<meta name="description" content="{{ page.desc }}">
-		<meta property="og:description" content="{{ page.desc }}">
-		<meta name="twitter:description" content="{{ page.desc }}">
-
-		<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-		<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-
-		<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/gh-assets/project_logo.svg">
-		<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/gh-assets/project_logo.svg">
-		<meta property="og:image:alt" content="MiastoX Software Wordmark">
-
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@MiastoXSoftware">
-		<meta name="twitter:creator" content="@BoatbomberRBLX">
-
-		<link href='https://fonts.googleapis.com/css?family=Big Shoulders Display' rel='stylesheet'>
-		<link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
-		<link rel="stylesheet" href="{{ site.baseurl }}/tailwind.css">
-
-		<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/gh-assets/project_logo.svg">
-		<meta name="theme-color" content="#3325A4">
-	</head>
-
-	<body>
-		<header class="navigation">
-			<a style="position: fixed; top: 10px; left: 10px;" href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/gh-assets/project_logo.svg" alt="Home" width="50" height="50"></a>
-
-			<!-- Hamburger icon -->
-			<input class="side-menu" type="checkbox" id="side-menu"/>
-			<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
-
-			<!-- Menu -->
-			<nav class="nav">
-				<div class="menu">
-					<a href="{{ site.baseurl }}/"><b>Home</b></a>
-					<a href="{{ site.baseurl }}/projects.html"><b>Projects</b></a>
-					<a href="{{ site.baseurl }}/jobs.html"><b>Jobs</b></a>
-					<a href="{{ site.baseurl }}/changelog.html"><b>Changelog</b></a>
-					<a href="{{ site.baseurl }}/hierarchy.html"><b>Nasi gracze</b></a>
-				</div>
-			</nav>
-		</header>
-
-		<div class="body-content">
-			<div class="header-content">
-				<img src="{{ site.baseurl }}/gh-assets/project_logo.svg" alt="MiastoX" style="width:15%;">
-				<h1 style="padding-left: 3.5%;">Making <span class="accent">waves</span> by <span class="accent">propelling</span> new technologies.</h1>
-			</div>
-
-			<br> <hr>
-
-			<!-- Page content from jekyll layout -->
-{{ content }}
-			<!-- End page content -->
-
-			<hr>
-			
-				<img src="{{ site.baseurl }}/gh-assets/project_logo.svg" alt="MiastoX" style="width: 15%;">
-		</div>
-
-		<footer>
-			<p>© MiastoX Software LLC 2022</p>
-			<div class="socialnav">
-				<a href="https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fwww.MiastoXsoftware.llc&screen_name=MiastoXSoftware" target="_blank" rel="noopener noreferrer">Twitter</a>
-				<a href="https://www.linkedin.com/company/MiastoX-software-llc?original_referer=https%3A%2F%2Fwww.MiastoXsoftware.llc" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-				<a href="https://www.roblox.com/groups/14766364/MiastoX-Software-LLC" target="_blank" rel="noopener noreferrer">Roblox</a>
-			</div>
-		</footer>
-	</body>
+  <footer class="border-t border-[#00f5ff22] bg-[#16161e] p-8 text-center text-sm text-[#aaaaaa]">
+    <p>© 2024 MiastoX. Built with ❤️ using NeoCity X Design System.</p>
+    <div class="mt-3 flex justify-center gap-4">
+      <a href="https://discord.gg/miastox" class="hover:text-[#00f5ff]">Discord</a>
+      <a href="https://www.roblox.com/groups/14766364/MiastoX-Software-LLC" class="hover:text-[#00f5ff]">Roblox</a>
+      <a href="{{ site.baseurl }}/changelog.html" class="hover:text-[#00f5ff]">Changelog</a>
+    </div>
+  </footer>
+</body>
 </html>

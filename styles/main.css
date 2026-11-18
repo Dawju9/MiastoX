@@ -1,4 +1,6 @@
-@layer base, components;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   html {
@@ -9,23 +11,93 @@
     font-family: 'Inter', sans-serif;
     color: #e0e0e0;
     background: #0a0a0a;
+    line-height: 1.6;
   }
 
-  .glow-neon {
-    @apply text-[#00f5ff] shadow-[0_0_10px_#00f5ff,0_0_20px_#ff00aa] hover:scale-105 transition duration-300;
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #00f5ff;
+  }
+
+  h1 { @apply mb-4 text-3xl font-bold md:text-5xl; }
+  h2 { @apply mb-3 text-2xl font-bold md:text-3xl; }
+  h3 { @apply mb-2 text-xl font-bold; }
+
+  p { @apply mb-4; }
+
+  a {
+    color: #00f5ff;
+    text-decoration: none;
+  }
+
+  a:hover { color: #ffffff; }
+
+  hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 245, 255, 0.13);
+    margin: 2rem 0;
+  }
+
+  img { max-width: 100%; }
+
+  code {
+    @apply rounded bg-[#16161e] px-1 py-0.5 text-[#00f5ff];
+  }
+}
+
+@layer components {
+  .accent {
+    color: #00f5ff;
+    font-weight: 600;
   }
 
   .card {
-    @apply bg-[#16161e] border border-[#00f5ff22] p-6 rounded-lg;
+    @apply rounded-lg border border-[#00f5ff22] bg-[#16161e] p-6 transition duration-300;
+  }
+
+  .card:hover {
+    border-color: rgba(0, 245, 255, 0.4);
+    transform: translateY(-2px);
   }
 
   .glass {
-    @apply backdrop-blur-lg bg-[#16161e]/50 border border-[#00f5ff22] p-6 rounded-lg;
+    @apply rounded-lg border border-[#00f5ff22] bg-[#16161e]/50 p-6 backdrop-blur-lg;
   }
 
-  .scanline {
-    @apply animate-scanline;
+  .glow-neon {
+    @apply text-[#00f5ff] transition duration-300;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.6), 0 0 20px rgba(255, 0, 170, 0.4);
   }
+
+  .scanline { @apply animate-scanline; }
+
+  .team-grid {
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .fill-div {
+    @apply block text-inherit no-underline;
+  }
+
+  .fill-div:hover { color: inherit; }
+
+  .body-content {
+    @apply mx-auto max-w-5xl;
+  }
+
+  .header-content {
+    @apply mb-8;
+  }
+
+  .subtext {
+    @apply mt-2 text-sm text-[#aaaaaa];
+  }
+
+  .changelog-entry {
+    @apply mb-8 rounded-lg border border-[#00f5ff22] bg-[#16161e] p-6;
+  }
+
+  .changelog-entry h3 { @apply mt-0; }
 
   @keyframes scanline {
     0% { transform: translateY(-100%); }
