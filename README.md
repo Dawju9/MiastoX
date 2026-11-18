@@ -7,7 +7,7 @@ url: /README
 
 # MiastoX
 
-**MiastoX** is a Roblox "climb to the top" game built with the **Luau** language and the **CityX** framework. Players race to ascend a procedurally‑generated city, overcoming obstacles, weather effects, and competing in PvP.
+**MiastoX** is a Roblox "climb to the top" game built with the **Luau** language and the **CityX** framework. Players race to ascend a procedurally‑generated city, overcoming obstacles, weather effects, and competing in PvP. :)
 
 ## Features
 - Six progressive levels (Tutorial → Chaos)
